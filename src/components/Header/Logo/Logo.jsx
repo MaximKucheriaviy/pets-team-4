@@ -1,9 +1,9 @@
-
+import { Link } from "react-router-dom"
 
 export const Logo = () => {
 	return (
 	
-		<p>petly</p>	
+	<Link to={"/home"}> petly</Link>	
 	
 	);
 };

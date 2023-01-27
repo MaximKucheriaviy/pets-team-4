@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { logIn } from "../../../redux/auth/auth-operation";
-import { Link } from "../../../style";
+import { Link } from "react-router-dom";
 
 export const LoginForm = () => {
    const dispatch = useDispatch();

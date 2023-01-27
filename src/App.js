@@ -1,8 +1,7 @@
 import { lazy } from 'react';
 import { Layout } from './SharedLayout/SharedLayot';
 import { Route, Routes } from 'react-router-dom'
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import  PublicRoute  from './components/PublickRoute/PublickRoute';
+
 import { Suspense } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -40,18 +39,17 @@ function App() {
   <Suspense>
     <Routes>
       <Route path='/' element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route path='/home' element={<Home />} />
         <Route path='/news' element={<News />} />
               <Route path='/notices/sell' element={<FindPet />} />
                 
               <Route path='/friends' element={<OurFriends />} />
-                <Route  element={<PublicRoute/>}>
+              
         <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
-              </Route>
-                <Route element={<PrivateRoute />}>
+            
                  <Route path="/user" element={<User /> } />
-                </Route>
+               
 
                     <Route path="*" element={<NotFoundPage /> } />
       </Route>
