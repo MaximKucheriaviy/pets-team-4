@@ -4,7 +4,7 @@ import { signup } from '../../../redux/auth/auth-operation';
 import { useSelector } from 'react-redux';
 import { selectIsLogin } from "../../../redux/auth/autSelectors";
 import { Navigate } from 'react-router-dom';
-import { Link } from "../../../style";
+import { Link } from "react-router-dom";
 import { SignInfo } from './SignInfo/signInfo';
 import { PersonalInfo } from './PersonalInfo/pesonalInfo';
 export const RegisterForm = () => {
