@@ -23,8 +23,6 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPages/NotFoundPages"))
 
 
 function App() {
-
-
   const dispatch = useDispatch();
   const isLoadingUser = useSelector(SelectIsLoadingUserStatus);
 
@@ -34,30 +32,30 @@ function App() {
 
 
   return (
-  <>
-    { isLoadingUser?<p>....Loading</p> :
-  <Suspense>
-    <Routes>
-      <Route path='/' element={<Layout />}>
-        <Route path='/home' element={<Home />} />
-        <Route path='/news' element={<News />} />
+    <>
+      {isLoadingUser ? <p>....Loading</p> :
+        <Suspense>
+          <Routes>
+            <Route path='/' element={<Layout />}>
+              <Route path='/' element={<Home />} />
+              <Route path='/news' element={<News />} />
               <Route path='/notices/sell' element={<FindPet />} />
-                
-              <Route path='/friends' element={<OurFriends />} />
-              
-        <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-            
-                 <Route path="/user" element={<User /> } />
-               
 
-                    <Route path="*" element={<NotFoundPage /> } />
-      </Route>
-    </Routes>
-  </Suspense>
+              <Route path='/friends' element={<OurFriends />} />
+
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+
+              <Route path="/user" element={<User />} />
+
+
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </Suspense>
       }
-      
-      </>
+
+    </>
   );
 }
 
