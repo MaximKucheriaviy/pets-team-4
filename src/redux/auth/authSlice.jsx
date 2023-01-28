@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 import { signup, logIn, logOut, current } from "./auth-operation"
 
