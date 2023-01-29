@@ -5,7 +5,15 @@ export const Item = styled.li`
     background: #FFFFFF;
     box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
     border-radius: 0px 0px 20px 20px;
-    /* background-image: url(http://dummyimage.com/300x300/99cccc.gif&text=Not+image!); */
+    max-width: 280px;
+            @media (min-width: 768px) {
+          max-width: 336px;
+    };
+
+            @media (min-width: 1280px) {
+          max-width: 288px;
+    };
+
 `;
 export const Wrapper = styled.div`
     

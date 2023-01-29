@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { Item, Image, Wrapper, Title, ImgWrapper, NoticeCategory, Favorite, Info, InfoWrapper, Button, ButtonDelete, TwoButtonWrapper, TitleInfoWrapper, RelevantInfoWrapper, ContainerInfo } from './NoticeCategoryItem.styled';
+import { Item, Image, Wrapper, Title, ImgWrapper, NoticeCategory, Favorite, Info, InfoWrapper, Button, ButtonDelete, TwoButtonWrapper, TitleInfoWrapper, RelevantInfoWrapper, ContainerInfo, OneButtonWrapper } from './NoticeCategoryItem.styled';
 // import { Link, useLocation } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
@@ -18,10 +18,11 @@ export default function NoticeCategoryItem({ id, img = "http://dummyimage.com/40
             <Favorite>
             <IconButton   
                sx={{
-                  "--IconButton-size": "44px",
+                "--IconButton-size": "44px",
+                 color: "#F59256" 
                }}
               >
-                <FavoriteBorderOutlinedIcon sx={{ fontSize: 28, borderColor: "#F59256" }} />
+                <FavoriteBorderOutlinedIcon fill="currentColor" sx={{ fontSize: 28 }} />
                 {/* <GrFavorite/> */}
             </IconButton>
             </Favorite>
@@ -45,12 +46,12 @@ export default function NoticeCategoryItem({ id, img = "http://dummyimage.com/40
           <Button>
             Learn more
           </Button>
-          <ButtonDelete startDecorator={<DeleteIcon />}>
+          <ButtonDelete>
               Delete  
             <DeleteIcon fontSize="20px"
               sx={{
-    "--Button-gap": "13px"
-  }}/>
+                  "--Button-gap": "13px"
+                }}/>
             </ButtonDelete>
           </TwoButtonWrapper>
       </Wrapper>
