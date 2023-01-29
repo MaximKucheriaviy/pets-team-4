@@ -1,20 +1,24 @@
-import { Link } from 'react-router-dom';
+
+import { Li,Ul,Link } from './auth.style';
 
 
 
 export const AuthNav = () => {
 	return (
-		<div >
-			<div >
+		
+			<Ul>
 				<Link to="/login">
-					Login
+					<Li>
+					Login</Li>
 				</Link>
-			</div>
-			<div>
+
 				<Link to="/register">
-					Registration
+						<Li>
+						Registration
+						</Li>
 				</Link>
-			</div>
-		</div>
+			</Ul>
+
+	
 	);
 };

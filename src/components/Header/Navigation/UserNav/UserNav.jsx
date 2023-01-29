@@ -1,4 +1,7 @@
-import { Link } from 'react-router-dom';
+import { AccountLink } from './user.style';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Con, Account} from './user.style';
+
 // import { useSelector} from "react-redux";
 // import { selectUser } from '../../../../redux/auth/autSelectors';
 
@@ -9,8 +12,13 @@ export const UserNav = () => {
 
 	return (
 		<div>
-			<Link to="/user">User</Link>
+			< AccountLink  to="/user" style={{ color:"white" }}>
+		<Con >
+					<AccountCircleIcon sx={{ color: " #FFFFFF" }} />
+					<Account>Account</Account>
 		
-		</div>
+			</Con>
+			</ AccountLink >
+			</div>
 	);
 };
