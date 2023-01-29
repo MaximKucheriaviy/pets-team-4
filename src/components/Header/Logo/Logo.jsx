@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom"
+
+import { LogoLink } from "./logo.style";
 
 export const Logo = () => {
 	return (
 	
-	<Link to={"/"}> petly</Link>	
+	<LogoLink  to={"/"}> pe<span style={{color:"#F59256"}}>t</span>ly</LogoLink >	
 	
 	);
 };

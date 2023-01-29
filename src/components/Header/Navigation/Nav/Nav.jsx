@@ -1,22 +1,22 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from '../allNavigation/navigation.style';
 import { navLinks } from '../../../../shared/Link/navLink';
-
+import { Ul, Li } from './nav.style';
 
 export const Nav = () => {
 	
 
     return (
-        <nav>
-		<ul>
+        
+		<Ul>
 			{navLinks.map((el, index) => (
-				<li key={index}>
-					<NavLink
+				<Li key={index}>
+					<Link
 						to={el.path}>
 						{el.text}
-					</NavLink>
-				</li>
+					</Link>
+				</Li>
 			))}
-            </ul>
-            </nav>
+            </Ul>
+            
 	);
 };
