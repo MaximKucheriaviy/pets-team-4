@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet";
 import { getAllSponsors } from "./apiSponsors";
+import { DefaultPage } from "../../components/DefaultPage/DefaultPage"
 import { useEffect, useState } from "react";
 import { SponsorsList } from "../../components/Sponsors/SponsorsList";
 export default function OurFriendsPage() {
@@ -17,12 +18,8 @@ export default function OurFriendsPage() {
     fechSponsors();
   }, []);
   return (
-    <div>
-      <Helmet>
-        <title>OurFriendsPage</title>
-      </Helmet>
-      <h3>Our Friends</h3>|
+    <DefaultPage title="Our Friends">
       <SponsorsList info={sponsors} />
-    </div>
+    </DefaultPage>
   );
 }
