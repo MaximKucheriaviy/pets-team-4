@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet";
 import { getAllSponsors } from "./apiSponsors";
 import { DefaultPage } from "../../components/DefaultPage/DefaultPage"
 import { useEffect, useState } from "react";
