@@ -1,6 +1,8 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 
+import css from "./registerForm.module.css";
+
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { signup } from "../../../redux/auth/auth-operation";
@@ -8,63 +10,17 @@ import { useSelector } from "react-redux";
 import { selectIsLogin } from "../../../redux/auth/autSelectors";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { SignInfo } from "./SignInfo/signInfo";
-import { PersonalInfo } from "./PersonalInfo/pesonalInfo";
+
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const isUserLogin = useSelector(selectIsLogin);
+  const [isFirstStep, setIsFirstStep] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const [city, setCity] = useState('');
-  // const [phone, setPhone] = useState('');
-
-  const [page, setPage] = useState(0);
-
-  const pageDisplay = () => {
-    if (page === 0) {
-      return (
-        <SignInfo
-          email={email}
-          password={password}
-          handleFirstStep={handleFirstStep}
-          handleChange={handleChange}
-          confirmPassword={confirmPassword}
-          setPage={setPage}
-        />
-      );
-    } else {
-      return (
-        <PersonalInfo
-          name={name}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          setPage={setPage}
-        />
-      );
-    }
-  };
-
-  const handleChange = ({ target: { value, name } }) => {
-    switch (name) {
-      case "name":
-        setName(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      case "password":
-        setPassword(value);
-        break;
-      case "confirmPassword":
-        setConfirmPassword(value);
-        break;
-
-      default:
-        break;
-    }
-  };
+  const [city, setCity] = useState("");
+  const [phone, setPhone] = useState("");
 
   function validateEmail(value) {
     let error;
@@ -76,39 +32,40 @@ export const RegisterForm = () => {
     return error;
   }
 
-  function validateUsername(value) {
+  function validatePassword(value) {
     let error;
-    if (value === "admin") {
-      error = "Nice try!";
+    if (!value) {
+      error = "Required";
+    } else if (value.length < 8) {
+      error = "Password must be 8 characters long.";
+    } else if (!/(?=.*[0-9])/.test(value)) {
+      error = "*Invalid password. Must contain one number.";
     }
     return error;
   }
 
-  // const pas = (setPassword,setConfirmPassword) => {
-  //   if (setPassword !== setConfirmPassword) {
-  //      return alert(waaaa)
-  //   }
-  //   else (setPassword !== setConfirmPassword){
-  //     return  alert(sdsdd)
-  //   }
-  //  }
-  const handleFirstStep = (values) => {
-    const { email, password } = values;
-
-    //    console.log("submit", { email, password });
-
-    setEmail(email);
-    setPassword(password);
+  const validateConfirmPassword = (pass, value) => {
+    console.log("confirm", pass, value);
+    let error;
+    if (!value) {
+      error = "Confirm password";
+    } else if (pass !== value) {
+      error = "Not the same!";
+    }
+    return error;
   };
 
-  const handleSubmit = () => {
-    console.log("submit", { name, email, password });
+  const handleSubmit = (values) => {
+    const { name, email, password, city, phone } = values;
+    console.log("submit", { name, email, password, city, phone });
 
-    onRegister({ name, email, password });
-    setPage(0);
+    onRegister({ name, email, password, city, phone });
     setName("");
     setEmail("");
     setPassword("");
+    setConfirmPassword("");
+    setCity("");
+    setPhone("");
   };
 
   const onRegister = (data) => {
@@ -121,9 +78,125 @@ export const RegisterForm = () => {
 
   return (
     <>
-      <div>
+      <div className={css.registerFormWrapper}>
         <h2>Registration</h2>
-        <div>{pageDisplay()}</div>
+        <div className={css.registerFormBody}>
+          <Formik
+            initialValues={{
+              email,
+              password,
+              confirmPassword,
+              name,
+              city,
+              phone,
+            }}
+            onSubmit={(values) => {
+              // same shape as initial values
+              console.log("REGISTER");
+              handleSubmit(values);
+              // setPage((currPage) => currPage + 1);
+            }}
+          >
+            {({ errors, touched, values, isValidating }) => (
+              <Form className={css.registerForm}>
+                {isFirstStep && (
+                  <Field
+                    className={css.registerFormItem}
+                    name="email"
+                    placeholder="Email"
+                    validate={validateEmail}
+                  />
+                )}
+                {isFirstStep && errors.email && touched.email && (
+                  <div>{errors.email}</div>
+                )}
+                {isFirstStep && (
+                  <Field
+                    className={css.registerFormItem}
+                    name="password"
+                    placeholder="Password"
+                    validate={validatePassword}
+                  />
+                )}
+
+                {isFirstStep && errors.password && touched.password && (
+                  <div>{errors.password}</div>
+                )}
+
+                {isFirstStep && (
+                  <Field
+                    className={css.registerFormItem}
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                    validate={(value) =>
+                      validateConfirmPassword(values.password, value)
+                    }
+                  />
+                )}
+
+                {isFirstStep &&
+                  errors.confirmPassword &&
+                  touched.confirmPassword && (
+                    <div>{errors.confirmPassword}</div>
+                  )}
+
+                {!isFirstStep && (
+                  <Field
+                    className={css.registerFormItem}
+                    name="name"
+                    placeholder="Name"
+                  />
+                )}
+
+                {!isFirstStep && (
+                  <Field
+                    className={css.registerFormItem}
+                    name="city"
+                    placeholder="City"
+                  />
+                )}
+
+                {!isFirstStep && (
+                  <Field
+                    className={css.registerFormItem}
+                    name="phone"
+                    placeholder="Phone Number"
+                  />
+                )}
+
+                {isFirstStep && (
+                  <button
+                    type="button"
+                    className={css.registerFormButton}
+                    onClick={() => {
+                      console.log("email", values);
+                      setIsFirstStep(!isFirstStep);
+                    }}
+                  >
+                    Next
+                  </button>
+                )}
+                {!isFirstStep && (
+                  <button
+                    type="button"
+                    className={css.registerFormButton}
+                    onClick={() => {
+                      console.log(isFirstStep);
+                      setIsFirstStep(!isFirstStep);
+                    }}
+                  >
+                    Prev
+                  </button>
+                )}
+                {!isFirstStep && (
+                  <button type="submit" className={css.registerFormButton}>
+                    REGISTER
+                  </button>
+                )}
+              </Form>
+            )}
+          </Formik>
+        </div>
         <p>Already have an account?</p> <Link to={"/login"}> Login</Link>
       </div>
     </>
