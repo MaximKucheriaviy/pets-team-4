@@ -1,14 +1,17 @@
-import { Outlet } from "react-router-dom";
-import { Header } from "../components/Header/Navigation/allNavigation/Header";
 import { Suspense } from "react";
+import { Outlet } from "react-router-dom";
+import { MainContainer, MainTitle } from "./SharedLayout.styled";
 
-export const Layout = () => {
+import { Header } from "../components/Header/Navigation/allNavigation/Header";
+export const SharedLayout = ({ title = null, children }) => {
   return (
-    <div>
+    <MainContainer>
+      {title && <MainTitle>{title}</MainTitle>}
       <Header />
       <Suspense fallback={null}>
+        {children}
         <Outlet />
       </Suspense>
-    </div>
+    </MainContainer>
   );
 };
