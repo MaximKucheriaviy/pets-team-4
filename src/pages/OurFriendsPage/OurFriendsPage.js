@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import { getAllSponsors } from "./apiSponsors";
 import { useEffect, useState } from "react";
-
+import { SponsorsList } from "../../components/Sponsors/SponsorsList";
 export default function OurFriendsPage() {
   const [sponsors, setSponsors] = useState([]);
   useEffect(() => {
@@ -22,6 +22,7 @@ export default function OurFriendsPage() {
         <title>OurFriendsPage</title>
       </Helmet>
       <h3>Our Friends</h3>|
+      <SponsorsList info={sponsors} />
     </div>
   );
 }
