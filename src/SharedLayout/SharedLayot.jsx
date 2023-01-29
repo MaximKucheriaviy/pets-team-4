@@ -1,12 +1,11 @@
 import { Outlet } from "react-router-dom";
-import Navigation from "../components/Header/Navigation/navigation";
-
+import { Header } from "../components/Header/Navigation/allNavigation/Header";
 import { Suspense } from "react";
 
 export const Layout = () => {
   return (
     <div>
-      <Navigation />
+      <Header />
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
