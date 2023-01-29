@@ -15,12 +15,11 @@ position: relative;
 overflow:hidden;
 
 flex-direction: column;
-<<<<<<< Updated upstream
 align-items: center;
 background-color:#FDF7F2;
-=======
 
->>>>>>> Stashed changes
+
+
 
 @media (min-width: 1280px) {
    width: 1280px;
@@ -37,60 +36,54 @@ color: #000000;
 
 
 @media (min-width: 1280px){
-position: absolute;
-<<<<<<< Updated upstream
-top: 92px;
-left: 16px;
-margin-bottom: 0;
-=======
-margin-top: 160px;
->>>>>>> Stashed changes
-height: 200px;
-width: 588px;
-font-size: 68px;
-font-weight: 700;
-line-height: 1.47;
-text-align: left;
+  position: absolute;
+  top: 92px;
+  left: 16px;
+  margin-bottom: 0;
+  margin-top: 160px;
+  height: 200px;
+  width: 588px;
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 1.47;
+  text-align: left;
 }
 
 @media (max-width: 1279px){
-<<<<<<< Updated upstream
-margin-right: 32px;
-margin-top: 88px;
-=======
-position: absolute;
-margin-top: 160px;
-margin-bottom:0;
->>>>>>> Stashed changes
 
-width: 588px;
-height: 200px;    
-font-size: 68px;
-font-weight: 700;
-line-height: 1,47;
-text-align: left;
+    margin-right: 32px;
+    margin-top: 88px;
+    position: absolute;
+    margin-top: 160px;
+    margin-bottom:0;
+
+    width: 588px;
+    height: 200px;    
+    font-size: 68px;
+    font-weight: 700;
+    line-height: 1,47;
+    text-align: left;
 
 }
 
 @media (max-width: 768px){
-position: absolute;
-margin-left: auto;
-margin-right: auto;
-margin-top:60px;
-margin-bottom:0;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:60px;
+    margin-bottom:0;
 
-width: 280px;
-height: 88px;
-font-weight: 700;
-font-size: 32px;
-line-height: 1.38;
-color: #000000;
+    width: 280px;
+    height: 88px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.38;
+    color: #000000;
 }`
 
 export const Content = styled.div`
 
 @media (min-width: 1280px){
-<<<<<<< Updated upstream
 ::before{
 content:'';
 position: absolute;
@@ -125,7 +118,7 @@ transition: transform 0.2s ease-in-out;
   transform: translateY(-10px);
 }
 }
-=======
+
     /* &::after {
     content: "";
     position: absolute; 
@@ -134,19 +127,19 @@ transition: transform 0.2s ease-in-out;
     margin-top: 28px;
     width: 100%;
     height: 100%;
-    background-image: url(${BGbottom});
+    background-image: url("/");
     background-size: cover;
     z-index: 2;
   } */
 margin-top: 95px;
-background-image: url(${BGtop});
+background-image: url("./");
 background-size: contain;
 background-repeat: no-repeat;
 width: 100%;
 height: 826px;
 margin-bottom:0;
 
->>>>>>> Stashed changes
+
 }
 @media (max-width: 1279px){
 display: flex;
@@ -175,20 +168,18 @@ height: 450px;
 
 export const ContentImg = styled.div`
     position: absolute;
-<<<<<<< Updated upstream
 
-=======
     /* @media (min-width: 1280px){
     bottom: 0;
     right:0;
-    background-image: url(${ImageDsc});
+    background-image: url("/");
     height: 590px;
     width: 640px;
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 3;
     } */
->>>>>>> Stashed changes
+
     @media (max-width: 1279px){
     bottom: 0;
     background-image: url(${ImageTab});
