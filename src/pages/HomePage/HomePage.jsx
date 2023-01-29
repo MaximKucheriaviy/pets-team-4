@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import {Title,TitleContainer, Content, ContentImg }  from './HomePage.styled';
-// import Image from './images/portrait-mobile.png';
+import { Title,HeroContainer, Content, ContentImg }  from './HomePage.styled';
 
 
 
@@ -11,13 +10,12 @@ export default function HomePage() {
      <Helmet>
         <title>HomePage</title>
       </Helmet>
-      <TitleContainer>
+      
+      <HeroContainer>
         <Title>Take good care of your small pets</Title>
         <Content/>
         <ContentImg />
-          {/* <img src={Image} alt="Happy lady with puppy" /> */}
-        {/* </Content> */}
-      </TitleContainer>
+      </HeroContainer>
       </div>
   )
 }

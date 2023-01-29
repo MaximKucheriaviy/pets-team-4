@@ -1,27 +1,29 @@
 import styled from 'styled-components';
 import BGmob from './images/Bg-mobile.svg';
 import BGtab from './images/Bg-tablet.svg';
-import BGtop from './images/BGtop.svg';
-import BGbottom from './images/BGbottom.svg';
+import BGdesk from './images/baba-s-psom-fon.png';
+import Ball from './images/Ball.svg';
+import Heart from './images/Heart.svg';
+
 
 import Image from './images/portrait-mobile.png';
 import ImageTab from './images/portrait-tablet.png';
-import ImageDsc from './images/portrait-decktop.png';
 
-
-export const TitleContainer = styled.div`
+export const HeroContainer = styled.div`
 display: flex;
 position: relative;
 overflow:hidden;
 
 flex-direction: column;
 align-items: center;
+background-color:#FDF7F2;
 
-
-/* @media (max-width: 1279px) {
-    flex-direction: column;
-    align-items: center;
-} */
+@media (min-width: 1280px) {
+   width: 1280px;
+   display:flex;
+   align-items: flex-start;
+   justify-content: center;
+}
 `
 
 export const Title = styled.h3`
@@ -29,7 +31,12 @@ font-family: Manrope;
 color: #000000;
 
 
+
 @media (min-width: 1280px){
+position: absolute;
+top: 92px;
+left: 16px;
+margin-bottom: 0;
 height: 200px;
 width: 588px;
 font-size: 68px;
@@ -39,8 +46,8 @@ text-align: left;
 }
 
 @media (max-width: 1279px){
-position: absolute;
-margin-top: 160px;
+margin-right: 32px;
+margin-top: 88px;
 
 width: 588px;
 height: 200px;    
@@ -69,29 +76,40 @@ color: #000000;
 export const Content = styled.div`
 
 @media (min-width: 1280px){
-    &::before {
-    content: "";
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
-    margin-top: 28px;
-    width: 100%;
-    height: 100%;
-    background-image: url(${BGbottom});
-    background-size: cover;
-    z-index: 2;
-  }
-  position: absolute; 
-  bottom: 0; 
-  right: 0; 
-/* display: flex; */
-margin-top: 95pxpx;
-/* justify-content: center; */
-background-image: url(${BGtop});
+::before{
+content:'';
+position: absolute;
+top: 437px;
+left:405px;
+width:63px;
+height:63px;
+background-image: url(${Ball}); 
+background-size: contain;
+background-repeat: no-repeat; 
+}
+/* content:''; */
+background-image: url(${BGdesk}); 
 background-size: contain;
 background-repeat: no-repeat;
-width: 100%;
-height: 640px; 
+width: 1280px;
+height: 700px; 
+
+::after{
+content:'';
+position: absolute;
+top: 103px;
+left:712px;
+width:63px;
+height:63px;
+background-image: url(${Heart}); 
+background-size: contain;
+background-repeat: no-repeat; 
+transition: transform 0.2s ease-in-out;
+
+:hover{
+  transform: translateY(-10px);
+}
+}
 }
 @media (max-width: 1279px){
 display: flex;
@@ -120,15 +138,7 @@ height: 450px;
 
 export const ContentImg = styled.div`
     position: absolute;
-    @media (min-width: 1280px){
-    bottom: 0;
-    background-image: url(${ImageDsc});
-    height: 590px;
-    width: 640px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: 5;
-    }
+
     @media (max-width: 1279px){
     bottom: 0;
     background-image: url(${ImageTab});
@@ -139,6 +149,7 @@ export const ContentImg = styled.div`
     z-index: 3;
     }
     @media (max-width: 768px){
+    position: absolute;
     bottom: 0;
     background-image: url(${Image});
     width: 320px; 
