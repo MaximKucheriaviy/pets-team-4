@@ -1,13 +1,13 @@
 import { Helmet } from 'react-helmet';
 
 
-export default function FindPetPage() {
+export default function HomePage() {
   return (
       <div>
      <Helmet>
-        <title>FindPetPage</title>
+        <title>HomePage</title>
       </Helmet>
-      <h3>FindPetPage</h3>
+      <h3>HomePage</h3>
       </div>
   )
 }

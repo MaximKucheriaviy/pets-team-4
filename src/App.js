@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Layout } from './SharedLayout/SharedLayot';
+import { SharedLayout } from './SharedLayout/SharedLayot';
 import { Route, Routes } from 'react-router-dom'
 
 import { Suspense } from 'react';
@@ -36,7 +36,7 @@ function App() {
       {isLoadingUser ? <p>....Loading</p> :
         <Suspense>
           <Routes>
-            <Route path='/' element={<Layout />}>
+            <Route path='/' element={<SharedLayout />}>
               <Route path='/' element={<Home />} />
               <Route path='/news' element={<News />} />
               <Route path='/notices/sell' element={<FindPet />} />
