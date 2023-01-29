@@ -45,7 +45,6 @@ export const RegisterForm = () => {
   }
 
   const validateConfirmPassword = (pass, value) => {
-    console.log("confirm", pass, value);
     let error;
     if (!value) {
       error = "Confirm password";
@@ -57,7 +56,6 @@ export const RegisterForm = () => {
 
   const handleSubmit = (values) => {
     const { name, email, password, city, phone } = values;
-    console.log("submit", { name, email, password, city, phone });
 
     onRegister({ name, email, password, city, phone });
     setName("");
@@ -91,10 +89,7 @@ export const RegisterForm = () => {
               phone,
             }}
             onSubmit={(values) => {
-              // same shape as initial values
-              console.log("REGISTER");
               handleSubmit(values);
-              // setPage((currPage) => currPage + 1);
             }}
           >
             {({ errors, touched, values, isValidating }) => (
@@ -103,7 +98,7 @@ export const RegisterForm = () => {
                   <Field
                     className={css.registerFormItem}
                     name="email"
-                    placeholder="Email"
+                    placeholder="Email (*required)"
                     validate={validateEmail}
                   />
                 )}
@@ -114,7 +109,7 @@ export const RegisterForm = () => {
                   <Field
                     className={css.registerFormItem}
                     name="password"
-                    placeholder="Password"
+                    placeholder="Password (*required)"
                     validate={validatePassword}
                   />
                 )}
@@ -169,7 +164,6 @@ export const RegisterForm = () => {
                     type="button"
                     className={css.registerFormButton}
                     onClick={() => {
-                      console.log("email", values);
                       setIsFirstStep(!isFirstStep);
                     }}
                   >
@@ -187,7 +181,6 @@ export const RegisterForm = () => {
                     type="button"
                     className={css.registerFormButton}
                     onClick={() => {
-                      console.log(isFirstStep);
                       setIsFirstStep(!isFirstStep);
                     }}
                   >
