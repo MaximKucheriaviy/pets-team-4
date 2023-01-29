@@ -177,6 +177,12 @@ export const RegisterForm = () => {
                   </button>
                 )}
                 {!isFirstStep && (
+                  <button type="submit" className={css.registerFormButton}>
+                    Register
+                  </button>
+                )}
+
+                {!isFirstStep && (
                   <button
                     type="button"
                     className={css.registerFormButton}
@@ -185,12 +191,7 @@ export const RegisterForm = () => {
                       setIsFirstStep(!isFirstStep);
                     }}
                   >
-                    Prev
-                  </button>
-                )}
-                {!isFirstStep && (
-                  <button type="submit" className={css.registerFormButton}>
-                    REGISTER
+                    Back
                   </button>
                 )}
               </Form>

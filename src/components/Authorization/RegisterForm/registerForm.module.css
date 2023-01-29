@@ -51,7 +51,10 @@
   width: 458px;
   height: 48px;
 
-  background: #f59256;
+  background: white;
+  color: black;
+
+  border: 2px solid #f59256;
   border-radius: 40px;
 
   font-family: "Manrope";
@@ -59,5 +62,9 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 27px;
+}
+
+.registerFormButton:hover {
+  background: #f59256;
   color: white;
 }
