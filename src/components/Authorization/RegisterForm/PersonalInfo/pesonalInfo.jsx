@@ -1,17 +1,17 @@
-export const PersonalInfo = ({ name, handleChange}) => {
-        return (
-            <div>
-                <p>personal</p>
-          
-            
-      <label >
+export const PersonalInfo = ({ name, handleChange, handleSubmit, setPage }) => {
+  return (
+    <div>
+      <p>personal</p>
+
+      <label>
         Username
-        <input type="text"
-     
-                    name="name"
-                    value={name}
-                    placeholder="Enter user name"
-                    onChange={handleChange}/>
+        <input
+          type="text"
+          name="name"
+          value={name}
+          placeholder="Enter user name"
+          onChange={handleChange}
+        />
       </label>
       {/* <label >
        City
@@ -31,9 +31,16 @@ export const PersonalInfo = ({ name, handleChange}) => {
                     onChange={handleChange}
                     placeholder="phone" />
       </label> */}
-      <button variant="outlined">Register</button>
-  
-         
-         </div>
-     )
-}
+      <button
+        onClick={() => {
+          setPage((currPage) => currPage - 1);
+        }}
+      >
+        Prev
+      </button>
+      <button variant="outlined" onClick={() => handleSubmit()}>
+        Register
+      </button>
+    </div>
+  );
+};
