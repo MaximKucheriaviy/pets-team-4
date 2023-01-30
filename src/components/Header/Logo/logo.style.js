@@ -6,7 +6,7 @@ export const LogoLink = styled(NavLink)`
     padding: 20px 0;
  font-family:Poppins;
   text-decoration: none;
-  color: #111111;
+  color: ${({ theme }) => theme.colors.black};
   font-size: 32px;
   font-weight: 700;
  letter-spacing: 0.07em;
@@ -16,6 +16,15 @@ export const LogoLink = styled(NavLink)`
      font-size: 28px;
 line-height: 42px;
  }
+
+ 
+`;
+export const Span = styled.span`
+
+   
+  color: ${({ theme }) => theme.colors.accent};
+  
+ 
 
  
 `;

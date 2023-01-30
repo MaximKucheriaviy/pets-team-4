@@ -3,17 +3,17 @@ import { Li,Ul,Link } from './auth.style';
 
 
 
-export const AuthNav = () => {
+export const AuthNav = ({ CloseModal }) => {
 	return (
 		
 			<Ul>
-				<Link to="/login">
-					<Li>
+				<Link to="/login" >
+					<Li onClick={CloseModal}>
 					Login</Li>
 				</Link>
 
 				<Link to="/register">
-						<Li>
+						<Li onClick={CloseModal}>
 						Registration
 						</Li>
 				</Link>

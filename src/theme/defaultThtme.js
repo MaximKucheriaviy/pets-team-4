@@ -6,5 +6,6 @@ export const defaultTheme = {
         gray: 'rgba(1, 1, 1, 0.6)',
         blueLinks: '#3091EB',
         white: '#FFFFFF',
+        adaptive: "#181C27"
     }
 }

@@ -5,9 +5,12 @@ import { AuthNav } from "../AuthNav/AuthNav"
 import { useEffect, useState } from 'react';
 import { ReactComponent as Strips } from './Svg/burger.svg';
 import { ReactComponent as Cross } from "./Svg/close.svg";
+import {Btn, Box, Boxs}  from "./HeaderStyle.jsx"
+// import { UserNav } from "../UserNav/UserNav";
 
-import { UserNav } from "../UserNav/UserNav";
-import  style from "./Header.module.scss"
+
+
+
 
 // import { useAuth } from "../../../shared/useAuth/useAuth"
 
@@ -31,51 +34,60 @@ export function NavigationMobile() {
 		toggleBodyHidden(isOpen);
 	}, [isOpen]);
  
+
+	
+
   return (
 <Header>
      	
-			<div className={style.btns}>
+			<Box >
 				<Logo setIsOpen={setIsOpen} />
 				{isOpen ? (
 					<>
-						<button
+						<Btn
 							type="button"
-							className={style.btnBurger}
+							
 							onClick={toggleMenu}
 						>
 							<Cross
 								width="40px"
 								heigth="40px"
 								aria-label="Меню"
-								className={style.cross}
+								
 							></Cross>
-						</button>
+						</Btn>
 					</>
 				) : (
 					<>
-						<button
+						<Btn
 							type="button"
-							className={style.btnBurger}
+						
 							onClick={toggleMenu}
 						>
 							<Strips
 								width="30px"
 								heigth="20px"
 								aria-label="Меню"
-								className={style.strips}
+								
 							></Strips>
-						</button>
+						</Btn>
 					</>
 				)}
-			</div>
-
-			<div className={isOpen ? `${style.open}` : `${style.closed}`}>
-				<Nav setIsOpen={setIsOpen} />
+				</Box>
+					
+		  <Boxs isOpen = {isOpen}>
+			  
+			  <Nav setIsOpen={setIsOpen} CloseModal={toggleMenu } />
 				
-			  <AuthNav setIsOpen={setIsOpen} />
-			  <UserNav setIsOpen={setIsOpen} />
+			  <AuthNav setIsOpen={setIsOpen} CloseModal={ toggleMenu} />
+			
 				
-			</div>
+			  </Boxs>
+			 
+		  
+		
+		    
+			
 		
           </Header>
 )
