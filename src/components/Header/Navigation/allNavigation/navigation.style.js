@@ -14,7 +14,7 @@ export const Link = styled(NavLink)`
    font-family:Manrope;
  
   text-decoration: none;
- color: ${({ theme }) => theme.colors.black}
+ color: ${({ theme }) => theme.colors.black};
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 0.04em;

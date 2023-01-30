@@ -24,7 +24,7 @@ export const Span = styled.span`
    
   color: ${({ theme }) => theme.colors.accent};
   
- }
+ 
 
  
 `;

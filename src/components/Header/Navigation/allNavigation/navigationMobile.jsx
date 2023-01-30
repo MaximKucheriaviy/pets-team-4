@@ -5,9 +5,9 @@ import { AuthNav } from "../AuthNav/AuthNav"
 import { useEffect, useState } from 'react';
 import { ReactComponent as Strips } from './Svg/burger.svg';
 import { ReactComponent as Cross } from "./Svg/close.svg";
-import {Btn, Box, Boxi}  from "./HeaderStyle.jsx"
-import { UserNav } from "../UserNav/UserNav";
-import style from "./Header.module.scss"
+import {Btn, Box, Boxs}  from "./HeaderStyle.jsx"
+// import { UserNav } from "../UserNav/UserNav";
+
 
 
 
@@ -75,14 +75,14 @@ export function NavigationMobile() {
 				)}
 				</Box>
 					
-		  <Boxi isOpen = {isOpen}>
+		  <Boxs isOpen = {isOpen}>
 			  
 				<Nav setIsOpen={setIsOpen} />
 				
 			  <AuthNav setIsOpen={setIsOpen} />
-			  <UserNav setIsOpen={setIsOpen} />
+			
 				
-			  </Boxi>
+			  </Boxs>
 			 
 		  
 		

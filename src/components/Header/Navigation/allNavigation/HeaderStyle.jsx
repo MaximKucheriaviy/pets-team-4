@@ -36,16 +36,10 @@ export const LogoBtn = styled.div`
     align-items: center;
     gap: 20px;
 `;
+
 export const Boxs = styled.div`
 
-
-`;
-
-export const Boxi = styled.div`
-
-
-
- transform:${props =>  props.isOpen ? "translateX(0%)" : 'translateX(100%)' } ;
+ transform:${props => props.isOpen ? "translateX(0%)" : 'translateX(100%)' } ;
 
 
  display: contents;
@@ -59,22 +53,16 @@ export const Boxi = styled.div`
     left: 0;
     bottom: 0;
 
-    background-color: tomato;
+    background-color: #fdf7f2;
     z-index: 99;
    
     transition: 0.3s all ease-in-out;
 
-    @media screen and (min-width:768px {
+    @media screen and (min-width:768px) {
         margin-top: 40px;
     }
   
- 
 
-
- 
-
-
-  
 `;
 
 

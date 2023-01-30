@@ -5,9 +5,9 @@ import { AuthNav } from "../AuthNav/AuthNav"
 import { useEffect, useState } from 'react';
 import { ReactComponent as Strips } from './Svg/burger.svg';
 import { ReactComponent as Cross } from "./Svg/close.svg";
-import { UserNav } from "../UserNav/UserNav";
-import  style from "./Header.module.scss"
-import {Btn, Box, LogoBox, LogoBtn, Boxi}  from "./HeaderStyle.jsx"
+// import { UserNav } from "../UserNav/UserNav";
+
+import {Btn, Box, LogoBox, LogoBtn, Boxs}  from "./HeaderStyle.jsx"
 
 export  function NavigationTablet() {
   // const isLogin = useAuth();
@@ -38,7 +38,7 @@ export  function NavigationTablet() {
 				</LogoBox>
 				<LogoBtn>
 					
-					{!isOpen &&    <UserNav />}
+					{!isOpen &&     <AuthNav setIsOpen={setIsOpen} />}
 					{isOpen ? (
 						<>
 							<Btn
@@ -75,14 +75,13 @@ export  function NavigationTablet() {
 
 			
 		
-		<Boxi>
-		  	  <div className={isOpen ? "open" : "close"}>
+		  <Boxs isOpen = {isOpen}>
 			  
 				<Nav setIsOpen={setIsOpen} />
-			  <AuthNav setIsOpen={setIsOpen} />
+		
 				
-			  </div>
-			  </Boxi>
+			 
+			  </Boxs>
 		  
        </Header>   
 )
