@@ -95,68 +95,84 @@ export const RegisterForm = () => {
             {({ errors, touched, values, isValidating }) => (
               <Form className={css.registerForm}>
                 {isFirstStep && (
-                  <Field
-                    className={css.registerFormItem}
-                    name="email"
-                    placeholder="Email (*required)"
-                    validate={validateEmail}
-                  />
-                )}
-                {isFirstStep && errors.email && touched.email && (
-                  <div>{errors.email}</div>
-                )}
-                {isFirstStep && (
-                  <Field
-                    className={css.registerFormItem}
-                    name="password"
-                    placeholder="Password (*required)"
-                    validate={validatePassword}
-                  />
-                )}
+                  <div className={css.registerFormItemWrapper}>
+                    <Field
+                      className={css.registerFormItem}
+                      name="email"
+                      placeholder="Email (*required)"
+                      validate={validateEmail}
+                    />
 
-                {isFirstStep && errors.password && touched.password && (
-                  <div>{errors.password}</div>
+                    {errors.email && touched.email && (
+                      <div className={css.registerFormError}>
+                        {errors.email}
+                      </div>
+                    )}
+                  </div>
                 )}
 
                 {isFirstStep && (
-                  <Field
-                    className={css.registerFormItem}
-                    name="confirmPassword"
-                    placeholder="Confirm Password"
-                    validate={(value) =>
-                      validateConfirmPassword(values.password, value)
-                    }
-                  />
+                  <div className={css.registerFormItemWrapper}>
+                    <Field
+                      className={css.registerFormItem}
+                      name="password"
+                      placeholder="Password (*required)"
+                      validate={validatePassword}
+                    />
+                    {errors.password && touched.password && (
+                      <div className={css.registerFormError}>
+                        {errors.password}
+                      </div>
+                    )}
+                  </div>
                 )}
 
-                {isFirstStep &&
-                  errors.confirmPassword &&
-                  touched.confirmPassword && (
-                    <div>{errors.confirmPassword}</div>
-                  )}
-
-                {!isFirstStep && (
-                  <Field
-                    className={css.registerFormItem}
-                    name="name"
-                    placeholder="Name"
-                  />
+                {isFirstStep && (
+                  <div className={css.registerFormItemWrapper}>
+                    <Field
+                      className={css.registerFormItem}
+                      name="confirmPassword"
+                      placeholder="Confirm Password"
+                      validate={(value) =>
+                        validateConfirmPassword(values.password, value)
+                      }
+                    />
+                    {errors.confirmPassword && touched.confirmPassword && (
+                      <div className={css.registerFormError}>
+                        {errors.confirmPassword}
+                      </div>
+                    )}
+                  </div>
                 )}
 
                 {!isFirstStep && (
-                  <Field
-                    className={css.registerFormItem}
-                    name="city"
-                    placeholder="City"
-                  />
+                  <div className={css.registerFormItemWrapper}>
+                    <Field
+                      className={css.registerFormItem}
+                      name="name"
+                      placeholder="Name"
+                    />
+                  </div>
                 )}
 
                 {!isFirstStep && (
-                  <Field
-                    className={css.registerFormItem}
-                    name="phone"
-                    placeholder="Phone Number"
-                  />
+                  <div className={css.registerFormItemWrapper}>
+                    <Field
+                      className={css.registerFormItem}
+                      name="city"
+                      placeholder="City"
+                    />
+                  </div>
+                )}
+
+                {!isFirstStep && (
+                  <div className={css.registerFormItemWrapper}>
+                    <Field
+                      className={css.registerFormItem}
+                      name="phone"
+                      placeholder="Phone Number"
+                    />
+                  </div>
                 )}
 
                 {isFirstStep && (

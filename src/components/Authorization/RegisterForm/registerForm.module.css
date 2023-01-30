@@ -23,10 +23,13 @@
   width: 618px;
 }
 
-.registerFormItem {
-  width: 393px;
-  height: 52px;
+.registerFormItemWrapper {
   margin-bottom: 20px;
+}
+.registerFormItem {
+  position: relative;
+  width: 458px;
+  height: 52px;
   padding-left: 32px;
   padding-right: 32px;
 
@@ -67,4 +70,12 @@
 .registerFormButton:hover {
   background: #f59256;
   color: white;
+}
+
+.registerFormError {
+  position: absolute;
+  padding-top: 2px;
+  padding-left: 32px;
+  color: red;
+  font-size: 12px;
 }
