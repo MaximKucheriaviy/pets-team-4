@@ -45,7 +45,7 @@ export const RegisterForm = () => {
     } else if (value.length < 8) {
       error = "Password must be 8 characters long.";
     } else if (!/(?=.*[0-9])/.test(value)) {
-      error = "*Invalid password. Must contain one number.";
+      error = "Must contain min one number.";
     }
     if (error) {
       setButtonDisabledTo(true);
