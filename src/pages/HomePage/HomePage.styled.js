@@ -1,13 +1,46 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import BGmob from './images/Bg-mobile.svg';
 import BGtab from './images/Bg-tablet.svg';
 import BGdesk from './images/baba-s-psom-fon.png';
 import Ball from './images/Ball.svg';
 import Heart from './images/Heart.svg';
-
-
 import Image from './images/portrait-mobile.png';
 import ImageTab from './images/portrait-tablet.png';
+
+
+const ballMove = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+`;
+
+const heartBeat = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
+const backgroundMove = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
+
 
 export const HeroContainer = styled.div`
 display: flex;
@@ -18,11 +51,9 @@ flex-direction: column;
 align-items: center;
 background-color:#FDF7F2;
 
-
-
-
 @media (min-width: 1280px) {
    width: 1280px;
+   margin: 0 auto;
    display:flex;
    align-items: flex-start;
    justify-content: center;
@@ -33,14 +64,11 @@ export const Title = styled.h3`
 font-family: Manrope;
 color: #000000;
 
-
-
 @media (min-width: 1280px){
   position: absolute;
   top: 92px;
   left: 16px;
   margin-bottom: 0;
-  margin-top: 160px;
   height: 200px;
   width: 588px;
   font-size: 68px;
@@ -94,11 +122,12 @@ height:63px;
 background-image: url(${Ball}); 
 background-size: contain;
 background-repeat: no-repeat; 
+animation: ${ballMove} 1s ease-in-out infinite alternate;
 }
-/* content:''; */
 background-image: url(${BGdesk}); 
 background-size: contain;
 background-repeat: no-repeat;
+margin-top:61px;
 width: 1280px;
 height: 700px; 
 
@@ -112,32 +141,9 @@ height:63px;
 background-image: url(${Heart}); 
 background-size: contain;
 background-repeat: no-repeat; 
-transition: transform 0.2s ease-in-out;
-
-:hover{
-  transform: translateY(-10px);
+animation:  ${heartBeat} 1s ease-in-out infinite alternate;
 }
-}
-
-    /* &::after {
-    content: "";
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
-    margin-top: 28px;
-    width: 100%;
-    height: 100%;
-    background-image: url("/");
-    background-size: cover;
-    z-index: 2;
-  } */
-margin-top: 95px;
-background-image: url("./");
-background-size: contain;
-background-repeat: no-repeat;
-width: 100%;
-height: 826px;
-margin-bottom:0;
+            
 
 
 }
@@ -150,6 +156,7 @@ background-size: cover;
 background-repeat: no-repeat;
 width: 100%;
 height: 1098px; 
+animation: ${backgroundMove} 5s ease-in-out infinite;
 
 }
 
@@ -161,24 +168,13 @@ background-image: url(${BGmob});
 background-size: cover;
 background-repeat: no-repeat;
 width: 100%;
-/* height: 395px; /470 */
 height: 450px; 
+animation: ${backgroundMove} 5s ease-in-out infinite;
 }`;
 
 
 export const ContentImg = styled.div`
     position: absolute;
-
-    /* @media (min-width: 1280px){
-    bottom: 0;
-    right:0;
-    background-image: url("/");
-    height: 590px;
-    width: 640px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: 3;
-    } */
 
     @media (max-width: 1279px){
     bottom: 0;
@@ -200,3 +196,7 @@ export const ContentImg = styled.div`
     z-index: 3;
     }
     `
+
+
+
+
