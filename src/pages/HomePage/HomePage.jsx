@@ -10,12 +10,14 @@ export default function HomePage() {
      <Helmet>
         <title>HomePage</title>
       </Helmet>
-      
+
+      <div>
       <HeroContainer>
         <Title>Take good care of your small pets</Title>
         <Content/>
         <ContentImg />
       </HeroContainer>
+      </div>
       </div>
   )
 }
