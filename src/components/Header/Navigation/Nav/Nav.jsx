@@ -6,7 +6,7 @@ export const Nav = () => {
 	
 
     return (
-        
+        <nav>
 		<Ul>
 			{navLinks.map((el, index) => (
 				<Li key={index}>
@@ -17,6 +17,6 @@ export const Nav = () => {
 				</Li>
 			))}
             </Ul>
-            
+             </nav>
 	);
 };
