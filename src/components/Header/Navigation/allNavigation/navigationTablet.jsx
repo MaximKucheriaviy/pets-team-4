@@ -77,7 +77,7 @@ export  function NavigationTablet() {
 		
 		  <Boxs isOpen = {isOpen}>
 			  
-				<Nav setIsOpen={setIsOpen} />
+				<Nav setIsOpen={setIsOpen} CloseModal={toggleMenu } />
 		
 				
 			 

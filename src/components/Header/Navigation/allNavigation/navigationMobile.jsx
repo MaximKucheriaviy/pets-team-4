@@ -77,9 +77,9 @@ export function NavigationMobile() {
 					
 		  <Boxs isOpen = {isOpen}>
 			  
-				<Nav setIsOpen={setIsOpen} />
+			  <Nav setIsOpen={setIsOpen} CloseModal={toggleMenu } />
 				
-			  <AuthNav setIsOpen={setIsOpen} />
+			  <AuthNav setIsOpen={setIsOpen} CloseModal={ toggleMenu} />
 			
 				
 			  </Boxs>
