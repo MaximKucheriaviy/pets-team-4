@@ -14,33 +14,34 @@ export const Link = styled(NavLink)`
    font-family:Manrope;
  
   text-decoration: none;
-  color: #111111;
+ color: ${({ theme }) => theme.colors.black};
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 0.04em;
   line-height: 27px;
   &:hover,
    &:focus {
-     color:#F59256;
+    color: ${({ theme }) => theme.colors.accent}
+     
       
   }
 
   &.active {
-   color:#F59256;
+  color: ${({ theme }) => theme.colors.accent}
  
   }
      @media screen and (min-width:768px) and (max-width:1279px) {
 font-size: 48px;
 line-height: 66px;
 letter-spacing: 0.04em;
-color:#181C27;
+color: ${({ theme }) => theme.colors.adaptive}
 
 
  }
   @media screen and  (max-width:767px) {
 font-size: 32px;
 line-height: 44px;
-color:#181C27;
+color: ${({ theme }) => theme.colors.adaptive}
 
 
 

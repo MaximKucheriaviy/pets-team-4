@@ -6,7 +6,7 @@ export const AccountLink = styled(NavLink)`
   font-family:Manrope;
  
   text-decoration: none;
-  color: #111111;
+  color: ${({ theme }) => theme.colors.white};
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 0.04em;
@@ -40,7 +40,7 @@ export const Account = styled.span`
 font-family: Manrope;
 letter-spacing: 0.04em;
 
-color: #FFFFFF;
+color: ${({ theme }) => theme.colors.white};
 
 font-weight: 500;
 font-size: 16px;
