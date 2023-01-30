@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { Item, Image, Wrapper, Title, ImgWrapper, NoticeCategory, Favorite, Info, InfoWrapper, Button, ButtonDelete, TwoButtonWrapper, TitleInfoWrapper, RelevantInfoWrapper, ContainerInfo, OneButtonWrapper } from './NoticeCategoryItem.styled';
+import { Item, Image, Wrapper, Title, ImgWrapper, NoticeCategory, Favorite, Info, InfoWrapper, Button, ButtonDelete, TwoButtonWrapper, TitleInfoWrapper, RelevantInfoWrapper, ContainerInfo } from './NoticeCategoryItem.styled';
 // import { Link, useLocation } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';

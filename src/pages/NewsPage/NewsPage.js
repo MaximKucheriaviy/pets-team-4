@@ -1,7 +1,7 @@
 // import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet";
 import NewsList from "../../components/NewsList/NewsList";
 import SearchForm from "../../components/SearchForm/SearchForm";
+import { DefaultPage } from "../../components/DefaultPage/DefaultPage";
 
 const newsItems = [
   {
@@ -163,14 +163,10 @@ export default function NewsPage() {
   // const [newsItems, setNewsItems] = useState([]);
 
   return (
-    <div>
-      <Helmet>
-        <title>NewsPage</title>
-      </Helmet>
-
+    <DefaultPage title = "News">
       <SearchForm />
 
       {newsItems && <NewsList newsItems={newsItems} />}
-    </div>
+    </DefaultPage>
   );
 }
