@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 // import Img1 from '../../../../public/Frame.png';
 
 export const Item = styled.li`
@@ -6,6 +7,7 @@ export const Item = styled.li`
     box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
     border-radius: 0px 0px 20px 20px;
     max-width: 280px;
+    height: 606px;
             @media (min-width: 768px) {
           max-width: 336px;
     };
@@ -32,7 +34,7 @@ export const ImgWrapper = styled.div`
 export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  margin: 20px;
 `;
 
 export const NoticeCategory = styled.div`
@@ -54,7 +56,7 @@ export const NoticeCategory = styled.div`
 
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 0 16px 16px 0;
-    opacity: 0.6;
+    backdrop-filter: blur(2px);
 `;
 
 export const Favorite  = styled.div`
@@ -68,6 +70,7 @@ position: absolute;
     height: 44px;
 
     background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(2px);
     border-radius: 25px;
 `;
 
@@ -75,13 +78,6 @@ export const Image = styled.img`
   width: 100%;
   height: 288px;
   object-fit: cover;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 2px;
-
-  &:hover {
-    /* transform: scale(1.03); */
-    cursor: pointer;
-  }
 `;
 
 export const Title = styled.p`
@@ -122,38 +118,48 @@ export const Info = styled.div`
 `;
 
 export const OneButtonWrapper = styled.div`
-  padding: 50px 16px 32px 16px;
+margin-bottom: 32px;
+  /* padding: 50px 16px 32px 16px; */
 `;
 export const TwoButtonWrapper = styled.div`
-  padding: 20px 16px 12px 16px;
+margin-bottom: 12px;
+  /* padding: 20px 16px 12px 16px; */
 `;
 export const Button = styled.button`
-            width: 248px;
-            height: 38px;
-            border-color: #F59256;
-            border-radius: 40px;
-            color:#F59256;
-            font-size: 16px;
-            line-height: 22px;
-    letter-spacing: 0.04em;
     display: flex;
     justify-content: center;
     align-items: center;
+            
+    border: 2px solid rgb(245, 146, 86);
+    border-radius: 40px;
+
+    &:hover {
+          border: 2px solid #ff6101;
+          color: #ff6101;
+    }
 `;
 
-export const ButtonDelete = styled.button`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+// export const ButtonCategory = styled(Button)`
+//     margin: 8px 28px;
+//     color:#111111;
+//     font-size: 14px;
+//     line-height: 19px;
+//     letter-spacing: 0.04em;
 
-    margin-top : 12px;
-            width: 248px;
-            height: 38px;
-            border-color: #FF6101;
-            border-radius: 40px;
-            color:#FF6101;
-            font-size: 16px;
-            line-height: 22px;
+//     &.active {
+//     color: #FFFFFF;
+//     background: #F59256;
+//   }
+// `;
+
+export const ButtonLearn = styled(Button)`
+    width: 248px;
+    height: 38px;
+    color:#F59256;
+    font-size: 16px;
+    line-height: 22px;
     letter-spacing: 0.04em;
-
+`;
+export const ButtonDelete = styled(ButtonLearn)`
+    margin-top : 12px;
 `;
