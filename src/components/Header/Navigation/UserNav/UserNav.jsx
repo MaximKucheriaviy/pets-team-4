@@ -12,7 +12,7 @@ export const UserNav = () => {
 
 	return (
 		<div>
-			< AccountLink  to="/user" style={{ color:"white" }}>
+			< AccountLink  to="/user">
 		<Con >
 					<AccountCircleIcon sx={{ color: " #FFFFFF" }} />
 					<Account>Account</Account>

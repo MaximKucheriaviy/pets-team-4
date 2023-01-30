@@ -10,22 +10,22 @@ margin-right:20px;
   line-height: 27px;
   font-weight: 500;
   padding:10px 28px;
-   color: #111111;
-  background: #FFFFFF;
-border: 2px solid #F59256;
+  color: ${({ theme }) => theme.colors.black};
+  background: ${({ theme }) => theme.colors.white};
+border: 2px solid ${({ theme }) => theme.colors.accent};
 border-radius: 40px;
      &:last-child {
    margin-right:0;
   }
   &:hover,
   &:focus {
-     color:white;
-    background: #F59256;
+   color: ${({ theme }) => theme.colors.white};
+        background: ${({ theme }) => theme.colors.accent};
   } 
   
   &.active {
-   color:white;
-    background: #F59256;
+   color: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.accent};
   }
    @media screen and (max-width:767px) {
     margin-right:12px;

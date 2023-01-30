@@ -11,17 +11,13 @@ export function NavigationDekstop () {
   // const isLogin = useAuth();
  
   return (
-
-        
+    
     <Header>
-      
-			
         <Logo />
         <Nav />
       <UserNav />
         <AuthNav />
-     
-     
+
                  </Header>
           
 )

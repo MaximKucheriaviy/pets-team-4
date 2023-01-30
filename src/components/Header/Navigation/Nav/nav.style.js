@@ -12,12 +12,12 @@ export const Li = styled.li`
 
 margin-top:60px;
 
-
+margin-right:0;
 
  }
   @media screen and  (max-width:767px) {
 margin-top:40px;
-
+margin-right:0;
 
  }
 `;
@@ -26,7 +26,7 @@ export const Ul = styled.ul`
     display: flex;
    @media screen and (max-width:1279px) {
 display: block;
-   
+       text-align: center;
 
  }
 `;
