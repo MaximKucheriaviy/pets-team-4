@@ -1,24 +1,20 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Form, Input, Button } from "./SearchForm.styled";
+import SearchIcon from "@mui/icons-material/Search";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-const SearchForm = () => {
-  const [value, setValue] = useState("");
-
-  const handleChange = (e) => setValue(e.target.value);
-
-  const clearInput = () => setValue("");
-
+const SearchForm = ({ value, changeFilter, clearFilter }) => {
   return (
     <Form autoComplete="off">
       <Input
-        onChange={handleChange}
+        onChange={changeFilter}
         value={value}
         type="text"
         name="search"
         placeholder="Search"
       />
-      <Button onClick={clearInput} type="button">
-        {value ? "X" : "O"}
+      <Button onClick={clearFilter} type="button">
+        {value ? <HighlightOffIcon /> : <SearchIcon />}
       </Button>
     </Form>
   );
