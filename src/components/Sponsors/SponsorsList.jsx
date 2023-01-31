@@ -1,4 +1,4 @@
-import { SponsorItem } from "./SponsorItem"
+import { SponsorItem } from "./SponsorItem";
 
 export const SponsorsList = ({ info }) => {
     return (
