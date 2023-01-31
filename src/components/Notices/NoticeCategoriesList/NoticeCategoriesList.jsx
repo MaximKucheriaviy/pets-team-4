@@ -5,26 +5,26 @@ import NoticeCategoryItem from './NoticeCategoryItem/NoticeCategoryItem';
 
 const items = [{
   id:1 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    // img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
   age : "one year",
-   categorie :"In good hands",
+   categorie :"sale",
    title: "Сute dog looking for a home"
 },
   {
   id:2 ,
-  img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+  img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
    bread : "Pomeranian",
    place : "Lviv",
   age : "one year",
-   categorie :"In good hands",
+  //  categorie :"In good hands",
    title: "Сute dog looking for a home"
   },
   {
   id:3 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -34,7 +34,7 @@ const items = [{
   },
   {
   id:4 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -44,7 +44,7 @@ const items = [{
   },
   {
   id:5 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -54,7 +54,7 @@ const items = [{
   },
   {
   id:6 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -64,7 +64,7 @@ const items = [{
   },
   {
   id:7 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -74,7 +74,7 @@ const items = [{
   },
   {
   id:8 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -84,7 +84,7 @@ const items = [{
   },
   {
   id:9 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -94,7 +94,7 @@ const items = [{
   },
   {
   id:10 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -104,7 +104,7 @@ const items = [{
   },
   {
   id:11 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -114,7 +114,7 @@ const items = [{
   },
   {
   id:12 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -124,7 +124,7 @@ const items = [{
   },
   {
   id:13 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -134,7 +134,7 @@ const items = [{
   },
   {
   id:14 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -144,7 +144,7 @@ const items = [{
   },
   {
   id:15 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -154,7 +154,7 @@ const items = [{
   },
   {
   id:16 ,
-    img:"https://pixabay.com/get/gf235c003c6bebeed21f4e3045799a8274cdebed9abd2b1bb772e44ff92a33bf4b312c3fcb4de39e077ea35794cd7dbf5bc927c0f161192b11a4bf19f33c638bd_640.jpg",
+    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",

@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { Item, Image, Wrapper, Title, ImgWrapper, NoticeCategory, Favorite, Info, InfoWrapper, Button, ButtonDelete, TwoButtonWrapper, TitleInfoWrapper, RelevantInfoWrapper, ContainerInfo } from './NoticeCategoryItem.styled';
+import { Item, Image, Wrapper, Title, ImgWrapper, NoticeCategory, Favorite, Info, InfoWrapper, ButtonDelete, TwoButtonWrapper, TitleInfoWrapper, RelevantInfoWrapper, ContainerInfo, OneButtonWrapper, ButtonLearn } from './NoticeCategoryItem.styled';
 // import { Link, useLocation } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
+// const yourPet = false;
+const yourPet = true;
+
+
+
 export default function NoticeCategoryItem({ id, img = "http://dummyimage.com/400x400/99cccc.gif&text=Not+image!", bread = "bread", place = "place",
-  age = "1", categorie ="In good hands", title= "Сute dog looking for a home" }) {
+  age = "1", categorie ="sale", title= "Сute dog looking for a home" }) {
   return (
     <Item key={id} >
         <Wrapper>
@@ -33,19 +38,22 @@ export default function NoticeCategoryItem({ id, img = "http://dummyimage.com/40
           <TitleInfoWrapper>
           <Info>Breed:</Info>     
           <Info>Place:</Info>     
-          <Info>Age:</Info>
+              <Info>Age:</Info>
+             {categorie === "sale" ? <Info>Price:</Info> : null } 
         </TitleInfoWrapper>
         <RelevantInfoWrapper>
           <Info> {bread}</Info>     
           <Info> {place}</Info>     
-            <Info> {age}</Info> 
+              <Info> {age}</Info> 
+             {categorie === "sale" ? <Info>50$</Info> : null } 
             </RelevantInfoWrapper>
             </ContainerInfo>
-          </InfoWrapper>  
-          <TwoButtonWrapper>
-          <Button>
+        </InfoWrapper>  
+        
+        {yourPet & categorie !== "sale" ? <TwoButtonWrapper>
+          <ButtonLearn>
             Learn more
-          </Button>
+          </ButtonLearn>
           <ButtonDelete>
               Delete  
             <DeleteIcon fontSize="20px"
@@ -53,7 +61,12 @@ export default function NoticeCategoryItem({ id, img = "http://dummyimage.com/40
                   "--Button-gap": "13px"
                 }}/>
             </ButtonDelete>
-          </TwoButtonWrapper>
+        </TwoButtonWrapper> : 
+          <OneButtonWrapper>
+             <ButtonLearn>
+              Learn more
+            </ButtonLearn>
+          </OneButtonWrapper>}
       </Wrapper>
       
     </Item>

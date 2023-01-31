@@ -1,9 +1,12 @@
 import { DefaultPage } from '../../components/DefaultPage/DefaultPage';
-import FindPetGallery from '../../components/NoticeCategoriesList/NoticeCategoriesList';
-
+import NoticeCategoriesList from '../../components/Notices/NoticeCategoriesList/NoticeCategoriesList';
+import NoticesCategoriesNav from '../../components/Notices/NoticesCategoriesNav/NoticesCategoriesNav';
+import SearchForm from '../../components/SearchForm/SearchForm';
 
 export default function FindPetPage() {
   return <DefaultPage title="FindPetPage">
-    <FindPetGallery/>
+    <SearchForm/>
+    <NoticesCategoriesNav/>
+    <NoticeCategoriesList />
     </DefaultPage>
 }
