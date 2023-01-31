@@ -4,7 +4,7 @@ import { Formik, Form, Field } from "formik";
 import css from "./registerForm.module.css";
 
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signup } from "../../../redux/auth/auth-operation";
 import { useSelector } from "react-redux";
 import { selectIsLogin } from "../../../redux/auth/autSelectors";
@@ -29,7 +29,13 @@ export const RegisterForm = () => {
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
       error = "Invalid email address";
     }
-    return error;
+
+    if (error) {
+      setButtonDisabledTo(true);
+      return error;
+    } else {
+      setButtonDisabledTo(false);
+    }
   }
 
   function validatePassword(value) {
@@ -39,9 +45,16 @@ export const RegisterForm = () => {
     } else if (value.length < 8) {
       error = "Password must be 8 characters long.";
     } else if (!/(?=.*[0-9])/.test(value)) {
-      error = "*Invalid password. Must contain one number.";
+      error = "Must contain min one number.";
     }
-    return error;
+    if (error) {
+      setButtonDisabledTo(true);
+      setConfirmPassworFieldDisabledTo(true);
+      return error;
+    } else {
+      setButtonDisabledTo(false);
+      setConfirmPassworFieldDisabledTo(false);
+    }
   }
 
   const validateConfirmPassword = (pass, value) => {
@@ -51,8 +64,24 @@ export const RegisterForm = () => {
     } else if (pass !== value) {
       error = "Not the same!";
     }
-    return error;
+    if (error) {
+      setButtonDisabledTo(true);
+      return error;
+    } else {
+      setButtonDisabledTo(false);
+    }
   };
+
+  function setButtonDisabledTo(state) {
+    const currentForm = document.querySelector("Form");
+    const currentButtons = currentForm.querySelectorAll("button");
+    currentButtons.forEach((button) => (button.disabled = state));
+  }
+
+  function setConfirmPassworFieldDisabledTo(state) {
+    const confirmField = document.getElementById("confirmPassword");
+    confirmField.disabled = state;
+  }
 
   const handleSubmit = (values) => {
     const { name, email, password, city, phone } = values;
@@ -70,129 +99,148 @@ export const RegisterForm = () => {
     dispatch(signup(data));
   };
 
+  useEffect(() => {
+    setButtonDisabledTo(true);
+    setConfirmPassworFieldDisabledTo(true);
+  }, []);
+
   if (isUserLogin) {
     return <Navigate to={"/news"} />;
   }
 
   return (
-    <>
-      <div className={css.registerFormWrapper}>
-        <h2>Registration</h2>
-        <div className={css.registerFormBody}>
-          <Formik
-            initialValues={{
-              email,
-              password,
-              confirmPassword,
-              name,
-              city,
-              phone,
-            }}
-            onSubmit={(values) => {
-              handleSubmit(values);
-            }}
-          >
-            {({ errors, touched, values, isValidating }) => (
-              <Form className={css.registerForm}>
-                {isFirstStep && (
+    <div className={css.registerFormWrapper}>
+      <h2>Registration</h2>
+      <div className={css.registerFormBody}>
+        <Formik
+          initialValues={{
+            email,
+            password,
+            confirmPassword,
+            name,
+            city,
+            phone,
+          }}
+          onSubmit={(values) => {
+            handleSubmit(values);
+          }}
+        >
+          {({ errors, touched, values, isValid }) => (
+            <Form className={css.registerForm}>
+              {isFirstStep && (
+                <div className={css.registerFormItemWrapper}>
                   <Field
                     className={css.registerFormItem}
                     name="email"
                     placeholder="Email (*required)"
                     validate={validateEmail}
                   />
-                )}
-                {isFirstStep && errors.email && touched.email && (
-                  <div>{errors.email}</div>
-                )}
-                {isFirstStep && (
+
+                  {errors.email && touched.email && (
+                    <div className={css.registerFormError}>{errors.email}</div>
+                  )}
+                </div>
+              )}
+
+              {isFirstStep && (
+                <div className={css.registerFormItemWrapper}>
                   <Field
                     className={css.registerFormItem}
                     name="password"
                     placeholder="Password (*required)"
                     validate={validatePassword}
                   />
-                )}
+                  {errors.password && touched.password && (
+                    <div className={css.registerFormError}>
+                      {errors.password}
+                    </div>
+                  )}
+                </div>
+              )}
 
-                {isFirstStep && errors.password && touched.password && (
-                  <div>{errors.password}</div>
-                )}
-
-                {isFirstStep && (
+              {isFirstStep && (
+                <div className={css.registerFormItemWrapper}>
                   <Field
                     className={css.registerFormItem}
                     name="confirmPassword"
+                    id="confirmPassword"
                     placeholder="Confirm Password"
                     validate={(value) =>
                       validateConfirmPassword(values.password, value)
                     }
                   />
-                )}
-
-                {isFirstStep &&
-                  errors.confirmPassword &&
-                  touched.confirmPassword && (
-                    <div>{errors.confirmPassword}</div>
+                  {errors.confirmPassword && touched.confirmPassword && (
+                    <div className={css.registerFormError}>
+                      {errors.confirmPassword}
+                    </div>
                   )}
+                </div>
+              )}
 
-                {!isFirstStep && (
+              {!isFirstStep && (
+                <div className={css.registerFormItemWrapper}>
                   <Field
                     className={css.registerFormItem}
                     name="name"
                     placeholder="Name"
                   />
-                )}
+                </div>
+              )}
 
-                {!isFirstStep && (
+              {!isFirstStep && (
+                <div className={css.registerFormItemWrapper}>
                   <Field
                     className={css.registerFormItem}
                     name="city"
                     placeholder="City"
                   />
-                )}
+                </div>
+              )}
 
-                {!isFirstStep && (
+              {!isFirstStep && (
+                <div className={css.registerFormItemWrapper}>
                   <Field
                     className={css.registerFormItem}
                     name="phone"
                     placeholder="Phone Number"
                   />
-                )}
+                </div>
+              )}
 
-                {isFirstStep && (
-                  <button
-                    type="button"
-                    className={css.registerFormButton}
-                    onClick={() => {
-                      setIsFirstStep(!isFirstStep);
-                    }}
-                  >
-                    Next
-                  </button>
-                )}
-                {!isFirstStep && (
-                  <button type="submit" className={css.registerFormButton}>
-                    Register
-                  </button>
-                )}
+              {isFirstStep && (
+                <button
+                  type="button"
+                  id="nextButton"
+                  className={css.registerFormButton}
+                  onClick={() => {
+                    setIsFirstStep(!isFirstStep);
+                  }}
+                >
+                  Next
+                </button>
+              )}
+              {!isFirstStep && (
+                <button type="submit" className={css.registerFormButton}>
+                  Register
+                </button>
+              )}
 
-                {!isFirstStep && (
-                  <button
-                    type="button"
-                    className={css.registerFormButton}
-                    onClick={() => {
-                      setIsFirstStep(!isFirstStep);
-                    }}
-                  >
-                    Back
-                  </button>
-                )}
-              </Form>
-            )}
-          </Formik>
-        </div>
-        <p>Already have an account?</p> <Link to={"/login"}> Login</Link>
+              {!isFirstStep && (
+                <button
+                  type="button"
+                  className={css.registerFormButton}
+                  onClick={() => {
+                    setIsFirstStep(!isFirstStep);
+                  }}
+                >
+                  Back
+                </button>
+              )}
+            </Form>
+          )}
+        </Formik>
       </div>
-    </>
+      <p>Already have an account?</p> <Link to={"/login"}> Login</Link>
+    </div>
   );
 };
