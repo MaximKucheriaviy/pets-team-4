@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import NewsList from "../../components/NewsList/NewsList";
-import SearchForm from "../../components/SearchForm/SearchForm";
 import { DefaultPage } from "../../components/DefaultPage/DefaultPage";
-import { getNews } from "./apiNews";
-import { Message } from "../../components/ErrorMessage/ErrorMessage.styled";
+import { getNews } from "../../services/apiNews";
+import SearchForm from "../../components/SearchForm";
+import NewsList from "../../components/NewsList";
+import ErrorMessage from "../../components/ErrorMessage";
 
 export default function NewsPage() {
   const [news, setNews] = useState([]);
@@ -35,6 +35,8 @@ export default function NewsPage() {
     })();
   }, []);
 
+  const isShow = news && !error;
+
   return (
     <DefaultPage title="News">
       <SearchForm
@@ -42,8 +44,14 @@ export default function NewsPage() {
         changeFilter={handleFilter}
         clearFilter={clearFilter}
       />
-      {error && <Message>{error}😢. Please try again later...</Message>}
-      {news && !error && <NewsList newsItems={visibleNews} />}
+
+      {isShow ? (
+        <NewsList newsItems={visibleNews} />
+      ) : (
+        <ErrorMessage margin="40px">
+          {error}😢. Please try again later...
+        </ErrorMessage>
+      )}
     </DefaultPage>
   );
 }

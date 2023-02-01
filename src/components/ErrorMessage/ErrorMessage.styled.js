@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Message = styled.p`
+  margin-top: ${({ margin }) => margin};
   font-weight: 600;
   line-height: 1.35;
   color: red;

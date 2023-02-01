@@ -27,11 +27,11 @@ export const Input = styled.input`
   box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
   border-radius: 20px;
   border-style: none;
-  outline: transparent;
+  outline: 1px solid transparent;
   transition: outline 250ms ease-in-out;
 
   &:focus {
-    outline: 1px solid rgba(245, 146, 86, 0.5);
+    outline-color: rgba(245, 146, 86, 0.5);
   }
 
   &::placeholder {

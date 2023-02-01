@@ -1,16 +1,10 @@
 import styled from "styled-components";
 
 export const Card = styled.li`
-  transition: box-shadow 250ms ease-in-out;
-
   @media (max-width: 767px) {
     &:not(:last-child) {
       margin-bottom: 40px;
     }
-  }
-
-  &:hover {
-    box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
   }
 
   &::before {
