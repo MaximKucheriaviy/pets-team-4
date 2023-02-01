@@ -1,41 +1,3 @@
-// import {  SponsorCard, SponsorInfo, SponsorHeader, SponsorLogoBox, SponsorContacts,SponsorText, SponsorLogo} from "./SponsorsStyles";
-
-//   export const SponsorItem = ({
-//   imageUrl,
-//   workDays,
-//   title,
-//   address,
-//   email,
-//   phone,
-// }) => {
-//   const time = "10:00-19:00"
-//   return (
-//     <SponsorCard key={title}>
-//       <SponsorHeader>{title}</SponsorHeader>
-//       <SponsorInfo>
-//       <SponsorLogoBox>
-//         <SponsorLogo width="158" height="112" src={imageUrl ? imageUrl : "https://animals-city.org/wp-content/themes/animals-city/img/logo.svg"} alt="logo" />
-//         </SponsorLogoBox>
-//       <SponsorContacts>
-//        <SponsorText>
-//        {/* <Schedule workDays={workDays} /> */}
-//           Time:<br/><span>{time}</span>
-//         </SponsorText>
-//         <SponsorText>
-//           Addres:<br/><span>{address ? address : ""}</span>
-//         </SponsorText>
-//         <SponsorText>
-//           Email:<br/><span>{email ? email : ""}</span>
-//         </SponsorText>
-//         <SponsorText>
-//           Phone:<br/><span>{phone ? phone : ""}</span>
-//         </SponsorText>
-//       </SponsorContacts>
-//       </SponsorInfo>
-//     </SponsorCard>
-//   );
-// };
-
 import React, { useState } from 'react';
 import {  SponsorCard, SponsorInfo, SponsorHeader, SponsorLogoBox, SponsorContacts,SponsorText, SponsorLogo, ScheduleStyle} from "./SponsorsStyles";
 
@@ -61,9 +23,20 @@ export const SponsorItem = ({
   phone,
   }) => {
   const [showSchedule, setShowSchedule] = useState(false);
-  // let time = `${workDays[0].from}-${workDays[0].to}`;
-  let time="9:00-19:00";
-  console.log(workDays);
+  
+  let time="";
+if (!workDays || workDays === null || workDays === undefined) {
+  time = "--------------";
+} else {
+  const openDay = workDays.find(item => item.isOpen);
+  if (openDay) {
+    time = `${openDay.from}-${openDay.to}`;
+  } else {
+    time = "--------------";
+  }
+}
+
+  // let time = `workDays ? ${workDays.find(item => item.isOpen).from}-${workDays.find(item => item.isOpen).to} : "_"`;
   return (
     <SponsorCard key={title}>
       <SponsorHeader>{title}</SponsorHeader>
