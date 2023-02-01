@@ -12,19 +12,19 @@ const setToken = token => {
 };
 
 export const signup = async signupData => {
-  const { data } = await instance.post('/user/signup', signupData);
+  const { data } = await instance.post('api/user/signup', signupData);
   instance.defaults.headers.common.authorization = ` ${data.token}`;
   return data;
 };
 
 export const login = async loginData => {
-  const { data } = await instance.post('/user/login', loginData);
+  const { data } = await instance.post('api/user/login', loginData);
   instance.defaults.headers.common.authorization = ` ${data.token}`;
   return data;
 };
 
 export const logout = async () => {
-  const { data } = await instance.get('/user/logout');
+  const { data } = await instance.get('api/user/logout');
     instance.defaults.headers.common.authorization = " ";
   return data;
 };
@@ -32,7 +32,7 @@ export const logout = async () => {
 export const getCurrentUser = async token => {
   try {
     setToken(token);
-    const { data } = await instance.get('/user/current');
+    const { data } = await instance.get('api/user/current');
     return data;
   } catch (error) {
     setToken();
