@@ -37,7 +37,7 @@ export  function NavigationTablet() {
 					<Logo setIsOpen={setIsOpen} />
 				</LogoBox>
 				<LogoBtn>
-					{!isOpen && (isLogin ? <UserNav /> : <AuthNav setIsOpen={setIsOpen} />)}
+				  {!isOpen && (isLogin ? <UserNav  /> : <AuthNav setIsOpen={setIsOpen} />)}
 					
 					{isOpen ? (
 						<>

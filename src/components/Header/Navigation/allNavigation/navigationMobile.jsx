@@ -82,7 +82,7 @@ export function NavigationMobile() {
 			  <AuthNav setIsOpen={setIsOpen} CloseModal={ toggleMenu} /> */}
 			
 					{isLogin ? (
-					<UserNav setIsOpen={setIsOpen} />
+					<UserNav setIsOpen={setIsOpen} CloseModal={toggleMenu} />
 				) : (
 					<AuthNav setIsOpen={setIsOpen} CloseModal={ toggleMenu} />
 				)}
