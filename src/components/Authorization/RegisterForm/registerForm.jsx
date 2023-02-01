@@ -132,6 +132,7 @@ export const RegisterForm = () => {
                   <Field
                     className={css.registerFormItem}
                     name="email"
+                   
                     placeholder="Email (*required)"
                     validate={validateEmail}
                   />
@@ -147,6 +148,7 @@ export const RegisterForm = () => {
                   <Field
                     className={css.registerFormItem}
                     name="password"
+                   
                     placeholder="Password (*required)"
                     validate={validatePassword}
                   />
@@ -183,6 +185,7 @@ export const RegisterForm = () => {
                     className={css.registerFormItem}
                     name="name"
                     placeholder="Name"
+                   
                   />
                 </div>
               )}
@@ -193,6 +196,7 @@ export const RegisterForm = () => {
                     className={css.registerFormItem}
                     name="city"
                     placeholder="City"
+                   
                   />
                 </div>
               )}
@@ -203,6 +207,7 @@ export const RegisterForm = () => {
                     className={css.registerFormItem}
                     name="phone"
                     placeholder="Phone Number"
+                   
                   />
                 </div>
               )}

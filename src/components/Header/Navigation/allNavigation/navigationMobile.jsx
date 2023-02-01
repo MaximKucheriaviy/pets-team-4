@@ -6,16 +6,16 @@ import { useEffect, useState } from 'react';
 import { ReactComponent as Strips } from './Svg/burger.svg';
 import { ReactComponent as Cross } from "./Svg/close.svg";
 import {Btn, Box, Boxs}  from "./HeaderStyle.jsx"
-// import { UserNav } from "../UserNav/UserNav";
+import { UserNav } from "../UserNav/UserNav";
 
 
 
 
 
-// import { useAuth } from "../../../shared/useAuth/useAuth"
+import { useAuth } from "../../../../shared/useAuth/useAuth"
 
 export function NavigationMobile() {
-  // const isLogin = useAuth();
+  const isLogin = useAuth();
     const [isOpen, setIsOpen] = useState(false);
     
 
@@ -78,10 +78,14 @@ export function NavigationMobile() {
 		  <Boxs isOpen = {isOpen}>
 			  
 			  <Nav setIsOpen={setIsOpen} CloseModal={toggleMenu } />
-				
-			  <AuthNav setIsOpen={setIsOpen} CloseModal={ toggleMenu} />
+{/* 				
+			  <AuthNav setIsOpen={setIsOpen} CloseModal={ toggleMenu} /> */}
 			
-				
+					{isLogin ? (
+					<UserNav setIsOpen={setIsOpen} />
+				) : (
+					<AuthNav setIsOpen={setIsOpen} CloseModal={ toggleMenu} />
+				)}
 			  </Boxs>
 			 
 		  
