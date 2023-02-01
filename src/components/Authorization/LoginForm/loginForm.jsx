@@ -47,7 +47,7 @@ export const LoginForm = () => {
           }}
         >
           <Form className={css.loginForm}>
-            <h2>Login</h2>
+            <h2 className={css.loginFormTitle}>Login</h2>
             <div className={css.loginFormItemWrapper}>
               <Field
                 className={css.loginFormItem}

@@ -126,7 +126,7 @@ export const RegisterForm = () => {
         >
           {({ errors, touched, values, isValid }) => (
             <Form className={css.registerForm}>
-              <h2>Registration</h2>
+              <h2 className={css.registerFormTitle}>Registration</h2>
               {isFirstStep && (
                 <div className={css.registerFormItemWrapper}>
                   <Field

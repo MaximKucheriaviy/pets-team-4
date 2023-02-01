@@ -28,6 +28,18 @@
 .loginFormItemWrapper {
   margin-bottom: 20px;
 }
+
+.loginFormTitle {
+  margin-top: 60px;
+  margin-bottom: 40px;
+
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 49px;
+}
+
 .loginFormItem {
   position: relative;
   width: 458px;
