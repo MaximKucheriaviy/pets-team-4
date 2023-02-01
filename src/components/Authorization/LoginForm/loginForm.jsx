@@ -24,6 +24,8 @@ export const LoginForm = () => {
   };
 
   const handleSubmit = (event) => {
+    const { email, password } = event
+    console.log(email, password);
     onLogin({ email, password });
 
     setEmail("");
