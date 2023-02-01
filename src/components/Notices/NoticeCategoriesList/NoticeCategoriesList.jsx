@@ -5,13 +5,15 @@ import NoticeCategoryItem from './NoticeCategoryItem/NoticeCategoryItem';
 
 const items = [{
   id:1 ,
-    img:"https://cdn.pixabay.com/photo/2015/03/27/13/16/maine-coon-694730_960_720.jpg",
-
+   img:"https://cdn.pixabay.com/photo/2015/03/27/13/16/maine-coon-694730_960_720.jpg",
    bread : "Pomeranian",
    place : "Lviv",
-  age : "one year",
+   age : "one year",
    categorie :"sale",
-   title: "Сute dog looking for a home"
+  title: "Сute dog looking for a home", 
+  userId: 1,
+  fovorite: false,
+  
 },
   {
   id:2 ,

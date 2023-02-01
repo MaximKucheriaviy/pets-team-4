@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import { Item, Image, Wrapper, Title, ImgWrapper, NoticeCategory, Favorite, Info, InfoWrapper, ButtonDelete, TwoButtonWrapper, TitleInfoWrapper, RelevantInfoWrapper, ContainerInfo, OneButtonWrapper, ButtonLearn } from './NoticeCategoryItem.styled';
-// import { Link, useLocation } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-
-import AddIcon from '@mui/icons-material/Add';
 
 // const yourPet = false;
 const yourPet = true;

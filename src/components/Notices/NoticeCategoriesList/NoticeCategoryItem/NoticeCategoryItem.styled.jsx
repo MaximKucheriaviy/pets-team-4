@@ -1,8 +1,4 @@
-import { IconButton } from "@mui/material";
-import { GrFavorite } from "react-icons/gr";
 import styled from "styled-components";
-
-// import Img1 from '../../../../public/Frame.png';
 
 export const Item = styled.li`
     background: #FFFFFF;
@@ -171,15 +167,3 @@ export const ButtonLearn = styled(Button)`
 export const ButtonDelete = styled(ButtonLearn)`
     margin-top : 12px;
 `;
-
-
-// export const GrFavoriteIcon = styled.svg`
-//   fill: white;
-//   stroke: #F59256;
-//   stroke-width: 2px;
-//   /* color: #F59256; */
-// `;
-
-// export const StyledIconButton = styled(IconButton)`
-//   color: #56f598; 
-// `;
