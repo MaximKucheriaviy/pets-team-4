@@ -13,7 +13,7 @@ export function NavigationDekstop () {
     <Header>
         <Logo />
     
-             {isLogin &&   <Nav />}
+              <Nav />
 
                 {isLogin ? <UserNav /> :    <AuthNav />}
      
