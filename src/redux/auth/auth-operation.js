@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import * as authApi from '../../shared/apiAuth'
 
 export const signup = createAsyncThunk(
-    "auth/signup",
+    "user/signup",
     async (data, { rejectWithValue }) => {
         try {
             const result = await authApi.signup(data);
@@ -19,7 +19,7 @@ export const signup = createAsyncThunk(
 );
 
 export const logIn = createAsyncThunk(
-    "auth/login",
+    "user/login",
     async (data, { rejectWithValue }) => {
         try {
             const result = await authApi.login(data);
@@ -36,7 +36,7 @@ export const logIn = createAsyncThunk(
 );
 
 export const logOut = createAsyncThunk(
-    "auth/logout",
+    "user/logout",
     async (_, { rejectWithValue }) => {
         try {
             const result = await authApi.logout();
@@ -52,7 +52,7 @@ export const logOut = createAsyncThunk(
 );
 
 export const current = createAsyncThunk(
-    "auth/current",
+    "user/current",
     async (_, thunkAPI) => {
         try {
             const { auth } = thunkAPI.getState();
