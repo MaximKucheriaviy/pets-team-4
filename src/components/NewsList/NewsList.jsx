@@ -1,5 +1,5 @@
 import React from "react";
-import NewsCard from "../NewsCard/NewsCard";
+import NewsCard from "../NewsCard";
 import { CardList } from "./NewsList.styled";
 
 const NewsList = ({ newsItems }) => {
