@@ -132,7 +132,6 @@ export const RegisterForm = () => {
                   <Field
                     className={css.registerFormItem}
                     name="email"
-                   
                     placeholder="Email (*required)"
                     validate={validateEmail}
                   />
@@ -142,13 +141,11 @@ export const RegisterForm = () => {
                   )}
                 </div>
               )}
-
               {isFirstStep && (
                 <div className={css.registerFormItemWrapper}>
                   <Field
                     className={css.registerFormItem}
                     name="password"
-                   
                     placeholder="Password (*required)"
                     validate={validatePassword}
                   />
@@ -159,7 +156,6 @@ export const RegisterForm = () => {
                   )}
                 </div>
               )}
-
               {isFirstStep && (
                 <div className={css.registerFormItemWrapper}>
                   <Field
@@ -178,40 +174,33 @@ export const RegisterForm = () => {
                   )}
                 </div>
               )}
-
               {!isFirstStep && (
                 <div className={css.registerFormItemWrapper}>
                   <Field
                     className={css.registerFormItem}
                     name="name"
                     placeholder="Name"
-                   
                   />
                 </div>
               )}
-
               {!isFirstStep && (
                 <div className={css.registerFormItemWrapper}>
                   <Field
                     className={css.registerFormItem}
                     name="city"
                     placeholder="City"
-                   
                   />
                 </div>
               )}
-
               {!isFirstStep && (
                 <div className={css.registerFormItemWrapper}>
                   <Field
                     className={css.registerFormItem}
                     name="phone"
                     placeholder="Phone Number"
-                   
                   />
                 </div>
               )}
-
               {isFirstStep && (
                 <button
                   type="button"
@@ -229,7 +218,6 @@ export const RegisterForm = () => {
                   Register
                 </button>
               )}
-
               {!isFirstStep && (
                 <button
                   type="button"
@@ -241,11 +229,11 @@ export const RegisterForm = () => {
                   Back
                 </button>
               )}
+              <p>Already have an account?</p> <Link to={"/login"}> Login</Link>
             </Form>
           )}
         </Formik>
       </div>
-      <p>Already have an account?</p> <Link to={"/login"}> Login</Link>
     </div>
   );
 };
