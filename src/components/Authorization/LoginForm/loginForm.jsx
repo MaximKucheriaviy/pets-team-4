@@ -1,73 +1,76 @@
-import { selectIsLogin } from "../../../redux/auth/autSelectors";
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { logIn } from "../../../redux/auth/auth-operation";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import { Formik, Form, Field } from "formik";
+
 import { Link } from "react-router-dom";
 
-export const LoginForm = () => {
-   const dispatch = useDispatch();
-  const isUserLogin = useSelector(selectIsLogin);
-  
-     const [email, setEmail] = useState('');
-     const [password, setPassword] = useState('');
-   
-     const handleChange = ({ target: { value, name } }) => {
-       switch (name) {
-         case 'email':
-           setEmail(value);
-           break;
-         case 'password':
-           setPassword(value);
-           break;
-   
-         default:
-           break;
-       }
-     };
-  
-     const onLogin = data => {
-      dispatch(logIn(data));
-    };
+import { selectIsLogin } from "../../../redux/auth/autSelectors";
+import { logIn } from "../../../redux/auth/auth-operation";
 
-     const handleSubmit = event => {
-      event.preventDefault();
-  
-      onLogin({ email, password });
-  
-      setEmail('');
-      setPassword('');
-     };
-  
-     if (isUserLogin) {
-    return <Navigate to={'/news'} />;
+import css from "./loginForm.module.css";
+
+export const LoginForm = () => {
+  const dispatch = useDispatch();
+  const isUserLogin = useSelector(selectIsLogin);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onLogin = (data) => {
+    dispatch(logIn(data));
+  };
+
+  const handleSubmit = (event) => {
+    const { email, password } = event
+    console.log(email, password);
+    onLogin({ email, password });
+
+    setEmail("");
+    setPassword("");
+  };
+
+  if (isUserLogin) {
+    return <Navigate to={"/news"} />;
   }
 
   return (
-    <>
-    <form onSubmit={handleSubmit} autoComplete='off'>
-      <label >
-        Email
-        <input type="email"
-                    name='email'
-                    value={email}
-                    onChange={handleChange}
-                 
-                    placeholder="Enter user email" />
-      </label>
-      <label>
-        Password
-        <input type="password"
-         
-                    name='password'
-                    value={password}
-                    onChange={handleChange}
-                    placeholder="Enter user password "/>
-      </label>
-      <button type="submit" variant="outlined">Log In</button>
-    </form>
-      <p>Don't have an account?</p> <Link to={"/register" }> Register</Link>
-      </>
+    <div className={css.loginFormWrapper}>
+      <div className={css.loginFormBody}>
+        <Formik
+          initialValues={{
+            email,
+            password,
+          }}
+          onSubmit={(values) => {
+            handleSubmit(values);
+          }}
+        >
+          <Form className={css.loginForm}>
+            <h2 className={css.loginFormTitle}>Login</h2>
+            <div className={css.loginFormItemWrapper}>
+              <Field
+                className={css.loginFormItem}
+                name="email"
+                placeholder="Email"
+              />
+            </div>
+            <div className={css.loginFormItemWrapper}>
+              <Field
+                className={css.loginFormItem}
+                name="password"
+                placeholder="Password"
+              />
+            </div>
+            <button type="submit" className={css.loginFormButton}>
+              Login
+            </button>
+            <p>Already have an account?</p> <Link to={"/login"}> Login</Link>
+          </Form>
+        </Formik>
+      </div>
+    </div>
   );
 };

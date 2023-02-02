@@ -5,17 +5,19 @@ import NoticeCategoryItem from './NoticeCategoryItem/NoticeCategoryItem';
 
 const items = [{
   id:1 ,
-    // img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
-
+   img:"https://cdn.pixabay.com/photo/2015/03/27/13/16/maine-coon-694730_960_720.jpg",
    bread : "Pomeranian",
    place : "Lviv",
-  age : "one year",
+   age : "one year",
    categorie :"sale",
-   title: "Сute dog looking for a home"
+  title: "Сute dog looking for a home", 
+  userId: 1,
+  fovorite: false,
+  
 },
   {
   id:2 ,
-  img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+  img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
    bread : "Pomeranian",
    place : "Lviv",
   age : "one year",
@@ -24,7 +26,7 @@ const items = [{
   },
   {
   id:3 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -34,7 +36,7 @@ const items = [{
   },
   {
   id:4 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -44,7 +46,7 @@ const items = [{
   },
   {
   id:5 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -54,7 +56,7 @@ const items = [{
   },
   {
   id:6 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -64,7 +66,7 @@ const items = [{
   },
   {
   id:7 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -74,7 +76,7 @@ const items = [{
   },
   {
   id:8 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -84,7 +86,7 @@ const items = [{
   },
   {
   id:9 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -94,7 +96,7 @@ const items = [{
   },
   {
   id:10 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -104,7 +106,7 @@ const items = [{
   },
   {
   id:11 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -114,7 +116,7 @@ const items = [{
   },
   {
   id:12 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -124,7 +126,7 @@ const items = [{
   },
   {
   id:13 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -134,7 +136,7 @@ const items = [{
   },
   {
   id:14 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -144,7 +146,7 @@ const items = [{
   },
   {
   id:15 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",
@@ -154,7 +156,7 @@ const items = [{
   },
   {
   id:16 ,
-    img:"https://pixabay.com/get/g9013c6d407bad27a717aca78afbf56b65fa4b08eae5533f5bdea2bb9cb3c014daa3ae194bfebd226bcb882487538a18be399277102739708343c71fca47dc706_640.jpg",
+    img:"https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",
 
    bread : "Pomeranian",
    place : "Lviv",

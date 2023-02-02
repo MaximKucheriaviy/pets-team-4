@@ -1,13 +1,13 @@
-import { Helmet } from 'react-helmet';
-import { RegisterForm } from '../../components/Authorization/RegisterForm/registerForm';
+import { Helmet } from "react-helmet";
+import { RegisterForm } from "../../components/Authorization/RegisterForm/registerForm";
+import { Box } from "./RegisterPage.styled";
 export default function RegisterPage() {
-
   return (
-      <div>
+    <Box>
       <Helmet>
         <title>Registration</title>
       </Helmet>
       <RegisterForm />
-    </div>
-  )
+    </Box>
+  );
 }
