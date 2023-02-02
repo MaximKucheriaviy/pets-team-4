@@ -27,6 +27,5 @@ export const Ul = styled.ul`
    @media screen and (max-width:1279px) {
 display: block;
    
-
  }
 `;

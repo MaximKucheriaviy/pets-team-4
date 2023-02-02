@@ -1,13 +1,15 @@
-import { Helmet } from 'react-helmet';
-
+import { Helmet } from "react-helmet";
+import { DefaultPage } from "../../components/DefaultPage/DefaultPage";
+import { ModalContainer } from "../../components/ModalAddPet/ModalContainer";
 
 export default function HomePage() {
   return (
-      <div>
-     <Helmet>
+    <DefaultPage>
+      <Helmet>
         <title>HomePage</title>
       </Helmet>
       <h3>HomePage</h3>
-      </div>
-  )
+      <ModalContainer />
+    </DefaultPage>
+  );
 }
