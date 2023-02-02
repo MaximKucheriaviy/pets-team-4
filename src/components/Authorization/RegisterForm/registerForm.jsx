@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import { signup } from "../../../redux/auth/auth-operation";
 import { selectIsLogin } from "../../../redux/auth/autSelectors";
@@ -14,6 +14,8 @@ import {
   Input,
   Button,
   Error,
+  Hint,
+  HintLink,
 } from "../css/Forms.styled";
 
 export const RegisterForm = () => {
@@ -91,8 +93,6 @@ export const RegisterForm = () => {
   const handleSubmit = (values) => {
     const { name, email, password, city, phone } = values;
 
-    console.log(values);
-
     onRegister({ name, email, password, city, phone });
     setName("");
     setEmail("");
@@ -148,6 +148,7 @@ export const RegisterForm = () => {
               <Item>
                 <Input
                   name="password"
+                  type="password"
                   placeholder="Password (*required)"
                   validate={validatePassword}
                 />
@@ -160,6 +161,7 @@ export const RegisterForm = () => {
               <Item>
                 <Input
                   name="confirmPassword"
+                  type="password"
                   id="confirmPassword"
                   placeholder="Confirm Password"
                   validate={(value) =>
@@ -208,7 +210,9 @@ export const RegisterForm = () => {
                 Back
               </Button>
             )}
-            <p>Already have an account?</p> <Link to={"/login"}> Login</Link>
+            <Hint>
+              Already have an account? <HintLink to={"/login"}> Login</HintLink>
+            </Hint>
           </Form>
         )}
       </Formik>
