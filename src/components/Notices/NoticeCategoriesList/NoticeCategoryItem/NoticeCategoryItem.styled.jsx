@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-// import Img1 from '../../../../public/Frame.png';
-
 export const Item = styled.li`
     background: #FFFFFF;
     box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
@@ -72,6 +70,12 @@ position: absolute;
     background-color: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(2px);
     border-radius: 25px;
+    color: #F59256;
+
+    &:hover {
+     opacity: 1;
+     color: #ff6101;
+    }
 `;
 
 export const Image = styled.img`

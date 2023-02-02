@@ -1,17 +1,15 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const NavBar = styled.div`
+export const NavBar = styled.ul`
 display: flex;
 flex-direction: row;
 align-items: flex-start;
 flex-wrap: wrap;
 gap: 12px;
-margin-top: 28px;
-margin-bottom: 20px;
 
      @media (min-width: 768px) {
        max-width: 474px;
-       margin: 40px 0 60px 0;
     };
 
     @media (min-width: 1280px) {
@@ -19,16 +17,19 @@ margin-bottom: 20px;
     };
 `;
 
-export const Button = styled.button`
+export const StyledLink = styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    text-decoration: none;
+    color: inherit;
             
     border: 2px solid rgb(245, 146, 86);
     border-radius: 40px;
 `;
 
-export const ButtonCategory = styled(Button)`
+export const LinkCategory = styled(StyledLink)`
     padding: 8px 28px;
     color:#111111;
     background-color: #FFFFFF;
@@ -42,9 +43,6 @@ export const ButtonCategory = styled(Button)`
           line-height: 27px;
     };
 
-            /* @media (min-width: 1280px) {
-          max-width: 288px;
-    }; */
 
     &.active {
     color: #FFFFFF;
