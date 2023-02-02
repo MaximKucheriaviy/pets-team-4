@@ -5,39 +5,48 @@ export const PetsContainerStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+        padding-top: 16px;
 
     background-color: #FFFFFF;
     box-shadow: 7px 4px 14px rgb(0 0 0 / 11%);
     border-radius: 20px;
-    margin: 20px;
 
     @media screen and (min-width:768px) {
         display: flex;
         flex-direction: row;
         border-radius: 40px;
-        margin: 24px 32px 20px 32px;
     }
     @media screen and (min-width:1280px) {
-        margin: 24px 16px 22px 0px;
+        padding: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
     }
 
 
-.card-avatar{
-    width: 240px;
-    height: 240px;
+    .card-avatar{
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    // width: 240px;
+    // height: 240px;
     border-radius: 20px;
-    margin: 16px 20px 20px 20px;        
+    // margin: 16px 20px 20px 20px;        
 
     @media screen and (min-width:768px) {
         width: 161px;
         height: 161px;
         border-radius: 40px;
-        margin: 20px 12px auto 20px;
+    margin: 20px 12px auto 20px;
     }
-}
 
-.card-info{
-    margin: 0px 25px 28px 20px;
+    }
+
+    .card-info{
+    margin: 20px 25px 28px 20px;
+
     @media screen and (min-width:768px) {
         display: flex;
         flex-direction: column;
@@ -46,14 +55,15 @@ export const PetsContainerStyled = styled.div`
     @media screen and (min-width:1280px) {
         margin: 20px 28px 20px 20px;
     }
-}
-.card-name{
+    }
+
+    .card-name{
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
+    }
 
-.card-btn{
+    .card-btn{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,17 +77,21 @@ export const PetsContainerStyled = styled.div`
         width: 44px;
         height: 44px;
     }
-}
-
-.card-icons{
-    @media screen and (min-width:768px) {
-        width: 19.5px;
-        height: 21px;
     }
-}
+
+    .card-icons{
+        width: 20px;
+        height: 20px;
+
+    @media screen and (min-width:768px) {
+        width: 24px;
+        height: 24px;
+    }
+
+    }
 
 
-p {
+    p {
     margin-bottom: 12px;
 
     font-family:Manrope;
@@ -93,11 +107,11 @@ p {
         line-height: 22px;
     }
 
-}
+    }
 
-b {
+    b {
     font-weight: 500;
 
-}
+    }
 
 `
