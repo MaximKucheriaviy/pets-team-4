@@ -6,7 +6,7 @@ import SearchForm from "../../components/SearchForm/SearchForm";
 import { Wrapper } from "./FindPetPage.styled";
 
 
-import pets from "../../components/Notices/pets.json"
+// import pets from "../../components/Notices/pets.json"
 
 export default function FindPetPage() {
   return (
