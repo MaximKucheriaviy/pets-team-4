@@ -10,11 +10,11 @@ export const Header = () => {
 	return (
 		<>
 			{isDesktop ? (
-				<NavigationDekstop  />
+				<NavigationDekstop/>
 			) : isTablet ? (
-				<NavigationTablet />
+				<NavigationTablet/>
 			) : (
-				<NavigationMobile />
+				<NavigationMobile/>
 			)}
 		</>
 	);
