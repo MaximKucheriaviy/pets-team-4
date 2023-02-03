@@ -34,7 +34,7 @@ const backgroundMove = keyframes`
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(20px);
   }
   100% {
     transform: translateY(0);
@@ -46,6 +46,7 @@ export const HeroContainer = styled.div`
 display: flex;
 position: relative;
 overflow:hidden;
+height: 100vh;
 
 flex-direction: column;
 align-items: center;
@@ -127,9 +128,11 @@ animation: ${ballMove} 1s ease-in-out infinite alternate;
 background-image: url(${BGdesk}); 
 background-size: contain;
 background-repeat: no-repeat;
+background-position: bottom;
 margin-top:61px;
 width: 1280px;
-height: 700px; 
+/* height: 700px;  */
+height:100%;
 
 ::after{
 content:'';
@@ -162,13 +165,14 @@ animation: ${backgroundMove} 5s ease-in-out infinite;
 
 @media (max-width: 768px){
 display: flex;
-margin-top: 87px;
+/* margin-top: 87px; */
+/* bottom: 0; */
 justify-content: center;
 background-image: url(${BGmob});
 background-size: cover;
 background-repeat: no-repeat;
 width: 100%;
-height: 450px; 
+/* height: 450px;  */
 animation: ${backgroundMove} 5s ease-in-out infinite;
 }`;
 
