@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { Typography } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { PhotoPreview } from "../PhotoPreview";
 
@@ -10,6 +9,7 @@ import {
   RadioBtnSex,
   WraperBtnsPage,
   BoxUploadPhoto,
+  InputAddPet,
 } from "../ModaAdd.styled";
 import {
   BtnModalClose,
@@ -19,13 +19,14 @@ import {
   IconAddPhoto,
   ModalFormSecond,
   FlexBox,
-  InputAddPet,
+  // InputAddPet,
   BtnNextDone,
   BtnBackCancel,
   Title,
   RadioBoxBtnSex,
   IconMale,
   IconFemale,
+  ErrorTextFields,
 } from "../ModalAddPet.styled";
 
 export function SecondPagelAddPet({
@@ -40,7 +41,7 @@ export function SecondPagelAddPet({
   const handleInput = (e) => {
     if (refTextArea.current) {
       refTextArea.current.style.height = "auto";
-      refTextArea.current.style.height = `${e.target.scrollHeight - 14}px`;
+      refTextArea.current.style.height = `${e.target.scrollHeight - 16}px`;
     }
   };
 
@@ -70,7 +71,10 @@ export function SecondPagelAddPet({
           <Title variant="h4" align="center">
             Add pet
           </Title>
-          <LabelTextSex>The sex*</LabelTextSex>
+          <LabelTextSex>The sex*:</LabelTextSex>
+          {touched.sex && errors.sex ? (
+            <ErrorTextFields>{errors.sex}*</ErrorTextFields>
+          ) : null}
           <RadioBoxBtnSex container spacing={1}>
             <Grid2>
               <RadioBtnSex
@@ -104,26 +108,28 @@ export function SecondPagelAddPet({
                 Female
               </RadioBtnSex>
             </Grid2>
-            {touched.sex && errors.sex ? (
-              <Typography variant="subtitle1">{errors.sex}</Typography>
-            ) : null}
           </RadioBoxBtnSex>
-          <LabelText htmlFor="location">Location*</LabelText>
+          <LabelText htmlFor="location">Location*:</LabelText>
+          {touched.location && errors.location ? (
+            <ErrorTextFields>{errors.location}*</ErrorTextFields>
+          ) : null}
           <InputAddPet
             required
+            type="text"
             id="location"
             name="location"
             placeholder="Type Location"
             onChange={handleChange}
             value={location}
           />
-          {touched.location && errors.location ? (
-            <Typography variant="subtitle1">{errors.location}</Typography>
-          ) : null}
           {category === "sell" && (
             <>
-              <LabelText>Price*</LabelText>
+              <LabelText>Price*:</LabelText>
+              {touched.price && errors.price ? (
+                <ErrorTextFields>{errors.price}*</ErrorTextFields>
+              ) : null}
               <InputAddPet
+                color="primary"
                 required
                 id="price"
                 name="price"
@@ -132,12 +138,12 @@ export function SecondPagelAddPet({
                 onChange={handleChange}
                 value={price}
               />
-              {touched.price && errors.price ? (
-                <Typography variant="subtitle1">{errors.price}</Typography>
-              ) : null}
             </>
           )}
-          <LabelText htmlFor="photo">Load the pet’s image</LabelText>
+          <LabelText htmlFor="photo">Load the pet’s image:</LabelText>
+          {touched.photo && errors.photo ? (
+            <ErrorTextFields>{errors.photo}*</ErrorTextFields>
+          ) : null}
           <input
             hidden
             ref={fileRef}
@@ -147,9 +153,6 @@ export function SecondPagelAddPet({
               setFieldValue("photo", e.target.files[0]);
             }}
           />
-          {touched.photo && errors.photo ? (
-            <Typography variant="subtitle1">{errors.photo}</Typography>
-          ) : null}
           {photo ? (
             <PhotoPreview file={photo} />
           ) : (
@@ -164,7 +167,7 @@ export function SecondPagelAddPet({
             </BoxUploadPhoto>
           )}
 
-          <LabelText htmlFor="comment">Comments</LabelText>
+          <LabelText htmlFor="comment">Comments:</LabelText>
           <TextComment
             ref={refTextArea}
             rows={2}

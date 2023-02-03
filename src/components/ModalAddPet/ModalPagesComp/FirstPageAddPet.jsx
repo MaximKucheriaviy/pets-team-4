@@ -1,16 +1,21 @@
-import { LabelText, WrapInputFirst, WraperBtnsPage } from "../ModaAdd.styled";
+import {
+  LabelText,
+  WrapInputFirst,
+  WraperBtnsPage,
+  InputAddPet,
+} from "../ModaAdd.styled";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import {
   IconModalClose,
   BtnModalClose,
   ModalBox,
   FlexBox,
-  InputAddPet,
   RadioButton,
   Title,
   SubtitleText,
   BtnNextDone,
   BtnBackCancel,
+  ErrorTextFields,
 } from "../ModalAddPet.styled";
 
 export function FirstPageAddPet({
@@ -29,7 +34,9 @@ export function FirstPageAddPet({
       </BtnModalClose>
       <FlexBox>
         <Title>Add pet</Title>
-        <SubtitleText>Fill the fields</SubtitleText>
+        <SubtitleText>
+          Publish your advertisement <br /> Filling the fields.
+        </SubtitleText>
         <div>
           <Grid2 container spacing={1}>
             <Grid2>
@@ -39,7 +46,7 @@ export function FirstPageAddPet({
                     ? { background: "#F59256", color: "white" }
                     : { background: "transparent" }
                 }
-                onClick={(e) => {
+                onClick={() => {
                   setFieldValue("category", "lost/found");
                 }}
               >
@@ -77,8 +84,12 @@ export function FirstPageAddPet({
           </Grid2>
         </div>
         <WrapInputFirst>
-          <LabelText htmlFor="title">Tittle of ad*</LabelText>
+          <LabelText htmlFor="title">Tittle of ad*:</LabelText>
+          {title.length < 1 ? (
+            <ErrorTextFields>{"Write title*"}</ErrorTextFields>
+          ) : null}
           <InputAddPet
+            type="text"
             required
             name="title"
             id="title"
@@ -86,20 +97,16 @@ export function FirstPageAddPet({
             onChange={handleChange}
             value={title}
           />
-          {/* {title.length < 1 ? (
-            <Typography variant="subtitle1">
-              {" Write Title"}
-            </Typography>
-          ) : null} */}
-          <LabelText htmlFor="name">Name pet</LabelText>
+          <LabelText htmlFor="name">Name pet:</LabelText>
           <InputAddPet
+            type="text"
             id="name"
             name="name"
             placeholder="Type name pet"
             onChange={handleChange}
             value={name}
           />
-          <LabelText htmlFor="date_birth">Date of birth</LabelText>
+          <LabelText htmlFor="date_birth">Date of birth:</LabelText>
           <InputAddPet
             id="date_birth"
             name="date_birth"
@@ -107,8 +114,9 @@ export function FirstPageAddPet({
             onChange={handleChange}
             value={date_birth}
           />
-          <LabelText htmlFor="breed">Breed</LabelText>
+          <LabelText htmlFor="breed">Breed:</LabelText>
           <InputAddPet
+            type="text"
             id="breed"
             name="breed"
             placeholder="Type breed"
