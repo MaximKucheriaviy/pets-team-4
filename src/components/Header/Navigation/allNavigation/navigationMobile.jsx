@@ -9,9 +9,6 @@ import {Btn, Box, Boxs}  from "./HeaderStyle.jsx"
 import { UserNav } from "../UserNav/UserNav";
 
 
-
-
-
 import { useAuth } from "../../../../shared/useAuth/useAuth"
 
 export function NavigationMobile() {
@@ -78,8 +75,7 @@ export function NavigationMobile() {
 		  <Boxs isOpen = {isOpen}>
 			  
 			  <Nav setIsOpen={setIsOpen} CloseModal={toggleMenu } />
-{/* 				
-			  <AuthNav setIsOpen={setIsOpen} CloseModal={ toggleMenu} /> */}
+
 			
 					{isLogin ? (
 					<UserNav setIsOpen={setIsOpen} CloseModal={toggleMenu} />

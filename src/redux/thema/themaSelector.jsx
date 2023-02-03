@@ -1,0 +1,1 @@
+export const selectDark = ({ thema }) => thema.thema;

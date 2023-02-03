@@ -59,6 +59,7 @@ export const LoginForm = () => {
             </div>
             <div className={css.loginFormItemWrapper}>
               <Field
+                type="password"
                 className={css.loginFormItem}
                 name="password"
                 placeholder="Password"

@@ -144,6 +144,7 @@ export const RegisterForm = () => {
               {isFirstStep && (
                 <div className={css.registerFormItemWrapper}>
                   <Field
+                      type="password"
                     className={css.registerFormItem}
                     name="password"
                     placeholder="Password (*required)"
@@ -159,6 +160,7 @@ export const RegisterForm = () => {
               {isFirstStep && (
                 <div className={css.registerFormItemWrapper}>
                   <Field
+                      type="password"
                     className={css.registerFormItem}
                     name="confirmPassword"
                     id="confirmPassword"

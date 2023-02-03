@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { SelectIsLoadingUserStatus } from "./redux/auth/autSelectors";
 import { current } from "./redux/auth/auth-operation";
+import { selectToken} from './redux/auth/autSelectors';
 
 const Home = lazy(() =>
   import("./pages/HomePage/HomePage")
@@ -37,15 +38,23 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
+  
   const dispatch = useDispatch();
+  const token = useSelector(selectToken);
   const isLoadingUser = useSelector(
     SelectIsLoadingUserStatus
   );
+ 
+
 
   useEffect(() => {
-    dispatch(current());
-  }, [dispatch]);
+  	if (token) {
+			dispatch(current());
+		}
 
+  }, [dispatch, token]);
+
+ 
   return (
     <>
       {isLoadingUser ? (
