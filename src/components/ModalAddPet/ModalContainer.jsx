@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Portal } from "@mui/base";
 import { useFormik } from "formik";
-import { Button, Box } from "@mui/material";
+import { Box } from "@mui/material";
 
+import { ModalForm } from "./ModalAddPet.styled";
+import { AddNoticeModal } from "./AddNoticeModal/AddNoticeModal";
 import { form } from "./FormikSchema/FormikAddPet";
 import { FirstPageAddPet } from "./ModalPagesComp/FirstPageAddPet";
 import { SecondPagelAddPet } from "./ModalPagesComp/SecondPagelAddPet";
-import { ModalForm } from "./ModalAddPet.styled";
 
 export const ModalContainer = () => {
   const [open, setOpen] = useState(false);
@@ -35,9 +35,10 @@ export const ModalContainer = () => {
   };
 
   return (
-    <Portal>
-      <Button onClick={handleOpen}>Add Pet</Button>
+    <Box>
+      <AddNoticeModal handleOpen={handleOpen} />
       <ModalForm
+        hideBackdrop
         open={open}
         onClose={handleClose}
         aria-labelledby="parent-modal-title"
@@ -61,6 +62,6 @@ export const ModalContainer = () => {
           />
         </Box>
       </ModalForm>
-    </Portal>
+    </Box>
   );
 };

@@ -4,7 +4,6 @@ import {
   Button,
   Typography,
   Modal,
-  OutlinedInput
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import CloseIcon from '@mui/icons-material/Close';
@@ -15,17 +14,17 @@ import { ReactComponent as Female } from "../../images/sex-female.svg";
 export const ModalForm = styled(Modal)`
   background: rgba(17, 17, 17, 0.6);
   backdrop-filter: blur(10px);
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 export const ModalBox = styled(Box)`
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
+  transform: translate(-50%);
   padding: 20px 20px 40px 20px;
   width: 280px;
+  background-color: white;
   border-radius: 20px;
 
   @media screen and (min-width: 768px) {
@@ -37,26 +36,6 @@ export const ModalBox = styled(Box)`
 export const FlexBox = styled(Box)`
   display: flex;
   flex-direction:column;
-`;
-
-export const InputAddPet = styled(OutlinedInput)`
-  width: 240px;
-  border-radius: 40px;
-  color: rgba(27, 27, 27, 0.6);
-  border-color: #F59256;
-  height: 40px;
-  margin-bottom: 16px;
-  background: #FDF7F2;
-
-  &:hover, :focus, :active {
-    border-color: #F59256
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 448px;
-    height: 48px;
-    margin-bottom: 28px;
-  }  
 `;
 
 export const Title = styled(Typography)`
@@ -129,8 +108,8 @@ export const RadioButton = styled(Button)`
   letter-spacing: 0.04em;
   text-transform: lowercase;
 
-  &:active, :hover, :focus {
-    background: #F59256;
+  &:hover, :focus {
+    background: black;
     color: white;
   }
 
@@ -190,14 +169,14 @@ export const BtnBackCancel = styled(Button)`
 ` 
 
 export const ModalFormSecond = styled(Modal)`
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 export const ModalBoxSecond = styled(Box)`
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   background-color: white;
   padding: 20px 20px 40px 20px;
   width: 280px;
@@ -213,6 +192,8 @@ export const IconModalClose = styled(CloseIcon)`
   border-radius: 50%; 
   background-color: #FDF7F2;
   color: black;
+  width: 24px;
+  height: 24px;
 `;
 
 export const BtnUploadPhoto = styled(Button)`
@@ -238,3 +219,15 @@ export const BtnModalClose = styled(Button)`
   margin-left: auto;
   padding: 0;
 `;
+
+export const ErrorTextFields = styled(Typography)`
+  font-family: 'Manrope';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.3;
+  color: red;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+`

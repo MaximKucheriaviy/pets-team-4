@@ -38,22 +38,35 @@ export const LabelText = styled.label`
 `;
 
 export const InputAddPet = styled.input`
+  font-family: "Manrope";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.44;
   width: 240px;
+  height: 40px;
   border-radius: 40px;
   color: rgba(27, 27, 27, 0.6);
-  border-color: #F59256;
-  height: 40px;
-  margin-bottom: 16px;
+  border: 1px solid rgba(245, 146, 86, 0.5);
   background: #FDF7F2;
+  padding: 11px 11px;
+  margin-bottom: 16px;
 
-  &:hover, :focus, :active {
-    border-color: #F59256
+  &:hover {
+    border-color: #F59256;
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  }
+
+  &:focus, :active {
+    outline: none !important;
+    border-color: #F59256;
   }
 
   @media screen and (min-width: 768px) {
     width: 448px;
     height: 48px;
     margin-bottom: 28px;
+    font-size: 16px;
+    line-height: 1.6;
   }  
 `;
 
@@ -95,7 +108,7 @@ export const TextComment = styled.textarea`
   line-height: 1.44;
   border-radius: 40px;
   color: rgba(27, 27, 27, 0.6);
-  border-color: #F59256;
+  border: 1px solid rgba(245, 146, 86, 0.5);
   background: #FDF7F2;
   resize: none;
   width: 240px;
@@ -104,9 +117,19 @@ export const TextComment = styled.textarea`
   margin-top: 8px;
   margin-bottom: 40px;
 
+  &:hover {
+    border-color: #F59256;
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  }
+
+  &:focus, :active {
+    outline: none !important;
+    border-color: #F59256;
+  }
+
   @media screen and (min-width: 768px) {
-    font-size: 24px;
-    line-height: 1.1;
+    font-size: 16px;
+    line-height: 1.6;
     width: 448px;
     height: 113px;
     border-radius: 20px;
