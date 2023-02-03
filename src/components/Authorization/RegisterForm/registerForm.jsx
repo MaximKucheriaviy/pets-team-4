@@ -1,15 +1,22 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
-
-import css from "./registerForm.module.css";
-
-import { useDispatch } from "react-redux";
+import { Formik, Form } from "formik";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { signup } from "../../../redux/auth/auth-operation";
-import { useSelector } from "react-redux";
-import { selectIsLogin } from "../../../redux/auth/autSelectors";
 import { Navigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
+import { signup } from "../../../redux/auth/auth-operation";
+import { selectIsLogin } from "../../../redux/auth/autSelectors";
+
+import {
+  FormBody,
+  Title,
+  Item,
+  Input,
+  Button,
+  Error,
+  Hint,
+  HintLink,
+} from "../css/Forms.styled";
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -109,133 +116,106 @@ export const RegisterForm = () => {
   }
 
   return (
-    <div className={css.registerFormWrapper}>
-      <div className={css.registerFormBody}>
-        <Formik
-          initialValues={{
-            email,
-            password,
-            confirmPassword,
-            name,
-            city,
-            phone,
-          }}
-          onSubmit={(values) => {
-            handleSubmit(values);
-          }}
-        >
-          {({ errors, touched, values, isValid }) => (
-            <Form className={css.registerForm}>
-              <h2 className={css.registerFormTitle}>Registration</h2>
-              {isFirstStep && (
-                <div className={css.registerFormItemWrapper}>
-                  <Field
-                    className={css.registerFormItem}
-                    name="email"
-                    placeholder="Email (*required)"
-                    validate={validateEmail}
-                  />
+    <FormBody>
+      <Formik
+        initialValues={{
+          email,
+          password,
+          confirmPassword,
+          name,
+          city,
+          phone,
+        }}
+        onSubmit={(values) => {
+          handleSubmit(values);
+        }}
+      >
+        {({ errors, touched, values, isValid }) => (
+          <Form>
+            <Title>Registration</Title>
+            {isFirstStep && (
+              <Item>
+                <Input
+                  name="email"
+                  placeholder="Email (*required)"
+                  validate={validateEmail}
+                />
 
-                  {errors.email && touched.email && (
-                    <div className={css.registerFormError}>{errors.email}</div>
-                  )}
-                </div>
-              )}
-              {isFirstStep && (
-                <div className={css.registerFormItemWrapper}>
-                  <Field
-                      type="password"
-                    className={css.registerFormItem}
-                    name="password"
-                    placeholder="Password (*required)"
-                    validate={validatePassword}
-                  />
-                  {errors.password && touched.password && (
-                    <div className={css.registerFormError}>
-                      {errors.password}
-                    </div>
-                  )}
-                </div>
-              )}
-              {isFirstStep && (
-                <div className={css.registerFormItemWrapper}>
-                  <Field
-                      type="password"
-                    className={css.registerFormItem}
-                    name="confirmPassword"
-                    id="confirmPassword"
-                    placeholder="Confirm Password"
-                    validate={(value) =>
-                      validateConfirmPassword(values.password, value)
-                    }
-                  />
-                  {errors.confirmPassword && touched.confirmPassword && (
-                    <div className={css.registerFormError}>
-                      {errors.confirmPassword}
-                    </div>
-                  )}
-                </div>
-              )}
-              {!isFirstStep && (
-                <div className={css.registerFormItemWrapper}>
-                  <Field
-                    className={css.registerFormItem}
-                    name="name"
-                    placeholder="Name"
-                  />
-                </div>
-              )}
-              {!isFirstStep && (
-                <div className={css.registerFormItemWrapper}>
-                  <Field
-                    className={css.registerFormItem}
-                    name="city"
-                    placeholder="City"
-                  />
-                </div>
-              )}
-              {!isFirstStep && (
-                <div className={css.registerFormItemWrapper}>
-                  <Field
-                    className={css.registerFormItem}
-                    name="phone"
-                    placeholder="Phone Number"
-                  />
-                </div>
-              )}
-              {isFirstStep && (
-                <button
-                  type="button"
-                  id="nextButton"
-                  className={css.registerFormButton}
-                  onClick={() => {
-                    setIsFirstStep(!isFirstStep);
-                  }}
-                >
-                  Next
-                </button>
-              )}
-              {!isFirstStep && (
-                <button type="submit" className={css.registerFormButton}>
-                  Register
-                </button>
-              )}
-              {!isFirstStep && (
-                <button
-                  type="button"
-                  className={css.registerFormButton}
-                  onClick={() => {
-                    setIsFirstStep(!isFirstStep);
-                  }}
-                >
-                  Back
-                </button>
-              )}
-              <p>Already have an account?</p> <Link to={"/login"}> Login</Link>
-            </Form>
-          )}
-        </Formik>
-      </div>
-    </div>
+                {errors.email && touched.email && <Error>{errors.email}</Error>}
+              </Item>
+            )}
+            {isFirstStep && (
+              <Item>
+                <Input
+                  name="password"
+                  type="password"
+                  placeholder="Password (*required)"
+                  validate={validatePassword}
+                />
+                {errors.password && touched.password && (
+                  <Error>{errors.password}</Error>
+                )}
+              </Item>
+            )}
+            {isFirstStep && (
+              <Item>
+                <Input
+                  name="confirmPassword"
+                  type="password"
+                  id="confirmPassword"
+                  placeholder="Confirm Password"
+                  validate={(value) =>
+                    validateConfirmPassword(values.password, value)
+                  }
+                />
+                {errors.confirmPassword && touched.confirmPassword && (
+                  <Error>{errors.confirmPassword}</Error>
+                )}
+              </Item>
+            )}
+            {!isFirstStep && (
+              <Item>
+                <Input name="name" placeholder="Name" />
+              </Item>
+            )}
+            {!isFirstStep && (
+              <Item>
+                <Input name="city" placeholder="City" />
+              </Item>
+            )}
+            {!isFirstStep && (
+              <Item>
+                <Input name="phone" placeholder="Phone Number" />
+              </Item>
+            )}
+            {isFirstStep && (
+              <Button
+                type="button"
+                id="nextButton"
+                onClick={() => {
+                  setIsFirstStep(!isFirstStep);
+                }}
+              >
+                Next
+              </Button>
+            )}
+            {!isFirstStep && <Button type="submit">Register</Button>}
+            {!isFirstStep && (
+              <Button
+                type="button"
+                onClick={() => {
+                  setIsFirstStep(!isFirstStep);
+                }}
+              >
+                Back
+              </Button>
+            )}
+            <Hint>
+              Already have an account? <HintLink to={"/login"}> Login</HintLink>
+            </Hint>
+          </Form>
+        )}
+      </Formik>
+    </FormBody>
   );
 };
