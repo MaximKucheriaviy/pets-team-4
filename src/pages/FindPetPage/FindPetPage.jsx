@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { DefaultPage } from '../../components/DefaultPage/DefaultPage';
 import AddNoticeButton from '../../components/Notices/AddNoticeButton/AddNoticeButton';
 import NoticeCategoriesList from '../../components/Notices/NoticeCategoriesList/NoticeCategoriesList';
