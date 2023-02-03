@@ -4,8 +4,8 @@ import { Outlet } from 'react-router';
 import { LinkCategory, NavBar } from './NoticesCategoriesNav.styled';
 
 
-// const auth = true;
-const auth = false;
+const auth = true;
+// const auth = false;
 
 // const auth = [
 //     {

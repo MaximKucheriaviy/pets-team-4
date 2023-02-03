@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const Item = styled.li`
+    display: flex;
     background: #FFFFFF;
     box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
     border-radius: 0px 0px 20px 20px;
     max-width: 280px;
-    height: 606px;
+    padding-bottom: 12px;
             @media (min-width: 768px) {
           max-width: 336px;
     };
@@ -125,8 +126,8 @@ export const OneButtonWrapper = styled.div`
 margin-bottom: 32px;
   /* padding: 50px 16px 32px 16px; */
 `;
-export const TwoButtonWrapper = styled.div`
-margin-bottom: 12px;
+export const ButtonWrapper = styled.div`
+margin: auto;
   /* padding: 20px 16px 12px 16px; */
 `;
 export const Button = styled.button`
