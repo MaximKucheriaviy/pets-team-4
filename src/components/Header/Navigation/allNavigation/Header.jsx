@@ -1,8 +1,8 @@
-import { useMediaQuery } from 'react-responsive';
+import { useMediaQuery } from "react-responsive";
 
-import { NavigationMobile } from './navigationMobile';
-import {NavigationTablet} from './navigationTablet';
-import { NavigationDekstop } from './navigationDekstop';
+import { NavigationMobile } from "./navigationMobile";
+import { NavigationTablet } from "./navigationTablet";
+import { NavigationDekstop } from "./navigationDekstop";
 
 export const Header = () => {
 	const isTablet = useMediaQuery({ query: '(min-width: 768px)' });

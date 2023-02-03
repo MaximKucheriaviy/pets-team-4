@@ -6,8 +6,8 @@ import { Title,HeroContainer, Content, ContentImg }  from './HomePage.styled';
 
 export default function HomePage() {
   return (
-      <div>
-     <Helmet>
+    <DefaultPage>
+      <Helmet>
         <title>HomePage</title>
       </Helmet>
 
