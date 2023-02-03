@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from "prop-types";
 import { Gallery } from './NoticeCategoriesList.styled';
 import NoticeCategoryItem from './NoticeCategoryItem/NoticeCategoryItem';
-// import items from '../pets.json';
+import items from '../pets.json';
 
-export default function NoticeCategoriesList({items}) {
+export default function NoticeCategoriesList() {
   console.log(items);
   return (
     <Gallery>
