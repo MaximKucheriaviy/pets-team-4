@@ -4,11 +4,26 @@ import { getNews } from "../../services/apiNews";
 import SearchForm from "../../components/SearchForm";
 import NewsList from "../../components/NewsList";
 import ErrorMessage from "../../components/ErrorMessage";
+import NotificationMessage from "../../components/NotificationMessage";
 
 export default function NewsPage() {
   const [news, setNews] = useState([]);
   const [error, setError] = useState(null);
   const [filter, setFilter] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setIsLoading(true);
+        const { data } = await getNews();
+        setIsLoading(false);
+        setNews(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    })();
+  }, []);
 
   const handleFilter = (e) => setFilter(e.target.value);
 
@@ -24,18 +39,7 @@ export default function NewsPage() {
 
   const visibleNews = filteredNews();
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await getNews();
-        setNews(data);
-      } catch (error) {
-        setError(error.message);
-      }
-    })();
-  }, []);
-
-  const isShow = news && !error;
+  const isNotification = visibleNews.length === 0 && !isLoading;
 
   return (
     <DefaultPage title="News">
@@ -45,9 +49,13 @@ export default function NewsPage() {
         clearFilter={clearFilter}
       />
 
-      {isShow ? (
-        <NewsList newsItems={visibleNews} />
-      ) : (
+      {isLoading ? <p>Loading...</p> : <NewsList newsItems={visibleNews} />}
+
+      {isNotification && (
+        <NotificationMessage text="No news was found matching your search 🤷‍♂️. Try changing the keyword" />
+      )}
+
+      {error && (
         <ErrorMessage margin="40px">
           {error}😢. Please try again later...
         </ErrorMessage>
