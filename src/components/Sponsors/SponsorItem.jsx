@@ -54,13 +54,13 @@ export const SponsorItem = ({
               </ScheduleStyle>
         )}
         <SponsorText>
-          Addres:<br/><span>{address ? address : ""}</span>
+          Addres:<br/><span>{address ? address : "--------------"}</span>
         </SponsorText>
         <SponsorText>
-          Email:<br/><span>{email ? email : ""}</span>
+          Email:<br/><span>{email ? email : "--------------"}</span>
         </SponsorText>
         <SponsorText>
-          Phone:<br/><span>{phone ? phone : ""}</span>
+          Phone:<br/><span>{phone ? phone : "--------------"}</span>
         </SponsorText>
       </SponsorContacts>
       </SponsorInfo>
