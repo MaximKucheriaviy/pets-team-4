@@ -12,7 +12,6 @@ import { useParams } from "react-router-dom";
 
 // token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2RkOGQwNTI5NTEyZGY5N2Q3ZjI3ZDIiLCJpYXQiOjE2NzU0NjM5NDF9.jcqhFXup9wp8GmICuMdMU_zVs2vs5zZVKfj7D04JceY"
 // id=63dd8d0529512df97d7f27d2
-// import pets from "../../components/Notices/pets.json"
 
   // const [favorite, setFavorite] = useState(false);
   
@@ -56,7 +55,7 @@ const { category } = useParams();
     (async () => {
       try {
         const  data  = await getNoticesByCategory(category);
-        // console.log(data);
+        console.log(data);
         setNotices(data);
       } catch (error) {
         setError(error.message);
