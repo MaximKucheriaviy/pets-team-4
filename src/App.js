@@ -61,7 +61,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/news" element={<News />} />
               <Route
-                path="/notices/categories/:category"
+                path="/notices/:category"
                 element={<FindPet />}
               />
               <Route
