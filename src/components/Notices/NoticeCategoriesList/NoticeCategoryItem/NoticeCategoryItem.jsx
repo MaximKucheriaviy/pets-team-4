@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { Item, Image, Wrapper, Title, ImgWrapper, NoticeCategory, Favorite, Info, InfoWrapper, ButtonDelete, TitleInfoWrapper, RelevantInfoWrapper, ContainerInfo, ButtonLearn, ButtonWrapper } from './NoticeCategoryItem.styled';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
@@ -11,16 +11,24 @@ const yourPet = false;
 
 
 
-export default function NoticeCategoryItem({ id, img = "http://dummyimage.com/400x400/99cccc.gif&text=Not+image!", bread = "bread", place = "place",
-  age = "1", categorie = "sale", title = "Сute dog looking for a home", userId = "", fovorite = "false" }) {
-  console.log(fovorite);
+export default function NoticeCategoryItem({
+  age = "01.01.2000",
+  breed = "Unknown breed",
+  category = "",
+  favorite = "false",
+  img = "http://dummyimage.com/400x400/99cccc.gif&text=Not+image!",
+  owner = "",
+  place = "Unknown place",
+  title = "Сute pet looking for a home",
+  price = null,
+  _id, 
+ }) {
   return (
-    <Item key={id} >
+    <Item key={_id} >
         <Wrapper>
           <ImgWrapper>
-          {img ? <Image src={img} alt={bread} />
-              : <Image src={`http://dummyimage.com/300x300/99cccc.gif&text=Not+image! `} />}
-          <NoticeCategory>{ categorie}</NoticeCategory>
+            <Image src={img} alt={breed} />
+          <NoticeCategory>{ category}</NoticeCategory>
             <Favorite>
             <IconButton   
                sx={{
@@ -28,7 +36,7 @@ export default function NoticeCategoryItem({ id, img = "http://dummyimage.com/40
                  color: "currentColor" 
                }}
               >
-               {!fovorite ?  <FavoriteBorderIcon fill="currentColor" sx={{ fontSize: 28 }} /> :
+               {!favorite ?  <FavoriteBorderIcon fill="currentColor" sx={{ fontSize: 28 }} /> :
                <FavoriteIcon fill="currentColor" sx={{ fontSize: 28 }}/>}
             </IconButton>
             </Favorite>
@@ -40,13 +48,13 @@ export default function NoticeCategoryItem({ id, img = "http://dummyimage.com/40
           <Info>Breed:</Info>     
           <Info>Place:</Info>     
               <Info>Age:</Info>
-             {categorie === "sell" ? <Info>Price:</Info> : null } 
+             {category === "sell" ? <Info>Price:</Info> : null } 
         </TitleInfoWrapper>
         <RelevantInfoWrapper>
-          <Info> {bread}</Info>     
+          <Info> {breed}</Info>     
           <Info> {place}</Info>     
               <Info> {age}</Info> 
-             {categorie === "sell" ? <Info>50$</Info> : null } 
+             {category === "sell" ? <Info>{price}$</Info> : null } 
             </RelevantInfoWrapper>
             </ContainerInfo>
         </InfoWrapper>  
@@ -74,12 +82,12 @@ export default function NoticeCategoryItem({ id, img = "http://dummyimage.com/40
     )
 }
 
-NoticeCategoryItem.propTypes = {
-    id: PropTypes.number,
-    img: PropTypes.string,
-    place: PropTypes.string,
-    bread: PropTypes.string,
-    age: PropTypes.string,
-    categorie: PropTypes.string,
-    title: PropTypes.string,
-}
+// NoticeCategoryItem.propTypes = {
+//     id: PropTypes.number,
+//     img: PropTypes.string,
+//     place: PropTypes.string,
+//     breed: PropTypes.string,
+//     age: PropTypes.string,
+//     category: PropTypes.string,
+//     title: PropTypes.string,
+// }
