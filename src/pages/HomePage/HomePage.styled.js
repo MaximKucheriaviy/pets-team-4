@@ -46,7 +46,7 @@ export const HeroContainer = styled.div`
 display: flex;
 position: relative;
 overflow:hidden;
-height: 100vh;
+height: calc(100vh - 88px);
 
 flex-direction: column;
 align-items: center;
