@@ -9,7 +9,7 @@ const NewsCard = ({ title, description, date, url }) => {
       <Wrap>
         <Date>{date}</Date>
         <Link href={url} target="_blank" rel="noopener noreferrer">
-          Read more
+          Читати більше
         </Link>
       </Wrap>
     </Card>
