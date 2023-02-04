@@ -40,7 +40,7 @@ export const form = {
       then: yup.string().required("Enter price"),
     }),
     location: yup.string().required("Enter your location"),
-    photo: yup
+    imageURL: yup
       .mixed()
       .nullable()
       .test(

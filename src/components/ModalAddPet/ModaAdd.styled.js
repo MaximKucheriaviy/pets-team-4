@@ -17,9 +17,10 @@ export const RadioBtnSex = styled.div`
   align-items: center; 
   margin-right: 40px;
   cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;  
 
   &:hover, :focus, :active {
-    color: #F59256;
+    color: ${props=> props.theme.colors.accent};
   }
 `;
 
@@ -47,18 +48,18 @@ export const InputAddPet = styled.input`
   border-radius: 40px;
   color: rgba(27, 27, 27, 0.6);
   border: 1px solid rgba(245, 146, 86, 0.5);
-  background: #FDF7F2;
+  background: ${props=> props.theme.colors.background};
   padding: 11px 11px;
   margin-bottom: 16px;
 
   &:hover {
-    border-color: #F59256;
+    border-color: ${props=> props.theme.colors.accent};
     transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 
   &:focus, :active {
     outline: none !important;
-    border-color: #F59256;
+    border-color: ${props=> props.theme.colors.accent};
   }
 
   @media screen and (min-width: 768px) {
@@ -109,7 +110,7 @@ export const TextComment = styled.textarea`
   border-radius: 40px;
   color: rgba(27, 27, 27, 0.6);
   border: 1px solid rgba(245, 146, 86, 0.5);
-  background: #FDF7F2;
+  background: ${props=> props.theme.colors.background};
   resize: none;
   width: 240px;
   height: 40px;
@@ -118,13 +119,13 @@ export const TextComment = styled.textarea`
   margin-bottom: 40px;
 
   &:hover {
-    border-color: #F59256;
+    border-color: ${props=> props.theme.colors.accent};
     transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 
   &:focus, :active {
     outline: none !important;
-    border-color: #F59256;
+    border-color: ${props=> props.theme.colors.accent};
   }
 
   @media screen and (min-width: 768px) {

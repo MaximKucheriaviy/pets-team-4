@@ -35,7 +35,7 @@ export const ModalContainer = () => {
   };
 
   return (
-    <Box>
+    <Box onClose={closeModal}>
       <AddNoticeModal handleOpen={handleOpen} />
       <ModalForm
         hideBackdrop
