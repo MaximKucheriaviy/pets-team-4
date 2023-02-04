@@ -1,8 +1,14 @@
 import { ThemeProvider } from "styled-components";
-import { defaultTheme } from "./defaultThtme";
+import { defaultTheme, darkTheme } from "./defaultThtme";
+import { useSelector } from "react-redux";
+
 
 export const Theme =  ({children}) => {
-    return <ThemeProvider theme={defaultTheme}>
+const thema = useSelector(state => state.thema.thema)
+console.log(thema)
+
+
+    return <ThemeProvider theme={thema ? darkTheme :  defaultTheme}>
         {children}
     </ThemeProvider>
 }
