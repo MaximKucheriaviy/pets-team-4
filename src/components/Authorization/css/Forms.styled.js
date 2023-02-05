@@ -37,9 +37,6 @@ export const FormBody = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin-top: 60px;
-  margin-bottom: 40px;
-
   font-family: "Manrope";
   font-style: normal;
   font-weight: 500;
@@ -157,4 +154,10 @@ export const Hint = styled.p`
 
 export const HintLink = styled(Link)`
   color: #3091eb;
+`;
+
+export const FormHead = styled.div`
+  position: relative;
+  margin-top: 60px;
+  margin-bottom: 40px;
 `;
