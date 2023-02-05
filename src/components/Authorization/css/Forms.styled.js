@@ -13,7 +13,7 @@ export const FormBody = styled.div`
 
   padding: 40px;
 
-  background-color: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.white};
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 40px;
 
@@ -23,16 +23,12 @@ export const FormBody = styled.div`
     width: 608px;
   }
 
-  @media screen and (min-width: 321px) and (max-width: 768px) {
-    width: 300px;
-  }
-
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
     width: 100%;
     border: 0px;
     box-shadow: none;
-    background-color: #${({ theme }) => theme.colors.background};
+    background: transparent;
   }
 `;
 
@@ -68,15 +64,7 @@ export const Input = styled(Field)`
     width: 448px;
   }
 
-  @media screen and (min-width: 321px) and (max-width: 768px) {
-    width: 280px;
-    font-size: 14px;
-    line-height: 19px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
     height: 40px;
     font-size: 14px;
@@ -121,11 +109,7 @@ export const Button = styled.button`
     width: 448px;
   }
 
-  @media screen and (min-width: 321px) and (max-width: 768px) {
-    width: 280px;
-  }
-
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
   }
 `;
