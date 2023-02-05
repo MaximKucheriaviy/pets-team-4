@@ -6,7 +6,9 @@ export const Item = styled.li`
     box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
     border-radius: 0px 0px 20px 20px;
     max-width: 280px;
+    height: auto;
     padding-bottom: 12px;
+
             @media (min-width: 768px) {
           max-width: 336px;
     };
@@ -27,7 +29,7 @@ export const Wrapper = styled.div`
 `
 export const ImgWrapper = styled.div`
   position: relative;
-
+  width: 100%;
 `;
 
 export const InfoWrapper = styled.div`
@@ -83,6 +85,7 @@ export const Image = styled.img`
   width: 100%;
   height: 288px;
   object-fit: cover;
+
 `;
 
 export const Title = styled.p`

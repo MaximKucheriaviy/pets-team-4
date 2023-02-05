@@ -1,12 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Outlet } from "react-router";
+import { selectUser } from "../../../redux/auth/autSelectors";
 // import PropTypes from "prop-types";
 import { LinkCategory, NavBar } from "./NoticesCategoriesNav.styled";
 
-const auth = true;
-// const auth = false;
-
 export default function NoticesCategoriesNav() {
+  const user = useSelector(selectUser);
+  const auth = Boolean(user.id);
+  console.log(auth);
+
   return (
     <>
       {auth ? (
