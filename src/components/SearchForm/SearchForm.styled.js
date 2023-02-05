@@ -65,7 +65,7 @@ export const Button = styled.button`
   height: 20px;
   border-style: none;
   background-color: transparent;
-  cursor: pointer;
+  cursor: ${({ value }) => value && "pointer"};
 
   @media (min-width: 768px) {
     width: 24px;

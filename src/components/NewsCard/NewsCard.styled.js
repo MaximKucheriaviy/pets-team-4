@@ -38,6 +38,10 @@ export const Title = styled.h3`
   letter-spacing: -0.01em;
   color: ${({ theme }) => theme.colors.black};
   overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
 
 export const Text = styled.p`

@@ -1,11 +1,18 @@
-// import { useState } from "react";
 import { Form, Input, Button } from "./SearchForm.styled";
 import SearchIcon from "@mui/icons-material/Search";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
+import { Notify } from "notiflix/build/notiflix-notify-aio";
+
 const SearchForm = ({ value, changeFilter, clearFilter }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!e.currentTarget.elements.search.value)
+      Notify.info("Enter some value to search");
+  };
+
   return (
-    <Form autoComplete="off">
+    <Form onSubmit={handleSubmit} autoComplete="off">
       <Input
         onChange={changeFilter}
         value={value}
@@ -13,7 +20,7 @@ const SearchForm = ({ value, changeFilter, clearFilter }) => {
         name="search"
         placeholder="Search"
       />
-      <Button onClick={clearFilter} type="button">
+      <Button value={value} onClick={clearFilter} type="button">
         {value ? <HighlightOffIcon /> : <SearchIcon />}
       </Button>
     </Form>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const NavBar = styled.ul`
@@ -17,7 +17,7 @@ gap: 12px;
     };
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(NavLink)`
     display: flex;
     justify-content: center;
     align-items: center;

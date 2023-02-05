@@ -10,6 +10,20 @@
     "userId": "1",
     "fovorite": true
   },
+    {
+    "title": "Сute dog looking for a home",
+    "name": "Bax",
+    "birthdate": "12.11.20",
+    "breed": "Pomeranian",
+    "place": "Lviv",
+    "sex": "male",
+    "price": 100,
+    "imageURL": "https://cdn.pixabay.com/photo/2015/03/27/13/16/maine-coon-694730_960_720.jpg",
+    "comment": "Good pet",
+    "category": "sell", "lost-found", "for-free",
+    "owner": "63dd8d0529512df97d7f27d2",
+    "favorite": false
+  },
   {
     "id": 2,
     "img": "https://cdn.pixabay.com/photo/2014/11/07/16/48/beast-520789_960_720.jpg",

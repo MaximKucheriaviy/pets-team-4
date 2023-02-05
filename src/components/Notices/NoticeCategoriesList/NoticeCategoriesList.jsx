@@ -1,40 +1,43 @@
 import React from 'react';
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { Gallery } from './NoticeCategoriesList.styled';
 import NoticeCategoryItem from './NoticeCategoryItem/NoticeCategoryItem';
-import items from '../pets.json';
+// import items from '../pets.json';
 
-export default function NoticeCategoriesList() {
-  console.log(items);
+export default function NoticeCategoriesList({items}) {
+  // console.log(items);
   return (
     <Gallery>
     {
-        items.map(({ id, img, place,  bread, age,  title, categorie,userId, fovorite }) => {
-          return (
-        <NoticeCategoryItem
-          key={id}
-          id={id}
-          img={img}
-          place={place} 
-          bread={bread}
-          age={age}
-          categorie={categorie}
-          title={title}
-          userId={userId}
-          fovorite={fovorite}  />)
+        items.map(({birthdate, breed, category, favorite, imageURL,owner, place, title, price, _id }) => {
+          return ( 
+              <NoticeCategoryItem
+                age={birthdate}
+                breed={breed}
+                category={category}
+                favorite={favorite}
+                img={imageURL}
+                owner={owner}
+                place={place}
+                title={title}
+                price={price}
+                key={_id}
+                id={_id}
+              />
+          )
         })}
       </Gallery>
   );
 };
 
-NoticeCategoriesList.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    img: PropTypes.string,
-    place: PropTypes.string,
-    bread: PropTypes.string,
-    age: PropTypes.string,
-    categorie: PropTypes.string,
-    title: PropTypes.string,
-    }))
-}
+// NoticeCategoriesList.propTypes = {
+//   items: PropTypes.arrayOf(PropTypes.shape({
+//     id: PropTypes.number,
+//     img: PropTypes.string,
+//     place: PropTypes.string,
+//     bread: PropTypes.string,
+//     age: PropTypes.string,
+//     categorie: PropTypes.string,
+//     title: PropTypes.string,
+//     }))
+// }
