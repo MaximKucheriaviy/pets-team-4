@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { SelectIsLoadingUserStatus } from "./redux/auth/autSelectors";
 import { current } from "./redux/auth/auth-operation";
-import AddUserPetModal from "./components/AddUserPetModal/AddUserPetModal";
 
 const Home = lazy(() => import("./pages/HomePage/HomePage"));
 const News = lazy(() => import("./pages/NewsPage/NewsPage"));
@@ -50,7 +49,6 @@ function App() {
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
-          <AddUserPetModal />
         </Suspense>
       )}
     </>
