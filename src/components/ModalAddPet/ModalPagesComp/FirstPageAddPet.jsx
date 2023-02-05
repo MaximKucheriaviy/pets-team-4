@@ -30,7 +30,7 @@ export function FirstPageAddPet({
   const titleTextRef = useRef(null);
   const theme = useTheme();
 
-  const { category, title, name, date_birth, breed } = formik.values;
+  const { category, title, name, birthdate, breed } = formik.values;
   const { handleChange, setFieldValue } = formik;
 
   const handleErrorTitle = () => {
@@ -95,7 +95,7 @@ export function FirstPageAddPet({
                       }
                     : { background: `${theme.colors.white}` }
                 }
-                onClick={(e) => {
+                onClick={() => {
                   setFieldValue("category", "sell");
                 }}
               >
@@ -128,13 +128,14 @@ export function FirstPageAddPet({
             onChange={handleChange}
             value={name}
           />
-          <LabelText htmlFor="date_birth">Date of birth:</LabelText>
+          <LabelText htmlFor="birthdate">Date of birth:</LabelText>
           <InputAddPet
-            id="date_birth"
-            name="date_birth"
-            type="date"
+            id="birthdate"
+            name="birthdate"
+            type="text"
+            placeholder="DD.MM.YYYY"
             onChange={handleChange}
-            value={date_birth}
+            value={birthdate}
           />
           <LabelText htmlFor="breed">Breed:</LabelText>
           <InputAddPet

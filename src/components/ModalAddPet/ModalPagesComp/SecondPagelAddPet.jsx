@@ -46,7 +46,7 @@ export function SecondPagelAddPet({
     }
   };
 
-  const { sex, category, location, price, imageURL, comment } = formik.values;
+  const { sex, category, place, price, imageURL, comment } = formik.values;
   const {
     handleChange,
     handleSubmit,
@@ -110,17 +110,17 @@ export function SecondPagelAddPet({
               </RadioBtnSex>
             </Grid2>
           </RadioBoxBtnSex>
-          <LabelText htmlFor="location">Location*:</LabelText>
-          {touched.location && errors.location ? (
-            <ErrorTextFields>{errors.location}*</ErrorTextFields>
+          <LabelText htmlFor="place">Location*:</LabelText>
+          {touched.place && errors.place ? (
+            <ErrorTextFields>{errors.place}*</ErrorTextFields>
           ) : null}
           <InputAddPet
             type="text"
-            id="location"
-            name="location"
+            id="place"
+            name="place"
             placeholder="Type Location"
             onChange={handleChange}
-            value={location}
+            value={place}
           />
           {category === "sell" && (
             <>
