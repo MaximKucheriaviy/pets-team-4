@@ -3,11 +3,13 @@ import React from 'react';
 import { Gallery } from './NoticeCategoriesList.styled';
 import NoticeCategoryItem from './NoticeCategoryItem/NoticeCategoryItem';
 // import items from '../pets.json';
+import { ModalPetInfo } from '../../ModalPetInfo/ModalPetInfo';
 
 export default function NoticeCategoriesList({items}) {
   // console.log(items);
   return (
     <Gallery>
+    <ModalPetInfo/>
     {
         items.map(({birthdate, breed, category, favorite, imageURL,owner, place, title, price, _id }) => {
           return ( 
@@ -26,6 +28,7 @@ export default function NoticeCategoriesList({items}) {
               />
           )
         })}
+      
       </Gallery>
   );
 };
