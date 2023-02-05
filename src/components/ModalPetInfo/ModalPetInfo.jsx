@@ -3,6 +3,7 @@ import { createPortal } from "react-dom"
 
 
 export const ModalPetInfo = ({
+    type = 'In good hands',
     title = 'Сute dog looking for a home',
     name = 'Rich',
     birthday = '21.09.2020',
@@ -16,6 +17,9 @@ export const ModalPetInfo = ({
     const portalRoot = document.querySelector('#portalRoot');
     return createPortal(<Backdrop>
         <Modal>
+            <div className="imageThumb">
+                <div className="typeLable">{type}</div>
+            </div>
             <h3>{title}</h3>
             <table>
                 <tbody>

@@ -7,7 +7,7 @@ export const Backdrop = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.gray};
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
 `;
 
 export const Modal = styled.div`
@@ -49,6 +49,42 @@ export const Modal = styled.div`
         }
       }
       /* outline: 2px solid green; */
+    }
+  }
+  & .imageThumb {
+    position: relative;
+
+    width: 240px;
+    height: 240px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16px;
+    border-radius: 0px 0px 40px 40px;
+
+    background-color: #ffa6a6;
+
+    & .typeLable {
+      position: absolute;
+      left: 0;
+      top: 20px;
+
+      display: inline-block;
+      min-width: 158px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+
+      font-family: "Manrope";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(50px);
+      border-radius: 0px 40px 40px 0px;
     }
   }
 `;
