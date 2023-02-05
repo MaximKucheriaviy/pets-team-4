@@ -7,12 +7,16 @@ import { Formik, Form } from "formik";
 import { selectIsLogin } from "../../../redux/auth/autSelectors";
 import { logIn } from "../../../redux/auth/auth-operation";
 
+import { useError } from "../../../shared/useError/useError";
+
 import {
   FormBody,
+  FormHead,
   Title,
   Item,
   Input,
   Button,
+  Error,
   Hint,
   HintLink,
 } from "../css/Forms.styled";
@@ -20,7 +24,7 @@ import {
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const isUserLogin = useSelector(selectIsLogin);
-
+  const registerError = useError();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -52,7 +56,11 @@ export const LoginForm = () => {
         }}
       >
         <Form>
-          <Title>Login</Title>
+          <FormHead>
+            <Title>Login</Title>
+            {registerError && <Error>{registerError.message}</Error>}
+          </FormHead>
+
           <Item>
             <Input name="email" placeholder="Email" />
           </Item>

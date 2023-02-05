@@ -6,6 +6,7 @@ import { Navigate } from "react-router-dom";
 
 import { signup } from "../../../redux/auth/auth-operation";
 import { selectIsLogin } from "../../../redux/auth/autSelectors";
+import { useError } from "../../../shared/useError/useError";
 
 import {
   FormBody,
@@ -16,11 +17,13 @@ import {
   Error,
   Hint,
   HintLink,
+  FormHead,
 } from "../css/Forms.styled";
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const isUserLogin = useSelector(selectIsLogin);
+  const registerError = useError();
   const [isFirstStep, setIsFirstStep] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -132,7 +135,10 @@ export const RegisterForm = () => {
       >
         {({ errors, touched, values, isValid }) => (
           <Form>
-            <Title>Registration</Title>
+            <FormHead>
+              <Title>Registration</Title>
+              {registerError && <Error>{registerError.message}</Error>}
+            </FormHead>
             {isFirstStep && (
               <Item>
                 <Input
