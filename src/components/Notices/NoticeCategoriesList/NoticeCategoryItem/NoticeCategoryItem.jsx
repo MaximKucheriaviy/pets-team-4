@@ -5,11 +5,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-
-const yourPet = false;
-// const yourPet = true;
-
-
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../../redux/auth/autSelectors';
 
 export default function NoticeCategoryItem({
   age = "01.01.2000",
@@ -21,10 +18,18 @@ export default function NoticeCategoryItem({
   place = "Unknown place",
   title = "Сute pet looking for a home",
   price = null,
-  _id, 
- }) {
+  id, 
+}) {
+  const user = useSelector(selectUser);
+  console.log(id);
+  console.log(user.id);
+  // console.log(yourNotice);
+  const yourNotice = Boolean(user.id === owner);
+  // console.log(yourNotice);
+
+
   return (
-    <Item key={_id} >
+    <Item key={id} >
         <Wrapper>
           <ImgWrapper>
             <Image src={img} alt={breed} />
@@ -59,7 +64,7 @@ export default function NoticeCategoryItem({
             </ContainerInfo>
         </InfoWrapper>  
         
-        {yourPet  ? <ButtonWrapper>
+        {yourNotice  ? <ButtonWrapper>
           <ButtonLearn>
             Learn more
           </ButtonLearn>
