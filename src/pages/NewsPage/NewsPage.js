@@ -1,16 +1,35 @@
 import { useState, useEffect } from "react";
+import { SlArrowUp } from "react-icons/sl";
 import { DefaultPage } from "../../components/DefaultPage/DefaultPage";
 import { getNews } from "../../services/apiNews";
+import { ButtonToTop } from "../../components/ButtonToTop";
 import SearchForm from "../../components/SearchForm";
 import NewsList from "../../components/NewsList";
 import ErrorMessage from "../../components/ErrorMessage";
 import NotificationMessage from "../../components/NotificationMessage";
+
+import { scrollTopPage } from "../../helpers/scrollUp";
+
+const PAGE_SCROLL_DOWN = 600;
 
 export default function NewsPage() {
   const [news, setNews] = useState([]);
   const [error, setError] = useState(null);
   const [filter, setFilter] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [scrollTop, setScrollTop] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollTop(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -38,8 +57,8 @@ export default function NewsPage() {
   };
 
   const visibleNews = filteredNews();
-
   const isNotification = visibleNews.length === 0 && !isLoading;
+  const isShowButtonTop = scrollTop > PAGE_SCROLL_DOWN;
 
   return (
     <DefaultPage title="News">
@@ -59,6 +78,12 @@ export default function NewsPage() {
         <ErrorMessage margin="40px">
           {error}😢. Please try again later...
         </ErrorMessage>
+      )}
+
+      {isShowButtonTop && (
+        <ButtonToTop onClick={scrollTopPage} aria-label="To top page">
+          <SlArrowUp />
+        </ButtonToTop>
       )}
     </DefaultPage>
   );
