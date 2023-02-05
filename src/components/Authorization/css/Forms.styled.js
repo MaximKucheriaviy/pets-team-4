@@ -13,7 +13,7 @@ export const FormBody = styled.div`
 
   padding: 40px;
 
-  background: #ffffff;
+  background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 40px;
 
@@ -32,7 +32,7 @@ export const FormBody = styled.div`
     width: 100%;
     border: 0px;
     box-shadow: none;
-    background-color: #fdf7f2;
+    background-color: #${({ theme }) => theme.colors.background};
   }
 `;
 
@@ -55,7 +55,7 @@ export const Input = styled(Field)`
   padding-left: 32px;
   padding-right: 32px;
 
-  background: #fdf7f2;
+  background: ${({ theme }) => theme.colors.background};
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
 
@@ -95,10 +95,10 @@ export const Button = styled.button`
   width: 458px;
   height: 48px;
 
-  background: white;
-  color: black;
+  background: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
 
-  border: 2px solid #f59256;
+  border: 2px solid ${({ theme }) => theme.colors.accent};
   border-radius: 40px;
 
   font-family: "Manrope";
@@ -107,8 +107,8 @@ export const Button = styled.button`
   font-size: 20px;
   line-height: 27px;
   &:hover {
-    background: #f59256;
-    color: white;
+    background: ${({ theme }) => theme.colors.accent};
+    color: ${({ theme }) => theme.colors.white};
   }
   &:disabled,
   &[disabled] {
@@ -149,11 +149,11 @@ export const Hint = styled.p`
   line-height: 16px;
   letter-spacing: 0.04em;
 
-  color: rgba(17, 17, 17, 0.6);
+  color: ${({ theme }) => theme.colors.gray};
 `;
 
 export const HintLink = styled(Link)`
-  color: #3091eb;
+  color: ${({ theme }) => theme.colors.blueLinks};
 `;
 
 export const FormHead = styled.div`
