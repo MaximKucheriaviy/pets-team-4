@@ -21,8 +21,8 @@ export default function NoticeCategoryItem({
   id, 
 }) {
   const user = useSelector(selectUser);
-  console.log(id);
-  console.log(user.id);
+  // console.log(id);
+  // console.log(user.id);
   // console.log(yourNotice);
   const yourNotice = Boolean(user.id === owner);
   // console.log(yourNotice);

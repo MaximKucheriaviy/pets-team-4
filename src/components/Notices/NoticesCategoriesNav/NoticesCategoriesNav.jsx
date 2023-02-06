@@ -10,6 +10,8 @@ export default function NoticesCategoriesNav() {
   const auth = Boolean(user.id);
   console.log(auth);
 
+  
+
   return (
     <>
       {auth ? (
