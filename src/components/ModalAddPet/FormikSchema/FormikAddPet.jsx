@@ -2,26 +2,26 @@ import * as yup from "yup";
 import axios from "axios";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 import { selectToken } from "../../../redux/auth/autSelectors";
+import { store } from "../../../redux/store";
 
 const SUPORTED_FORMAT = ["image/jpg", "image/jpeg", "image/png"];
 
-axios.defaults.baseURL = "https://petse-server-team4.onrender.com/";
+// axios.defaults.baseURL = "https://petse-server-team4.onrender.com";
 
-const config = {
-  headers: { Authorization: `${selectToken}` },
-};
+// const config = {
+//   headers: { Authorization: `${store.getState().auth.token}` },
+// };
 
-const postedNoticePet = async ({ dates }) => {
-  console.log("noooooooo");
+const postedNoticePet = async ({ info }) => {
   try {
-    return await axios({
+    return axios({
       method: "post",
       url: "/api/notices",
-      data: dates,
-      headers: { "Authorization" : `${selectToken}` },
+      data: info,
+      headers: { "Authorization": `${store.getState().auth.token}` },
     });
   } catch (error) {
-    Notify.failure("Something went wrong, please try again");
+    console.log(error);
   }
 };
 

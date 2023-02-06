@@ -145,4 +145,14 @@ export const WraperBtnsPage = styled.div`
     flex-direction: row-reverse;
     justify-content: space-around;
   }
-`
+`;
+
+export const ImagePrewiew = styled.img`
+  width: 116px;
+  height: 116px;
+
+  @media screen and (min-width: 768px) {
+    width: 140px;
+    height: 140px;
+  }
+`;
