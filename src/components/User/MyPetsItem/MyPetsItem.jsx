@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 
 import { PetsContainerStyled } from './MyPetsItemStyled'
 import {UserIcons} from '../UserIcons/UserIcons'
+    const DefaultAvatar = 'https://pixabay.com/get/g4b942c8109a1b73d03593f3b956594751982cc448837347200f15814f41a7498ef3350609efe0fd866c17f96580baaea_640.jpg';
 
 
-const MyPets = ({id, img, name, data, breed, comments, owner, deletePet }) => {
+const MyPets = ({ id, img=DefaultAvatar, name="default", data='01.01.1900', breed="default", comments="default", owner, deletePet }) => {
+    
     // const { id, avatarURL, name, data, breed, comments, owner}=items
     return (
         <PetsContainerStyled>

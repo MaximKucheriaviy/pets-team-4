@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 
 import { logOut } from "../../redux/auth/auth-operation";
-import { selectIsLogin, selectUser, selectPets } from "../../redux/auth/autSelectors";
+import { selectIsLogin, selectUser} from "../../redux/auth/autSelectors";
 
 
 // import { deletePet, addPet } from '../../redux/auth/auth-operation'
@@ -20,7 +20,6 @@ import {UserIcons} from './UserIcons/UserIcons'
 import { UserStyled } from './UserStyled';
 
 import InfoPets from './MyPetsTemporary.json';
-// import InfoUser from './MyUserTemporary.json';
 
 
 

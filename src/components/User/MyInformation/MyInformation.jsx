@@ -2,101 +2,29 @@
 import {UserIcons} from '../UserIcons/UserIcons'
 
 
-import { MyInform} from './MyInformationStyled';
-
-
+import { MyInform } from './MyInformationStyled';
+import MyInformationTabl from './MyInformationTabl';
 
 export default function MyInformation({users}) {
-    const { avatar, name, email, birthday, phone, city } = users;
-    const DefaultAvatar = 'https://pixabay.com/get/g4b942c8109a1b73d03593f3b956594751982cc448837347200f15814f41a7498ef3350609efe0fd866c17f96580baaea_640.jpg';
+    const DefaultAvatar = 'https://pixabay.com/get/g1e5cae9ac1fb4cd584d50a2326b52ca3c0a687fb212618688de67656cf0fb3f877e7b084d0c4d75f1f2ec8f06f0c1f54_640.jpg';
+    const { avatar=DefaultAvatar, name} = users;
 
 
     return (
         <MyInform >
             <div className='user-cont'>
-                <img className='user-avatar' src={avatar||DefaultAvatar} alt={name} />
+                <img className='user-avatar' src={avatar} alt={name} />
                 <button type="button" >
                     <UserIcons id="camera"/>
                     <p>Edit photo</p>
                 </button>
             </div>
-            <table className='user-tabl'>
-                <tbody>
-                    <tr>
-                        <td>Name:</td>
-                        <th>{name}</th>
-                        <th className='table-red'>
-                            <button>
-                                <UserIcons id="icon-user_red"/>
-                                <UserIcons id="icon-user_done"/>
-                            </button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>Email:</td>
-                        <th>{email}</th>
-                        <th className='table-red'>
-                            <button>
-                                <UserIcons id="icon-user_red"/>
-                                <UserIcons id="icon-user_done"/>
-                            </button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>Birthday:</td>
-                        <th>{birthday}</th>
-                        <th className='table-red'>
-                            <button>
-                                <UserIcons id="icon-user_red"/>
-                                <UserIcons id="icon-user_done"/>
-                            </button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>Phone:</td>
-                        <th>{phone}</th>
-                        <th className='table-red'>
-                            <button>
-                                <UserIcons id="icon-user_red"/>
-                                <UserIcons id="icon-user_done"/>
-                            </button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>City:</td>
-                        <th>{city}</th>
-                        <th className='table-red'>
-                            <button>
-                                <UserIcons id="icon-user_red"/>
-                                <UserIcons id="icon-user_done"/>
-                            </button>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
+            <MyInformationTabl tablItem={users}  />
 
 
         </MyInform>
     )
 }
-
-// export default function MyInformation({users}) {
-//     return (
-//         <MyInformItem>
-//             <ul>
-//                 {users.map(user => (
-//                     <li key={user.id}>
-//                         <MyItemInformation name={user.name}  />
-
-//                     </li>
-//                 ))}
-//             </ul>
-//         </MyInformItem>
-//     )
-// }
-
-
-
 
 // MyPetsList.propTypes = {
 //     items: PropTypes.arrayOf(
@@ -105,15 +33,4 @@ export default function MyInformation({users}) {
         // })
 //     )
 // }
-
-
-
-
-            // <div className='user-text'>
-            //     <p><b>Name: </b>{name}</p>
-            //     <p><b>Email: </b>{email}</p>
-            //     <p><b>Birthday: </b>{birthday}</p>
-            //     <p><b>Phone: </b>{phone}</p>
-            //     <p><b>City: </b>{city}</p>
-            // </div>
 
