@@ -1,7 +1,8 @@
-import { Backdrop, Modal, Key, Value, CloseButton } from "./ModalPetInfoStyled";
+import { Backdrop, Modal, Key, Value, CloseButton, Coment } from "./ModalPetInfoStyled";
 import { createPortal } from "react-dom";
 // import { ReactComponent as Heart }from "./assets/heart.svg"
 import { ReactComponent as Cross } from "./assets/cross.svg";
+import { useEffect } from "react";
 
 export const ModalPetInfo = ({ close, modalInfo }) => {
   const portalRoot = document.querySelector("#portalRoot");
@@ -17,7 +18,7 @@ export const ModalPetInfo = ({ close, modalInfo }) => {
     email = "user@mail.com",
     phone = "+380971234567",
     price,
-    // comment,
+    comment,
     // favorite,
     // owner,
     // _id,
@@ -28,6 +29,19 @@ export const ModalPetInfo = ({ close, modalInfo }) => {
   const closeHandler = () => {
     close();
   };
+
+
+  useEffect(() => {
+    const keyEventHandler = (event) => {
+        if(event.key === "Escape"){
+            close();
+        }
+    }
+    document.addEventListener('keyup', keyEventHandler);
+    return () => {
+        document.removeEventListener('keyup', keyEventHandler);
+    }
+  }, [close]);
 
   return createPortal(
     <Backdrop onClick={closeHandler}>
@@ -78,6 +92,7 @@ export const ModalPetInfo = ({ close, modalInfo }) => {
             )}
           </tbody>
         </table>
+        <Coment><span>Comments: </span>{comment}</Coment>
         <a className="modalButton" href={`tel:${phone}`}>
           Contact
         </a>

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Backdrop = styled.div`
-
   top: 0;
   left: 0;
   position: fixed;
@@ -41,10 +40,12 @@ export const Modal = styled.div`
     letter-spacing: -0.01em;
   }
   & table {
+    transform: translate(-3px);
     & tr {
       &:not(:last-child) {
         & td {
           padding-bottom: 4px;
+          padding-left: 0;
         }
       }
       &:not(:first-child) {
@@ -67,7 +68,7 @@ export const Modal = styled.div`
     margin-bottom: 16px;
     border-radius: 0px 0px 40px 40px;
 
-    background-color: #ffa6a6;
+    background-color: #8b8b8b;
     overflow: hidden;
 
     & .typeLable {
@@ -108,7 +109,7 @@ export const Modal = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius:40px;
+    border-radius: 40px;
 
     font-family: "Manrope";
     font-style: normal;
@@ -124,17 +125,16 @@ export const Modal = styled.div`
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.accent};
     text-decoration: none;
-    
   }
 
-  & .favoriteButton{
+  & .favoriteButton {
     background-color: ${({ theme }) => theme.colors.white};
     border: 2px solid ${({ theme }) => theme.colors.accent};
-    color: ${({theme}) => theme.colors.black};
+    color: ${({ theme }) => theme.colors.black};
   }
 
-  & .closeButton{
-    fill: ${({theme}) => theme.colors.accent};
+  & .closeButton {
+    fill: ${({ theme }) => theme.colors.accent};
   }
 `;
 
@@ -165,4 +165,15 @@ export const CloseButton = styled.button`
 
   background-color: transparent;
   border: none;
-`
+`;
+
+export const Coment = styled.p`
+  margin-top: 28px;
+  & span {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+  }
+`;
