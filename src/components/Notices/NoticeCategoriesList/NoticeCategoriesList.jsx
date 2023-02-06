@@ -11,12 +11,7 @@ export default function NoticeCategoriesList({items}) {
 
   return (
     <Gallery>
-    {modalData && <ModalPetInfo 
-      close={() => {setModalData(null)}}
-      imgURL={modalData.imageURL}
-      title={modalData.title}
-      breed={modalData.breed}
-    />}
+    {modalData && <ModalPetInfo close={() => {setModalData(null)}} modalInfo={modalData}/>}
     {
         items.map((item) => {
           const {birthdate, breed, category, favorite, imageURL,owner, place, title, price, _id } = item
