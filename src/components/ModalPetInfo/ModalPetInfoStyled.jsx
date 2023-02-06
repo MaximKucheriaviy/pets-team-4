@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Backdrop = styled.div`
+
   top: 0;
   left: 0;
   position: fixed;
@@ -8,14 +9,17 @@ export const Backdrop = styled.div`
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.gray};
   backdrop-filter: blur(10px);
+  overflow-y: scroll;
+
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const Modal = styled.div`
   position: absolute;
-  top: 50%;
+  /* top: 50%; */
   left: 50%;
 
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
 
   padding-left: 20px;
   padding-right: 20px;
@@ -53,9 +57,11 @@ export const Modal = styled.div`
   }
   & .imageThumb {
     position: relative;
+    display: flex;
+    justify-content: center;
 
     width: 240px;
-    /* height: 240px; */
+    height: 240px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 16px;
@@ -88,10 +94,47 @@ export const Modal = styled.div`
       border-radius: 0px 40px 40px 0px;
     }
 
-    & img{
-      width: 100%;
+    & img {
+      /* width: 100%; */
+      height: 100%;
       display: block;
     }
+  }
+
+  & .modalButton {
+    display: block;
+    width: 240px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:40px;
+
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  & a {
+    margin-top: 40px;
+    margin-bottom: 12px;
+
+    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.accent};
+    text-decoration: none;
+    
+  }
+
+  & .favoriteButton{
+    background-color: ${({ theme }) => theme.colors.white};
+    border: 2px solid ${({ theme }) => theme.colors.accent};
+    color: ${({theme}) => theme.colors.black};
+  }
+
+  & .closeButton{
+    fill: ${({theme}) => theme.colors.accent};
   }
 `;
 
@@ -112,3 +155,14 @@ export const Value = styled.td`
   font-size: 14px;
   line-height: 19px;
 `;
+
+export const CloseButton = styled.button`
+  position: absolute;
+  top: 23px;
+  right: 23px;
+  width: 28px;
+  height: 28px;
+
+  background-color: transparent;
+  border: none;
+`
