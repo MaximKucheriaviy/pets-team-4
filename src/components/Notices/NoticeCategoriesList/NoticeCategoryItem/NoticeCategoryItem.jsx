@@ -19,14 +19,18 @@ export default function NoticeCategoryItem({
   title = "Сute pet looking for a home",
   price = null,
   id, 
+  setModal
 }) {
   const user = useSelector(selectUser);
-  console.log(id);
-  console.log(user.id);
+  // console.log(id);
+  // console.log(user.id);
   // console.log(yourNotice);
   const yourNotice = Boolean(user.id === owner);
   // console.log(yourNotice);
 
+  const learnMoreHandler = () => {
+    setModal();
+  }
 
   return (
     <Item key={id} >
@@ -77,7 +81,7 @@ export default function NoticeCategoryItem({
             </ButtonDelete>
         </ButtonWrapper> : 
           <ButtonWrapper>
-             <ButtonLearn>
+             <ButtonLearn onClick={learnMoreHandler}>
               Learn more
             </ButtonLearn>
           </ButtonWrapper>}
