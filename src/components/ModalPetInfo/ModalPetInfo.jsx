@@ -52,6 +52,8 @@ export const ModalPetInfo = ({
                     </tr>
                 </tbody>
             </table>
+            <a href={`tel:${phone}`}>Contact</a>
+            <button></button>
         </Modal>
     </Backdrop>, portalRoot);
 }
