@@ -24,7 +24,7 @@ export const ModalBox = styled(Box)`
   transform: translate(-50%);
   padding: 20px 20px 40px 20px;
   width: 280px;
-  background-color: white;
+  background: white;
   border-radius: 20px;
 
   @media screen and (min-width: 768px) {
@@ -71,6 +71,10 @@ export const SubtitleText = styled(Typography)`
 export const RadioBoxBtnSex = styled(Grid2)`
   margin-bottom: 32px;
 
+  &:hover, :focus {
+    color: #F59256;
+  }
+
   @media screen and (min-width: 768px) {
     margin-bottom: 40px;
   }
@@ -109,8 +113,9 @@ export const RadioButton = styled(Button)`
   text-transform: lowercase;
 
   &:hover, :focus {
-    background: black;
-    color: white;
+    box-shadow: 0px 2px 1px -2px rgb(0 0 0 / 20%), 
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 
+    0px 1px 5px 0px rgb(0 0 0 / 12%);
   }
 
   @media screen and (min-width: 768px) {

@@ -1,10 +1,13 @@
+import { useRef } from "react";
+import { useTheme } from "styled-components";
+
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import {
   LabelText,
   WrapInputFirst,
   WraperBtnsPage,
   InputAddPet,
 } from "../ModaAdd.styled";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import {
   IconModalClose,
   BtnModalClose,
@@ -24,9 +27,18 @@ export function FirstPageAddPet({
   handleOpenSecond,
   closeModal,
 }) {
+  const titleTextRef = useRef(null);
+  const theme = useTheme();
+
   const { category, title, name, date_birth, breed } = formik.values;
   const { handleChange, setFieldValue } = formik;
 
+  const handleErrorTitle = () => {
+    if (title.length < 1) {
+      return (titleTextRef.current.textContent = "Write title*");
+    }
+    handleOpenSecond();
+  };
   return (
     <ModalBox>
       <BtnModalClose type="button" onClick={closeModal}>
@@ -43,8 +55,11 @@ export function FirstPageAddPet({
               <RadioButton
                 style={
                   category === "lost/found"
-                    ? { background: "#F59256", color: "white" }
-                    : { background: "transparent" }
+                    ? {
+                        background: `${theme.colors.accent}`,
+                        color: `${theme.colors.white}`,
+                      }
+                    : { background: `${theme.colors.white}` }
                 }
                 onClick={() => {
                   setFieldValue("category", "lost/found");
@@ -56,12 +71,15 @@ export function FirstPageAddPet({
             <Grid2>
               <RadioButton
                 style={
-                  category === "in good hands"
-                    ? { background: "#F59256", color: "white" }
-                    : { background: "transparent" }
+                  category === "for-free"
+                    ? {
+                        background: `${theme.colors.accent}`,
+                        color: `${theme.colors.white}`,
+                      }
+                    : { background: `${theme.colors.white}` }
                 }
                 onClick={() => {
-                  setFieldValue("category", "in good hands");
+                  setFieldValue("category", "for-free");
                 }}
               >
                 in good hands
@@ -71,8 +89,11 @@ export function FirstPageAddPet({
               <RadioButton
                 style={
                   category === "sell"
-                    ? { background: "#F59257", color: "white" }
-                    : { background: "transparent" }
+                    ? {
+                        background: `${theme.colors.accent}`,
+                        color: `${theme.colors.white}`,
+                      }
+                    : { background: `${theme.colors.white}` }
                 }
                 onClick={(e) => {
                   setFieldValue("category", "sell");
@@ -85,9 +106,10 @@ export function FirstPageAddPet({
         </div>
         <WrapInputFirst>
           <LabelText htmlFor="title">Tittle of ad*:</LabelText>
-          {title.length < 1 ? (
-            <ErrorTextFields>{"Write title*"}</ErrorTextFields>
-          ) : null}
+          <ErrorTextFields
+            ref={titleTextRef}
+            hidden={title.length >= 1}
+          ></ErrorTextFields>
           <InputAddPet
             type="text"
             required
@@ -128,8 +150,7 @@ export function FirstPageAddPet({
           <BtnNextDone
             type="button"
             variant="contained"
-            disabled={title.length < 1}
-            onClick={handleOpenSecond}
+            onClick={handleErrorTitle}
           >
             Next
           </BtnNextDone>

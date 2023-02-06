@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { PhotoPreview } from "../PhotoPreview";
+import { useTheme } from "styled-components";
 
 import {
   LabelText,
@@ -19,7 +20,6 @@ import {
   IconAddPhoto,
   ModalFormSecond,
   FlexBox,
-  // InputAddPet,
   BtnNextDone,
   BtnBackCancel,
   Title,
@@ -37,6 +37,7 @@ export function SecondPagelAddPet({
 }) {
   const fileRef = useRef(null);
   const refTextArea = useRef(null);
+  const theme = useTheme();
 
   const handleInput = (e) => {
     if (refTextArea.current) {
@@ -45,7 +46,7 @@ export function SecondPagelAddPet({
     }
   };
 
-  const { sex, category, location, price, photo, comment } = formik.values;
+  const { sex, category, location, price, imageURL, comment } = formik.values;
   const {
     handleChange,
     handleSubmit,
@@ -80,8 +81,8 @@ export function SecondPagelAddPet({
               <RadioBtnSex
                 style={
                   sex === "male"
-                    ? { color: "#F59256" }
-                    : { background: "transparent" }
+                    ? { color: `${theme.colors.accent}` }
+                    : { background: `${theme.colors.white}` }
                 }
                 type="button"
                 onClick={(e) => {
@@ -96,8 +97,8 @@ export function SecondPagelAddPet({
               <RadioBtnSex
                 style={
                   sex === "female"
-                    ? { color: "#F59256" }
-                    : { background: "transparent" }
+                    ? { color: `${theme.colors.accent}` }
+                    : { background: `${theme.colors.white}` }
                 }
                 type="button"
                 onClick={(e) => {
@@ -114,7 +115,6 @@ export function SecondPagelAddPet({
             <ErrorTextFields>{errors.location}*</ErrorTextFields>
           ) : null}
           <InputAddPet
-            required
             type="text"
             id="location"
             name="location"
@@ -140,21 +140,21 @@ export function SecondPagelAddPet({
               />
             </>
           )}
-          <LabelText htmlFor="photo">Load the pet’s image:</LabelText>
-          {touched.photo && errors.photo ? (
-            <ErrorTextFields>{errors.photo}*</ErrorTextFields>
+          <LabelText htmlFor="imageURL">Load the pet’s image:</LabelText>
+          {touched.imageURL && errors.imageURL ? (
+            <ErrorTextFields>{errors.imageURL}*</ErrorTextFields>
           ) : null}
           <input
             hidden
             ref={fileRef}
-            id="photo"
+            id="imageURL"
             type="file"
             onChange={(e) => {
-              setFieldValue("photo", e.target.files[0]);
+              setFieldValue("imageURL", e.target.files[0]);
             }}
           />
-          {photo ? (
-            <PhotoPreview file={photo} />
+          {imageURL ? (
+            <PhotoPreview file={imageURL} />
           ) : (
             <BoxUploadPhoto>
               <BtnUploadPhoto

@@ -13,7 +13,7 @@ export const FormBody = styled.div`
 
   padding: 40px;
 
-  background: #ffffff;
+  background: ${({ theme }) => theme.colors.white};
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 40px;
 
@@ -23,23 +23,16 @@ export const FormBody = styled.div`
     width: 608px;
   }
 
-  @media screen and (min-width: 321px) and (max-width: 768px) {
-    width: 300px;
-  }
-
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
     width: 100%;
     border: 0px;
     box-shadow: none;
-    background-color: #fdf7f2;
+    background: transparent;
   }
 `;
 
 export const Title = styled.h2`
-  margin-top: 60px;
-  margin-bottom: 40px;
-
   font-family: "Manrope";
   font-style: normal;
   font-weight: 500;
@@ -58,7 +51,7 @@ export const Input = styled(Field)`
   padding-left: 32px;
   padding-right: 32px;
 
-  background: #fdf7f2;
+  background: ${({ theme }) => theme.colors.background};
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
 
@@ -71,15 +64,7 @@ export const Input = styled(Field)`
     width: 448px;
   }
 
-  @media screen and (min-width: 321px) and (max-width: 768px) {
-    width: 280px;
-    font-size: 14px;
-    line-height: 19px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
     height: 40px;
     font-size: 14px;
@@ -98,10 +83,10 @@ export const Button = styled.button`
   width: 458px;
   height: 48px;
 
-  background: white;
-  color: black;
+  background: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
 
-  border: 2px solid #f59256;
+  border: 2px solid ${({ theme }) => theme.colors.accent};
   border-radius: 40px;
 
   font-family: "Manrope";
@@ -110,8 +95,8 @@ export const Button = styled.button`
   font-size: 20px;
   line-height: 27px;
   &:hover {
-    background: #f59256;
-    color: white;
+    background: ${({ theme }) => theme.colors.accent};
+    color: ${({ theme }) => theme.colors.white};
   }
   &:disabled,
   &[disabled] {
@@ -124,11 +109,7 @@ export const Button = styled.button`
     width: 448px;
   }
 
-  @media screen and (min-width: 321px) and (max-width: 768px) {
-    width: 280px;
-  }
-
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
   }
 `;
@@ -152,9 +133,15 @@ export const Hint = styled.p`
   line-height: 16px;
   letter-spacing: 0.04em;
 
-  color: rgba(17, 17, 17, 0.6);
+  color: ${({ theme }) => theme.colors.gray};
 `;
 
 export const HintLink = styled(Link)`
-  color: #3091eb;
+  color: ${({ theme }) => theme.colors.blueLinks};
+`;
+
+export const FormHead = styled.div`
+  position: relative;
+  margin-top: 60px;
+  margin-bottom: 40px;
 `;
