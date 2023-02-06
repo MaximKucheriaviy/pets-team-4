@@ -11,6 +11,7 @@ import {
   PURGE,
   REGISTER, } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { themaSlice } from "./thema/themaSlice";
 
 const persistConfig = {
     key: "token",
@@ -21,6 +22,8 @@ const persistedReducer = persistReducer(persistConfig,  authSlice);
 export  const store = configureStore ({
   reducer: {
      auth: persistedReducer,
+     thema:themaSlice.reducer,
+
    
   },
    middleware: (getDefaultMiddleware) =>

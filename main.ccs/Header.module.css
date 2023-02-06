@@ -1,0 +1,24 @@
+.open, .closed {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column-reverse;
+  position: fixed;
+  top: 64px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #fdf7f2;
+  z-index: 99;
+  transform: translateX(0%);
+  transition: 0.3s all ease-in-out;
+}
+@media screen and (min-width: 768px) {
+  .open, .closed {
+    margin-top: 40px;
+  }
+}
+
+.closed {
+  transform: translateX(100%);
+}/*# sourceMappingURL=Header.module.css.map */
