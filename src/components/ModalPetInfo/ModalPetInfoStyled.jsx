@@ -55,13 +55,14 @@ export const Modal = styled.div`
     position: relative;
 
     width: 240px;
-    height: 240px;
+    /* height: 240px; */
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 16px;
     border-radius: 0px 0px 40px 40px;
 
     background-color: #ffa6a6;
+    overflow: hidden;
 
     & .typeLable {
       position: absolute;
@@ -85,6 +86,11 @@ export const Modal = styled.div`
       background: rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(50px);
       border-radius: 0px 40px 40px 0px;
+    }
+
+    & img{
+      width: 100%;
+      display: block;
     }
   }
 `;
