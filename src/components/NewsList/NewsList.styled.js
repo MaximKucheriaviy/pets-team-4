@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const CardList = styled.ul`
   margin-top: 40px;
+  background-color: ${({ theme }) => theme.colors.background};
 
   @media (min-width: 768px) and (max-width: 959px) {
     display: grid;

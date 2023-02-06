@@ -1,10 +1,11 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Title, HeroContainer, Content, ContentImg } from "./HomePage.styled";
+import { DefaultPage } from "../../components/DefaultPage/DefaultPage";
 
 export default function HomePage() {
   return (
-    <div>
+    <DefaultPage >
       <Helmet>
         <title>HomePage</title>
       </Helmet>
@@ -16,6 +17,6 @@ export default function HomePage() {
           <ContentImg />
         </HeroContainer>
       </div>
-    </div>
+    </DefaultPage >
   );
 }

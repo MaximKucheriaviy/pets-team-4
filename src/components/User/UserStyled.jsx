@@ -1,4 +1,5 @@
-import styled from '@emotion/styled';
+import styled from "styled-components";
+
 
 export const UserStyled = styled.div`
 margin: 61px auto 80px auto;
@@ -22,7 +23,7 @@ font-weight: 500;
 font-size: 20px;
 line-height: 1.35;
 
-color: #000000;
+color: ${({ theme }) => theme.colors.black};
 
 @media screen and (min-width:768px) {
 padding-left: 32px;
@@ -68,8 +69,8 @@ padding-left: 17px;
     margin-top: 18px;
     // height: 537px;
 
-    background-color: #FFFFFF;
-    box-shadow: 7px 4px 14px rgb(0 0 0 / 11%);
+    background-color: ${({ theme }) => theme.colors.background};
+    box-shadow: 7px 4px 14px ${({ theme }) => theme.colors.black};
     border-radius: 20px;
 
 

@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 
-
+import styled from "styled-components";
 export const PetsContainerStyled = styled.div`
     display: flex;
     flex-direction: column;
@@ -10,8 +10,8 @@ export const PetsContainerStyled = styled.div`
     padding-right: 20px;
         padding-top: 16px;
 
-    background-color: #FFFFFF;
-    box-shadow: 7px 4px 14px rgb(0 0 0 / 11%);
+    background-color: ${({ theme }) => theme.colors.background};
+    box-shadow: 7px 4px 14px ${({ theme }) => theme.colors.black};
     border-radius: 20px;
 
     @media screen and (min-width:768px) {
@@ -89,7 +89,7 @@ export const PetsContainerStyled = styled.div`
     font-size: 14px;
     line-height: 19.12px;
     letter-spacing: 4%;
-    color: #000000;
+    color: ${({ theme }) => theme.colors.black};
 
     @media screen and (min-width:768px) {
         font-size: 16px;

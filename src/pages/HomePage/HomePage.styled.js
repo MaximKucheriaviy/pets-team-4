@@ -50,7 +50,7 @@ height: calc(100vh - 88px);
 
 flex-direction: column;
 align-items: center;
-background-color:#FDF7F2;
+background-color: ${({ theme }) => theme.colors.background};
 
 @media (min-width: 1280px) {
    width: 1280px;
@@ -63,7 +63,7 @@ background-color:#FDF7F2;
 
 export const Title = styled.h3`
 font-family: Manrope;
-color: #000000;
+color: ${({ theme }) => theme.colors.black};
 
 @media (min-width: 1280px){
   position: absolute;
