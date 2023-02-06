@@ -6,7 +6,7 @@ import { StyledAddNotice, Wrapper } from "./AddButtonMobile.styled";
 export default function AddButtonMobile({ handleOpen }) {
   return (
     <Wrapper>
-      <StyledAddNotice onClick={handleOpen}>
+      <StyledAddNotice >
         <IconButton
           sx={{
             display: "flex",

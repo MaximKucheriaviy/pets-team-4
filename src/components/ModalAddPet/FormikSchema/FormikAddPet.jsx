@@ -1,7 +1,6 @@
 import * as yup from "yup";
 import axios from "axios";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
-import { selectToken } from "../../../redux/auth/autSelectors";
 import { store } from "../../../redux/store";
 
 const SUPORTED_FORMAT = ["image/jpg", "image/jpeg", "image/png"];
@@ -12,10 +11,11 @@ const SUPORTED_FORMAT = ["image/jpg", "image/jpeg", "image/png"];
 //   headers: { Authorization: `${store.getState().auth.token}` },
 // };
 
-const postedNoticePet = async ({ info }) => {
+const postedNoticePet = async (info) => {
   try {
     return axios({
       method: "post",
+      // baseURL: "http://localhost:3001",
       url: "/api/notices",
       data: info,
       headers: { "Authorization": `${store.getState().auth.token}` },
@@ -34,14 +34,14 @@ export const form = {
     breed: "",
     sex: "",
     price: "",
-    imageURL: "",
+    petImage: "",
     comment: "",
     place: "",
   },
 
-  onSubmit: async (values, { resetForm }) => {
+  onSubmit: (values, { resetForm }) => {
     postedNoticePet(values);
-    await setTimeout(() => {
+    setTimeout(() => {
       resetForm();
     }, 300);
     Notify.success("Posted!");
@@ -63,7 +63,7 @@ export const form = {
       then: yup.string().required("Enter price"),
     }),
     place: yup.string().required("Enter your location"),
-    imageURL: yup
+    petImage: yup
       .mixed()
       .nullable()
       .test(

@@ -1,5 +1,6 @@
 import { DefaultPage } from "../../components/DefaultPage/DefaultPage";
 import { ModalContainer } from "../../components/ModalAddPet/ModalContainer";
+import { AddNoticeButtonMob } from "../../components/ModalAddPet/AddNoticeModal/AddNoticeButtonMob";
 import NoticeCategoriesList from "../../components/Notices/NoticeCategoriesList/NoticeCategoriesList";
 import NoticesCategoriesNav from "../../components/Notices/NoticesCategoriesNav/NoticesCategoriesNav";
 import SearchForm from "../../components/SearchForm/SearchForm";
@@ -73,6 +74,7 @@ export default function FindPetPage() {
       <Wrapper>
         <NoticesCategoriesNav />
         <ModalContainer />
+        <AddNoticeButtonMob/>
       </Wrapper>
       <NoticeCategoriesList categoryNotice={category} items={visibleNotices} />
     </DefaultPage>

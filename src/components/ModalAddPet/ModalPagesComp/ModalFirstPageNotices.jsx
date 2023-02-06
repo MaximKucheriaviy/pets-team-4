@@ -34,18 +34,19 @@ export function FirstPageAddPet({
   const { handleChange, setFieldValue } = formik;
 
   const handleErrorTitle = () => {
-    if (title.length < 1) {
+    if (title.length < 2) {
       return (titleTextRef.current.textContent = "Write title*");
     }
     handleOpenSecond();
   };
+
   return (
     <ModalBox>
       <BtnModalClose type="button" onClick={closeModal}>
         <IconModalClose />
       </BtnModalClose>
       <FlexBox>
-        <Title>Add pet</Title>
+      <Title>Add pet</Title>
         <SubtitleText>
           Publish your advertisement <br /> Filling the fields.
         </SubtitleText>
@@ -108,7 +109,7 @@ export function FirstPageAddPet({
           <LabelText htmlFor="title">Tittle of ad*:</LabelText>
           <ErrorTextFields
             ref={titleTextRef}
-            hidden={title.length >= 1}
+            hidden={title.length > 1}
           ></ErrorTextFields>
           <InputAddPet
             type="text"

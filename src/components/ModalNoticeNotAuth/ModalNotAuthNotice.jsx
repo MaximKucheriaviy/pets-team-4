@@ -35,7 +35,7 @@ export const ModalNotAuth = () => {
               <Title id="transition-modal-title" variant="h6" component="h2">
                 Before post enter to your account*
               </Title>
-              <LoginForm></LoginForm>
+              <LoginForm/>
             </WrapperFormLog>
           </ModalConitainer>
         </Fade>

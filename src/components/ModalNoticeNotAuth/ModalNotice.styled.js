@@ -23,7 +23,7 @@ export const Title = styled.p`
   line-height: 1.35;
   text-align: center;
   color: ${props => props.theme.colors.accent};
-  margin-bottom: -40px;
+  margin-bottom: -30px;
 
   @media screen and (min-width: 768px) {
     font-size: 26px;
@@ -37,7 +37,5 @@ export const WrapperFormLog = styled.div`
   transform: translate(-50%, -50%); 
   background: ${props => props.theme.colors.white};
   border-radius: 40px;
-  padding-top: 20px;
-  padding-right: 20px;
-  
+  padding: 20px 20px 0px 20px;
 `;

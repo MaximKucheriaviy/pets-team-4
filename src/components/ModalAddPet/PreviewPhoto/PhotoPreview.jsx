@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SkeletPhotoBox, ImagePrewiew } from "./ModaAdd.styled";
+import { SkeletPhotoBox, ImagePrewiew } from "../ModaAdd.styled";
 
 export const PhotoPreview = ({ file }) => {
   const [preview, setPreview] = useState(null);
