@@ -28,8 +28,7 @@ export const PetsContainerStyled = styled.div`
 
 
     .card-avatar{
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
+            width: 100%;
     // width: 240px;
     // height: 240px;
     border-radius: 20px;
@@ -79,16 +78,6 @@ export const PetsContainerStyled = styled.div`
     }
     }
 
-    .card-icons{
-        width: 20px;
-        height: 20px;
-
-    @media screen and (min-width:768px) {
-        width: 24px;
-        height: 24px;
-    }
-
-    }
 
 
     p {

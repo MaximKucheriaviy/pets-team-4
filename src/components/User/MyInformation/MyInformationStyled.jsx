@@ -105,23 +105,6 @@ line-height: 1.83;
         // font-weight: 400;
     }
 
-    .icons-red{
-        width: 20px;
-        height: 20px;
-        fill: #111;
-        fill-opacity: .6;
-    }
-
-    .icons-done{
-        width: 20px;
-        height: 20px;
-        fill: #F59256;
-        fill-rule: evenodd;
-        clip-rule: evenodd
-    }
-
-
-
 
 `
 

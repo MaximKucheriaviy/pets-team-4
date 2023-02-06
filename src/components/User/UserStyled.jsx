@@ -118,13 +118,13 @@ margin-top: -25px;
     }
 }
 
-.loqout-icons{
+// .loqout-icons{
 
- width: 18px;
-height: 18px;   
-fill: #F59256;
-stroke:#F59256;
-}
+//  width: 18px;
+// height: 18px;   
+// fill: #F59256;
+// stroke:#F59256;
+// }
 
 `
 
