@@ -34,7 +34,7 @@ export const form = {
     breed: "",
     sex: "",
     price: "",
-    photo: "",
+    imageURL: "",
     comment: "",
     place: "",
   },
@@ -63,7 +63,7 @@ export const form = {
       then: yup.string().required("Enter price"),
     }),
     place: yup.string().required("Enter your location"),
-    photo: yup
+    imageURL: yup
       .mixed()
       .nullable()
       .test(
