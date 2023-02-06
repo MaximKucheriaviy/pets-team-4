@@ -30,7 +30,7 @@ export const ModalPetInfo = ({ close, modalInfo }) => {
   };
 
   return createPortal(
-    <Backdrop>
+    <Backdrop onClick={closeHandler}>
       <Modal>
         <CloseButton onClick={closeHandler}>
           <Cross />
