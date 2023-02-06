@@ -6,6 +6,7 @@ export const Item = styled.li`
     box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
     border-radius: 0px 0px 20px 20px;
     max-width: 280px;
+    min-height: 606px;
     height: auto;
     padding-bottom: 12px;
 
@@ -24,12 +25,24 @@ export const Wrapper = styled.div`
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    align-items: center;
+    align-items: stretch;
 
 `
 export const ImgWrapper = styled.div`
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 280px;
+    height: 288px;
+    /* background-image: url(https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_960_720.jpg);
+    background-size: contain; */
+    background-color: rgba(0, 0, 0, 0.5);
+
+            @media (min-width: 768px) {
+          width: 336px;
+    };
+
+            @media (min-width: 1280px) {
+          width: 288px;
+    };
 `;
 
 export const InfoWrapper = styled.div`
@@ -145,20 +158,8 @@ export const Button = styled.button`
           border: 2px solid #ff6101;
           color: #ff6101;
     }
+
 `;
-
-// export const ButtonCategory = styled(Button)`
-//     margin: 8px 28px;
-//     color:#111111;
-//     font-size: 14px;
-//     line-height: 19px;
-//     letter-spacing: 0.04em;
-
-//     &.active {
-//     color: #FFFFFF;
-//     background: #F59256;
-//   }
-// `;
 
 export const ButtonLearn = styled(Button)`
     width: 248px;
