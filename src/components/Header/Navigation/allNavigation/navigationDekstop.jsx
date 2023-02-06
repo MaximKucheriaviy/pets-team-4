@@ -10,7 +10,7 @@ export function NavigationDekstop () {
  
   return (
     <Header>
-    <Thema/>
+    {/* <Thema/> */}
   
         <Logo />
     
