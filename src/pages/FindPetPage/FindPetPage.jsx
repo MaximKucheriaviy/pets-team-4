@@ -3,7 +3,6 @@ import { DefaultPage } from "../../components/DefaultPage/DefaultPage";
 import { ModalContainer } from "../../components/ModalAddPet/ModalContainer";
 import NoticeCategoriesList from "../../components/Notices/NoticeCategoriesList/NoticeCategoriesList";
 import NoticesCategoriesNav from "../../components/Notices/NoticesCategoriesNav/NoticesCategoriesNav";
-import SearchForm from "../../components/SearchForm/SearchForm";
 import { Wrapper } from "./FindPetPage.styled";
 
 import { getFavorites, getNoticesByCategory, getOwnerNotise } from "../../services/apiNotices";
@@ -12,6 +11,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectToken } from "../../redux/auth/autSelectors";
 import { Box, CircularProgress } from "@mui/material";
+import NoticesSearch from "../../components/NoticesSearch/NoticesSearch";
 
 // token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2RkOGQwNTI5NTEyZGY5N2Q3ZjI3ZDIiLCJpYXQiOjE2NzU0NjM5NDF9.jcqhFXup9wp8GmICuMdMU_zVs2vs5zZVKfj7D04JceY"
 // id=63dd8d0529512df97d7f27d2
@@ -43,33 +43,29 @@ const location = useLocation();
     (async () => {
       setIsLoading(true);
       setError(null);
+      setNotices([]);
       try {
         if (isLFPage) {
-          setNotices([]);
           const data = await getNoticesByCategory(category);
 
           return  setNotices(data);
         }
         if (isFFPage) {
-          setNotices([]);
           const data = await getNoticesByCategory(category);
 
           return  setNotices(data);
         }
         if (isSellPage) {
-          setNotices([]);
           const data = await getNoticesByCategory(category);
 
           return  setNotices(data);
         }
         if (isFavoritePage) {
-          setNotices([]);
           const data = await getFavorites(token);
 
           return  setNotices(data);
         };
          if (isOwnPage) {
-          setNotices([]);
           const data = await getOwnerNotise(token);
 
           return  setNotices(data);
@@ -84,14 +80,11 @@ const location = useLocation();
   }, [category, isFFPage, isFavoritePage, isLFPage, isOwnPage, isSellPage, token]);
 
 
+
+
   return (
     <DefaultPage title="FindPetPage">
-      {/* <SearchForm
-        value={filter}
-        changeFilter={handleFilter}
-        clearFilter={clearFilter}
-        // handleSubmit={handleSubmit}
-      /> */}
+      <NoticesSearch/>
       <Wrapper>
         <NoticesCategoriesNav />
         <ModalContainer />
