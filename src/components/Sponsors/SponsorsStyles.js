@@ -126,6 +126,8 @@ flex-direction: row;
 export const SponsorContacts = styled.div`
 overflow-x: auto;
 overflow-y: auto;
+scrollbar-color: #F59256 #F1F1F1;
+scrollbar-width: thin; 
 ::-webkit-scrollbar {
   width: 3px;
   background-color: #F1F1F1;
@@ -144,7 +146,7 @@ max-height: 188px;
 width: 60%;
 justify-content: end;
 text-align: left;
-max-height: 175px;
+max-height: 184px;
 }
 @media (max-width: 768px){
 width: 55%;

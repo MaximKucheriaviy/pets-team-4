@@ -35,8 +35,7 @@ if (!workDays || workDays === null || workDays === undefined) {
     time = "--------------";
   }
 }
-
-  // let time = `workDays ? ${workDays.find(item => item.isOpen).from}-${workDays.find(item => item.isOpen).to} : "_"`;
+// let time = `workDays ? ${workDays.find(item => item.isOpen).from}-${workDays.find(item => item.isOpen).to} : "_"`;
   return (
     <SponsorCard key={title}>
       <SponsorHeader>{title}</SponsorHeader>

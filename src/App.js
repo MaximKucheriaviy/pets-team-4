@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { SelectIsLoadingUserStatus } from "./redux/auth/autSelectors";
 import { current } from "./redux/auth/auth-operation";
+import Loader from './components/ScreenLoader/ScreenLoader';
 
 const Home = lazy(() =>
   import("./pages/HomePage/HomePage")
@@ -49,8 +50,8 @@ function App() {
   return (
     <>
       {isLoadingUser ? (
-        <p>....Loading</p>
-      ) : (
+        <Loader />
+      ) : ( 
         <Suspense>
           <Routes>
             <Route path="/" element={<SharedLayout />}>
@@ -78,7 +79,7 @@ function App() {
               />
 
               <Route path='/friends' element={<OurFriends />} />
-<Route element={<PublicRoute/>}>
+<Route element={<PublicRoute />}>
               <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 </Route>

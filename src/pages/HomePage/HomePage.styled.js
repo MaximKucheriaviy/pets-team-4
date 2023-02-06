@@ -80,7 +80,7 @@ color: #000000;
 @media (max-width: 1279px){
 
     margin-right: 32px;
-    margin-top: 88px;
+    margin-top: 160px;
     position: absolute;
     margin-top: 160px;
     margin-bottom:0;
@@ -91,6 +91,7 @@ color: #000000;
     font-weight: 700;
     line-height: 1,47;
     text-align: left;
+    z-index: 5;
 
 }
 
