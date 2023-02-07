@@ -8,7 +8,7 @@ import { LinkCategory, NavBar } from "./NoticesCategoriesNav.styled";
 export default function NoticesCategoriesNav() {
   const user = useSelector(selectUser);
   const auth = Boolean(user.id);
-  console.log(auth);
+  // console.log(auth);
 
   
 
