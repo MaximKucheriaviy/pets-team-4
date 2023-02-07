@@ -35,28 +35,29 @@ export default function NoticeCategoryItem({
   title = "Сute pet looking for a home",
   price = null,
   id, 
-  setModal
+  setModal,
+  removeNotice,
+  changeFavorite
 }) {
   const user = useSelector(selectUser);
   // console.log(id);
-  // console.log(user.id);
-  // console.log(yourNotice);
+
   const yourNotice = Boolean(user.id === owner);
-  // console.log(yourNotice);
 
   const learnMoreHandler = () => {
     setModal();
   }
 
   return (
-    <Item key={id}>
-      <Wrapper>
-        <ImgWrapper>
-          <Image src={img} alt={breed} />
-          <NoticeCategory>{category}</NoticeCategory>
-          <Favorite>
-            <IconButton
-              sx={{
+    <Item key={id} >
+        <Wrapper>
+          <ImgWrapper>
+            <Image src={img} alt={breed} />
+          <NoticeCategory>{ category}</NoticeCategory>
+            <Favorite>
+            <IconButton   
+              onClick={() => changeFavorite(id)} 
+               sx={{
                 "--IconButton-size": "44px",
                 color: "currentColor",
               }}
@@ -84,20 +85,19 @@ export default function NoticeCategoryItem({
               <Info> {age}</Info>
               {category === "sell" ? <Info>{price}$</Info> : null}
             </RelevantInfoWrapper>
-          </ContainerInfo>
-        </InfoWrapper>
-
-        {yourNotice ? (
-          <ButtonWrapper>
-            <ButtonLearn>Learn more</ButtonLearn>
-            <ButtonDelete>
-              Delete
-              <DeleteIcon
-                fontSize="20px"
-                sx={{
-                  "--Button-gap": "13px",
-                }}
-              />
+            </ContainerInfo>
+        </InfoWrapper>  
+        
+        {yourNotice  ? (<ButtonWrapper>
+          <ButtonLearn>
+            Learn more
+          </ButtonLearn>
+          <ButtonDelete onClick={() => removeNotice(id)}>
+              Delete  
+            <DeleteIcon fontSize="20px"
+              sx={{
+                  "--Button-gap": "13px"
+                }}/>
             </ButtonDelete>
           </ButtonWrapper>
         ) : (

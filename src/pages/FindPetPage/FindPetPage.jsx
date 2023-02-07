@@ -6,7 +6,7 @@ import NoticeCategoriesList from "../../components/Notices/NoticeCategoriesList/
 import NoticesCategoriesNav from "../../components/Notices/NoticesCategoriesNav/NoticesCategoriesNav";
 import { Wrapper } from "./FindPetPage.styled";
 
-import { getFavorites, getNoticesByCategory, getOwnerNotise } from "../../services/apiNotices";
+import { addToFavorite, getFavorites, getNoticesByCategory, getOwnerNotise, removeFromFavorite, removeNoticeById } from "../../services/apiNotices";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -36,13 +36,15 @@ export default function FindPetPage() {
 const [notices, setNotices] = useState([]);
 const [error, setError] = useState(null);
 const [isLoading, setIsLoading] = useState(false);
+  const [favoriteId, setFavoriteId] = useState([]);
+const [noticeId, setNoticeId] = useState("")
 
 const { category } = useParams();
 const token = useSelector(selectToken);
 const location = useLocation();
 
-  const isLFPage = location.pathname.includes("lost-found" || "for-free" || "sell");
-  const isFFPage = location.pathname.includes("for-free");
+  const isLostPage = location.pathname.includes("lost-found");
+  const isFreePage = location.pathname.includes("for-free");
   const isSellPage = location.pathname.includes( "sell");
   const isFavoritePage = location.pathname.includes("favorite");
   const isOwnPage = location.pathname.includes("own");
@@ -53,24 +55,25 @@ const location = useLocation();
       setError(null);
       setNotices([]);
       try {
-        if (isLFPage) {
+        if (isLostPage) {
           const data = await getNoticesByCategory(category);
 
           return  setNotices(data);
         }
-        if (isFFPage) {
+        if (isFreePage) {
           const data = await getNoticesByCategory(category);
 
           return  setNotices(data);
         }
         if (isSellPage) {
           const data = await getNoticesByCategory(category);
+          console.log("sell",data)
 
           return  setNotices(data);
         }
         if (isFavoritePage) {
           const data = await getFavorites(token);
-
+        console.log("fav",data)
           return  setNotices(data);
         };
          if (isOwnPage) {
@@ -85,10 +88,77 @@ const location = useLocation();
         setIsLoading(false);
       }
     })();
-  }, [category, isFFPage, isFavoritePage, isLFPage, isOwnPage, isSellPage, token]);
+  }, [category, isFreePage, isFavoritePage, isLostPage, isOwnPage, isSellPage, token]);
 
 
+    useEffect(() => {
+      (async () => {
+        setIsLoading(true);
+        setError(null);
+        try {
+          const data = await addToFavorite(token, favoriteId);
 
+          return setNotices(data);
+        }
+        catch (error) {
+          setError(error.message);
+        }
+        finally {
+          setIsLoading(false);
+        }
+      })();
+    }, [ favoriteId]);
+
+  // useParams();
+  // const {title } = useParams();
+  // // const id = movieId;
+  // console.log("id", useParams());
+
+    useEffect(() => {
+      (async () => {
+        setIsLoading(true);
+        setError(null);
+        try {
+          const data = await removeNoticeById(token, noticeId);
+
+          return setNotices(data);
+        }
+        catch (error) {
+          setError(error.message);
+        }
+        finally {
+          setIsLoading(false);
+        }
+      })();
+    }, [ noticeId]);
+
+  const changeInFavoriteNotices = ( id) => {
+    //     if (inFavorites(id)) {
+            
+    // }
+    // console.log("Yes")
+    setFavoriteId(id)
+    }
+
+  // const inFavorites = ({ id }) => {
+  //     console.log(id)
+  //       const result = favorites.find((item) => item._id === id );
+  //       return result;
+  //   }
+
+  const removeNotice = (id) => {
+    console.log(id)
+    setNoticeId(id);
+    console.log(noticeId)
+    setNotices((prev) => {
+    console.log(prev)
+      
+      const newNotices = prev.filter((item) => item._id !== id);
+      return newNotices
+    })
+  }
+
+       
 
   return (
     <DefaultPage title="FindPetPage">
@@ -101,7 +171,7 @@ const location = useLocation();
    {isLoading &&   <Box sx={{ display: 'flex' }}>
       <CircularProgress />
     </Box>}
-      <NoticeCategoriesList  items={notices}  />
+      <NoticeCategoriesList items={notices} removeNotice={ removeNotice} changeFavorite={changeInFavoriteNotices} />
     </DefaultPage>
   );
 }
