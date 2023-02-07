@@ -19,14 +19,14 @@ export default function NoticeCategoryItem({
   title = "Сute pet looking for a home",
   price = null,
   id, 
-  setModal
+  setModal,
+  removeNotice,
+  changeFavorite
 }) {
   const user = useSelector(selectUser);
   // console.log(id);
-  // console.log(user.id);
-  // console.log(yourNotice);
+
   const yourNotice = Boolean(user.id === owner);
-  // console.log(yourNotice);
 
   const learnMoreHandler = () => {
     setModal();
@@ -40,6 +40,7 @@ export default function NoticeCategoryItem({
           <NoticeCategory>{ category}</NoticeCategory>
             <Favorite>
             <IconButton   
+              onClick={() => changeFavorite(id)} 
                sx={{
                 "--IconButton-size": "44px",
                  color: "currentColor" 
@@ -72,7 +73,7 @@ export default function NoticeCategoryItem({
           <ButtonLearn>
             Learn more
           </ButtonLearn>
-          <ButtonDelete>
+          <ButtonDelete onClick={() => removeNotice(id)}>
               Delete  
             <DeleteIcon fontSize="20px"
               sx={{

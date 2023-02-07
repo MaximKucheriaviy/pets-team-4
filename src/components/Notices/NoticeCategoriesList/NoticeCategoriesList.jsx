@@ -6,7 +6,7 @@ import NoticeCategoryItem from './NoticeCategoryItem/NoticeCategoryItem';
 import { ModalPetInfo } from '../../ModalPetInfo/ModalPetInfo';
 import { useState } from 'react';
 
-export default function NoticeCategoriesList({items}) {
+export default function NoticeCategoriesList({items, removeNotice, changeFavorite}) {
   const [modalData, setModalData] = useState(null);
 
   return (
@@ -30,7 +30,9 @@ export default function NoticeCategoriesList({items}) {
                 id={_id}
                 setModal={() => {
                   setModalData(item)
-                }}
+              }}
+              removeNotice={removeNotice}
+              changeFavorite={changeFavorite}
               />
           )
         })}
