@@ -9,12 +9,18 @@ import {
   ButtonThumb,
 } from "./ModalPetInfoStyled";
 import { createPortal } from "react-dom";
-import { ReactComponent as Heart }from "./assets/heart.svg"
+import { ReactComponent as Heart } from "./assets/heart.svg";
 import { ReactComponent as Cross } from "./assets/cross.svg";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getFavorites } from "../../services/apiNotices";
+import { useSelector } from "react-redux";
+import { addToFavorite, removeToFavorite } from "../../services/apiNotices";
+
 
 export const ModalPetInfo = ({ close, modalInfo }) => {
   const portalRoot = document.querySelector("#portalRoot");
+  const [isFavorite, setIsFavorite] = useState(false);
+  const token = useSelector((state) => state.auth.token);
   const {
     imageURL,
     category,
@@ -30,7 +36,7 @@ export const ModalPetInfo = ({ close, modalInfo }) => {
     comment,
     // favorite,
     // owner,
-    // _id,
+    _id,
   } = modalInfo;
 
   //   console.log(modalInfo);
@@ -53,6 +59,37 @@ export const ModalPetInfo = ({ close, modalInfo }) => {
       document.removeEventListener("keyup", keyEventHandler);
     };
   }, [close]);
+
+  useEffect(() => {
+    (async () => {
+      const favorites = await getFavorites(token);
+      if (favorites.some((item) => item._id === _id)) {
+        setIsFavorite(true);
+      } else {
+        setIsFavorite(false);
+      }
+    })().catch((err) => {
+      console.log(err);
+    });
+  }, [_id, token]);
+
+  const addfavoriteHandler = async () => {
+    try {
+      await addToFavorite(token, _id);
+      setIsFavorite(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const removeFavoriteHandler = async () => {
+    try {
+      await removeToFavorite(token, _id);
+      setIsFavorite(false);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return createPortal(
     <Backdrop onClick={closeHandler}>
@@ -115,11 +152,33 @@ export const ModalPetInfo = ({ close, modalInfo }) => {
           <a className="modalButton" href={`tel:${phone}`}>
             Contact
           </a>
-          <button className="modalButton favoriteButton" type="button">
-            Add to <Heart style={{
-              marginLeft: "5px"
-            }}/>
-          </button>
+          {isFavorite ? (
+            <button
+              className="modalButton favoriteButton"
+              type="button"
+              onClick={removeFavoriteHandler}
+            >
+              Remove from{" "}
+              <Heart
+                style={{
+                  marginLeft: "5px",
+                }}
+              />
+            </button>
+          ) : (
+            <button
+              className="modalButton favoriteButton"
+              type="button"
+              onClick={addfavoriteHandler}
+            >
+              Add to{" "}
+              <Heart
+                style={{
+                  marginLeft: "5px",
+                }}
+              />
+            </button>
+          )}
         </ButtonThumb>
       </Modal>
     </Backdrop>,
