@@ -3,9 +3,9 @@ import {
   BtnAddPet,
   IconAddPet,
   TextAddPet,
-} from "./AddNoticeModal.styled";
+} from "./AddNoticeButton.styled";
 
-export const AddNoticeModal = ({ handleOpen }) => {
+export const AddNoticeButton = ({ handleOpen }) => {
   return (
     <BoxAddPet>
       <TextAddPet>Add Pet</TextAddPet>

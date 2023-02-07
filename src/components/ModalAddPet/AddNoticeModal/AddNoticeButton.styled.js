@@ -4,11 +4,16 @@ import {
   Box,
   Button,
   Typography,
+  IconButton
 } from "@mui/material";
 
 export const BoxAddPet = styled(Box)`
-    display: flex;
-    align-items: center;
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      display: flex;
+      align-items: center;
+    }
 `;
 
 export const BtnAddPet = styled(Button)`
@@ -29,6 +34,33 @@ export const BtnAddPet = styled(Button)`
   }
 `;
 
+export const BtnAddPetMob = styled(IconButton)`
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  background-color: #F59256;
+  color: white;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  position: fixed;
+  z-index: 20;
+  box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.2);
+  right: 20px;
+  bottom: 80px;
+
+  /* @media screen and (min-width: 550px) {
+    right: 80px;
+  } */
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`;
+
 export const TextAddPet = styled(Typography)`
   font-family: 'Manrope';
   font-weight: 500;
@@ -38,7 +70,13 @@ export const TextAddPet = styled(Typography)`
 `;
 
 export const IconAddPet = styled(AiOutlinePlus)`
-  width: 25px;
-  height: 25px;
+  
+  width: 32px;
+  height: 32px;
   color: white;
+
+  @media screen and (min-width: 768px) {
+    width: 25px;
+    height: 25px;
+  }
 `;

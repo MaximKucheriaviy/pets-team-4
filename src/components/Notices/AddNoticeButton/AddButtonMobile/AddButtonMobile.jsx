@@ -3,10 +3,10 @@ import AddIcon from "@mui/icons-material/Add";
 import { IconButton } from "@mui/material";
 import { StyledAddNotice, Wrapper } from "./AddButtonMobile.styled";
 
-export default function AddButtonMobile() {
+export default function AddButtonMobile({ handleOpen }) {
   return (
     <Wrapper>
-      <StyledAddNotice>
+      <StyledAddNotice >
         <IconButton
           sx={{
             display: "flex",

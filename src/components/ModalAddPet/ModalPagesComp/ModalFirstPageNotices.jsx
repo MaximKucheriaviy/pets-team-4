@@ -30,22 +30,23 @@ export function FirstPageAddPet({
   const titleTextRef = useRef(null);
   const theme = useTheme();
 
-  const { category, title, name, date_birth, breed } = formik.values;
+  const { category, title, name, birthdate, breed } = formik.values;
   const { handleChange, setFieldValue } = formik;
 
   const handleErrorTitle = () => {
-    if (title.length < 1) {
+    if (title.length < 2) {
       return (titleTextRef.current.textContent = "Write title*");
     }
     handleOpenSecond();
   };
+
   return (
     <ModalBox>
       <BtnModalClose type="button" onClick={closeModal}>
         <IconModalClose />
       </BtnModalClose>
       <FlexBox>
-        <Title>Add pet</Title>
+      <Title>Add pet</Title>
         <SubtitleText>
           Publish your advertisement <br /> Filling the fields.
         </SubtitleText>
@@ -95,7 +96,7 @@ export function FirstPageAddPet({
                       }
                     : { background: `${theme.colors.white}` }
                 }
-                onClick={(e) => {
+                onClick={() => {
                   setFieldValue("category", "sell");
                 }}
               >
@@ -108,7 +109,7 @@ export function FirstPageAddPet({
           <LabelText htmlFor="title">Tittle of ad*:</LabelText>
           <ErrorTextFields
             ref={titleTextRef}
-            hidden={title.length >= 1}
+            hidden={title.length > 1}
           ></ErrorTextFields>
           <InputAddPet
             type="text"
@@ -128,13 +129,14 @@ export function FirstPageAddPet({
             onChange={handleChange}
             value={name}
           />
-          <LabelText htmlFor="date_birth">Date of birth:</LabelText>
+          <LabelText htmlFor="birthdate">Date of birth:</LabelText>
           <InputAddPet
-            id="date_birth"
-            name="date_birth"
-            type="date"
+            id="birthdate"
+            name="birthdate"
+            type="text"
+            placeholder="DD.MM.YYYY"
             onChange={handleChange}
-            value={date_birth}
+            value={birthdate}
           />
           <LabelText htmlFor="breed">Breed:</LabelText>
           <InputAddPet
