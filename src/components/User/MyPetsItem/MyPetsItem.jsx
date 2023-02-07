@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // import defaultimg from './'
 
 import { PetsContainerStyled } from './MyPetsItemStyled'
@@ -40,22 +40,20 @@ const MyPets = ({ id, img=DefaultAvatar, name="default", data='01.01.1900', bree
                 {/* <p>
                     {owner}
                 </p> */}
-            </div>
-        </PetsContainerStyled>
-    )
-}
-
+      </div>
+    </PetsContainerStyled>
+  );
+};
 
 MyPets.propTypes = {
-    // id: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    data: PropTypes.string.isRequired,
-    breed: PropTypes.string.isRequired,
-    comments: PropTypes.string.isRequired,
-    // owner: PropTypes.string.isRequired,
-    // deletePet: PropTypes.string.isRequired,
-
-}
+  // id: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
+  breed: PropTypes.string.isRequired,
+  comments: PropTypes.string.isRequired,
+  // owner: PropTypes.string.isRequired,
+  // deletePet: PropTypes.string.isRequired,
+};
 
 export default MyPets;
