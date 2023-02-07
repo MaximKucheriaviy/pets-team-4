@@ -88,7 +88,7 @@ export default function NoticeCategoryItem({
             </ContainerInfo>
         </InfoWrapper>  
         
-        {yourNotice  ? <ButtonWrapper>
+        {yourNotice  ? (<ButtonWrapper>
           <ButtonLearn>
             Learn more
           </ButtonLearn>
