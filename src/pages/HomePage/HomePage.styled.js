@@ -204,3 +204,14 @@ export const ContentImg = styled.div`
 
 
 
+export const Containers = styled.div`
+    padding: 0px 20px 0 20px; 
+    background-color: ${({ theme }) => theme.colors.background};
+    @media screen and (min-width: 768px) {
+        padding: 0px 32px 0 32px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        padding: 0px 16px 0 16px;
+    }
+`;

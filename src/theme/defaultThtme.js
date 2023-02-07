@@ -17,9 +17,9 @@ export const darkTheme = {
         accent: "#F59256",
         background: "#111111",
         black: 'white',
-        gray: 'rgba(1, 1, 1, 0.6)',
+        gray: 'white',
         blueLinks: '#3091EB',
-        white: '#FFFFFF',
+        white: 'black',
         adaptive: "#181C27"
      
     }

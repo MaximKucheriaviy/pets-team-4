@@ -116,6 +116,7 @@ margin-top: -25px;
 
     p{
         margin-left: 8px;
+        color:${({ theme }) => theme.colors.gray};
     }
 }
 

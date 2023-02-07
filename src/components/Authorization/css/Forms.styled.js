@@ -38,6 +38,7 @@ export const Title = styled.h2`
   font-weight: 500;
   font-size: 36px;
   line-height: 49px;
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const Item = styled.div`
@@ -51,7 +52,7 @@ export const Input = styled(Field)`
   padding-left: 32px;
   padding-right: 32px;
 
-  background: ${({ theme }) => theme.colors.background};
+  background: #FDF7F2;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
 
@@ -88,7 +89,7 @@ export const Button = styled.button`
 
   border: 2px solid ${({ theme }) => theme.colors.accent};
   border-radius: 40px;
-
+cursor:pointer;
   font-family: "Manrope";
   font-style: normal;
   font-weight: 500;

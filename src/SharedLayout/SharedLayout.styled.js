@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
-    padding: 16px 20px 0 20px; 
+    padding: 16px 20px 30px 20px; 
     background-color: ${({ theme }) => theme.colors.background};
     @media screen and (min-width: 768px) {
-        padding: 24px 32px 0 32px;
+        padding: 24px 32px 30px 32px;
     }
 
     @media screen and (min-width: 1280px) {
-        padding: 20px 16px 0 16px;
+        padding: 20px 16px 40px 16px;
     }
 `;
 

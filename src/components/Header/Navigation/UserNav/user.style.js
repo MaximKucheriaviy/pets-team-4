@@ -40,7 +40,7 @@ export const Account = styled.span`
 font-family: Manrope;
 letter-spacing: 0.04em;
 
-color: ${({ theme }) => theme.colors.white};
+color: white;
 
 font-weight: 500;
 font-size: 16px;

@@ -64,7 +64,7 @@ export const Wrap = styled.div`
 export const Date = styled.span`
   font-family: "Manrope";
   line-height: 1.37;
-  color: rgba(17, 17, 17, 0.6);
+  color: ${({ theme }) => theme.colors.gray};
   background-color: ${({ theme }) => theme.colors.background};
 `;
 

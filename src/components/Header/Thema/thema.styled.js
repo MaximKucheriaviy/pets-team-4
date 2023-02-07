@@ -6,7 +6,7 @@ export const Btn = styled.button`
 padding: 0;
   border: 0;
   font: inherit;
-  color: inherit;
+  fill: ${({ theme }) => theme.colors.black};
   background-color: transparent;
  
 
@@ -29,7 +29,7 @@ export const BtnT = styled.button`
 padding: 0;
   border: 0;
   font: inherit;
-  color: inherit;
+  fill:  ${({ theme }) => theme.colors.black};
   background-color: transparent;
  
 
@@ -46,7 +46,7 @@ padding: 0;
  
 `;
 export const Box = styled.div`
-background-color: white;
+background-color: ${({ theme }) => theme.colors.white};
 padding: 8.5px 15px;
   border: 2px #F59256 solid;
   border-radius: 40px;
