@@ -15,7 +15,7 @@ export const Backdrop = styled.div`
 
 export const Modal = styled.div`
   position: absolute;
-  /* top: 50%; */
+  top: 10%;
   left: 50%;
 
   transform: translate(-50%);
@@ -29,6 +29,12 @@ export const Modal = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
   & h3 {
     margin-bottom: 16px;
 
@@ -38,6 +44,11 @@ export const Modal = styled.div`
     font-size: 24px;
     line-height: 33px;
     letter-spacing: -0.01em;
+
+    @media screen and (min-width: 768px) {
+      width: 321px;
+      font-size: 28px;
+    }
   }
   & table {
     transform: translate(-3px);
@@ -70,6 +81,12 @@ export const Modal = styled.div`
 
     background-color: #8b8b8b;
     overflow: hidden;
+
+    @media screen and (min-width: 768px) {
+      margin: 0px;
+      width: 288px;
+      height: 328px;
+    }
 
     & .typeLable {
       position: absolute;
@@ -116,12 +133,13 @@ export const Modal = styled.div`
     font-weight: 500;
     font-size: 16px;
     line-height: 22px;
+
+    @media screen and (min-width: 768px) {
+      width: 160px;
+    }
   }
 
   & a {
-    margin-top: 40px;
-    margin-bottom: 12px;
-
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.accent};
     text-decoration: none;
@@ -144,6 +162,10 @@ export const Key = styled.td`
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 export const Value = styled.td`
@@ -154,6 +176,9 @@ export const Value = styled.td`
   font-weight: 500;
   font-size: 14px;
   line-height: 19px;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 export const CloseButton = styled.button`
@@ -162,18 +187,44 @@ export const CloseButton = styled.button`
   right: 23px;
   width: 28px;
   height: 28px;
-
   background-color: transparent;
   border: none;
 `;
 
 export const Coment = styled.p`
   margin-top: 28px;
+
   & span {
     font-family: "Manrope";
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 19px;
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+`;
+
+export const SuppurtThumb = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+  }
+`;
+
+export const ButtonThumb = styled.div`
+  margin-top: 40px;
+  margin-bottom: 12px;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: right;
+    gap: 12px;
+    margin-top: 32px;
+    margin-bottom: 0;
   }
 `;

@@ -1,15 +1,14 @@
-import { useDispatch, useSelector  } from "react-redux";
-import { setDefaultThema, setDarkThema
- } from "../../../redux/thema/themaSlice";
-import { Btn, Box, BtnT } from "./thema.styled";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setDefaultThema, setDarkThema} from "../../../redux/thema/themaSlice";
+import { Btn, Box, BtnT } from "./thema.styled.js";
+
 
 
 export const Thema = () => {
 
-    const [contacts, setContacts] = useState(
-        () => (window.localStorage.getItem("LS_KEY")) ?? ""
-      );
+    // const [contacts, setContacts] = useState(
+    //     () => (window.localStorage.getItem("LS_KEY")) ?? ""
+    //   );
 const dispatch = useDispatch()
 
 

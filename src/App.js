@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { SelectIsLoadingUserStatus } from "./redux/auth/autSelectors";
 import { current } from "./redux/auth/auth-operation";
 import { selectToken } from "./redux/auth/autSelectors";
+import Loader from "./components/Loader/Loader";
 
 const Home = lazy(() =>
   import("./pages/HomePage/HomePage")
@@ -53,7 +54,8 @@ function App() {
   return (
     <>
       {isLoadingUser ? (
-        <p>....Loading</p>
+        // <p>....Loading</p>
+        <Loader />
       ) : (
         <Suspense>
           <Routes>
