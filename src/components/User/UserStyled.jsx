@@ -101,7 +101,7 @@ padding-left: 17px;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.38;
-
+cursor: pointer;
     color: rgba(17, 17, 17, 0.6);
 
     @media screen and (min-width:768px) {
