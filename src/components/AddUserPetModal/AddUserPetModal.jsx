@@ -1,8 +1,9 @@
-import { useState, useRef } from "react";
-import { Formik, ErrorMessage } from "formik";
+import { useState, useRef, useEffect } from "react";
+import { Formik } from "formik";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { PhotoPreview } from "./FileReader";
+import { createPortal } from "react-dom";
 import {
   FormBox,
   FormTitle,
@@ -10,7 +11,6 @@ import {
   FormInput,
   FormButton,
   FormTextArea,
-  FileInput,
   InputLabelFile,
   HiddenInput,
   PlusIcon,
@@ -19,24 +19,20 @@ import {
   CloseButton,
   CloseIcon,
   ErrorNotification,
-  FileInputBox,
   Ovarlay,
 } from "./AddUserPetModal.styled";
 
-// const schema = yup.object().shape({
-//   name: yup.string().required("Name is required"),
-//   date: yup.date().required(),
-//   breed: yup.string().required(),
-//   photo: yup.mixed().required("Image is required"),
-//   comment: yup.string().required(),
-// });
+const modalRoot = document.getElementById("portalRoot");
 
-export default function AddUserPetModal() {
+export default function AddUserPetModal({ onClose }) {
   const [nextStep, setNextStep] = useState(false);
-  // const [commentText, setCommentText] = useState("");
-  // const handleChange = ({ target: { value } }) => {
-  //   setCommentText(value);
-  // };
+  useEffect(() => {
+    window.addEventListener("keydown", closeModal);
+
+    return () => {
+      window.removeEventListener("keydown", closeModal);
+    };
+  });
 
   const fileRef = useRef(null);
 
@@ -61,20 +57,14 @@ export default function AddUserPetModal() {
     }),
   });
 
-  // const initialValues = {
-  //   name: "",
-  //   date: "",
-  //   breed: "",
-  //   photo: "",
-  //   comment: "",
-  // };
+  const closeModal = ({ target, currentTarget, code }) => {
+    if (target === currentTarget || code === "Escape") {
+      onClose();
+    }
+  };
 
-  // const handleSubmit = (values, { resetForm }) => {
-  //   console.log({ ...values, commentText });
-  //   resetForm();
-  // };
-  return (
-    <Ovarlay>
+  return createPortal(
+    <Ovarlay onClick={closeModal}>
       <Formik
         initialValues={formik.initialValues}
         onSubmit={formik.handleSubmit}
@@ -138,7 +128,6 @@ export default function AddUserPetModal() {
 
               <HiddenInput>
                 <input
-                  // value={formik.values.photo}
                   onChange={(e) => {
                     formik.setFieldValue("photo", e.target.files[0]);
                   }}
@@ -192,7 +181,11 @@ export default function AddUserPetModal() {
                 Next
               </FormButton>
             )}
-            {!nextStep && <FormButton type="button">Cancel</FormButton>}
+            {!nextStep && (
+              <FormButton type="button" onClick={closeModal}>
+                Cancel
+              </FormButton>
+            )}
             {nextStep && <FormButton type="submit">Done</FormButton>}
             {nextStep && (
               <FormButton
@@ -203,11 +196,12 @@ export default function AddUserPetModal() {
               </FormButton>
             )}
           </ButtonWrapper>
-          <CloseButton type="button">
-            <CloseIcon />
+          <CloseButton type="button" onClick={closeModal}>
+            <CloseIcon onClick={closeModal} />
           </CloseButton>
         </FormBox>
       </Formik>
-    </Ovarlay>
+    </Ovarlay>,
+    modalRoot
   );
 }
