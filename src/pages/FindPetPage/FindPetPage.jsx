@@ -6,7 +6,7 @@ import NoticeCategoriesList from "../../components/Notices/NoticeCategoriesList/
 import NoticesCategoriesNav from "../../components/Notices/NoticesCategoriesNav/NoticesCategoriesNav";
 import { Wrapper } from "./FindPetPage.styled";
 
-import { addToFavorite, getFavorites, getNoticesByCategory, getOwnerNotise, removeFromFavorite, removeNoticeById } from "../../services/apiNotices";
+import { addToFavorite, getFavorites, getNoticesByCategory, getOwnerNotise, removeNoticeById } from "../../services/apiNotices";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -34,7 +34,7 @@ import NoticesSearch from "../../components/NoticesSearch/NoticesSearch";
 
 export default function FindPetPage() {
 const [notices, setNotices] = useState([]);
-const [error, setError] = useState(null);
+const [, setError] = useState(null);
 const [isLoading, setIsLoading] = useState(false);
   const [favoriteId, setFavoriteId] = useState([]);
 const [noticeId, setNoticeId] = useState("")
@@ -107,7 +107,7 @@ const location = useLocation();
           setIsLoading(false);
         }
       })();
-    }, [ favoriteId]);
+    }, [token, favoriteId]);
 
   // useParams();
   // const {title } = useParams();
@@ -130,7 +130,7 @@ const location = useLocation();
           setIsLoading(false);
         }
       })();
-    }, [ noticeId]);
+    }, [token, noticeId]);
 
   const changeInFavoriteNotices = ( id) => {
     //     if (inFavorites(id)) {

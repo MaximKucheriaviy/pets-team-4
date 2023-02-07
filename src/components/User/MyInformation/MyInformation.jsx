@@ -1,9 +1,8 @@
 // import PropTypes from 'prop-types';
 import {UserIcons} from '../UserIcons/UserIcons'
 
-import { MyInform, MyInformItem } from "./MyInformationStyled";
+import { MyInform } from "./MyInformationStyled";
 
-import { MyInform } from './MyInformationStyled';
 import MyInformationTabl from './MyInformationTabl';
 
 export default function MyInformation({users}) {
