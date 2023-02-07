@@ -59,6 +59,9 @@ background-color: ${({ theme }) => theme.colors.background};
    align-items: flex-start;
    justify-content: center;
 }
+@media (max-width: 767px){
+  height: calc(100vh - 74px);
+}
 `
 
 export const Title = styled.h3`
@@ -80,10 +83,9 @@ color: ${({ theme }) => theme.colors.black};
 
 @media (max-width: 1279px){
 
+    position: absolute;
     margin-right: 32px;
     margin-top: 88px;
-    position: absolute;
-    margin-top: 160px;
     margin-bottom:0;
 
     width: 588px;
@@ -92,10 +94,13 @@ color: ${({ theme }) => theme.colors.black};
     font-weight: 700;
     line-height: 1,47;
     text-align: left;
+    z-index: 4;
+    background: rgba(253, 247, 242, 0.5)
+
 
 }
 
-@media (max-width: 768px){
+@media (max-width: 767px){
     position: absolute;
     margin-left: auto;
     margin-right: auto;
@@ -163,7 +168,7 @@ animation: ${backgroundMove} 5s ease-in-out infinite;
 
 }
 
-@media (max-width: 768px){
+@media (max-width: 767px){
 display: flex;
 /* margin-top: 87px; */
 /* bottom: 0; */
@@ -189,7 +194,7 @@ export const ContentImg = styled.div`
     background-repeat: no-repeat;
     z-index: 3;
     }
-    @media (max-width: 768px){
+    @media (max-width: 767px){
     position: absolute;
     bottom: 0;
     background-image: url(${Image});
