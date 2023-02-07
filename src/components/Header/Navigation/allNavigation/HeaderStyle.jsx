@@ -53,7 +53,7 @@ export const Boxs = styled.div`
     left: 0;
     bottom: 0;
 
-    background-color: #fdf7f2;
+    background-color: ${({ theme }) => theme.colors.background};
     z-index: 99;
    
     transition: 0.3s all ease-in-out;

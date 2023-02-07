@@ -8,7 +8,7 @@ import { ReactComponent as Cross } from "./Svg/close.svg";
 import { UserNav } from "../UserNav/UserNav";
 import { useAuth } from "../../../../shared/useAuth/useAuth"
 import {Btn, Box, LogoBox, LogoBtn, Boxs}  from "./HeaderStyle.jsx"
-
+import { Thema } from "../../Thema/thema"
 export  function NavigationTablet() {
   const isLogin = useAuth();
     const [isOpen, setIsOpen] = useState(false);
@@ -35,9 +35,12 @@ export  function NavigationTablet() {
 			<Box>
 				<LogoBox>
 					<Logo setIsOpen={setIsOpen} />
+					
 				</LogoBox>
+				
 				<LogoBtn>
-				  {!isOpen && (isLogin ? <UserNav  /> : <AuthNav setIsOpen={setIsOpen} />)}
+				<Thema/>
+				  {!isOpen && (isLogin  	 ? <UserNav  /> : <AuthNav setIsOpen={setIsOpen} /> )}
 					
 					{isOpen ? (
 						<>
@@ -79,7 +82,7 @@ export  function NavigationTablet() {
 			  
 				<Nav setIsOpen={setIsOpen} CloseModal={toggleMenu } />
 		
-				
+			
 			 
 			  </Boxs>
 		  

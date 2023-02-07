@@ -75,7 +75,7 @@ export const SponsorCard = styled.li`
     margin-bottom: 32px;
     width: 336px;
     height: 246px;
-    background: #ffffff;
+   
     box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
     border-radius: 40px;
     :hover {
@@ -86,7 +86,7 @@ export const SponsorCard = styled.li`
   @media (max-width: 768px) {
     width: 280px;
     height: 192px;
-    background-color: #ffffff;
+  
     border-radius: 20px;
     border: none;
     margin-bottom: 12px;

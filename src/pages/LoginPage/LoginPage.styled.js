@@ -12,7 +12,7 @@ export const Box = styled.div`
   position: absolute;
   overflow: hidden;
 
-  background-color: #fdf7f2;
+  background-color: ${({ theme }) => theme.colors.background};
   background-image: url(${BGdesk});
   background-size: contain;
   background-repeat: no-repeat;

@@ -1,3 +1,4 @@
+
 export const defaultTheme = {
   
     colors: {
@@ -15,11 +16,12 @@ export const darkTheme = {
     colors: {
         accent: "#F59256",
         background: "#111111",
-        black: 'rgba(1, 1, 1, 0.6)',
-        gray: 'rgba(1, 1, 1, 0.6)',
+        black: 'white',
+        gray: 'white',
         blueLinks: '#3091EB',
-        white: '#FFFFFF',
+        white: 'black',
         adaptive: "#181C27"
      
     }
 }
+

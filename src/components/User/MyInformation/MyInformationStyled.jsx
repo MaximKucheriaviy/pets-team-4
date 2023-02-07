@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "styled-components";
 
 export const MyInform = styled.div`
 display: flex;
@@ -71,7 +71,7 @@ line-height: 1.83;
     width: 20px;
     height: 20px;
 }
-}
+
 
 .user-tabl{
     width: 100%;
@@ -83,7 +83,7 @@ line-height: 1.83;
     font-size: 12px;
     line-height: 1.33;
 
-    color: #111111;
+    color: ${({ theme }) => theme.colors.black};
 
     @media screen and (min-width:768px) {
         font-size: 18px;

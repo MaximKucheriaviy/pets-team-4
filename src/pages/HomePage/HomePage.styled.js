@@ -50,7 +50,7 @@ height: calc(100vh - 88px);
 
 flex-direction: column;
 align-items: center;
-background-color:#FDF7F2;
+background-color: ${({ theme }) => theme.colors.background};
 
 @media (min-width: 1280px) {
    width: 1280px;
@@ -63,7 +63,7 @@ background-color:#FDF7F2;
 
 export const Title = styled.h3`
 font-family: Manrope;
-color: #000000;
+color: ${({ theme }) => theme.colors.black};
 
 @media (min-width: 1280px){
   position: absolute;
@@ -204,3 +204,14 @@ export const ContentImg = styled.div`
 
 
 
+export const Containers = styled.div`
+    padding: 0px 20px 0 20px; 
+    background-color: ${({ theme }) => theme.colors.background};
+    @media screen and (min-width: 768px) {
+        padding: 0px 32px 0 32px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        padding: 0px 16px 0 16px;
+    }
+`;

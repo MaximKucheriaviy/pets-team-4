@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 export const Header = styled.header`
-
+background-color: ${({ theme }) => theme.colors.background};
   display: flex;
   align-items: center;
   justify-content: space-between;

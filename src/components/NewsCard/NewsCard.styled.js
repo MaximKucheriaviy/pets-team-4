@@ -48,6 +48,7 @@ export const Text = styled.p`
   margin-bottom: 40px;
   height: 154px;
   font-family: "Manrope";
+  background-color: ${({ theme }) => theme.colors.background};
   line-height: 1.37;
   color: ${({ theme }) => theme.colors.black};
   overflow: hidden;
@@ -56,13 +57,15 @@ export const Text = styled.p`
 export const Wrap = styled.div`
   display: flex;
   align-items: center;
+  background-color: ${({ theme }) => theme.colors.background};
   justify-content: space-between;
 `;
 
 export const Date = styled.span`
   font-family: "Manrope";
   line-height: 1.37;
-  color: rgba(17, 17, 17, 0.6);
+  color: ${({ theme }) => theme.colors.gray};
+  background-color: ${({ theme }) => theme.colors.background};
 `;
 
 export const Link = styled.a`

@@ -1,5 +1,4 @@
-import styled from '@emotion/styled';
-
+import styled from "styled-components";
 export const PetsHederStyled = styled.div`
 display: flex;
     justify-content: space-between;
@@ -13,7 +12,7 @@ font-weight: 500;
 font-size: 20px;
 line-height: 1.35;
 
-color: #000000;
+color: ${({ theme }) => theme.colors.black};
 
 @media screen and (min-width:768px) {
 padding-left: 0px;
@@ -34,7 +33,7 @@ font-weight: 500;
 font-size: 20px;
 line-height: 1.35;
 
-color: #000000;
+color: ${({ theme }) => theme.colors.black};
 
 @media screen and (min-width:768px) {
 padding-left: 32px;

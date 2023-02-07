@@ -7,7 +7,7 @@ import { ReactComponent as Strips } from './Svg/burger.svg';
 import { ReactComponent as Cross } from "./Svg/close.svg";
 import {Btn, Box, Boxs}  from "./HeaderStyle.jsx"
 import { UserNav } from "../UserNav/UserNav";
-
+import { Thema } from "../../Thema/thema"
 
 import { useAuth } from "../../../../shared/useAuth/useAuth"
 
@@ -76,7 +76,7 @@ export function NavigationMobile() {
 			  
 			  <Nav setIsOpen={setIsOpen} CloseModal={toggleMenu } />
 
-			
+			  <Thema/>
 					{isLogin ? (
 					<UserNav setIsOpen={setIsOpen} CloseModal={toggleMenu} />
 				) : (
