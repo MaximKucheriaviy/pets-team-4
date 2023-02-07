@@ -4,7 +4,15 @@ import AddButtonMobile from "./AddButtonMobile/AddButtonMobile";
 import AddButtonNotMobile from "./AddButtonNotMobile/AddButtonNotMobile";
 // import { ModalContainer } from "../../ModalAddPet/ModalContainer";
 
-export default function AddNoticeButton() {
+export default function AddNoticeButton({ handleOpen }) {
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-  return <>{isMobile ? <AddButtonMobile /> : <AddButtonNotMobile />}</>;
+  return (
+    <>
+      {isMobile ? (
+        <AddButtonMobile handleOpen={handleOpen} />
+      ) : (
+        <AddButtonNotMobile handleOpen={handleOpen} />
+      )}
+    </>
+  );
 }

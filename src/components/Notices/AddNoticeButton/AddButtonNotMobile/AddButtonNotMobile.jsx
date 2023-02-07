@@ -7,11 +7,11 @@ import {
 } from "./AddButtonNotMobile.styled";
 import AddIcon from "@mui/icons-material/Add";
 
-export default function AddButtonNotMobile() {
+export default function AddButtonNotMobile({ handleOpen }) {
   return (
     <StyledAddNotice>
       <Title>Add pet</Title>
-      <IconButtonWrapper>
+      <IconButtonWrapper onClick={handleOpen}>
         <IconButton
           sx={{
             color: "white",

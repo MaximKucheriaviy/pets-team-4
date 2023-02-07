@@ -1,24 +1,47 @@
 import * as yup from "yup";
+import axios from "axios";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { store } from "../../../redux/store";
 
 const SUPORTED_FORMAT = ["image/jpg", "image/jpeg", "image/png"];
+
+// axios.defaults.baseURL = "https://petse-server-team4.onrender.com";
+
+// const config = {
+//   headers: { Authorization: `${store.getState().auth.token}` },
+// };
+
+const postedNoticePet = async (info) => {
+  try {
+    return axios({
+      method: "post",
+      // baseURL: "http://localhost:3001",
+      url: "/api/notices",
+      data: info,
+      headers: { "Authorization": `${store.getState().auth.token}` },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const form = {
   initialValues: {
     category: "sell",
     title: "",
     name: "",
-    date_birth: "",
+    birthdate: "",
     breed: "",
     sex: "",
     price: "",
-    photo: "",
+    petImage: "",
     comment: "",
-    location: "",
+    place: "",
   },
 
-  onSubmit: async (values, { resetForm }) => {
-    await setTimeout(() => {
+  onSubmit: (values, { resetForm }) => {
+    postedNoticePet(values);
+    setTimeout(() => {
       resetForm();
     }, 300);
     Notify.success("Posted!");
@@ -29,7 +52,7 @@ export const form = {
     category: yup.string().required("Choose category"),
     title: yup.string().required("Write the title"),
     name: yup.string(),
-    date_birth: yup.date().when("category", {
+    birthdate: yup.date().when("category", {
       is: "sell",
       then: yup.date(),
     }),
@@ -39,8 +62,8 @@ export const form = {
       is: "sell",
       then: yup.string().required("Enter price"),
     }),
-    location: yup.string().required("Enter your location"),
-    imageURL: yup
+    place: yup.string().required("Enter your location"),
+    petImage: yup
       .mixed()
       .nullable()
       .test(

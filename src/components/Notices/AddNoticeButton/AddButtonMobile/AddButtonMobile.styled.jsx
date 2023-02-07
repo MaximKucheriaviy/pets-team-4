@@ -5,22 +5,22 @@ export const Wrapper = styled.div`
   z-index: 10;
 `;
 
-export const StyledAddNotice = styled.div`
-    position: fixed;
-    right: 20px;
-    top: 455px;
+export const StyledAddNotice = styled.button`
+  position: fixed;
+  right: 20px;
+  top: 455px;
 
-    opacity: 0.6;
+  opacity: 0.6;
 
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
 
-    backdrop-filter: blur(2px);
-    border-radius: 45px;
-    color: #FFFFFF;
+  backdrop-filter: blur(2px);
+  border-radius: 45px;
+  color: #ffffff;
 
-    &:hover {
-     background-color: #ff6101;
-     opacity: 1;
-    }
+  &:hover {
+    background-color: #ff6101;
+    opacity: 1;
+  }
 `;

@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const SponsorContainer = styled.div`
-  display: flex;
-  margin: 0 auto;
-  @media (min-width: 1280px) {
+  font-family: "Manrope";
+  /* display: flex;
+  margin: 0 auto; */
+
+  /* @media (min-width: 1280px) {
     width: 1281px;
   }
 
@@ -14,10 +16,16 @@ export const SponsorContainer = styled.div`
   @media (min-width: 320px) and (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-  }
+  } */
 `;
 export const SponsorList = styled.ul`
-  @media (min-width: 1280px) {
+  margin-bottom: -12px;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -32px;
+  }
+  /* @media (min-width: 1280px) {
     width: 1246px;
     display: flex;
     flex-wrap: wrap;
@@ -28,11 +36,31 @@ export const SponsorList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
+  } */
 `;
 
 export const SponsorCard = styled.li`
-  @media (min-width: 1280px) {
+  height: 192px;
+  background: #ffffff;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  padding: 12px 0 12px 4px;
+  box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+  :hover {
+    box-shadow: 14px 8px 28px rgb(216, 216, 216);
+  }
+  @media screen and (min-width: 768px) {
+    height: 246px;
+    margin-bottom: 32px;
+    flex-basis: calc(100% / 2 - 32px);
+    margin-right: 32px;
+    border-radius: 40px;
+  }
+  @media screen and (min-width: 1280px) {
+    height: 287px;
+    flex-basis: calc(100% / 3 - 32px);
+  }
+  /* @media (min-width: 1280px) {
     margin-bottom: 32px;
     width: 397px;
     height: 287px;
@@ -52,8 +80,8 @@ export const SponsorCard = styled.li`
     border-radius: 40px;
     :hover {
       box-shadow: 14px 8px 28px rgb(216, 216, 216);
-    }
-  }
+    } */
+  /* }
 
   @media (max-width: 768px) {
     width: 280px;
@@ -66,14 +94,28 @@ export const SponsorCard = styled.li`
     :hover {
       box-shadow: 0px 0px 15px rgb(216, 216, 216);
     }
-  }
+  } */
 `;
 export const SponsorHeader = styled.h3`
-  font-family: "Manrope";
   font-weight: 700;
+  font-size: 12px;
+  line-height: 1.33;
+  align-items: center;
+  text-align: center;
+  text-decoration-line: underline;
   color: #f59256;
+  margin-bottom: 12px;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.37;
+    margin-bottom: 16px;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: 1.35;
+  }
 
-  @media (min-width: 1280px) {
+  /* @media (min-width: 1280px) {
     padding: 16px;
     font-size: 20px;
     line-height: 1.35;
@@ -96,11 +138,11 @@ export const SponsorHeader = styled.h3`
     font-size: 12px;
     text-decoration: underline solid #f59256;
     text-align: center;
-  }
+  } */
 `;
 
 export const SponsorLogoBox = styled.div`
-  @media (min-width: 1280px) {
+  /* @media (min-width: 1280px) {
     width: 45%;
     padding: 4px;
   }
@@ -111,12 +153,21 @@ export const SponsorLogoBox = styled.div`
   @media (max-width: 768px) {
     width: 45%;
     padding: 5px;
-  }
+  } */
 `;
 
 export const SponsorLogo = styled.img`
-  width: 100%;
-  height: auto;
+  width: 110px;
+  height: 78px;
+  margin-right: 10px;
+  @media screen and (min-width: 768px) {
+    width: 120px;
+    height: 85px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 158px;
+    height: 112px;
+  }
 `;
 
 export const SponsorInfo = styled.div`
@@ -126,6 +177,10 @@ export const SponsorInfo = styled.div`
 export const SponsorContacts = styled.div`
   overflow-x: auto;
   overflow-y: auto;
+  width: 100%;
+  justify-content: end;
+  text-align: left;
+  max-height: 140px;
   ::-webkit-scrollbar {
     width: 3px;
     background-color: #f1f1f1;
@@ -134,60 +189,61 @@ export const SponsorContacts = styled.div`
     border-radius: 10px;
     background-color: #f59256;
   }
-  @media (min-width: 1280px) {
+
+  @media screen and (min-width: 768px) {
+    max-height: 165px;
+  }
+  @media screen and (min-width: 1280px) {
+    max-height: 200px;
+  }
+  /* @media (min-width: 1280px) {
     width: 55%;
     justify-content: end;
     text-align: left;
     max-height: 188px;
-  }
-  @media (max-width: 1279px) {
+  } */
+  /* @media (max-width: 1279px) {
     width: 60%;
     justify-content: end;
     text-align: left;
     max-height: 175px;
-  }
-  @media (max-width: 768px) {
+  } */
+  /* @media (max-width: 768px) {
     width: 55%;
     justify-content: end;
     text-align: left;
     max-height: 144px;
-  }
+  }  */
 `;
 export const SponsorsContactsLink = styled.a`
   display: block;
   text-decoration: none;
   color: #000000;
-  font-family: "Manrope";
   font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  margin-bottom: 4px;
 
-  @media (min-width: 1280px) {
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
-
-  @media (max-width: 1279px) {
+  @media screen and (min-width: 768px) {
     font-size: 14px;
+    line-height: 1.35;
     margin-bottom: 8px;
   }
-  @media (max-width: 768px) {
-    font-size: 12px;
-    margin-bottom: 4px;
+  @media screen and (min-width: 1280px) {
+    font-size: 16px;
+    line-height: 1.37;
+    margin-bottom: 12px;
   }
-
   :last-child {
     margin-bottom: 0px;
   }
   :hover {
     color: #f59256;
     background: #ffffff;
-  }
-
-  &:hover .schedule {
-    display: block;
   }
 `;
 export const SponsorText = styled.p`
-  font-family: "Manrope";
+  /* font-family: "Manrope";
   font-weight: 500;
 
   @media (min-width: 1280px) {
@@ -210,8 +266,30 @@ export const SponsorText = styled.p`
   :hover {
     color: #f59256;
     background: #ffffff;
-  }
+  } */
+  color: #000000;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  margin-bottom: 4px;
 
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 16px;
+    line-height: 1.37;
+    margin-bottom: 12px;
+  }
+  :last-child {
+    margin-bottom: 0px;
+  }
+  :hover {
+    color: #f59256;
+    background: #ffffff;
+  }
   &:hover .schedule {
     display: block;
   }
@@ -230,3 +308,4 @@ export const ScheduleStyle = styled.div`
   border-radius: 8px;
   z-index: 5;
 `;
+

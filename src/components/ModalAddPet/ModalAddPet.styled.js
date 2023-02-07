@@ -71,10 +71,6 @@ export const SubtitleText = styled(Typography)`
 export const RadioBoxBtnSex = styled(Grid2)`
   margin-bottom: 32px;
 
-  &:hover, :focus {
-    color: #F59256;
-  }
-
   @media screen and (min-width: 768px) {
     margin-bottom: 40px;
   }
@@ -197,8 +193,17 @@ export const IconModalClose = styled(CloseIcon)`
   border-radius: 50%; 
   background-color: #FDF7F2;
   color: black;
-  width: 24px;
-  height: 24px;
+  width: 34px;
+  height: 34px;
+  transition: scale 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+  box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  &:focus, :hover {
+    /* scale: 1.1; */
+    box-shadow: 2px 2px 10px 1px rgb(0 0 0 / 15%),
+     0px 2px 2px 0px rgb(0 0 0 / 14%),
+     0px 1px 3px 0px rgb(0 0 0 / 12%);
+  }
 `;
 
 export const BtnUploadPhoto = styled(Button)`
@@ -223,6 +228,13 @@ export const BtnModalClose = styled(Button)`
   line-height: 0;
   margin-left: auto;
   padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+
+  &:focus, :hover {
+    background: none;
+  }
 `;
 
 export const ErrorTextFields = styled(Typography)`
@@ -235,4 +247,4 @@ export const ErrorTextFields = styled(Typography)`
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
-`
+`;

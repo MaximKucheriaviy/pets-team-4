@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import { PhotoPreview } from "../PhotoPreview";
+import { PhotoPreview } from "../PreviewPhoto/PhotoPreview";
 import { useTheme } from "styled-components";
 
 import {
@@ -46,7 +46,7 @@ export function SecondPagelAddPet({
     }
   };
 
-  const { sex, category, location, price, imageURL, comment } = formik.values;
+  const { sex, category, place, price, petImage, comment } = formik.values;
   const {
     handleChange,
     handleSubmit,
@@ -84,7 +84,6 @@ export function SecondPagelAddPet({
                     ? { color: `${theme.colors.accent}` }
                     : { background: `${theme.colors.white}` }
                 }
-                type="button"
                 onClick={(e) => {
                   setFieldValue("sex", "male");
                 }}
@@ -100,7 +99,6 @@ export function SecondPagelAddPet({
                     ? { color: `${theme.colors.accent}` }
                     : { background: `${theme.colors.white}` }
                 }
-                type="button"
                 onClick={(e) => {
                   setFieldValue("sex", "female");
                 }}
@@ -110,17 +108,17 @@ export function SecondPagelAddPet({
               </RadioBtnSex>
             </Grid2>
           </RadioBoxBtnSex>
-          <LabelText htmlFor="location">Location*:</LabelText>
-          {touched.location && errors.location ? (
-            <ErrorTextFields>{errors.location}*</ErrorTextFields>
+          <LabelText htmlFor="place">Location*:</LabelText>
+          {touched.place && errors.place ? (
+            <ErrorTextFields>{errors.place}*</ErrorTextFields>
           ) : null}
           <InputAddPet
             type="text"
-            id="location"
-            name="location"
+            id="place"
+            name="place"
             placeholder="Type Location"
             onChange={handleChange}
-            value={location}
+            value={place}
           />
           {category === "sell" && (
             <>
@@ -140,21 +138,23 @@ export function SecondPagelAddPet({
               />
             </>
           )}
-          <LabelText htmlFor="imageURL">Load the pet’s image:</LabelText>
-          {touched.imageURL && errors.imageURL ? (
-            <ErrorTextFields>{errors.imageURL}*</ErrorTextFields>
+          <LabelText htmlFor="petImage">Load the pet’s image:</LabelText>
+          {touched.petImage && errors.petImage ? (
+            <ErrorTextFields>{errors.petImage}*</ErrorTextFields>
           ) : null}
           <input
             hidden
             ref={fileRef}
-            id="imageURL"
+            id="petImage"
             type="file"
             onChange={(e) => {
-              setFieldValue("imageURL", e.target.files[0]);
+              // new FormData().set('petImage', e.target.files[0])
+              // console.log(new FormData())
+              setFieldValue('petImage', e.target.files[0]);
             }}
           />
-          {imageURL ? (
-            <PhotoPreview file={imageURL} />
+          {petImage ? (
+            <PhotoPreview file={petImage} />
           ) : (
             <BoxUploadPhoto>
               <BtnUploadPhoto
