@@ -8,7 +8,7 @@ import { AddNoticeButton } from "./AddNoticeModal/AddNoticeButton";
 import { form } from "./FormikSchema/FormikAddPet";
 import { FirstPageAddPet } from "./ModalPagesComp/ModalFirstPageNotices";
 import { SecondPagelAddPet } from "./ModalPagesComp/ModalSecondPagelNotices";
-// import AddNoticeButton from "../Notices/AddNoticeButton/AddNoticeButton";
+import { AddNoticeButtonMob } from "./AddNoticeModal/AddNoticeButtonMob";
 import { ModalNotAuth } from "../ModalNoticeNotAuth/ModalNotAuthNotice";
 
 export const ModalContainer = () => {
@@ -43,6 +43,7 @@ export const ModalContainer = () => {
       {isLogin ? (
         <>
           <AddNoticeButton handleOpen={handleOpen} />
+          <AddNoticeButtonMob handleOpen={handleOpen}/>
           <ModalForm
             open={open}
             onClose={handleClose}

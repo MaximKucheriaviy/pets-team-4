@@ -11,18 +11,18 @@ import {
   WraperBtnsPage,
   BoxUploadPhoto,
   InputAddPet,
-} from "../ModaAdd.styled";
-import {
-  BtnModalClose,
-  IconModalClose,
-  ModalBoxSecond,
-  BtnUploadPhoto,
-  IconAddPhoto,
-  ModalFormSecond,
-  FlexBox,
+  Title,
   BtnNextDone,
   BtnBackCancel,
-  Title,
+  IconModalClose,
+  BtnUploadPhoto,
+  IconAddPhoto,
+  BtnModalClose,
+  ModalBoxSecond,
+} from "../ModaAdd.styled";
+import {
+  ModalFormSecond,  
+  FlexBox,  
   RadioBoxBtnSex,
   IconMale,
   IconFemale,
@@ -74,7 +74,7 @@ export function SecondPagelAddPet({
           </Title>
           <LabelTextSex>The sex*:</LabelTextSex>
           {touched.sex && errors.sex ? (
-            <ErrorTextFields>{errors.sex}*</ErrorTextFields>
+            <ErrorTextFields>{errors.sex}</ErrorTextFields>
           ) : null}
           <RadioBoxBtnSex container spacing={1}>
             <Grid2>
@@ -110,7 +110,7 @@ export function SecondPagelAddPet({
           </RadioBoxBtnSex>
           <LabelText htmlFor="place">Location*:</LabelText>
           {touched.place && errors.place ? (
-            <ErrorTextFields>{errors.place}*</ErrorTextFields>
+            <ErrorTextFields>{errors.place}</ErrorTextFields>
           ) : null}
           <InputAddPet
             type="text"
@@ -124,7 +124,7 @@ export function SecondPagelAddPet({
             <>
               <LabelText>Price*:</LabelText>
               {touched.price && errors.price ? (
-                <ErrorTextFields>{errors.price}*</ErrorTextFields>
+                <ErrorTextFields>{errors.price}</ErrorTextFields>
               ) : null}
               <InputAddPet
                 color="primary"
@@ -140,7 +140,7 @@ export function SecondPagelAddPet({
           )}
           <LabelText htmlFor="petImage">Load the pet’s image:</LabelText>
           {touched.petImage && errors.petImage ? (
-            <ErrorTextFields>{errors.petImage}*</ErrorTextFields>
+            <ErrorTextFields>{errors.petImage}</ErrorTextFields>
           ) : null}
           <input
             hidden
@@ -168,6 +168,9 @@ export function SecondPagelAddPet({
           )}
 
           <LabelText htmlFor="comment">Comments:</LabelText>
+          {touched.petImage && errors.petImage ? (
+            <ErrorTextFields>{errors.petImage}</ErrorTextFields>
+          ) : null}
           <TextComment
             ref={refTextArea}
             rows={2}
