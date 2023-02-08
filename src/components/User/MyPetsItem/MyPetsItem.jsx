@@ -6,7 +6,7 @@ import {UserIcons} from '../UserIcons/UserIcons'
     const DefaultAvatar = 'https://pixabay.com/get/ge35962f200ea0ea7441289ecb0e39f1196ce1a91c141dd8be8eb77b52ea3b2870376e9653de67b3fd2446c6fda9120036ca62a25ccf170de170638fba75258ce_640.jpg';
 
 
-export default function  MyPets ({_id, avatarURL=DefaultAvatar, name="default", data, breed="default", comments="default", deletePet }) {
+export default function  MyPets ({_id, avatarURL, name="default", date, breed="default", comments="default", deletePet }) {
     
     // { id, img=DefaultAvatar, name="default", data='01.01.1900', breed="default", comments="default", owner, deletePet }
     // const { id, avatarURL, name, data, breed, comments, owner}=items
@@ -28,7 +28,7 @@ export default function  MyPets ({_id, avatarURL=DefaultAvatar, name="default", 
                     </button>
                 </div>
                 <p>
-                    <b>Date of birth: </b>{data}
+                    <b>Date of birth: </b>{date}
                 </p>
                 <p >
                     <b>Breed: </b>{breed}

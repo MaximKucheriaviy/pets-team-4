@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
-import AddUserPetModal from "../../AddUserPetModal/AddUserPetModal";
-import { useState } from "react";
+// import AddUserPetModal from "../../AddUserPetModal/AddUserPetModal";
+// import { useState } from "react";
 
 import { PetsHederStyled } from "./MyPetsListStyled";
 
@@ -28,9 +28,9 @@ export default function MyPetsList({ addPet, items, deletePet, setModalOpen }) {
           {items.map((item) => (
             <MyPets
                 key={item._id}
-                img={item.img}
+                avatarURL={item.avatarURL}
                 name={item.name}
-                data={item.data}
+                date={item.date}
                 breed={item.breed}
                 comments={item.comments}
                 deletePet={deletePet}
