@@ -9,6 +9,7 @@ import {
   SponsorLogo,
   ScheduleStyle,
   SponsorsContactsLink,
+  PlugText,
 } from "./SponsorsStyles";
 
 import { v4 as uuidv4 } from "uuid";
@@ -69,18 +70,19 @@ export const SponsorItem = ({
           />
         </SponsorLogoBox>
         <SponsorContacts>
-          <SponsorText>
-            Time:
-            <br />{" "}
-            <span
-              onClick={() =>
-                workDays ? setShowModal(true) : setShowModal(false)
-              }
-            >
-              {" "}
-              {time}{" "}
-            </span>
-          </SponsorText>
+          {workDays ? (
+            <SponsorText>
+              Time:
+              <br />
+              <span onClick={() => setShowModal(true)}>{time}</span>
+            </SponsorText>
+          ) : (
+            <PlugText>
+              Time:
+              <br />
+              <span onClick={() => setShowModal(false)}>{time}</span>
+            </PlugText>
+          )}
           {showModal && workDays && (
             <ScheduleStyle>
               <Schedule
@@ -100,24 +102,24 @@ export const SponsorItem = ({
               <span>{address}</span>
             </SponsorsContactsLink>
           ) : (
-            <SponsorText>
+            <PlugText>
               Addres:
               <br />
               <span>----------------------------------</span>
-            </SponsorText>
+            </PlugText>
           )}
           {email ? (
-            <SponsorsContactsLink href="mailto:info@example.com">
+            <SponsorsContactsLink href={`mailto:${email}`}>
               Email:
               <br />
               <span>{email}</span>
             </SponsorsContactsLink>
           ) : (
-            <SponsorText>
+            <PlugText>
               Email:
               <br />
               <span>----------------------------------</span>
-            </SponsorText>
+            </PlugText>
           )}
           {phone ? (
             <SponsorsContactsLink href={`tel:${phone}`}>
@@ -126,11 +128,11 @@ export const SponsorItem = ({
               <span>{phone}</span>
             </SponsorsContactsLink>
           ) : (
-            <SponsorText>
+            <PlugText>
               Phone:
               <br />
               <span>----------------------------------</span>
-            </SponsorText>
+            </PlugText>
           )}
         </SponsorContacts>
       </SponsorInfo>
