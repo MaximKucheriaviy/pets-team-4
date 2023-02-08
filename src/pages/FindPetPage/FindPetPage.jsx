@@ -36,7 +36,7 @@ const [notices, setNotices] = useState([]);
 const [, setError] = useState(null);
 const [isLoading, setIsLoading] = useState(false);
 const [update, setUpdate] = useState(true);
-const [noticeId, setNoticeId] = useState("")
+
 
 const { category } = useParams();
 const token = useSelector(selectToken);
@@ -94,25 +94,30 @@ const location = useLocation();
       return;
     }
     (async () => {
-      const userFavorite = await getFavorites(token);
       if(!update){
         return
       }
-      console.log("update favorite")
+      const userFavorite = await getFavorites(token);
       setNotices(prev => {
         setUpdate(false)
-        return prev.map(itemNotice => {
+        const res = prev.map(itemNotice => {
           if(userFavorite.some(item => item._id === itemNotice._id)){
             itemNotice.fav = true;
           }
           return itemNotice;
         })
+        if(isFavoritePage){
+          return res.filter(item => item.fav);
+        }
+        else{
+          return res
+        }
       })
     })()
     .catch(err => {
       console.log(err);
     })
-   }, [notices, token, update])
+   }, [notices, token, update, isFavoritePage])
 
   const changeInFavoriteNotices = async (id, status) => {
     if(!token){
@@ -157,22 +162,28 @@ const location = useLocation();
   //       return result;
   //   }
 
-  const removeNotice = (id) => {
-    console.log(id)
-    setNoticeId(id);
-    console.log(noticeId)
-    setNotices((prev) => {
-    console.log(prev)
-      
-      const newNotices = prev.filter((item) => item._id !== id);
-      return newNotices
-    })
+  const removeNotice = async (id) => {
+    if(!token){
+      return
+    }
+    try{
+      const result = await removeNoticeById(token, id);
+      if(!result){
+        return
+      }
+      setNotices(prev => {
+        return prev.filter(item => item._id !== id);
+      })
+    }
+    catch(err){
+      console.log(err);
+    }
   }
 
        
 
   return (
-    <DefaultPage title="FindPetPage">
+    <DefaultPage title="Find your favorite pet">
       <NoticesSearch/>
       <Wrapper>
         <NoticesCategoriesNav />
