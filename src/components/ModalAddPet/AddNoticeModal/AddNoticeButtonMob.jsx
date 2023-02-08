@@ -1,8 +1,8 @@
 import{ BtnAddPetMob, IconAddPet} from "./AddNoticeButton.styled"
 
-export const AddNoticeButtonMob = () => {
+export const AddNoticeButtonMob = ({handleOpen}) => {
     return(
-        <BtnAddPetMob >
+        <BtnAddPetMob onClick={handleOpen}>
           <IconAddPet/>
           AddPet
         </BtnAddPetMob>

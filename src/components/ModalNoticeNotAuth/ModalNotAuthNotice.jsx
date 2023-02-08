@@ -4,9 +4,9 @@ import { Fade } from "@mui/material";
 import { ModalConitainer, Title, WrapperFormLog } from "./ModalNotice.styled";
 import {
   ModalForm,
-  BtnModalClose,
-  IconModalClose,
+  BtnModalClose
 } from "../ModalAddPet/ModalAddPet.styled";
+import { IconModalClose } from "../ModalAddPet/ModaAdd.styled";
 import { AddNoticeButton } from "../ModalAddPet/AddNoticeModal/AddNoticeButton";
 import { LoginForm } from "../Authorization/LoginForm/loginForm";
 

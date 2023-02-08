@@ -1,7 +1,6 @@
 import * as React from "react";
 import { DefaultPage } from "../../components/DefaultPage/DefaultPage";
 import { ModalContainer } from "../../components/ModalAddPet/ModalContainer";
-import { AddNoticeButtonMob } from "../../components/ModalAddPet/AddNoticeModal/AddNoticeButtonMob";
 import NoticeCategoriesList from "../../components/Notices/NoticeCategoriesList/NoticeCategoriesList";
 import NoticesCategoriesNav from "../../components/Notices/NoticesCategoriesNav/NoticesCategoriesNav";
 import { Wrapper } from "./FindPetPage.styled";
@@ -166,7 +165,6 @@ const location = useLocation();
       <Wrapper>
         <NoticesCategoriesNav />
         <ModalContainer />
-        <AddNoticeButtonMob/>
       </Wrapper>
    {isLoading &&   <Box sx={{ display: 'flex' }}>
       <CircularProgress />

@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useTheme } from "styled-components";
+import moment from "moment/moment";
 
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import {
@@ -7,17 +8,17 @@ import {
   WrapInputFirst,
   WraperBtnsPage,
   InputAddPet,
-} from "../ModaAdd.styled";
-import {
-  IconModalClose,
-  BtnModalClose,
   ModalBox,
-  FlexBox,
-  RadioButton,
   Title,
   SubtitleText,
-  BtnNextDone,
+  RadioButton,
+  BtnModalClose,
+  IconModalClose,
   BtnBackCancel,
+  BtnNextDone,
+} from "../ModaAdd.styled";
+import {
+  FlexBox,  
   ErrorTextFields,
 } from "../ModalAddPet.styled";
 
@@ -30,13 +31,13 @@ export function FirstPageAddPet({
   const titleTextRef = useRef(null);
   const theme = useTheme();
 
-  const { category, title, name, birthdate, breed } = formik.values;
-  const { handleChange, setFieldValue } = formik;
+  const { category, title, name, breed } = formik.values;
+  const { handleChange, setFieldValue, errors, touched } = formik;
 
   const handleErrorTitle = () => {
     if (title.length < 2) {
       return (titleTextRef.current.textContent = "Write title*");
-    }
+    } 
     handleOpenSecond();
   };
 
@@ -55,7 +56,7 @@ export function FirstPageAddPet({
             <Grid2>
               <RadioButton
                 style={
-                  category === "lost/found"
+                  category === "lost-found"
                     ? {
                         background: `${theme.colors.accent}`,
                         color: `${theme.colors.white}`,
@@ -63,7 +64,7 @@ export function FirstPageAddPet({
                     : { background: `${theme.colors.white}` }
                 }
                 onClick={() => {
-                  setFieldValue("category", "lost/found");
+                  setFieldValue("category", "lost-found");
                 }}
               >
                 lost/found
@@ -110,7 +111,7 @@ export function FirstPageAddPet({
           <ErrorTextFields
             ref={titleTextRef}
             hidden={title.length > 1}
-          ></ErrorTextFields>
+          >{errors.title}</ErrorTextFields>
           <InputAddPet
             type="text"
             required
@@ -121,6 +122,9 @@ export function FirstPageAddPet({
             value={title}
           />
           <LabelText htmlFor="name">Name pet:</LabelText>
+          {touched.name && errors.name ? (
+            <ErrorTextFields>{errors.name}</ErrorTextFields>
+          ) : null}
           <InputAddPet
             type="text"
             id="name"
@@ -130,15 +134,22 @@ export function FirstPageAddPet({
             value={name}
           />
           <LabelText htmlFor="birthdate">Date of birth:</LabelText>
+          {touched.birthdate && errors.birthdate ? (
+            <ErrorTextFields>{errors.birthdate}</ErrorTextFields>
+          ) : null}
           <InputAddPet
             id="birthdate"
             name="birthdate"
-            type="text"
+            type="date"
             placeholder="DD.MM.YYYY"
-            onChange={handleChange}
-            value={birthdate}
+            onChange={(e)=>{
+              setFieldValue("birthdate", moment(e.target.value).format("D.MM.YYYY"))
+            }}
           />
           <LabelText htmlFor="breed">Breed:</LabelText>
+          {touched.breed && errors.breed ? (
+            <ErrorTextFields>{errors.breed}</ErrorTextFields>
+          ) : null}
           <InputAddPet
             type="text"
             id="breed"

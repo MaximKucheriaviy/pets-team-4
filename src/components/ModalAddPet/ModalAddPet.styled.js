@@ -6,7 +6,6 @@ import {
   Modal,
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import CloseIcon from '@mui/icons-material/Close';
 import { TfiPlus } from "react-icons/tfi";
 import { ReactComponent as Male } from "../../images/sex-male.svg";
 import { ReactComponent as Female } from "../../images/sex-female.svg";
@@ -37,6 +36,7 @@ export const FlexBox = styled(Box)`
   display: flex;
   flex-direction:column;
 `;
+
 
 export const Title = styled(Typography)`
   font-family: 'Manrope';
@@ -148,7 +148,7 @@ export const BtnNextDone = styled(Button)`
     font-size: 20px;
     margin-bottom: 0px;
   }
-`
+`;
 
 export const BtnBackCancel = styled(Button)`
   font-family: 'Manrope';
@@ -167,75 +167,20 @@ export const BtnBackCancel = styled(Button)`
     font-size: 20px;
     width: 180px;
   }
-` 
+`;
 
 export const ModalFormSecond = styled(Modal)`
   overflow-y: scroll;
 `;
 
-export const ModalBoxSecond = styled(Box)`
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%);
-  background-color: white;
-  padding: 20px 20px 40px 20px;
-  width: 280px;
-  border-radius: 20px;
 
-  @media screen and (min-width: 768px) {
-    width: 608px;
-    padding: 40px 80px 40px 80px;
-  }
-`;
-
-export const IconModalClose = styled(CloseIcon)`
-  border-radius: 50%; 
-  background-color: #FDF7F2;
-  color: black;
-  width: 34px;
-  height: 34px;
-  transition: scale 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-  box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-
-  &:focus, :hover {
-    /* scale: 1.1; */
-    box-shadow: 2px 2px 10px 1px rgb(0 0 0 / 15%),
-     0px 2px 2px 0px rgb(0 0 0 / 14%),
-     0px 1px 3px 0px rgb(0 0 0 / 12%);
-  }
-`;
-
-export const BtnUploadPhoto = styled(Button)`
-  padding: 34px;
-  background: #FDF7F2;
-  border-radius: 20px;
-
-  @media screen and (min-width: 768px) {
-    padding: 44px;
-  }
-`;
 
 export const IconAddPhoto = styled(TfiPlus)`
   width: 60px;
   height: 60px;
   color: rgba(17, 17, 17, 0.6);
-`
-
-export const BtnModalClose = styled(Button)`
-  display: block;
-  min-width: 0;
-  line-height: 0;
-  margin-left: auto;
-  padding: 0;
-  border: none;
-  outline: none;
-  background: none;
-
-  &:focus, :hover {
-    background: none;
-  }
 `;
+
 
 export const ErrorTextFields = styled(Typography)`
   font-family: 'Manrope';
@@ -243,8 +188,23 @@ export const ErrorTextFields = styled(Typography)`
   font-size: 12px;
   line-height: 1.3;
   color: red;
-
+  
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
-`;
+  `;
+  
+  export const BtnModalClose = styled(Button)`
+    display: block;
+    min-width: 0;
+    line-height: 0;
+    margin-left: auto;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+  
+    &:focus, :hover {
+      background: none;
+    }
+  `;
