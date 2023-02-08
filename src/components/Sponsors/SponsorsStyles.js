@@ -4,11 +4,15 @@ export const SponsorContainer = styled.div`
   font-family: "Manrope";
 `;
 export const SponsorList = styled.ul`
+  margin: 0;
+  padding: 0;
   margin-bottom: -12px;
   @media screen and (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -32px;
+    gap: 32px;
+    /* justify-content: center; */
+    /* margin-right: -32px; */
   }
 `;
 
@@ -24,9 +28,9 @@ export const SponsorCard = styled.li`
   }
   @media screen and (min-width: 768px) {
     height: 246px;
-    margin-bottom: 32px;
+    /* margin-bottom: 32px; */
     flex-basis: calc(100% / 2 - 32px);
-    margin-right: 32px;
+    /* margin-right: 32px; */
     border-radius: 40px;
   }
   @media screen and (min-width: 1280px) {
