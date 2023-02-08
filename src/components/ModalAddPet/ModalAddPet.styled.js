@@ -6,12 +6,17 @@ import {
   Modal,
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+
 import { TfiPlus } from "react-icons/tfi";
 import { ReactComponent as Male } from "../../images/sex-male.svg";
 import { ReactComponent as Female } from "../../images/sex-female.svg";
 
 export const ModalForm = styled(Modal)`
   background: rgba(17, 17, 17, 0.6);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   backdrop-filter: blur(10px);
   overflow-y: scroll;
 `;
@@ -118,6 +123,8 @@ export const RadioButton = styled(Button)`
     font-size: 20px;
   }
 `;
+
+
 
 export const BtnNextDone = styled(Button)`
   font-family: 'Manrope';

@@ -2,6 +2,7 @@ import { useRef } from "react";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { PhotoPreview } from "../PreviewPhoto/PhotoPreview";
 import { useTheme } from "styled-components";
+import moment from "moment/moment";
 
 import {
   LabelText,
@@ -46,7 +47,17 @@ export function SecondPagelAddPet({
     }
   };
 
-  const { sex, category, place, price, petImage, comment } = formik.values;
+  const handleSubmitForm = () => {
+      setFieldValue("birthdate",moment(birthdate).format("D.MM.YYYY"));
+      handleSubmit();
+      if (isValid) {
+        setTimeout(() => {
+          closeModal();
+        }, 300);
+      }
+    }
+
+  const { sex, category, place, price, petImage, birthdate, comment } = formik.values;
   const {
     handleChange,
     handleSubmit,
@@ -185,14 +196,7 @@ export function SecondPagelAddPet({
             <BtnNextDone
               variant="contained"
               type="submit"
-              onClick={() => {
-                handleSubmit();
-                if (isValid) {
-                  setTimeout(() => {
-                    closeModal();
-                  }, 300);
-                }
-              }}
+              onClick={handleSubmitForm}
             >
               Done
             </BtnNextDone>

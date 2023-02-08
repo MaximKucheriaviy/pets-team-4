@@ -17,7 +17,7 @@ const postedNoticePet = async (info) => {
         "Content-Type": "multipart/form-data",
       },
     });
-    Notify.success("Posted!");
+    await Notify.success("Posted!");
     return rersult;
   } catch (error) {
     Notify.error("Something go went, please try again");
@@ -33,23 +33,23 @@ export const form = {
     birthdate: "",
     breed: "",
     sex: "",
-    price: "1",
+    price: "",
     petImage: "",
     comment: "",
     place: "",
   },
 
-  onSubmit: (values, { resetForm }) => {
+  onSubmit: async(values, { resetForm }) => {
     values = objectFixer(values);
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
     }
-    postedNoticePet(formData);
-    setTimeout(() => {
+    console.log(values)
+    await postedNoticePet(formData);
+    await setTimeout(() => {
       resetForm();
     }, 300);
-    console.log(values);
   },
 
   validationSchema: yup.object({

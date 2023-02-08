@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { useTheme } from "styled-components";
-import moment from "moment/moment";
 
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import {
@@ -27,11 +26,12 @@ export function FirstPageAddPet({
   handleClose,
   handleOpenSecond,
   closeModal,
+  handleCloseBackdrp
 }) {
   const titleTextRef = useRef(null);
   const theme = useTheme();
 
-  const { category, title, name, breed } = formik.values;
+  const { category, title, name, birthdate, breed } = formik.values;
   const { handleChange, setFieldValue, errors, touched } = formik;
 
   const handleErrorTitle = () => {
@@ -142,9 +142,8 @@ export function FirstPageAddPet({
             name="birthdate"
             type="date"
             placeholder="DD.MM.YYYY"
-            onChange={(e)=>{
-              setFieldValue("birthdate", moment(e.target.value).format("D.MM.YYYY"))
-            }}
+            value={birthdate}
+            onChange={handleChange}
           />
           <LabelText htmlFor="breed">Breed:</LabelText>
           {touched.breed && errors.breed ? (

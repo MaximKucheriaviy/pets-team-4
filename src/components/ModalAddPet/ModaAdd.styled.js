@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import CloseIcon from '@mui/icons-material/Close';
 import { TfiPlus } from "react-icons/tfi";
+import { NavLink } from "react-router-dom";
 
 export const ModalBox = styled.div`
   position: absolute;
@@ -61,6 +62,10 @@ export const RadioButton = styled.button`
   line-height: 1.35;
   letter-spacing: 0.04em;
   text-transform: lowercase;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
   &:hover, :focus {
     box-shadow: 0px 2px 1px -2px rgb(0 0 0 / 20%), 
@@ -70,6 +75,47 @@ export const RadioButton = styled.button`
 
   @media screen and (min-width: 768px) {
     font-size: 20px;
+  }
+`;
+
+export const BtnGoLogin = styled(NavLink)`
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  border-radius: 40px;
+  margin-top: 12px;
+  background:  ${props => props.theme.colors.accent};
+  color: ${props => props.theme.colors.white};
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 
+      0px 2px 2px 0px rgb(0 0 0 / 14%), 
+      0px 1px 5px 0px rgb(0 0 0 / 12%);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  
+  &:active, :hover, :focus {
+    background:  ${props => props.theme.colors.accent};
+    box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 
+        0px 4px 5px 0px rgb(0 0 0 / 14%), 
+        0px 1px 10px 0px rgb(0 0 0 / 12%);
+  }
+
+  @media screen and (min-width: 768px){
+    width: 180px;
+    justify-content: space-around;
+    font-size: 20px;
+    margin-top: 0px;
   }
 `;
 
@@ -163,22 +209,6 @@ export const ModalBoxSecond = styled.div`
   }
 `;
 
-export const IconModalClose = styled(CloseIcon)`
-  border-radius: 50%; 
-  background: ${props => props.theme.colors.background};
-  color: ${props => props.theme.colors.black};
-  width: 34px;
-  height: 34px;
-  transition: scale 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-  box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-
-  &:focus, :hover {
-    box-shadow: 2px 2px 10px 1px rgb(0 0 0 / 15%),
-     0px 2px 2px 0px rgb(0 0 0 / 14%),
-     0px 1px 3px 0px rgb(0 0 0 / 12%);
-  }
-`;
-
 export const BtnUploadPhoto = styled.button`
   padding: 34px;
   background: ${props => props.theme.colors.background};
@@ -245,11 +275,36 @@ export const BtnModalClose = styled.button`
   margin-left: auto;
   padding: 0;
   border: none;
+  border-radius: 50%;
   outline: none;
   background: none;
-
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  
   &:focus, :hover {
     background: none;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+      0px 2px 2px 0px rgb(0 0 0 / 14%),
+      0px 1px 5px 0px rgb(0 0 0 / 12%);
+  }
+`;
+
+export const IconModalClose = styled(CloseIcon)`
+  border-radius: 50%; 
+  background: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.black};
+  min-width: 34px;
+  min-height: 34px;
+  
+  &:focus, :hover {
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    box-shadow: 2px 2px 10px 1px rgb(0 0 0 / 15%),
+     0px 2px 2px 0px rgb(0 0 0 / 14%),
+     0px 1px 3px 0px rgb(0 0 0 / 12%);
+  }
+
+  @media screen and (min-width: 768px) {
+    min-width: 44px;
+    min-height: 44px;
   }
 `;
 
