@@ -129,7 +129,7 @@ export const SponsorsContactsLink = styled.a`
   }
 `;
 export const SponsorText = styled.p`
-  /* color: #000000; */
+  color: #000000;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
