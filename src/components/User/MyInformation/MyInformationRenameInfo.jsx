@@ -1,17 +1,32 @@
 // //
 import { UserIcons } from '../UserIcons/UserIcons'
 import { useState } from 'react';
+import { v4 } from 'uuid';
 // import { useDispatch } from 'react-redux';
 import { MyInformItem } from './MyInformationStyled'
+
+
+    const SelectInput = (inputId) => {
+        document.getElementById(inputId).autofocus = true
+        console.log(`rvrvrgrgr`)
+    }
+
 
 // =============== change name ====================================================
 
 export function EditName( user) {
+    const SelectInput = (inputId) => {
+        document.getElementById(inputId).autofocus = true
+        console.log(`rvrvrgrgr`)
+    }
+
+
 
 
 //     // const dispatch = useDispatch();
 
     const [disabled, setDisabled] = useState(true);
+    const inputId = v4();
     
     function SubmitRemoveInfo() {
 //         // витягнути з редакса логіку зміни інфо на сервері
@@ -20,8 +35,15 @@ export function EditName( user) {
     }
     
     function ChangeBtn() {
-    setDisabled(!disabled);
-  }
+        setDisabled(!disabled);
+    }
+        const   OpenInput=()=> {
+            setDisabled(!disabled);
+            SelectInput(inputId)
+
+    }
+
+
 
 
 
@@ -29,11 +51,11 @@ export function EditName( user) {
         <tr>
             <td>Name:</td>
             <th>
-                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.name}  />
+                <MyInformItem type="text" name="name" disabled={disabled} placeholder={user.name} id={ inputId} />
             </th> 
             <th className='table-red'>
                  {disabled ? 
-                <button type='button' onClick={ChangeBtn}>
+                <button type='button' onClick={OpenInput} >
                     <UserIcons id="icon-user_red" />
                 </button> :
                 <button type='submit' onSubmit={SubmitRemoveInfo} onClick={ChangeBtn}>
@@ -54,7 +76,7 @@ export function EditEmail( user) {
     const [disabled, setDisabled] = useState(true);
     
     function SubmitRemoveInfo() {
-        // витягнути з редакса логіку зміни інфо на сервері
+        // 
     // const action = addContact(contact);
     // dispatch(action);
     }
