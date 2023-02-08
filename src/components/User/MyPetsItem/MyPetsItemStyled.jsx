@@ -1,7 +1,30 @@
 // import styled from '@emotion/styled';
 
 import styled from "styled-components";
-export const PetsContainerStyled = styled.div`
+
+// export const PetsItemStyled = styled.li`
+//     margin-top: 20px;
+//         padding-left: 20px;
+//     padding-right: 20px;
+
+
+// @media screen and (min-width:768px) {
+//     margin: 24px 32px 20px 32px;  
+//     // max-width: 704px;
+//     padding-left: 0px;
+//     padding-right: 0px;
+    
+
+// }
+
+// @media screen and (min-width:1280px) {
+//     // max-width: 821px;
+//     margin: 24px 16px 20px 0;
+// }
+
+// `
+
+export const PetsItemStyled = styled.li`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,16 +37,26 @@ export const PetsContainerStyled = styled.div`
     box-shadow: 7px 4px 14px ${({ theme }) => theme.colors.black};
     border-radius: 20px;
 
+    margin-top: 20px;
+    // padding-left: 20px;
+    // padding-right: 20px;
+
     @media screen and (min-width:768px) {
         display: flex;
         flex-direction: row;
         border-radius: 40px;
+
+        margin: 24px 32px 20px 32px;  
+        padding-left: 0px;
+        padding-right: 0px;
     }
     @media screen and (min-width:1280px) {
         padding: 20px;
         width: 100%;
         display: flex;
         justify-content: space-between;
+
+        margin: 24px 16px 20px 0;
     }
 
 
@@ -44,15 +77,19 @@ export const PetsContainerStyled = styled.div`
     }
 
     .card-info{
-    margin: 20px 25px 28px 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto 28px auto;
+    width: 100%;
+}
 
     @media screen and (min-width:768px) {
-        display: flex;
-        flex-direction: column;
-        margin: 20px;
+        // display: flex;
+        // flex-direction: column;
+    margin: 20px auto 20px auto;
     }
     @media screen and (min-width:1280px) {
-        margin: 20px 28px 20px 20px;
+        // margin: 20px 28px 20px 20px;
     }
     }
 

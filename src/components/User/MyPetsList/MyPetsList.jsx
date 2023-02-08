@@ -2,7 +2,7 @@
 import AddUserPetModal from "../../AddUserPetModal/AddUserPetModal";
 import { useState } from "react";
 
-import { PetsItemStyled, PetsHederStyled } from "./MyPetsListStyled";
+import { PetsHederStyled } from "./MyPetsListStyled";
 
 import MyPets from "../MyPetsItem/MyPetsItem";
 
@@ -21,26 +21,24 @@ export default function MyPetsList({ addPet, items, deletePet }) {
         <PetsHederStyled>
           <h3 className="pets-add-hed">My pets:</h3>
           <div className="pets-add">
-            <AddNoticeButton handleOpen={setModalOpen} />
+            <AddNoticeButton handleOpen={setModalOpen}  />
           </div>
         </PetsHederStyled>
         <ul>
           {items.map((item) => (
-            <PetsItemStyled key={item.id}>
-              <MyPets
+            <MyPets
+                key={item._id}
                 img={item.img}
                 name={item.name}
                 data={item.data}
                 breed={item.breed}
                 comments={item.comments}
-                owner={item.owner}
                 deletePet={deletePet}
               />
-            </PetsItemStyled>
           ))}
         </ul>
       </div>
-      {modalOpen && <AddUserPetModal onClose={closeModal}></AddUserPetModal>}
+      {modalOpen && <AddUserPetModal onClose={closeModal} addPet={addPet}></AddUserPetModal>}
     </>
   );
 }

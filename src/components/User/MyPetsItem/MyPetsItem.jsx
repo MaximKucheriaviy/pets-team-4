@@ -1,18 +1,20 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 // import defaultimg from './'
 
-import { PetsContainerStyled } from './MyPetsItemStyled'
+import { PetsItemStyled } from './MyPetsItemStyled'
 import {UserIcons} from '../UserIcons/UserIcons'
-    const DefaultAvatar = 'https://pixabay.com/get/g4b942c8109a1b73d03593f3b956594751982cc448837347200f15814f41a7498ef3350609efe0fd866c17f96580baaea_640.jpg';
+    const DefaultAvatar = 'https://pixabay.com/get/ge35962f200ea0ea7441289ecb0e39f1196ce1a91c141dd8be8eb77b52ea3b2870376e9653de67b3fd2446c6fda9120036ca62a25ccf170de170638fba75258ce_640.jpg';
 
 
-const MyPets = ({ id, img=DefaultAvatar, name="default", data='01.01.1900', breed="default", comments="default", owner, deletePet }) => {
+export default function  MyPets ({_id, avatarURL=DefaultAvatar, name="default", data='01.01.1900', breed="default", comments="default", deletePet }) {
     
+    // { id, img=DefaultAvatar, name="default", data='01.01.1900', breed="default", comments="default", owner, deletePet }
     // const { id, avatarURL, name, data, breed, comments, owner}=items
     return (
-        <PetsContainerStyled>
-            <img className='card-avatar' src={img} alt={name} />
-            <div className='card-info'>
+        // <PetsContainerStyled>
+            <PetsItemStyled key={_id}>
+            <img className='card-avatar' src={avatarURL} alt={name} />
+            <div className='card-info' key={_id}>
                 <div className='card-name'>
                     <p>
                         <b>Name: </b>{name}
@@ -20,7 +22,7 @@ const MyPets = ({ id, img=DefaultAvatar, name="default", data='01.01.1900', bree
                     <button
                         className='card-btn'
                         type="button"
-                         onClick={() => {deletePet(id); }}
+                         onClick={() => {deletePet(_id); }}
                     >
                         <UserIcons id="icon-user_delete" />
                     </button>
@@ -34,23 +36,21 @@ const MyPets = ({ id, img=DefaultAvatar, name="default", data='01.01.1900', bree
                 <p >
                     <b>Comments: </b>{comments}
                 </p>
-                {/* <p>
-                    {owner}
-                </p> */}
-      </div>
-    </PetsContainerStyled>
+                </div>
+            </PetsItemStyled>
+    // </PetsContainerStyled>
   );
 };
 
-MyPets.propTypes = {
+// MyPets.propTypes = {
   // id: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
-  breed: PropTypes.string.isRequired,
-  comments: PropTypes.string.isRequired,
+//   img: PropTypes.string.isRequired,
+//   name: PropTypes.string.isRequired,
+//   data: PropTypes.string.isRequired,
+//   breed: PropTypes.string.isRequired,
+//   comments: PropTypes.string.isRequired,
   // owner: PropTypes.string.isRequired,
   // deletePet: PropTypes.string.isRequired,
-};
+// };
 
-export default MyPets;
+// export default MyPets;

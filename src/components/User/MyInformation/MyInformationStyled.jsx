@@ -23,6 +23,11 @@ display: flex;
     align-items: flex-end;
 }
 
+.cont-avatar{
+    border-radius: 50%;
+    box-shadow: 0px 4px 14px rgb(0 0 0 / 11%);
+}
+
 
 .user-avatar{
     // margin: 20px 24px 12px 23px;
@@ -30,8 +35,6 @@ display: flex;
     padding-left: 8px;
     padding-right: 8px;
         width: 100%;
-        border-radius: 50%;
-        box-shadow: 0px 4px 14px rgb(0 0 0 / 11%);
     clip-path: circle(39%);
 
 @media screen and (min-width:768px) {

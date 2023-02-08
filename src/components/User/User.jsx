@@ -2,10 +2,11 @@
 import { Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from 'react';
 
 
 import { logOut } from "../../redux/auth/auth-operation";
-import { selectIsLogin, selectUser} from "../../redux/auth/autSelectors";
+import { selectIsLogin, selectUser, selectToken} from "../../redux/auth/autSelectors";
 
 
 // import { deletePet, addPet } from '../../redux/auth/auth-operation'
@@ -19,17 +20,46 @@ import {UserIcons} from './UserIcons/UserIcons'
 
 import { UserStyled } from './UserStyled';
 
-import InfoPets from './MyPetsTemporary.json';
-
-
+// import InfoPets from './MyPetsTemporary.json';
+import { getUserPets, postUserPets } from '../../services/apiUserPets';
 
 export default function User() {
   const isUserLogin = useSelector(selectIsLogin);
   const InfoUser = useSelector(selectUser);
   // const InfoPets = useSelector(selectPets);
+  const [pets, setPets] = useState([]);
+  const token = useSelector(selectToken);
+    // const [addPets, setAddPets] = useState([]);
+
 
 
   const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    (async () => {
+      try {
+        console.log(token);
+        const { data } = await getUserPets(token);
+        setPets(data.pets);
+      } catch (error) {
+        console.log(error.message);
+      }
+    })();
+  }, [token]);
+
+  //   useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       console.log(token);
+  //       const { data } = await postUserPets(token);
+  //       setAddPets(data.pets);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
+  //   })();
+  // }, [token]);
+
   
   const onLogout = () => {
     dispatch(logOut());
@@ -62,8 +92,8 @@ export default function User() {
             </button>
         </div>
       </div>
-      <div>
-        <MyPetsList items={InfoPets}  /> 
+      <div className="pets-conteiner">
+        <MyPetsList items={pets} addPet={postUserPets} /> 
         {/* <MyPetsList items={Pets } addPet={onAddPet} deletePet={onDeletePet}  />  */}
 
       </div>
@@ -71,3 +101,9 @@ export default function User() {
 
   )
 }
+
+
+
+
+
+
