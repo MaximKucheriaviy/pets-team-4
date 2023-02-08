@@ -17,7 +17,7 @@ import { useSelector } from "react-redux";
 import { addToFavorite, removeToFavorite } from "../../services/apiNotices";
 
 
-export const ModalPetInfo = ({ close, modalInfo }) => {
+export const ModalPetInfo = ({ close, modalInfo, update }) => {
   const portalRoot = document.querySelector("#portalRoot");
   const [isFavorite, setIsFavorite] = useState(false);
   const token = useSelector((state) => state.auth.token);
@@ -35,11 +35,8 @@ export const ModalPetInfo = ({ close, modalInfo }) => {
     price,
     comment,
     // favorite,
-    // owner,
     _id,
   } = modalInfo;
-
-  //   console.log(modalInfo);
 
   const closeHandler = (event) => {
     if (event.target !== event.currentTarget) {
@@ -47,6 +44,7 @@ export const ModalPetInfo = ({ close, modalInfo }) => {
     }
     close();
   };
+
 
   useEffect(() => {
     const keyEventHandler = (event) => {
@@ -77,6 +75,7 @@ export const ModalPetInfo = ({ close, modalInfo }) => {
     try {
       await addToFavorite(token, _id);
       setIsFavorite(true);
+      update(true);
     } catch (err) {
       console.log(err);
     }
@@ -86,6 +85,7 @@ export const ModalPetInfo = ({ close, modalInfo }) => {
     try {
       await removeToFavorite(token, _id);
       setIsFavorite(false);
+      update(true);
     } catch (err) {
       console.log(err);
     }
@@ -134,7 +134,7 @@ export const ModalPetInfo = ({ close, modalInfo }) => {
                   <Key>Phone:</Key>
                   <Value>{phone}</Value>
                 </tr>
-                {price && (
+                {(price && !(category === "lost-found" || category === "for-free")) && (
                   <tr>
                     <Key>Price:</Key>
                     <Value>{price}$</Value>

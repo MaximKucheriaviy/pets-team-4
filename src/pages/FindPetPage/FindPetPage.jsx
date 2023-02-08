@@ -1,12 +1,11 @@
 import * as React from "react";
 import { DefaultPage } from "../../components/DefaultPage/DefaultPage";
 import { ModalContainer } from "../../components/ModalAddPet/ModalContainer";
-import { AddNoticeButtonMob } from "../../components/ModalAddPet/AddNoticeModal/AddNoticeButtonMob";
 import NoticeCategoriesList from "../../components/Notices/NoticeCategoriesList/NoticeCategoriesList";
 import NoticesCategoriesNav from "../../components/Notices/NoticesCategoriesNav/NoticesCategoriesNav";
 import { Wrapper } from "./FindPetPage.styled";
 
-import { addToFavorite, getFavorites, getNoticesByCategory, getOwnerNotise, removeNoticeById } from "../../services/apiNotices";
+import { addToFavorite, getFavorites, getNoticesByCategory, getOwnerNotise, removeNoticeById, removeToFavorite } from "../../services/apiNotices";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -36,8 +35,8 @@ export default function FindPetPage() {
 const [notices, setNotices] = useState([]);
 const [, setError] = useState(null);
 const [isLoading, setIsLoading] = useState(false);
-  const [favoriteId, setFavoriteId] = useState([]);
-const [noticeId, setNoticeId] = useState("")
+const [update, setUpdate] = useState(true);
+
 
 const { category } = useParams();
 const token = useSelector(selectToken);
@@ -54,6 +53,7 @@ const location = useLocation();
       setIsLoading(true);
       setError(null);
       setNotices([]);
+      setUpdate(true)
       try {
         if (isLostPage) {
           const data = await getNoticesByCategory(category);
@@ -67,13 +67,11 @@ const location = useLocation();
         }
         if (isSellPage) {
           const data = await getNoticesByCategory(category);
-          console.log("sell",data)
 
           return  setNotices(data);
         }
         if (isFavoritePage) {
           const data = await getFavorites(token);
-        console.log("fav",data)
           return  setNotices(data);
         };
          if (isOwnPage) {
@@ -91,54 +89,72 @@ const location = useLocation();
   }, [category, isFreePage, isFavoritePage, isLostPage, isOwnPage, isSellPage, token]);
 
 
-    useEffect(() => {
-      (async () => {
-        setIsLoading(true);
-        setError(null);
-        try {
-          const data = await addToFavorite(token, favoriteId);
-
-          return setNotices(data);
-        }
-        catch (error) {
-          setError(error.message);
-        }
-        finally {
-          setIsLoading(false);
-        }
-      })();
-    }, [token, favoriteId]);
-
-  // useParams();
-  // const {title } = useParams();
-  // // const id = movieId;
-  // console.log("id", useParams());
-
-    useEffect(() => {
-      (async () => {
-        setIsLoading(true);
-        setError(null);
-        try {
-          const data = await removeNoticeById(token, noticeId);
-
-          return setNotices(data);
-        }
-        catch (error) {
-          setError(error.message);
-        }
-        finally {
-          setIsLoading(false);
-        }
-      })();
-    }, [token, noticeId]);
-
-  const changeInFavoriteNotices = ( id) => {
-    //     if (inFavorites(id)) {
-            
-    // }
-    // console.log("Yes")
-    setFavoriteId(id)
+   useEffect(() => {
+    if(!notices || notices.length === 0 || !token){
+      return;
     }
+    (async () => {
+      if(!update){
+        return
+      }
+      const userFavorite = await getFavorites(token);
+      setNotices(prev => {
+        setUpdate(false)
+        const res = prev.map(itemNotice => {
+          if(userFavorite.some(item => item._id === itemNotice._id)){
+            itemNotice.fav = true;
+          }
+          return itemNotice;
+        })
+        if(isFavoritePage){
+          return res.filter(item => item.fav);
+        }
+        else{
+          return res
+        }
+      })
+    })()
+    .catch(err => {
+      console.log(err);
+    })
+   }, [notices, token, update, isFavoritePage])
+
+  const changeInFavoriteNotices = async (id, status) => {
+    if(!token){
+      return;
+    }
+    try{
+      if(status){
+        await addToFavorite(token, id)
+        setNotices(prev => {
+          return prev.map(item => {
+            if(item._id !== id){
+              return item
+            }
+            
+            item.fav = status;
+            return item
+          })
+        })
+      }
+      else{
+        await removeToFavorite(token, id)
+        setNotices(prev => {
+          return prev.map(item => {
+            if(item._id !== id){
+              return item
+            }
+            item.fav = status;
+            return item
+          })
+        })
+      }
+      setUpdate(true);
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
 
   // const inFavorites = ({ id }) => {
   //     console.log(id)
@@ -146,32 +162,37 @@ const location = useLocation();
   //       return result;
   //   }
 
-  const removeNotice = (id) => {
-    console.log(id)
-    setNoticeId(id);
-    console.log(noticeId)
-    setNotices((prev) => {
-    console.log(prev)
-      
-      const newNotices = prev.filter((item) => item._id !== id);
-      return newNotices
-    })
+  const removeNotice = async (id) => {
+    if(!token){
+      return
+    }
+    try{
+      const result = await removeNoticeById(token, id);
+      if(!result){
+        return
+      }
+      setNotices(prev => {
+        return prev.filter(item => item._id !== id);
+      })
+    }
+    catch(err){
+      console.log(err);
+    }
   }
 
        
 
   return (
-    <DefaultPage title="FindPetPage">
+    <DefaultPage title="Find your favorite pet">
       <NoticesSearch/>
       <Wrapper>
         <NoticesCategoriesNav />
         <ModalContainer />
-        <AddNoticeButtonMob/>
       </Wrapper>
    {isLoading &&   <Box sx={{ display: 'flex' }}>
       <CircularProgress />
     </Box>}
-      <NoticeCategoriesList items={notices} removeNotice={ removeNotice} changeFavorite={changeInFavoriteNotices} />
+      <NoticeCategoriesList items={notices} removeNotice={ removeNotice} changeFavorite={changeInFavoriteNotices} update={setUpdate} />
     </DefaultPage>
   );
 }

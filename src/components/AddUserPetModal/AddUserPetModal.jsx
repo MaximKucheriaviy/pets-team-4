@@ -4,6 +4,10 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { PhotoPreview } from "./FileReader";
 import { createPortal } from "react-dom";
+import { store } from "../../redux/store";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
+import axios from "axios";
+import { objectFixer } from "../../helpers/objetFixer";
 import {
   FormBox,
   FormTitle,
@@ -24,6 +28,25 @@ import {
 
 const modalRoot = document.getElementById("portalRoot");
 
+const postUserPet = async (info) => {
+  try {
+    const rersult = await axios({
+      method: "post",
+      url: "api/pets",
+      baseURL: "https://petse-server-team4.onrender.com/",
+      data: info,
+      headers: {
+        Authorization: `Bearer ${store.getState().auth.token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    return rersult;
+  } catch (error) {
+    Notify.error("Something go went, please try again");
+  }
+};
+
 export default function AddUserPetModal({ onClose }) {
   const [nextStep, setNextStep] = useState(false);
   useEffect(() => {
@@ -41,19 +64,27 @@ export default function AddUserPetModal({ onClose }) {
       name: "",
       date: "",
       breed: "",
-      photo: "",
-      comment: "",
+      avatarURL: "",
+      comments: "",
     },
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
       console.log(values);
+      values = objectFixer(values);
+      const formData = new FormData();
+      for (let value in values) {
+        formData.append(value, values[value]);
+      }
+      await postUserPet(formData);
       resetForm();
+      onClose();
+      Notify.success("Posted!");
     },
     validationSchema: yup.object().shape({
       name: yup.string().required("Name is required"),
       date: yup.date().required("Date is required"),
       breed: yup.string().required("Breed is required"),
-      photo: yup.mixed().required("Image is required"),
-      comment: yup.string().required("Comment is required"),
+      avatarURL: yup.mixed().required("Image is required"),
+      comments: yup.string().required("Comment is required"),
     }),
   });
 
@@ -122,24 +153,24 @@ export default function AddUserPetModal({ onClose }) {
           )}
           {nextStep && (
             <>
-              <InputLabelFile htmlFor="photo">
+              <InputLabelFile htmlFor="avatarURL">
                 Add photo and some comments
               </InputLabelFile>
 
               <HiddenInput>
                 <input
                   onChange={(e) => {
-                    formik.setFieldValue("photo", e.target.files[0]);
+                    formik.setFieldValue("avatarURL", e.target.files[0]);
                   }}
                   type="file"
-                  name="photo"
+                  name="avatarURL"
                   accept=".png, .jpg, .jpeg"
                   hidden
                   ref={fileRef}
                   required
                 ></input>
-                {formik.values.photo ? (
-                  <PhotoPreview file={formik.values.photo} />
+                {formik.values.avatarURL ? (
+                  <PhotoPreview file={formik.values.avatarURL} />
                 ) : (
                   <button
                     style={{
@@ -152,23 +183,23 @@ export default function AddUserPetModal({ onClose }) {
                   </button>
                 )}
               </HiddenInput>
-              {formik.errors.photo && formik.touched.photo ? (
-                <ErrorNotification>{formik.errors.photo}</ErrorNotification>
+              {formik.errors.avatarURL && formik.touched.avatarURL ? (
+                <ErrorNotification>{formik.errors.avatarURL}</ErrorNotification>
               ) : null}
             </>
           )}
           {nextStep && (
             <>
-              <TextAreaLabel htmlFor="comment">Comments</TextAreaLabel>
+              <TextAreaLabel htmlFor="comments">Comments</TextAreaLabel>
               <FormTextArea
-                name="comment"
+                name="comments"
                 as="textarea"
                 placeholder="Type comment"
-                value={formik.values.comment}
+                value={formik.values.comments}
                 onChange={formik.handleChange}
               ></FormTextArea>
-              {formik.errors.comment && formik.touched.comment ? (
-                <ErrorNotification>{formik.errors.comment}</ErrorNotification>
+              {formik.errors.comments && formik.touched.comments ? (
+                <ErrorNotification>{formik.errors.comments}</ErrorNotification>
               ) : null}
             </>
           )}

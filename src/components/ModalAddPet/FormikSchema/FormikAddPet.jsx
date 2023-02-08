@@ -2,26 +2,26 @@ import * as yup from "yup";
 import axios from "axios";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 import { store } from "../../../redux/store";
+import { objectFixer } from "../../../helpers/objetFixer";
 
 const SUPORTED_FORMAT = ["image/jpg", "image/jpeg", "image/png"];
 
-// axios.defaults.baseURL = "https://petse-server-team4.onrender.com";
-
-// const config = {
-//   headers: { Authorization: `${store.getState().auth.token}` },
-// };
-
 const postedNoticePet = async (info) => {
   try {
-    return axios({
+    const rersult = await axios({
       method: "post",
-      // baseURL: "http://localhost:3001",
       url: "/api/notices",
       data: info,
-      headers: { "Authorization": `${store.getState().auth.token}` },
+      headers: {
+        Authorization: `${store.getState().auth.token}`,
+        "Content-Type": "multipart/form-data",
+      },
     });
+    Notify.success("Posted!");
+    return rersult;
   } catch (error) {
-    console.log(error);
+    Notify.error("Something go went, please try again");
+    console.log(error.response.date);
   }
 };
 
@@ -33,36 +33,56 @@ export const form = {
     birthdate: "",
     breed: "",
     sex: "",
-    price: "",
+    price: "1",
     petImage: "",
     comment: "",
     place: "",
   },
 
   onSubmit: (values, { resetForm }) => {
-    postedNoticePet(values);
+    values = objectFixer(values);
+    const formData = new FormData();
+    for (let value in values) {
+      formData.append(value, values[value]);
+    }
+    postedNoticePet(formData);
     setTimeout(() => {
       resetForm();
     }, 300);
-    Notify.success("Posted!");
     console.log(values);
   },
 
   validationSchema: yup.object({
     category: yup.string().required("Choose category"),
-    title: yup.string().required("Write the title"),
+    title: yup
+      .string()
+      .min(2, "min 2 characters long")
+      .max(24, "max 24 characters long")
+      .required("Write the title*"),
     name: yup.string(),
     birthdate: yup.date().when("category", {
       is: "sell",
       then: yup.date(),
     }),
-    breed: yup.string(),
-    sex: yup.string().required("Choose sex"),
+    breed: yup
+      .string()
+      .trim()
+      .min(2, "min 2 characters long")
+      .max(18, "max 18 characters long"),
+    sex: yup.string().required("Choose sex*"),
     price: yup.string().when("category", {
       is: "sell",
-      then: yup.string().required("Enter price"),
+      then: yup
+        .string()
+        .required("Enter price*")
+        .test((value, context) => {
+          if (value === 0) {
+            context.createError({ message: "price can't be '0'" });
+          }
+          return true;
+        }),
     }),
-    place: yup.string().required("Enter your location"),
+    place: yup.string().required("Enter your location*"),
     petImage: yup
       .mixed()
       .nullable()
