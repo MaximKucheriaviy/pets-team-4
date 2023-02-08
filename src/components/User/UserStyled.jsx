@@ -4,6 +4,8 @@ import styled from "styled-components";
 export const UserStyled = styled.div`
 margin: 61px auto 80px auto;
     // max-width: 280px;
+    width: 100%;
+
 
 @media screen and (min-width:768px) {
     margin: 88px auto 100px auto;
@@ -128,6 +130,10 @@ margin-top: -25px;
 // fill: #F59256;
 // stroke:#F59256;
 // }
+
+.pets-conteiner{
+    width: 100%;
+}
 
 `
 

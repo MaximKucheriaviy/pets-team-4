@@ -17,7 +17,9 @@ export default function MyInformation({users}) {
     return (
         <MyInform >
             <div className='user-cont'>
-                <img className='user-avatar' src={avatar} alt={name} />
+                <div className='cont-avatar'>
+                    <img className='user-avatar' src={avatar} alt={name} />
+                </div>
                 <button type="file" onChange={changeAvatar}>
                     <UserIcons id="camera"/>
                     <p>Edit photo</p>

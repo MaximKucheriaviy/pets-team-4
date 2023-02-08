@@ -1,46 +1,44 @@
 // import PropTypes from 'prop-types';
-import AddUserPetModal from "../../AddUserPetModal/AddUserPetModal";
-import { useState } from "react";
+// import AddUserPetModal from "../../AddUserPetModal/AddUserPetModal";
+// import { useState } from "react";
 
-import { PetsItemStyled, PetsHederStyled } from "./MyPetsListStyled";
+import { PetsHederStyled } from "./MyPetsListStyled";
 
 import MyPets from "../MyPetsItem/MyPetsItem";
 
 import {AddNoticeButton} from '../../ModalAddPet/AddNoticeModal/AddNoticeButton'
 
 
-export default function MyPetsList({ addPet, items, deletePet }) {
-  const [modalOpen, setModalOpen] = useState(false);
+export default function MyPetsList({ addPet, items, deletePet, setModalOpen }) {
+  // const [modalOpen, setModalOpen] = useState(false);
 
-  const closeModal = () => {
-    setModalOpen(!modalOpen);
-  };
+  // const closeModal = () => {
+  //   setModalOpen(!modalOpen);
+  // };
   return (
     <>
       <div>
         <PetsHederStyled>
           <h3 className="pets-add-hed">My pets:</h3>
           <div className="pets-add">
-            <AddNoticeButton handleOpen={setModalOpen} />
+            <AddNoticeButton handleOpen={setModalOpen}  />
           </div>
         </PetsHederStyled>
         <ul>
           {items.map((item) => (
-            <PetsItemStyled key={item.id}>
-              <MyPets
-                img={item.img}
+            <MyPets
+                key={item._id}
+                avatarURL={item.avatarURL}
                 name={item.name}
-                data={item.data}
+                date={item.date}
                 breed={item.breed}
                 comments={item.comments}
-                owner={item.owner}
                 deletePet={deletePet}
               />
-            </PetsItemStyled>
           ))}
         </ul>
       </div>
-      {modalOpen && <AddUserPetModal onClose={closeModal}></AddUserPetModal>}
+      {/* {modalOpen && <AddUserPetModal onClose={closeModal} addPet={addPet}></AddUserPetModal>} */}
     </>
   );
 }

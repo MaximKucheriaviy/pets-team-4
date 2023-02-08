@@ -2,7 +2,7 @@
 import { UserIcons } from '../UserIcons/UserIcons'
 import { useState } from 'react';
 // import { useDispatch } from 'react-redux';
-import {MyInformItem} from './MyInformationStyled'
+import { MyInformItem } from './MyInformationStyled'
 
 // =============== change name ====================================================
 
@@ -61,10 +61,10 @@ export function EditEmail( user) {
     
     function ChangeBtn() {
     setDisabled(!disabled);
-  }
+    }
 
 
-
+    
     return (
         <tr>
             <td>Email:</td>
