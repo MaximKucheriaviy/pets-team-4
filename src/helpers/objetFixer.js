@@ -6,5 +6,5 @@ export const objectFixer = input => {
             output[item] = input[item];
         }
     })
-    return output
+    return output;
 }

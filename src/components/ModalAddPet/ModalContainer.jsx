@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useFormik } from "formik";
-import { Box } from "@mui/material";
+import {  Box } from "@mui/material";
 
 import { useAuth } from "../../shared/useAuth/useAuth";
 import { ModalForm } from "./ModalAddPet.styled";
@@ -38,6 +38,13 @@ export const ModalContainer = () => {
     formik.resetForm();
   };
 
+  const handleCloseBackdrp = (e) => {
+    if(e.target.value !== e.target.current) {
+      console.log(e.target.value)
+      // closeModal();
+    }
+  }
+
   return (
     <Box>
       {isLogin ? (
@@ -48,12 +55,15 @@ export const ModalContainer = () => {
             open={open}
             onClose={handleClose}
             hideBackdrop
+            // slot={(styles) => { return styles.backdrop.background = "transparent"; }}
+            // sx={{backgroundColor: "rgba(17, 17, 17, 0.6)"}}
             aria-labelledby="parent-modal-title"
             aria-describedby="parent-modal-description"
           >
-            <Box>
+            <Box >
               {!openSecond && (
                 <FirstPageAddPet
+                  handleCloseBackdrp
                   closeModal={closeModal}
                   formik={formik}
                   open={open}
