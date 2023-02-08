@@ -8,7 +8,6 @@ export default function OurFriendsPage() {
     const fechSponsors = async () => {
       try {
         const { data } = await getAllSponsors();
-        console.log(data);
         setSponsors(data);
       } catch (error) {
         console.log(error.message);
