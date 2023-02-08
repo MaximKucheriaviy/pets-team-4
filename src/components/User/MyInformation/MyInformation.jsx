@@ -2,7 +2,7 @@
 import {UserIcons} from '../UserIcons/UserIcons'
 
 
-import { MyInform } from './MyInformationStyled';
+import { MyInform, Text } from './MyInformationStyled';
 import MyInformationTabl from './MyInformationTabl';
 
 export default function MyInformation({users}) {
@@ -16,7 +16,7 @@ export default function MyInformation({users}) {
                 <img className='user-avatar' src={avatar} alt={name} />
                 <button type="button" >
                     <UserIcons id="camera"/>
-                    <p>Edit photo</p>
+                    <Text >Edit photo</Text >
                 </button>
             </div>
             <MyInformationTabl tablItem={users}  />

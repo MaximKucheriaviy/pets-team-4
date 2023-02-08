@@ -114,3 +114,7 @@ export const MyInformItem = styled.div`
     width: 100%;
     }
 `
+export const Text = styled.p`
+   color:${({ theme }) => theme.colors.black};
+`
+

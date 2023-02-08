@@ -6,9 +6,7 @@ import { Btn, Box, BtnT } from "./thema.styled.js";
 
 export const Thema = () => {
 
-    // const [contacts, setContacts] = useState(
-    //     () => (window.localStorage.getItem("LS_KEY")) ?? ""
-    //   );
+ 
 const dispatch = useDispatch()
 
 
@@ -23,21 +21,6 @@ window.localStorage.setItem("LS_KEY", "dark")
         window.localStorage.setItem("LS_KEY", "light")
     }
 
-//     useEffect(() => {
-//      const key = window.localStorage.getItem("LS_KEY")  
-
-//      if(key === "light"){
-      
-//         setColor("light")
-//         console.log(key)
-//      }
-//      if(key === "dark"){
-// setColor("dark")
-// console.log(key)
-// }
-  
-//     },[setColor])
-//     console.log(color)
 
 	return (
 <Box>

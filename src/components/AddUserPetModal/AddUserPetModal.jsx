@@ -81,7 +81,7 @@ export default function AddUserPetModal() {
         validationSchema={formik.validationSchema}
       >
         <FormBox autoComplete="off" style={{ position: "absolute" }}>
-          <FormTitle>Add pet</FormTitle>
+          <FormTitle>pet</FormTitle>
           {!nextStep && (
             <>
               <InputLabel htmlFor="name">Name pet</InputLabel>

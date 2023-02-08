@@ -6,7 +6,7 @@ export const Li = styled.li`
     list-style-type: none;
     margin-right:80px;
    &:last-child {
-   margin-right:360px;
+   margin-right:250px;
   }
    @media screen and (min-width:768px) and (max-width:1279px) {
 

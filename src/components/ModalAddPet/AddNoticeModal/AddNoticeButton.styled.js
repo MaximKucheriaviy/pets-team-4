@@ -1,4 +1,5 @@
 import { styled } from "@mui/material/styles";
+
 import { AiOutlinePlus } from "react-icons/ai";
 import {
   Box,
@@ -67,6 +68,7 @@ export const TextAddPet = styled(Typography)`
   font-size: 20px;
   line-height: 1.35;
   margin-right: 12px;
+  color: grey;
 `;
 
 export const IconAddPet = styled(AiOutlinePlus)`
