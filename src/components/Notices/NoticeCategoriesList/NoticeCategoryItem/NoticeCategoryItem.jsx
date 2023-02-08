@@ -23,7 +23,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../../../redux/auth/autSelectors";
-
+import { useTranslation } from 'react-i18next';
 export default function NoticeCategoryItem({
   age = "01.01.2000",
   breed = "Unknown breed",
@@ -41,6 +41,7 @@ export default function NoticeCategoryItem({
 }) {
   const user = useSelector(selectUser);
   // console.log(id);
+const { t, i18n } = useTranslation();
 
   const yourNotice = Boolean(user.id === owner);
 
@@ -74,10 +75,10 @@ export default function NoticeCategoryItem({
           <Title>{title}</Title>
           <ContainerInfo>
             <TitleInfoWrapper>
-              <Info>Breed:</Info>
-              <Info>Place:</Info>
-              <Info>Age:</Info>
-              {category === "sell" ? <Info>Price:</Info> : null}
+              <Info>{t("breed")}:</Info>
+              <Info>{t("place")}:</Info>
+              <Info>{t("age")}:</Info>
+              {category === "sell" ? <Info>{t("price")}:</Info> : null}
             </TitleInfoWrapper>
             <RelevantInfoWrapper>
               <Info> {breed}</Info>
@@ -90,10 +91,10 @@ export default function NoticeCategoryItem({
         
         {yourNotice  ? (<ButtonWrapper>
           <ButtonLearn>
-            Learn more
+           {t("learnmore")}
           </ButtonLearn>
           <ButtonDelete onClick={() => removeNotice(id)}>
-              Delete  
+            {t("delete")} 
             <DeleteIcon fontSize="20px"
               sx={{
                   "--Button-gap": "13px"
@@ -103,7 +104,7 @@ export default function NoticeCategoryItem({
         ) : (
           <ButtonWrapper>
              <ButtonLearn onClick={learnMoreHandler}>
-              Learn more
+               {t("learnmore")}
             </ButtonLearn>
           </ButtonWrapper>)}
       </Wrapper>

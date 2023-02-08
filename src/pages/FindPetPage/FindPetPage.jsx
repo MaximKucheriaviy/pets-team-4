@@ -5,7 +5,7 @@ import { AddNoticeButtonMob } from "../../components/ModalAddPet/AddNoticeModal/
 import NoticeCategoriesList from "../../components/Notices/NoticeCategoriesList/NoticeCategoriesList";
 import NoticesCategoriesNav from "../../components/Notices/NoticesCategoriesNav/NoticesCategoriesNav";
 import { Wrapper } from "./FindPetPage.styled";
-
+import { useTranslation } from 'react-i18next';
 import { addToFavorite, getFavorites, getNoticesByCategory, getOwnerNotise, removeNoticeById } from "../../services/apiNotices";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";

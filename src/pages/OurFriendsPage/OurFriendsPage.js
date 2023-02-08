@@ -2,7 +2,9 @@ import { getAllSponsors } from "../../services/apiSponsors";
 import { DefaultPage } from "../../components/DefaultPage/DefaultPage";
 import { useEffect, useState } from "react";
 import { SponsorsList } from "../../components/Sponsors/SponsorsList";
+import { useTranslation } from 'react-i18next';
 export default function OurFriendsPage() {
+  	const { t} = useTranslation();
   const [sponsors, setSponsors] = useState([]);
   useEffect(() => {
     const fechSponsors = async () => {
@@ -17,7 +19,7 @@ export default function OurFriendsPage() {
     fechSponsors();
   }, []);
   return (
-    <DefaultPage title="Our Friends">
+    <DefaultPage title={t("our")}>
       <SponsorsList info={sponsors} />
     </DefaultPage>
   );

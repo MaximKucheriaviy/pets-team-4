@@ -10,10 +10,11 @@ import {
   ScheduleStyle,
   SponsorsContactsLink,
 } from "./SponsorsStyles";
-
+import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from "uuid";
 
 const Schedule = ({ workDays, closeModal }) => {
+ 
   return (
     <div onClick={closeModal}>
       {workDays.map((day) => (
@@ -53,7 +54,7 @@ export const SponsorItem = ({
       time = "----------------------------------";
     }
   }
-
+  const {t} = useTranslation();
   return (
     <SponsorCard key={title}>
       <SponsorHeader>{title}</SponsorHeader>
@@ -70,7 +71,7 @@ export const SponsorItem = ({
         </SponsorLogoBox>
         <SponsorContacts>
           <SponsorText>
-            Time:
+           {t("time")}:
             <br />{" "}
             <span
               onClick={() =>
@@ -95,39 +96,39 @@ export const SponsorItem = ({
               target="_blank"
               rel="nofollow"
             >
-              Addres:
+              {t("addres")}:
               <br />
               <span>{address}</span>
             </SponsorsContactsLink>
           ) : (
             <SponsorText>
-              Addres:
+              {t("addres")}:
               <br />
               <span>----------------------------------</span>
             </SponsorText>
           )}
           {email ? (
             <SponsorsContactsLink href="mailto:info@example.com">
-              Email:
+             {t("email")}:
               <br />
               <span>{email}</span>
             </SponsorsContactsLink>
           ) : (
             <SponsorText>
-              Email:
+               {t("email")}::
               <br />
               <span>----------------------------------</span>
             </SponsorText>
           )}
           {phone ? (
             <SponsorsContactsLink href={`tel:${phone}`}>
-              Phone:
+                 {t("phone")}:
               <br />
               <span>{phone}</span>
             </SponsorsContactsLink>
           ) : (
             <SponsorText>
-              Phone:
+               {t("phone")}:
               <br />
               <span>----------------------------------</span>
             </SponsorText>

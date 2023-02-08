@@ -70,7 +70,7 @@ padding-left: 17px;
     // height: 537px;
 
     background-color: ${({ theme }) => theme.colors.background};
-    box-shadow: 7px 4px 14px ${({ theme }) => theme.colors.black};
+    box-shadow: 7px 4px 14px ${({ theme }) => theme.colors.shadow};
     border-radius: 20px;
 
 

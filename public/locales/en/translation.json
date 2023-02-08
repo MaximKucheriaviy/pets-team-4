@@ -2,8 +2,40 @@
     "text": "Some text",
     "hello": "Hello World!",
     "registration" : "Registration",
-     "login" : "Login",
-     "news":"News",
-     "notices": "Find Pet",
-     "our":"Our friend"
+    "login" : "Login",
+    "news":"News",
+    "notices": "Find Pet",
+    "our":"Our friends",
+    "next":"Next",
+    "back":"Back",
+    "haveAc":" Already have an account?",
+    "haveAcN":"Do not have an account?",
+    "homepage":"Take good care of your small pets",
+    "search":"Search",
+    "time":"Time",
+    "phone":"Phone",
+    "email":"Email",
+    "addres":"Addres",
+    "accaunt":"Account",
+     "myinfo":"My information",
+     "mypets":"My Pets",
+     "name": "Name",
+     "date":"Date of birth",
+     "breed":"Breed",
+     "comments":"Comments",
+     "editphoto":"Edit photo",
+     "city":"City",
+     "brth":"Birthday",
+     "logout": "Log Out",
+     "add":"Add pet",
+     "place":"Place",
+     "age":"Age",
+     "price":"Price",
+      "learnmore":"Learn more",
+      "delete": "Delete"
+  
+
+
+
+
 }

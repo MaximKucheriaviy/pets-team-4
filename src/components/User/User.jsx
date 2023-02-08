@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
+import { useTranslation } from 'react-i18next';
 
 import { logOut } from "../../redux/auth/auth-operation";
 import { selectIsLogin, selectUser} from "../../redux/auth/autSelectors";
@@ -27,7 +28,7 @@ export default function User() {
   const isUserLogin = useSelector(selectIsLogin);
   const InfoUser = useSelector(selectUser);
   // const InfoPets = useSelector(selectPets);
-
+ const { t} = useTranslation();
 
   const dispatch = useDispatch();
   
@@ -53,12 +54,12 @@ export default function User() {
   return (
     <UserStyled>
       <div className="user-card">
-        <h3 className="user-card-info">My information:</h3>   
+        <h3 className="user-card-info">{t("myinfo")}:</h3>   
         <div className="user-info">
           <MyInformation users={InfoUser } />
           <button type="button" className="loqout" onClick={onLogout} variant="contained">
             <UserIcons id="icon-user_logout" />
-            <p>Log Out</p>
+            <p>{t("logout")}</p>
             </button>
         </div>
       </div>

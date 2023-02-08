@@ -5,10 +5,11 @@ import {  useState } from 'react';
 import { UserIcons } from '../UserIcons/UserIcons'
 
 
+import { useTranslation } from 'react-i18next';
 
 const MyInformationTabl = ({ tablItem }) => {
     const { name = "default", email = "default", birthday = '01.01.1900', phone = "default", city = "default" } = tablItem;
-
+  const { t} = useTranslation();
     const [showInput, setShowInput] = useState(false);
 
 
@@ -34,7 +35,7 @@ const MyInformationTabl = ({ tablItem }) => {
         <table className='user-tabl'>
             <tbody>
                 <tr>
-                    <td>Name:</td>
+                    <td>{t("name")}:</td>
                     {!showInput && <th>{name}</th>}
                     {!showInput && <th className='table-red'>
                         <button type='button' onClick={openInput}>
@@ -55,7 +56,7 @@ const MyInformationTabl = ({ tablItem }) => {
 
                 </tr>
                 <tr>
-                    <td>Email:</td>
+                    <td>{t("email")}:</td>
                     {!showInput && <th>{email}</th>}
                     {!showInput && <th className='table-red'>
                         <button type='button' onClick={openInput}>
@@ -75,7 +76,7 @@ const MyInformationTabl = ({ tablItem }) => {
                     }
                 </tr>
                 <tr>
-                    <td>Birthday:</td>
+                    <td>{t("brth")}:</td>
                     {!showInput && <th>{birthday}</th>}
                     {!showInput && <th className='table-red'>
                         <button type='button' onClick={openInput}>
@@ -95,7 +96,7 @@ const MyInformationTabl = ({ tablItem }) => {
                     }
                 </tr>
                 <tr>
-                    <td>Phone:</td>
+                    <td>{t("phone")}:</td>
                     {!showInput && <th>{phone}</th>}
                     {!showInput && <th className='table-red'>
                         <button type='button' onClick={openInput}>
@@ -115,7 +116,7 @@ const MyInformationTabl = ({ tablItem }) => {
                     }
                 </tr>
                 <tr>
-                    <td>City:</td>
+                    <td>{t("city")}:</td>
                     {!showInput && <th>{city}</th>}
                     {!showInput && <th className='table-red'>
                         <button type='button' onClick={openInput}>

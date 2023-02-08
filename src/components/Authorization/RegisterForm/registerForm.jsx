@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-
+import { useTranslation } from 'react-i18next';
 import { signup } from "../../../redux/auth/auth-operation";
 import { selectIsLogin } from "../../../redux/auth/autSelectors";
 import { useError } from "../../../shared/useError/useError";
@@ -31,7 +31,7 @@ export const RegisterForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [city, setCity] = useState("");
   const [phone, setPhone] = useState("");
-
+	const { t} = useTranslation();
   function validateEmail(value) {
     let error;
     if (!value) {
@@ -136,7 +136,7 @@ export const RegisterForm = () => {
         {({ errors, touched, values, isValid }) => (
           <Form>
             <FormHead>
-              <Title>Registration</Title>
+              <Title>	{t("registration")}</Title>
               {registerError && <Error>{registerError.message}</Error>}
             </FormHead>
             {isFirstStep && (
@@ -202,7 +202,7 @@ export const RegisterForm = () => {
                   setIsFirstStep(!isFirstStep);
                 }}
               >
-                Next
+              {t("next")}
               </Button>
             )}
             {!isFirstStep && <Button type="submit">Register</Button>}
@@ -213,11 +213,11 @@ export const RegisterForm = () => {
                   setIsFirstStep(!isFirstStep);
                 }}
               >
-                Back
+                 {t("back")}
               </Button>
             )}
             <Hint>
-              Already have an account? <HintLink to={"/login"}> Login</HintLink>
+              {t("haveAc")} <HintLink to={"/login"}>	{t("login")}</HintLink>
             </Hint>
           </Form>
         )}

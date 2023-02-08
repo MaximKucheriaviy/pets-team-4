@@ -7,7 +7,7 @@ import SearchForm from "../../components/SearchForm";
 import NewsList from "../../components/NewsList";
 import ErrorMessage from "../../components/ErrorMessage";
 import NotificationMessage from "../../components/NotificationMessage";
-
+import { useTranslation } from 'react-i18next';
 import { scrollTopPage } from "../../helpers/scrollUp";
 
 const PAGE_SCROLL_DOWN = 600;
@@ -18,7 +18,7 @@ export default function NewsPage() {
   const [filter, setFilter] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
-
+	const { t} = useTranslation();
   useEffect(() => {
     const handleScroll = () => {
       setScrollTop(window.scrollY);
@@ -61,7 +61,7 @@ export default function NewsPage() {
   const isShowButtonTop = scrollTop > PAGE_SCROLL_DOWN;
 
   return (
-    <DefaultPage title="News">
+    <DefaultPage title={t("news")}>
       <SearchForm
         value={filter}
         changeFilter={handleFilter}

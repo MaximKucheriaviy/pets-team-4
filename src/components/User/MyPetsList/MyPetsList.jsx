@@ -2,13 +2,14 @@
 import AddUserPetModal from "../../AddUserPetModal/AddUserPetModal";
 import { useState } from "react";
 
+import { useTranslation } from 'react-i18next';
 import { PetsItemStyled, PetsHederStyled } from "./MyPetsListStyled";
 
 import MyPets from "../MyPetsItem/MyPetsItem";
 
 export default function MyPetsList({ items }) {
   const [modalOpen, setModalOpen] = useState(false);
-
+ const { t} = useTranslation();
   const closeModal = () => {
     setModalOpen(!modalOpen);
   };
@@ -16,9 +17,9 @@ export default function MyPetsList({ items }) {
     <>
       <div>
         <PetsHederStyled>
-          <h3 className="pets-add-hed">My pets:</h3>
+          <h3 className="pets-add-hed">{t("mypets")}:</h3>
           <div className="pets-add">
-            <h3 className="pets-add-hed">Add pet</h3>
+            <h3 className="pets-add-hed">{t("add")}</h3>
             <button
               type="button"
               className="pets-addbtn"

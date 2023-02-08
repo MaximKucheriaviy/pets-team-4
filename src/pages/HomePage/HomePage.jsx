@@ -2,8 +2,9 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { Title, HeroContainer, Content, ContentImg } from "./HomePage.styled";
 import { Containers } from "./HomePage.styled";
-
+import { useTranslation } from 'react-i18next';
 export default function HomePage() {
+  const { t} = useTranslation();
   return (
     < Containers>
       <Helmet>
@@ -12,7 +13,7 @@ export default function HomePage() {
 
       <div>
         <HeroContainer>
-          <Title>Take good care of your small pets</Title>
+          <Title> {t("homepage")}</Title>
           <Content />
           <ContentImg />
         </HeroContainer>

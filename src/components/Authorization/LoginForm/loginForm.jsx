@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
-
+import { useTranslation } from 'react-i18next';
 import { Formik, Form } from "formik";
 
 import { selectIsLogin } from "../../../redux/auth/autSelectors";
@@ -27,7 +27,7 @@ export const LoginForm = () => {
   const registerError = useError();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+	const { t} = useTranslation();
   const onLogin = (data) => {
     dispatch(logIn(data));
   };
@@ -57,7 +57,7 @@ export const LoginForm = () => {
       >
         <Form>
           <FormHead>
-            <Title>Login</Title>
+            <Title>{t("login")}</Title>
             {registerError && <Error>{registerError.message}</Error>}
           </FormHead>
 
@@ -67,10 +67,10 @@ export const LoginForm = () => {
           <Item>
             <Input name="password" type="password" placeholder="Password" />
           </Item>
-          <Button type="submit">Login</Button>
+          <Button type="submit">{t("login")}</Button>
           <Hint>
-            Do not have an account?{" "}
-            <HintLink to={"/register"}>Registration</HintLink>
+            {t("haveAcN")}{" "}
+            <HintLink to={"/register"}>	{t("registration")}</HintLink>
           </Hint>
         </Form>
       </Formik>

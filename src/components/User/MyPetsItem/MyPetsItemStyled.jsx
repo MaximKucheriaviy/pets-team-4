@@ -11,7 +11,7 @@ export const PetsContainerStyled = styled.div`
         padding-top: 16px;
 
     background-color: ${({ theme }) => theme.colors.background};
-    box-shadow: 7px 4px 14px ${({ theme }) => theme.colors.black};
+    box-shadow: 7px 4px 14px ${({ theme }) => theme.colors.shadow};
     border-radius: 20px;
 
     @media screen and (min-width:768px) {

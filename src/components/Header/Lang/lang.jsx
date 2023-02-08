@@ -15,7 +15,7 @@ const Lang = () => {
     <>
       <button onClick={() => changeLanguage("en")}>EN</button>
       <button onClick={() => changeLanguage("ua")}>UA</button>
-      <div>{t("text")}</div>
+    
 
     </>
   )
