@@ -89,7 +89,7 @@ export default function NoticeCategoryItem({
         </InfoWrapper>  
         
         {yourNotice  ? (<ButtonWrapper>
-          <ButtonLearn>
+          <ButtonLearn onClick={learnMoreHandler}>
             Learn more
           </ButtonLearn>
           <ButtonDelete onClick={() => removeNotice(id)}>
