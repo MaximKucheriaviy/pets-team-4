@@ -44,3 +44,14 @@ export const removeNoticeById = async (token, noticeId) => {
   );
   return data;
 };
+
+export const getSearchNotices = async (
+  query,
+  category,
+  page
+) => {
+  const { data } = await axios.get(
+    `api/notices/categories/${category}?query=${query}`
+  );
+  return data;
+};
