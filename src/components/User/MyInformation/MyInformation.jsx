@@ -6,15 +6,19 @@ import { MyInform } from "./MyInformationStyled";
 import MyInformationTabl from './MyInformationTabl';
 
 export default function MyInformation({users}) {
-    const DefaultAvatar = 'https://pixabay.com/get/g1e5cae9ac1fb4cd584d50a2326b52ca3c0a687fb212618688de67656cf0fb3f877e7b084d0c4d75f1f2ec8f06f0c1f54_640.jpg';
+    const DefaultAvatar = 'https://pixabay.com/get/ga857e9aa8fc7b2c69ed69fb64a61453ad6c5cbe24dda78c790a153f783218258491453ecf3b8f9590e810709ae711a1b_640.jpg';
     const { avatar=DefaultAvatar, name} = users;
+
+    const changeAvatar = async (event) => {
+    // написати
+  };
 
 
     return (
         <MyInform >
             <div className='user-cont'>
                 <img className='user-avatar' src={avatar} alt={name} />
-                <button type="button" >
+                <button type="file" onChange={changeAvatar}>
                     <UserIcons id="camera"/>
                     <p>Edit photo</p>
                 </button>
@@ -33,11 +37,3 @@ export default function MyInformation({users}) {
 // })
 //     )
 // }
-
-// <div className='user-text'>
-//     <p><b>Name: </b>{name}</p>
-//     <p><b>Email: </b>{email}</p>
-//     <p><b>Birthday: </b>{birthday}</p>
-//     <p><b>Phone: </b>{phone}</p>
-//     <p><b>City: </b>{city}</p>
-// </div>

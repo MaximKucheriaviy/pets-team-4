@@ -6,7 +6,10 @@ import { PetsItemStyled, PetsHederStyled } from "./MyPetsListStyled";
 
 import MyPets from "../MyPetsItem/MyPetsItem";
 
-export default function MyPetsList({ items }) {
+import AddButtonNotMobile from '../../Notices/AddNoticeButton/AddButtonNotMobile/AddButtonNotMobile'
+
+
+export default function MyPetsList({ addPet, items, deletePet }) {
   const [modalOpen, setModalOpen] = useState(false);
 
   const closeModal = () => {
@@ -18,26 +21,7 @@ export default function MyPetsList({ items }) {
         <PetsHederStyled>
           <h3 className="pets-add-hed">My pets:</h3>
           <div className="pets-add">
-            <h3 className="pets-add-hed">Add pet</h3>
-            <button
-              type="button"
-              className="pets-addbtn"
-              onClick={() => setModalOpen(!modalOpen)}
-            >
-              <svg
-                className="pets-add-icon"
-                g
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-              >
-                <path
-                  stroke="#fff"
-                  stroke-linecap="round"
-                  stroke-width="2"
-                  d="M12 20v-8m0 0V4m0 8h8m-8 0H4"
-                />
-              </svg>
-            </button>
+            <AddButtonNotMobile handleOpen={setModalOpen} />
           </div>
         </PetsHederStyled>
         <ul>
@@ -50,7 +34,7 @@ export default function MyPetsList({ items }) {
                 breed={item.breed}
                 comments={item.comments}
                 owner={item.owner}
-                deletePet
+                deletePet={deletePet}
               />
             </PetsItemStyled>
           ))}
