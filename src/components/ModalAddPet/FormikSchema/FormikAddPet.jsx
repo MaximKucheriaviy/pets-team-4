@@ -3,17 +3,22 @@ import axios from "axios";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 import { store } from "../../../redux/store";
 import moment from "moment/moment";
+import { objectFixer } from "../../../helpers/objetFixer";
 
 const SUPORTED_FORMAT = ["image/jpg", "image/jpeg", "image/png"];
 
 const postedNoticePet = async (info) => {
+  // console.log(info.getAll());
   try {
     Notify.success("Posted!")
     return axios({
       method: "post",
       url: "/api/notices",
       data: info,
-      headers: { "Authorization": `${store.getState().auth.token}` },
+      headers: { "Authorization": `${store.getState().auth.token}`,
+      "Content-Type": "multipart/form-data" 
+      
+      },
       // validateStatus: function (status) {
       //   return status < 500; // Resolve only if the status code is less than 500
       // }
@@ -39,6 +44,7 @@ export const form = {
   },
 
   onSubmit: (values, { resetForm }) => {
+    values = objectFixer(values);
     const formData = new FormData();
     for (let value in values) {
         formData.append(value, values[value]);
