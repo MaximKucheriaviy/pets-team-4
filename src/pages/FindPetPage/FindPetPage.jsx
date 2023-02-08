@@ -5,39 +5,29 @@ import NoticeCategoriesList from "../../components/Notices/NoticeCategoriesList/
 import NoticesCategoriesNav from "../../components/Notices/NoticesCategoriesNav/NoticesCategoriesNav";
 import { Wrapper } from "./FindPetPage.styled";
 
-import { addToFavorite, getFavorites, getNoticesByCategory, getOwnerNotise, removeNoticeById, removeToFavorite } from "../../services/apiNotices";
+import { addToFavorite, getFavorites, getNoticesByCategory, getOwnerNotise, getSearchNotices, removeNoticeById, removeToFavorite } from "../../services/apiNotices";
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectToken } from "../../redux/auth/autSelectors";
-import { Box, CircularProgress } from "@mui/material";
 import NoticesSearch from "../../components/NoticesSearch/NoticesSearch";
+import Loader from "../../components/Loader/Loader";
 
 // token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2RkOGQwNTI5NTEyZGY5N2Q3ZjI3ZDIiLCJpYXQiOjE2NzU0NjM5NDF9.jcqhFXup9wp8GmICuMdMU_zVs2vs5zZVKfj7D04JceY"
 // id=63dd8d0529512df97d7f27d2
   
-  // function handleClick() {
-  //   if (favorite === true) {
-  //     setFavorite(false);
-  //   } 
-  //     setFavorite(true);
-  // }
-  
-
-// function handleClick() {
-//   if (favorite === true) {
-//     setFavorite(false);
-//   }
-//     setFavorite(true);
-// }
 
 export default function FindPetPage() {
 const [notices, setNotices] = useState([]);
 const [, setError] = useState(null);
 const [isLoading, setIsLoading] = useState(false);
 const [update, setUpdate] = useState(true);
+const [page, setPage] = useState(1);
+const [, setNotFound] = useState(false);  
 
-
+const [searchParams, setSearchParams] = useSearchParams();
+const queryName = searchParams.get('query') ?? '';
+  
 const { category } = useParams();
 const token = useSelector(selectToken);
 const location = useLocation();
@@ -156,42 +146,73 @@ const location = useLocation();
     }
   }
 
-  // const inFavorites = ({ id }) => {
-  //     console.log(id)
-  //       const result = favorites.find((item) => item._id === id );
-  //       return result;
-  //   }
-
   const removeNotice = async (id) => {
-    if(!token){
+    if (!token) {
       return
     }
-    try{
+    try {
       const result = await removeNoticeById(token, id);
-      if(!result){
+      if (!result) {
         return
       }
       setNotices(prev => {
         return prev.filter(item => item._id !== id);
       })
     }
-    catch(err){
+    catch (err) {
       console.log(err);
     }
-  }
+  };
 
-       
+    useEffect(() => {
+    if (!queryName) {
+      return;
+    }
+
+    const fetchNotices = async () => {
+      setIsLoading(true);
+    
+      try {
+        const data = await getSearchNotices(queryName,category, page);
+        console.log(data)
+        if (data.length === 0) {
+          setNotFound(true);
+        } else {
+          setNotices((prevNotices) => {
+            return [...prevNotices, ...data]
+          });
+          setNotFound(false);
+        }
+      } catch (error) {
+        console.log(error);
+        setError(error);
+      }
+      finally {
+        setIsLoading(false);
+      }
+    }
+    
+    if (queryName) {
+      fetchNotices();
+    }
+  }, [queryName, category,  page]);
+
+  const changeURL = value => {
+    setSearchParams(value !== "" ? { query: value } : {});
+    setNotices([]);
+    setPage(1);
+  };
+
+  // const isNotices = Boolean(notices.length);
 
   return (
     <DefaultPage title="Find your favorite pet">
-      <NoticesSearch/>
+      <NoticesSearch onSubmit={changeURL} />
       <Wrapper>
         <NoticesCategoriesNav />
         <ModalContainer />
       </Wrapper>
-   {isLoading &&   <Box sx={{ display: 'flex' }}>
-      <CircularProgress />
-    </Box>}
+      {isLoading && <Loader />}
       <NoticeCategoriesList items={notices} removeNotice={ removeNotice} changeFavorite={changeInFavoriteNotices} update={setUpdate} />
     </DefaultPage>
   );
