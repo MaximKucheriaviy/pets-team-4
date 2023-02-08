@@ -6,7 +6,6 @@ axios.defaults.baseURL = BACKEND_BASE_URL;
 export const getFavorites = async (token) => {
   axios.defaults.headers.common["Authorization"] = token;
   const { data } = await axios.get("/api/notices/favorite");
-  console.log(data.favoriteNotices);
   return data.favoriteNotices;
 };
 

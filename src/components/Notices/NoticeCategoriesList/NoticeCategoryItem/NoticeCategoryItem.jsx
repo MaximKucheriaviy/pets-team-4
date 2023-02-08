@@ -37,7 +37,8 @@ export default function NoticeCategoryItem({
   id, 
   setModal,
   removeNotice,
-  changeFavorite
+  changeFavorite,
+  fav = false
 }) {
   const user = useSelector(selectUser);
   // console.log(id);
@@ -48,6 +49,15 @@ export default function NoticeCategoryItem({
     setModal();
   }
 
+  const chageHandlerFavorite = () =>{
+    if(fav){
+      changeFavorite(id, false);
+    }
+    else{
+      changeFavorite(id, true);
+    }
+  }
+
   return (
     <Item key={id} >
         <Wrapper>
@@ -56,13 +66,13 @@ export default function NoticeCategoryItem({
           <NoticeCategory>{ category}</NoticeCategory>
             <Favorite>
             <IconButton   
-              onClick={() => changeFavorite(id)} 
+              onClick={chageHandlerFavorite} 
                sx={{
                 "--IconButton-size": "44px",
                 color: "currentColor",
               }}
             >
-              {!favorite ? (
+              {!fav ? (
                 <FavoriteBorderIcon fill="currentColor" sx={{ fontSize: 28 }} />
               ) : (
                 <FavoriteIcon fill="currentColor" sx={{ fontSize: 28 }} />
