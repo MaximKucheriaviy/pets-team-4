@@ -6,7 +6,7 @@ import { PetsItemStyled, PetsHederStyled } from "./MyPetsListStyled";
 
 import MyPets from "../MyPetsItem/MyPetsItem";
 
-import AddButtonNotMobile from '../../Notices/AddNoticeButton/AddButtonNotMobile/AddButtonNotMobile'
+import {AddNoticeButton} from '../../ModalAddPet/AddNoticeModal/AddNoticeButton'
 
 
 export default function MyPetsList({ addPet, items, deletePet }) {
@@ -21,7 +21,7 @@ export default function MyPetsList({ addPet, items, deletePet }) {
         <PetsHederStyled>
           <h3 className="pets-add-hed">My pets:</h3>
           <div className="pets-add">
-            <AddButtonNotMobile handleOpen={setModalOpen} />
+            <AddNoticeButton handleOpen={setModalOpen} />
           </div>
         </PetsHederStyled>
         <ul>
