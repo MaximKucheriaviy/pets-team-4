@@ -1,13 +1,13 @@
 import axios from "axios";
 import { BACKEND_BASE_URL } from "../Constants/backendBaseUrl";
 
-
 axios.defaults.baseURL = BACKEND_BASE_URL;
 
 export const getFavorites = async (token) => {
   axios.defaults.headers.common["Authorization"] = token;
   const { data } = await axios.get("/api/notices/favorite");
-  return data[0].favoriteNotices;
+  console.log(data.favoriteNotices);
+  return data.favoriteNotices;
 };
 
 export const getNoticesByCategory = async (category) => {

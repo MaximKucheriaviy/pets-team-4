@@ -1,8 +1,8 @@
 // import PropTypes from 'prop-types';
 import {UserIcons} from '../UserIcons/UserIcons'
 
+import { MyInform } from "./MyInformationStyled";
 
-import { MyInform } from './MyInformationStyled';
 import MyInformationTabl from './MyInformationTabl';
 
 export default function MyInformation({users}) {
@@ -28,9 +28,16 @@ export default function MyInformation({users}) {
 
 // MyPetsList.propTypes = {
 //     items: PropTypes.arrayOf(
-        // PropTypes.shape({
-        //     id:PropTypes.string.isRequired,
-        // })
+// PropTypes.shape({
+//     id:PropTypes.string.isRequired,
+// })
 //     )
 // }
 
+// <div className='user-text'>
+//     <p><b>Name: </b>{name}</p>
+//     <p><b>Email: </b>{email}</p>
+//     <p><b>Birthday: </b>{birthday}</p>
+//     <p><b>Phone: </b>{phone}</p>
+//     <p><b>City: </b>{city}</p>
+// </div>
