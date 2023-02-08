@@ -143,7 +143,7 @@ margin-bottom: 32px;
   /* padding: 50px 16px 32px 16px; */
 `;
 export const ButtonWrapper = styled.div`
-margin: auto;
+margin: auto auto 0 auto;
   /* padding: 20px 16px 12px 16px; */
 `;
 export const Button = styled.button`
