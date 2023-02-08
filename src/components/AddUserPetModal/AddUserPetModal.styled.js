@@ -1,14 +1,13 @@
 import styled from "styled-components";
-import { Field, Form, ErrorMessage } from "formik";
+import { Field, Form } from "formik";
 import { TfiPlus } from "react-icons/tfi";
 import { CgClose } from "react-icons/cg";
 
 export const FormBox = styled(Form)`
   display: flex;
   flex-direction: column;
-  // align-items: center;
   width: 280px;
-  background: #ffffff;
+  background: ${({ theme }) => theme.colors.white};
   border-radius: 20px;
   padding: 40px 20px 40px 20px;
 
@@ -18,9 +17,7 @@ export const FormBox = styled(Form)`
   & input:not(:last-child) {
     margin-bottom: 16px;
   }
-  // & input:last-of-type {
-  //   margin-bottom: 40px;
-  // }
+
   @media screen and (min-width: 768px) {
     width: 608px;
     padding-left: 80px;
@@ -37,7 +34,7 @@ export const FormTitle = styled.p`
   font-weight: 500;
   font-size: 24px;
   line-height: 33px;
-  color: #111111;
+  color: ${({ theme }) => theme.colors.black};
   text-align: center;
   margin-bottom: 28px;
   @media screen and (min-width: 768px) {
@@ -51,7 +48,7 @@ export const InputLabel = styled.label`
   font-weight: 500;
   font-size: 18px;
   line-height: 26px;
-  color: #111111;
+  color:   color: ${({ theme }) => theme.colors.black};
   margin-bottom: 8px;
   @media screen and (min-width: 768px) {
     font-size: 24px;
@@ -64,7 +61,7 @@ export const TextAreaLabel = styled.label`
   font-weight: 500;
   font-size: 18px;
   line-height: 26px;
-  color: #111111;
+  color:   color: ${({ theme }) => theme.colors.black};
   margin-bottom: 8px;
   @media screen and (min-width: 768px) {
     font-size: 24px;
@@ -171,7 +168,7 @@ export const InputLabelFile = styled.label`
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  color: #111111;
+  color:   color: ${({ theme }) => theme.colors.black};
   margin-bottom: 20px;
   @media screen and (min-width: 768px) {
     margin-left: auto;
@@ -260,20 +257,21 @@ export const CloseIcon = styled(CgClose)`
 export const ErrorNotification = styled.div`
   font-family: "Manrope";
   color: red;
+  @media screen and (min-width: 768px) {
+    margin-left: 27px;
+  }
 `;
 
 export const Ovarlay = styled.div`
-  width: 208px;
-  height: 208px;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(17, 17, 17, 0.6);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   z-index: 999;
 `;
