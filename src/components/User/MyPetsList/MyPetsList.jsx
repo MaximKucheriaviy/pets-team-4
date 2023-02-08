@@ -9,12 +9,12 @@ import MyPets from "../MyPetsItem/MyPetsItem";
 import {AddNoticeButton} from '../../ModalAddPet/AddNoticeModal/AddNoticeButton'
 
 
-export default function MyPetsList({ addPet, items, deletePet }) {
-  const [modalOpen, setModalOpen] = useState(false);
+export default function MyPetsList({ addPet, items, deletePet, setModalOpen }) {
+  // const [modalOpen, setModalOpen] = useState(false);
 
-  const closeModal = () => {
-    setModalOpen(!modalOpen);
-  };
+  // const closeModal = () => {
+  //   setModalOpen(!modalOpen);
+  // };
   return (
     <>
       <div>
@@ -38,7 +38,7 @@ export default function MyPetsList({ addPet, items, deletePet }) {
           ))}
         </ul>
       </div>
-      {modalOpen && <AddUserPetModal onClose={closeModal} addPet={addPet}></AddUserPetModal>}
+      {/* {modalOpen && <AddUserPetModal onClose={closeModal} addPet={addPet}></AddUserPetModal>} */}
     </>
   );
 }

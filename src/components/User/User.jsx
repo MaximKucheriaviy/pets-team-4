@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 
 import { logOut } from "../../redux/auth/auth-operation";
 import { selectIsLogin, selectUser, selectToken} from "../../redux/auth/autSelectors";
+import AddUserPetModal from "../AddUserPetModal/AddUserPetModal";
 
 
 // import { deletePet, addPet } from '../../redux/auth/auth-operation'
@@ -34,6 +35,7 @@ export default function User() {
 
 
   const dispatch = useDispatch();
+    const [modalOpen, setModalOpen] = useState(false);
 
 
   useEffect(() => {
@@ -46,7 +48,7 @@ export default function User() {
         console.log(error.message);
       }
     })();
-  }, [token]);
+  }, [token, modalOpen]);
 
   //   useEffect(() => {
   //   (async () => {
@@ -80,6 +82,11 @@ export default function User() {
   // };
 
 
+  const closeModal = () => {
+    setModalOpen(!modalOpen);
+  };
+
+
   return (
     <UserStyled>
       <div className="user-card">
@@ -93,7 +100,9 @@ export default function User() {
         </div>
       </div>
       <div className="pets-conteiner">
-        <MyPetsList items={pets} addPet={postUserPets} /> 
+        <MyPetsList items={pets} addPet={postUserPets} setModalOpen={()=>setModalOpen(!modalOpen)} /> 
+        {modalOpen && <AddUserPetModal onClose={closeModal} ></AddUserPetModal>}
+
         {/* <MyPetsList items={Pets } addPet={onAddPet} deletePet={onDeletePet}  />  */}
 
       </div>
