@@ -54,6 +54,7 @@ padding-left: 0;
 .pets-add{
     display: flex;
     align-items: center;
+    line-height: 1.35;
 
 }
 

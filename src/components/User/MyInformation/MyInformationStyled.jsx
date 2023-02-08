@@ -108,9 +108,28 @@ line-height: 1.83;
 
 `
 
-export const MyInformItem = styled.div`
-    @media screen and (min-width:768px) {
+export const MyInformItem = styled.input`
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.33;
+    background-color: transparent;
+    border: none;
+    color: #111111;
 
     width: 100%;
+
+    @media screen and (min-width:768px) {
+    font-size: 18px;
+    line-height: 1.39;
+
+      &:focus {
+    background-color: #FDF7F2;
+    border: 1px solid rgba(245, 146, 86, 0.5);
+    border-radius: 40px;
+  }
+
+
     }
 `
