@@ -20,7 +20,7 @@ export const SponsorCard = styled.li`
   background: #ffffff;
   border-radius: 20px;
   margin-bottom: 12px;
-  padding: 12px 0 12px 4px;
+  padding: 12px 12px 12px 4px;
   box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
   :hover {
     box-shadow: 14px 8px 28px rgb(216, 216, 216);
