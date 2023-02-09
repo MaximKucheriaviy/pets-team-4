@@ -6,13 +6,14 @@ import { MyInform } from "./MyInformationStyled";
 import MyInformationTabl from './MyInformationTabl';
 import {EditName, EditEmail, EditBirthday, EditPhone, EditCity} from './MyInformationRenameInfo'
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { patchCurrentUserAvatar } from "../../../services/apiAuth"
 
 export default function MyInformation({users, setInfoUser, onSubmit, onSubmitName}) {
     const DefaultAvatar = 'https://pixabay.com/get/g2b24e5ea9ca745fec0afa440645dc29814e70b147fecbb84905593ab50e25f980efe2997fcae7c59001de0ae820e72b5_640.jpg';
     const { avatarURL, name } = users;
     const avatarRef = useRef(null)
+    const [update, setUpdate] = useState(false);
 
     
     const handlPatchAvatar = async (img) => {
@@ -21,9 +22,10 @@ export default function MyInformation({users, setInfoUser, onSubmit, onSubmitNam
         const respons =await patchCurrentUserAvatar(formData)
         setInfoUser(state => {
             state.avatarURL = respons.data.avatarURL
+            console.log(respons.data.avatarURL);
             return state
         })
-        
+        setUpdate(!update);
 
     }
     

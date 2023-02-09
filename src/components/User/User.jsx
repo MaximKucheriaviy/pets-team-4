@@ -77,7 +77,7 @@ const handleDelete = async (petID) => {
         <div className="user-info">
           <MyInformation
             users={InfoUser}
-            setInfoUser
+            setInfoUser={setInfoUser}
             // onSubmit
             // onSubmitName={patchCurrentUserName}
           />
