@@ -11,13 +11,12 @@ export const SponsorList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
-    /* justify-content: center; */
-    /* margin-right: -32px; */
   }
 `;
 
 export const SponsorCard = styled.li`
-  height: 192px;
+  min-height: 192px;
+  height: auto;
   background: #ffffff;
   border-radius: 20px;
   margin-bottom: 12px;
@@ -27,14 +26,12 @@ export const SponsorCard = styled.li`
     box-shadow: 14px 8px 28px rgb(216, 216, 216);
   }
   @media screen and (min-width: 768px) {
-    height: 246px;
-    /* margin-bottom: 32px; */
+    min-height: 246px;
     flex-basis: calc(100% / 2 - 32px);
-    /* margin-right: 32px; */
     border-radius: 40px;
   }
   @media screen and (min-width: 1280px) {
-    height: 287px;
+    min-height: 287px;
     flex-basis: calc(100% / 3 - 32px);
   }
 `;
@@ -57,9 +54,6 @@ export const SponsorHeader = styled.h3`
     line-height: 1.35;
   }
 `;
-
-export const SponsorLogoBox = styled.div``;
-
 export const SponsorLogo = styled.img`
   width: 100px;
   height: 78px;
@@ -78,31 +72,7 @@ export const SponsorInfo = styled.div`
   display: flex;
   flex-direction: row;
 `;
-export const SponsorContacts = styled.div`
-  overflow-x: clip;
-  overflow-y: auto;
-  scrollbar-color: #f59256 #f1f1f1;
-  scrollbar-width: thin;
-  width: 100%;
-  justify-content: end;
-  text-align: left;
-  max-height: 140px;
-  ::-webkit-scrollbar {
-    width: 3px;
-    background-color: #f1f1f1;
-  }
-  ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #f59256;
-  }
 
-  @media screen and (min-width: 768px) {
-    max-height: 165px;
-  }
-  @media screen and (min-width: 1280px) {
-    max-height: 200px;
-  }
-`;
 export const SponsorsContactsLink = styled.a`
   display: block;
   text-decoration: none;
