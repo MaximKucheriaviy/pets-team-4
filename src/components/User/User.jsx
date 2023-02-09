@@ -8,7 +8,7 @@ import { logOut } from "../../redux/auth/auth-operation";
 import { selectIsLogin, selectUser, selectToken } from "../../redux/auth/autSelectors";
 
 import { getUserPets, postUserPets, getDeleteUserPets } from '../../services/apiUserPets';
-import { postCurrentUser } from '../../services/apiAuth';
+import { patchCurrentUserName, patchCurrentUserEmail, patchCurrentUserPhone, patchCurrentUserCity, patchCurrentUserBirthday, patchCurrentUserAvatar } from '../../services/apiAuth';
 
 
 import AddUserPetModal from "../AddUserPetModal/AddUserPetModal";
@@ -25,7 +25,7 @@ export default function User() {
   const InfoUser = useSelector(selectUser);
   const [pets, setPets] = useState([]);
   const token = useSelector(selectToken);
-
+  // const [userInfo, setUserInfo] = useState(null)
 
 
   const dispatch = useDispatch();
@@ -66,22 +66,32 @@ const handleDelete = async (petID) => {
     }
   }
   
-console.log(pets)
 
   return (
     <UserStyled>
       <div className="user-card">
         <h3 className="user-card-info">My information:</h3>   
         <div className="user-info">
-          <MyInformation users={InfoUser } onSubmit={postCurrentUser}/>
-          <button type="button" className="loqout" onClick={onLogout} variant="contained">
-            <UserIcons id="icon-user_logout" />
-            <p>Log Out</p>
+          <MyInformation
+            users={InfoUser}
+            // onSubmit
+            // onSubmitName={patchCurrentUserName}
+          />
+          <div>
+            <button type="button" className="loqout" onClick={onLogout} variant="contained">
+              <UserIcons id="icon-user_logout" />
+              <p>Log Out</p>
             </button>
+          </div>
         </div>
       </div>
       <div className="pets-conteiner">
-        <MyPetsList items={pets} addPet={postUserPets} deletePet={handleDelete} setModalOpen={()=>setModalOpen(!modalOpen)} /> 
+        <MyPetsList
+          items={pets}
+          addPet={postUserPets}
+          deletePet={handleDelete}
+          setModalOpen={() => setModalOpen(!modalOpen)}
+        /> 
         {modalOpen && <AddUserPetModal onClose={closeModal} ></AddUserPetModal>}
 
         {/* <MyPetsList items={Pets } addPet={onAddPet} deletePet={onDeletePet}  />  */}

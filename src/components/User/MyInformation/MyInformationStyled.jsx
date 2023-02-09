@@ -24,8 +24,11 @@ display: flex;
 }
 
 .cont-avatar{
-    // border-radius: 50%;
-    // box-shadow: 0px 4px 14px rgb(0 0 0 / 11%);
+    width: 233px;
+    height: 233px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 14px rgb(0 0 0 / 11%);
+    background-color: beige;
     // clip-path: circle(33%);
 }
 
@@ -139,4 +142,23 @@ export const MyInformItem = styled.input`
 
 
     }
+`
+
+export const UserAvatar = styled.img`
+    // margin: 20px 24px 12px 23px;
+
+    padding-left: 8px;
+    padding-right: 8px;
+        width: 100%;
+    width: 233px;
+    height: 233px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 14px rgb(0 0 0 / 11%);
+
+@media screen and (min-width:768px) {
+    padding-left: 0;
+    padding-right: 0;
+    clip-path: circle(33%);
+}
+
 `

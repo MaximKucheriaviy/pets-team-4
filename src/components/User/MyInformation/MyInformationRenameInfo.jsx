@@ -7,9 +7,10 @@ import { MyInformItem } from './MyInformationStyled'
 
 
 
+
 // =============== change name ====================================================
 
-export function EditName(user, onSubmit) {
+export function EditName(user, onSubmitName) {
     const [disabled, setDisabled] = useState(true);
     const inputID = useRef(v4());
     
@@ -22,11 +23,11 @@ export function EditName(user, onSubmit) {
 //     // const dispatch = useDispatch();
 
     
-    function SubmitRemoveInfo() {
+    // function SubmitRemoveInfo() {
 //         // написати
 //     // const action = addContact(contact);
 //     // dispatch(action);
-    }
+    // }
     
     function ChangeBtn() {
         setDisabled(!disabled);
@@ -48,7 +49,10 @@ export function EditName(user, onSubmit) {
                 <button type='button' onClick={openHandler} >
                     <UserIcons id="icon-user_red" />
                 </button> :
-                <button type='submit' onSubmit={SubmitRemoveInfo} onClick={ChangeBtn}>
+                    <button
+                        type='submit'
+                        onSubmit={(values) => { onSubmitName(values); }}
+                        onClick={ChangeBtn}>
                     <UserIcons id="icon-user_done"  />
                 </button>
                 }
@@ -59,7 +63,7 @@ export function EditName(user, onSubmit) {
 
 // =============== change email ====================================================
 
-export function EditEmail( user) {
+export function EditEmail( user, onSubmitEmail) {
     const [disabled, setDisabled] = useState(true);
     const inputID = useRef(v4());
     
@@ -72,11 +76,11 @@ export function EditEmail( user) {
 //     // const dispatch = useDispatch();
 
     
-    function SubmitRemoveInfo() {
+    // function SubmitRemoveInfo() {
 //         // написати
 //     // const action = addContact(contact);
 //     // dispatch(action);
-    }
+    // }
     
     function ChangeBtn() {
         setDisabled(!disabled);
@@ -98,7 +102,7 @@ export function EditEmail( user) {
                 <button type='button' onClick={openHandler}>
                     <UserIcons id="icon-user_red" />
                 </button> :
-                <button type='submit' onSubmit={SubmitRemoveInfo} onClick={ChangeBtn}>
+                <button type='submit' onSubmitEmail onClick={ChangeBtn}>
                     <UserIcons id="icon-user_done"  />
                 </button>
                 }
@@ -109,7 +113,7 @@ export function EditEmail( user) {
  
 // =============== change birthday ====================================================
 
-export function EditBirthday( user) {
+export function EditBirthday( user, onSubmitBirthday) {
     const [disabled, setDisabled] = useState(true);
     const inputID = useRef(v4());
     
@@ -122,11 +126,11 @@ export function EditBirthday( user) {
 //     // const dispatch = useDispatch();
 
     
-    function SubmitRemoveInfo() {
+    // function SubmitRemoveInfo() {
 //         // написати
 //     // const action = addContact(contact);
 //     // dispatch(action);
-    }
+    // }
     
     function ChangeBtn() {
         setDisabled(!disabled);
@@ -149,7 +153,7 @@ export function EditBirthday( user) {
                 <button type='button' onClick={openHandler}>
                     <UserIcons id="icon-user_red" />
                 </button> :
-                <button type='submit' onSubmit={SubmitRemoveInfo} onClick={ChangeBtn}>
+                <button type='submit' onSubmitBirthday onClick={ChangeBtn}>
                     <UserIcons id="icon-user_done"  />
                 </button>
                 }
@@ -160,7 +164,7 @@ export function EditBirthday( user) {
  
 // =============== change phone ====================================================
 
-export function EditPhone( user) {
+export function EditPhone( user, onSubmitPhone) {
     const [disabled, setDisabled] = useState(true);
     const inputID = useRef(v4());
     
@@ -173,11 +177,11 @@ export function EditPhone( user) {
 //     // const dispatch = useDispatch();
 
     
-    function SubmitRemoveInfo() {
+    // function SubmitRemoveInfo() {
 //         // написати
 //     // const action = addContact(contact);
 //     // dispatch(action);
-    }
+    // }
     
     function ChangeBtn() {
         setDisabled(!disabled);
@@ -199,7 +203,7 @@ export function EditPhone( user) {
                 <button type='button' onClick={openHandler}>
                     <UserIcons id="icon-user_red" />
                 </button> :
-                <button type='submit' onSubmit={SubmitRemoveInfo} onClick={ChangeBtn}>
+                <button type='submit' onSubmitPhone onClick={ChangeBtn}>
                     <UserIcons id="icon-user_done"  />
                 </button>
                 }
@@ -208,7 +212,7 @@ export function EditPhone( user) {
     )
  }
 // =============== change city ====================================================
-export function EditCity(user) {
+export function EditCity(user, onSubmitCity) {
     const [disabled, setDisabled] = useState(true);
     const inputID = useRef(v4());
     
@@ -221,11 +225,11 @@ export function EditCity(user) {
 //     // const dispatch = useDispatch();
 
     
-    function SubmitRemoveInfo() {
+    // function SubmitRemoveInfo() {
 //         // написати
 //     // const action = addContact(contact);
 //     // dispatch(action);
-    }
+    // }
     
     function ChangeBtn() {
         setDisabled(!disabled);
@@ -248,7 +252,7 @@ export function EditCity(user) {
                 <button type='button' onClick={openHandler}>
                     <UserIcons id="icon-user_red" />
                 </button> :
-                <button type='submit' onSubmit={SubmitRemoveInfo} onClick={ChangeBtn}>
+                <button type='submit' onSubmitCity onClick={ChangeBtn}>
                     <UserIcons id="icon-user_done"  />
                 </button>
                 }
