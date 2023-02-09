@@ -19,10 +19,8 @@ export default function MyInformation({users, onSubmit, onSubmitName}) {
     
     const handlPatchAvatar = async (img) => {
         const formData = new FormData();
-        for (let img in users) {
-        formData.append(img, users[img]);
-        }
-        await patchCurrentUserAvatar(img)
+        formData.append("avatar", img);
+        await patchCurrentUserAvatar(formData)
 
     }
     
