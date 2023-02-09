@@ -41,8 +41,7 @@ export default function NoticeCategoryItem({
   fav = false
 }) {
   const user = useSelector(selectUser);
-  // console.log(id);
-
+ 
   const yourNotice = Boolean(user.id === owner);
 
   const learnMoreHandler = () => {
@@ -58,6 +57,27 @@ export default function NoticeCategoryItem({
     }
   }
 
+  const getAge = (birth) =>  {
+    let today = new Date();
+    let birthDate = new Date(birth);
+    let age = today.getFullYear() - birthDate.getFullYear();
+
+    let m = today.getMonth() - birthDate.getMonth();
+    let d = today.getDay() - birthDate.getDay();
+
+    if (m < 0 || (m === 0 && today.getDay() < birthDate.getDay())) {
+      age--;
+    }
+    if (age === 0) {
+      m = 12 + m;
+      if (d < 0 || (d === 0 && today.getDate() < birthDate.getDate())) {
+        m--
+      }
+    }
+    const ageResult = age ? age + ' Year' : m + ' month'; 
+    return ageResult;
+  }
+  
   return (
     <Item key={id} >
         <Wrapper>
@@ -92,7 +112,7 @@ export default function NoticeCategoryItem({
             <RelevantInfoWrapper>
               <Info> {breed}</Info>
               <Info> {place}</Info>
-              <Info> {age}</Info>
+              <Info> {getAge(age)}</Info>
               {category === "sell" ? <Info>{price}$</Info> : null}
             </RelevantInfoWrapper>
             </ContainerInfo>
