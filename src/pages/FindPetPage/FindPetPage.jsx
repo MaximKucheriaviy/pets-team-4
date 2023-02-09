@@ -12,10 +12,13 @@ import { useSelector } from "react-redux";
 import { selectToken } from "../../redux/auth/autSelectors";
 import NoticesSearch from "../../components/NoticesSearch/NoticesSearch";
 import Loader from "../../components/Loader/Loader";
+import { ButtonToTop } from "../../components/ButtonToTop";
+import { SlArrowUp } from "react-icons/sl";
+import { scrollTopPage } from "../../helpers/scrollUp";
+import SearchForm from "../../components/SearchForm";
+import NotificationMessage from "../../components/NotificationMessage";
 
-// token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2RkOGQwNTI5NTEyZGY5N2Q3ZjI3ZDIiLCJpYXQiOjE2NzU0NjM5NDF9.jcqhFXup9wp8GmICuMdMU_zVs2vs5zZVKfj7D04JceY"
-// id=63dd8d0529512df97d7f27d2
-  
+const PAGE_SCROLL_DOWN = 600;
 
 export default function FindPetPage() {
 const [notices, setNotices] = useState([]);
@@ -24,14 +27,13 @@ const [isLoading, setIsLoading] = useState(false);
 const [update, setUpdate] = useState(true);
 const [page, setPage] = useState(1);
 const [, setNotFound] = useState(false);  
-
-const [searchParams, setSearchParams] = useSearchParams();
-const queryName = searchParams.get('query') ?? '';
+const [scrollTop, setScrollTop] = useState(0);
+const [filter, setFilter] = useState("");
   
 const { category } = useParams();
 const token = useSelector(selectToken);
 const location = useLocation();
-
+  
   const isLostPage = location.pathname.includes("lost-found");
   const isFreePage = location.pathname.includes("for-free");
   const isSellPage = location.pathname.includes( "sell");
@@ -39,11 +41,24 @@ const location = useLocation();
   const isOwnPage = location.pathname.includes("own");
 
   useEffect(() => {
+    const handleScroll = () => {
+      setScrollTop(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
     (async () => {
       setIsLoading(true);
       setError(null);
       setNotices([]);
-      setUpdate(true)
+      setUpdate(true);
+      setFilter("");
       try {
         if (isLostPage) {
           const data = await getNoticesByCategory(category);
@@ -164,56 +179,46 @@ const location = useLocation();
     }
   };
 
-    useEffect(() => {
-    if (!queryName) {
-      return;
-    }
+  const handleFilter = (e) => setFilter(e.target.value);
 
-    const fetchNotices = async () => {
-      setIsLoading(true);
-    
-      try {
-        const data = await getSearchNotices(queryName,category, page);
-        console.log(data)
-        if (data.length === 0) {
-          setNotFound(true);
-        } else {
-          setNotices((prevNotices) => {
-            return [...prevNotices, ...data]
-          });
-          setNotFound(false);
-        }
-      } catch (error) {
-        console.log(error);
-        setError(error);
-      }
-      finally {
-        setIsLoading(false);
-      }
-    }
-    
-    if (queryName) {
-      fetchNotices();
-    }
-  }, [queryName, category,  page]);
+  const clearFilter = () => setFilter("");
 
-  const changeURL = value => {
-    setSearchParams(value !== "" ? { query: value } : {});
-    setNotices([]);
-    setPage(1);
+  const filteredNews = () => {
+    const normalizeFilter = filter.toLowerCase();
+
+    return notices.filter((item) =>
+      item.title.toLowerCase().includes(normalizeFilter)
+    );
   };
 
+  const visibleNews = filteredNews();
+  const isNotification = visibleNews.length === 0 && !isLoading;
+
   // const isNotices = Boolean(notices.length);
+  const isShowButtonTop = scrollTop > PAGE_SCROLL_DOWN;
+
 
   return (
     <DefaultPage title="Find your favorite pet">
-      <NoticesSearch onSubmit={changeURL} />
+      <SearchForm
+        value={filter}
+        changeFilter={handleFilter}
+        clearFilter={clearFilter}/>
+      {/* <NoticesSearch onSubmit={changeURL} /> */}
       <Wrapper>
         <NoticesCategoriesNav />
         <ModalContainer />
       </Wrapper>
+      {isNotification && (
+        <NotificationMessage text="No ad found for your request 🤷‍♂️. Try changing the keyword" />
+      )}
       {isLoading && <Loader />}
-      <NoticeCategoriesList items={notices} removeNotice={ removeNotice} changeFavorite={changeInFavoriteNotices} update={setUpdate} />
+      <NoticeCategoriesList items={visibleNews} removeNotice={removeNotice} changeFavorite={changeInFavoriteNotices} update={setUpdate} />
+            {isShowButtonTop && (
+        <ButtonToTop onClick={scrollTopPage} aria-label="To top page">
+          <SlArrowUp />
+        </ButtonToTop>
+      )}
     </DefaultPage>
   );
 }
