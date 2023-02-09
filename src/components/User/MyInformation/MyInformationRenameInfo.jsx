@@ -1,39 +1,51 @@
 // //
 import { UserIcons } from '../UserIcons/UserIcons'
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { v4 } from 'uuid';
 // import { useDispatch } from 'react-redux';
 import { MyInformItem } from './MyInformationStyled'
 
+
+
 // =============== change name ====================================================
 
-export function EditName( user) {
-
+export function EditName(user, onSubmit) {
+    const [disabled, setDisabled] = useState(true);
+    const inputID = useRef(v4());
+    
+    const selectInput = (id) => {
+        const el = document.getElementById(id);
+        el.disabled = false;
+        el.focus();
+}
 
 //     // const dispatch = useDispatch();
 
-    const [disabled, setDisabled] = useState(true);
     
     function SubmitRemoveInfo() {
-//         // витягнути з редакса логіку зміни інфо на сервері
+//         // написати
 //     // const action = addContact(contact);
 //     // dispatch(action);
     }
     
     function ChangeBtn() {
-    setDisabled(!disabled);
+        setDisabled(!disabled);
+    }
+
+    const openHandler = () => {
+        setDisabled(!disabled);
+        selectInput(inputID.current);
   }
-
-
 
     return (
         <tr>
             <td>Name:</td>
             <th>
-                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.name}  />
+                <MyInformItem type="text" name="name" disabled={disabled} placeholder={user.name} id={inputID.current} />
             </th> 
             <th className='table-red'>
                  {disabled ? 
-                <button type='button' onClick={ChangeBtn}>
+                <button type='button' onClick={openHandler} >
                     <UserIcons id="icon-user_red" />
                 </button> :
                 <button type='submit' onSubmit={SubmitRemoveInfo} onClick={ChangeBtn}>
@@ -48,32 +60,42 @@ export function EditName( user) {
 // =============== change email ====================================================
 
 export function EditEmail( user) {
-
-    //   const dispatch = useDispatch();
-
     const [disabled, setDisabled] = useState(true);
+    const inputID = useRef(v4());
+    
+    const selectInput = (id) => {
+        const el = document.getElementById(id);
+        el.disabled = false;
+        el.focus();
+}
+
+//     // const dispatch = useDispatch();
+
     
     function SubmitRemoveInfo() {
-        // витягнути з редакса логіку зміни інфо на сервері
-    // const action = addContact(contact);
-    // dispatch(action);
+//         // написати
+//     // const action = addContact(contact);
+//     // dispatch(action);
     }
     
     function ChangeBtn() {
-    setDisabled(!disabled);
+        setDisabled(!disabled);
     }
 
-
+    const openHandler = () => {
+        setDisabled(!disabled);
+        selectInput(inputID.current);
+  }
     
     return (
         <tr>
             <td>Email:</td>
             <th>
-                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.email}  />
+                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.email} id={inputID.current}  />
             </th> 
             <th className='table-red'>
                  {disabled ? 
-                <button type='button' onClick={ChangeBtn}>
+                <button type='button' onClick={openHandler}>
                     <UserIcons id="icon-user_red" />
                 </button> :
                 <button type='submit' onSubmit={SubmitRemoveInfo} onClick={ChangeBtn}>
@@ -88,32 +110,43 @@ export function EditEmail( user) {
 // =============== change birthday ====================================================
 
 export function EditBirthday( user) {
-
-    //   const dispatch = useDispatch();
-
     const [disabled, setDisabled] = useState(true);
+    const inputID = useRef(v4());
+    
+    const selectInput = (id) => {
+        const el = document.getElementById(id);
+        el.disabled = false;
+        el.focus();
+}
+
+//     // const dispatch = useDispatch();
+
     
     function SubmitRemoveInfo() {
-        // витягнути з редакса логіку зміни інфо на сервері
-    // const action = addContact(contact);
-    // dispatch(action);
+//         // написати
+//     // const action = addContact(contact);
+//     // dispatch(action);
     }
     
     function ChangeBtn() {
-    setDisabled(!disabled);
-  }
+        setDisabled(!disabled);
+    }
 
+    const openHandler = () => {
+        setDisabled(!disabled);
+        selectInput(inputID.current);
+  }
 
 
     return (
         <tr>
             <td>Birthday:</td>
             <th>
-                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.birthday}  />
+                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.birthday} id={inputID.current}  />
             </th> 
             <th className='table-red'>
                  {disabled ? 
-                <button type='button' onClick={ChangeBtn}>
+                <button type='button' onClick={openHandler}>
                     <UserIcons id="icon-user_red" />
                 </button> :
                 <button type='submit' onSubmit={SubmitRemoveInfo} onClick={ChangeBtn}>
@@ -128,32 +161,42 @@ export function EditBirthday( user) {
 // =============== change phone ====================================================
 
 export function EditPhone( user) {
-
-    //   const dispatch = useDispatch();
-
     const [disabled, setDisabled] = useState(true);
+    const inputID = useRef(v4());
+    
+    const selectInput = (id) => {
+        const el = document.getElementById(id);
+        el.disabled = false;
+        el.focus();
+}
+
+//     // const dispatch = useDispatch();
+
     
     function SubmitRemoveInfo() {
-        // витягнути з редакса логіку зміни інфо на сервері
-    // const action = addContact(contact);
-    // dispatch(action);
+//         // написати
+//     // const action = addContact(contact);
+//     // dispatch(action);
     }
     
     function ChangeBtn() {
-    setDisabled(!disabled);
+        setDisabled(!disabled);
+    }
+
+    const openHandler = () => {
+        setDisabled(!disabled);
+        selectInput(inputID.current);
   }
-
-
 
     return (
         <tr>
             <td>Phone:</td>
             <th>
-                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.phone}  />
+                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.phone}  id={inputID.current} />
             </th> 
             <th className='table-red'>
                  {disabled ? 
-                <button type='button' onClick={ChangeBtn}>
+                <button type='button' onClick={openHandler}>
                     <UserIcons id="icon-user_red" />
                 </button> :
                 <button type='submit' onSubmit={SubmitRemoveInfo} onClick={ChangeBtn}>
@@ -166,19 +209,31 @@ export function EditPhone( user) {
  }
 // =============== change city ====================================================
 export function EditCity(user) {
-
-    //   const dispatch = useDispatch();
-
     const [disabled, setDisabled] = useState(true);
+    const inputID = useRef(v4());
+    
+    const selectInput = (id) => {
+        const el = document.getElementById(id);
+        el.disabled = false;
+        el.focus();
+}
+
+//     // const dispatch = useDispatch();
+
     
     function SubmitRemoveInfo() {
-        // витягнути з редакса логіку зміни інфо на сервері
-    // const action = addContact(contact);
-    // dispatch(action);
+//         // написати
+//     // const action = addContact(contact);
+//     // dispatch(action);
     }
     
     function ChangeBtn() {
-    setDisabled(!disabled);
+        setDisabled(!disabled);
+    }
+
+    const openHandler = () => {
+        setDisabled(!disabled);
+        selectInput(inputID.current);
   }
 
 
@@ -186,11 +241,11 @@ export function EditCity(user) {
         <tr>
             <td>City:</td>
             <th>
-                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.city}  />
+                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.city} id={inputID.current}  />
             </th> 
             <th className='table-red'>
                  {disabled ? 
-                <button type='button' onClick={ChangeBtn}>
+                <button type='button' onClick={openHandler}>
                     <UserIcons id="icon-user_red" />
                 </button> :
                 <button type='submit' onSubmit={SubmitRemoveInfo} onClick={ChangeBtn}>

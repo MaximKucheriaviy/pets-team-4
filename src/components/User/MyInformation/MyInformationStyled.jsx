@@ -24,8 +24,9 @@ display: flex;
 }
 
 .cont-avatar{
-    border-radius: 50%;
-    box-shadow: 0px 4px 14px rgb(0 0 0 / 11%);
+    // border-radius: 50%;
+    // box-shadow: 0px 4px 14px rgb(0 0 0 / 11%);
+    // clip-path: circle(33%);
 }
 
 
@@ -35,7 +36,10 @@ display: flex;
     padding-left: 8px;
     padding-right: 8px;
         width: 100%;
-    clip-path: circle(39%);
+    width: 233px;
+    height: 233px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 14px rgb(0 0 0 / 11%);
 
 @media screen and (min-width:768px) {
 padding-left: 0;

@@ -5,8 +5,8 @@ import { MyInform } from "./MyInformationStyled";
 
 import MyInformationTabl from './MyInformationTabl';
 
-export default function MyInformation({users}) {
-    const DefaultAvatar = 'https://pixabay.com/get/ga857e9aa8fc7b2c69ed69fb64a61453ad6c5cbe24dda78c790a153f783218258491453ecf3b8f9590e810709ae711a1b_640.jpg';
+export default function MyInformation({users, onSubmit}) {
+    const DefaultAvatar = 'https://pixabay.com/get/g2b24e5ea9ca745fec0afa440645dc29814e70b147fecbb84905593ab50e25f980efe2997fcae7c59001de0ae820e72b5_640.jpg';
     const { avatar=DefaultAvatar, name} = users;
 
     const changeAvatar = async (event) => {
@@ -25,7 +25,7 @@ export default function MyInformation({users}) {
                     <p>Edit photo</p>
                 </button>
             </div>
-            <MyInformationTabl tablItem={users}  />
+            <MyInformationTabl tablItem={users}  onSubmit/>
 
 
         </MyInform>
