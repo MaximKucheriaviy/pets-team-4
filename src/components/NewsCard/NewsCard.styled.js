@@ -78,6 +78,6 @@ export const Link = styled.a`
 
   &:hover,
   :focus {
-    color: #e58145;
+    color: #ed5900;
   }
 `;
