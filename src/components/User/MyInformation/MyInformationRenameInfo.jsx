@@ -5,12 +5,14 @@ import { v4 } from 'uuid';
 // import { useDispatch } from 'react-redux';
 import { MyInformItem } from './MyInformationStyled'
 
-
+import { patchCurrentUserName, patchCurrentUserEmail, patchCurrentUserPhone, patchCurrentUserCity, patchCurrentUserBirthday } from '../../../services/apiAuth';
 
 
 // =============== change name ====================================================
 
-export function EditName(user, onSubmitName) {
+export function EditName({users}) {
+    const [name, setName] = useState('')
+    
     const [disabled, setDisabled] = useState(true);
     const inputID = useRef(v4());
     
@@ -18,41 +20,44 @@ export function EditName(user, onSubmitName) {
         const el = document.getElementById(id);
         el.disabled = false;
         el.focus();
-}
-
-//     // const dispatch = useDispatch();
-
+    }
     
-    // function SubmitRemoveInfo() {
-//         // написати
-//     // const action = addContact(contact);
-//     // dispatch(action);
-    // }
+    const handlPatchName = async (info) => {
+        await patchCurrentUserName({value:info})
+    }
     
     function ChangeBtn() {
         setDisabled(!disabled);
+        handlPatchName(name);
     }
 
     const openHandler = () => {
         setDisabled(!disabled);
         selectInput(inputID.current);
-  }
-
+    }
+console.log(users)
     return (
         <tr>
             <td>Name:</td>
             <th>
-                <MyInformItem type="text" name="name" disabled={disabled} placeholder={user.name} id={inputID.current} />
+                <MyInformItem
+                    type="text"
+                    name="name"
+                    disabled={disabled}
+                    id={inputID.current}
+                    onChange={(e) => { setName(e.target.value) }}
+                    defaultValue={users.name}
+                />
             </th> 
             <th className='table-red'>
                  {disabled ? 
                 <button type='button' onClick={openHandler} >
                     <UserIcons id="icon-user_red" />
-                </button> :
-                    <button
-                        type='submit'
-                        onSubmit={(values) => { onSubmitName(values); }}
-                        onClick={ChangeBtn}>
+                </button>:
+                <button
+                    type='button'
+                    onClick={ChangeBtn}
+                >
                     <UserIcons id="icon-user_done"  />
                 </button>
                 }
@@ -63,7 +68,9 @@ export function EditName(user, onSubmitName) {
 
 // =============== change email ====================================================
 
-export function EditEmail( user, onSubmitEmail) {
+export function EditEmail({users}) {
+    const [email, setEmail] = useState('')
+
     const [disabled, setDisabled] = useState(true);
     const inputID = useRef(v4());
     
@@ -72,18 +79,13 @@ export function EditEmail( user, onSubmitEmail) {
         el.disabled = false;
         el.focus();
 }
-
-//     // const dispatch = useDispatch();
-
-    
-    // function SubmitRemoveInfo() {
-//         // написати
-//     // const action = addContact(contact);
-//     // dispatch(action);
-    // }
+    const handlPatchEmail = async (info) => {
+        await patchCurrentUserEmail({value:info})
+    }
     
     function ChangeBtn() {
         setDisabled(!disabled);
+        handlPatchEmail(email)
     }
 
     const openHandler = () => {
@@ -95,14 +97,24 @@ export function EditEmail( user, onSubmitEmail) {
         <tr>
             <td>Email:</td>
             <th>
-                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.email} id={inputID.current}  />
+                <MyInformItem
+                    type="text"
+                    name="name"
+                    disabled={disabled}
+                    id={inputID.current}
+                    onChange={(e) => { setEmail(e.target.value) }}
+                    defaultValue={users.email}
+                />
             </th> 
             <th className='table-red'>
                  {disabled ? 
                 <button type='button' onClick={openHandler}>
                     <UserIcons id="icon-user_red" />
                 </button> :
-                <button type='submit' onSubmitEmail onClick={ChangeBtn}>
+                    <button
+                        type='button'
+                        onClick={ChangeBtn}
+                    >
                     <UserIcons id="icon-user_done"  />
                 </button>
                 }
@@ -113,7 +125,9 @@ export function EditEmail( user, onSubmitEmail) {
  
 // =============== change birthday ====================================================
 
-export function EditBirthday( user, onSubmitBirthday) {
+export function EditBirthday({ users }) {
+    const [birthday, setBirthday] = useState('')
+
     const [disabled, setDisabled] = useState(true);
     const inputID = useRef(v4());
     
@@ -123,17 +137,13 @@ export function EditBirthday( user, onSubmitBirthday) {
         el.focus();
 }
 
-//     // const dispatch = useDispatch();
-
-    
-    // function SubmitRemoveInfo() {
-//         // написати
-//     // const action = addContact(contact);
-//     // dispatch(action);
-    // }
+    const handlPatchBirthday = async (info) => {
+        await patchCurrentUserBirthday({value:info})
+    }
     
     function ChangeBtn() {
         setDisabled(!disabled);
+        handlPatchBirthday(birthday)
     }
 
     const openHandler = () => {
@@ -146,14 +156,21 @@ export function EditBirthday( user, onSubmitBirthday) {
         <tr>
             <td>Birthday:</td>
             <th>
-                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.birthday} id={inputID.current}  />
+                <MyInformItem
+                    type="date"
+                    name="name"
+                    disabled={disabled}
+                    id={inputID.current}
+                    onChange={(e) => { setBirthday(e.target.value) }}
+                    defaultValue={users.birthday}
+                />
             </th> 
             <th className='table-red'>
                  {disabled ? 
                 <button type='button' onClick={openHandler}>
                     <UserIcons id="icon-user_red" />
                 </button> :
-                <button type='submit' onSubmitBirthday onClick={ChangeBtn}>
+                <button type='submit' onClick={ChangeBtn}>
                     <UserIcons id="icon-user_done"  />
                 </button>
                 }
@@ -164,7 +181,9 @@ export function EditBirthday( user, onSubmitBirthday) {
  
 // =============== change phone ====================================================
 
-export function EditPhone( user, onSubmitPhone) {
+export function EditPhone({ users }) {
+    const [phone, setPhone] = useState('')
+
     const [disabled, setDisabled] = useState(true);
     const inputID = useRef(v4());
     
@@ -174,17 +193,13 @@ export function EditPhone( user, onSubmitPhone) {
         el.focus();
 }
 
-//     // const dispatch = useDispatch();
-
-    
-    // function SubmitRemoveInfo() {
-//         // написати
-//     // const action = addContact(contact);
-//     // dispatch(action);
-    // }
+    const handlPatchPhone = async (info) => {
+        await patchCurrentUserPhone({value:info})
+    }
     
     function ChangeBtn() {
         setDisabled(!disabled);
+        handlPatchPhone(phone);
     }
 
     const openHandler = () => {
@@ -196,7 +211,14 @@ export function EditPhone( user, onSubmitPhone) {
         <tr>
             <td>Phone:</td>
             <th>
-                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.phone}  id={inputID.current} />
+                <MyInformItem
+                    type="text"
+                    name="name"
+                    disabled={disabled}
+                    id={inputID.current}
+                    onChange={(e) => { setPhone(e.target.value) }}
+                    defaultValue={users.phone}
+                />
             </th> 
             <th className='table-red'>
                  {disabled ? 
@@ -212,7 +234,9 @@ export function EditPhone( user, onSubmitPhone) {
     )
  }
 // =============== change city ====================================================
-export function EditCity(user, onSubmitCity) {
+export function EditCity({ users }) {
+    const [city, setCity] = useState('')
+
     const [disabled, setDisabled] = useState(true);
     const inputID = useRef(v4());
     
@@ -222,17 +246,14 @@ export function EditCity(user, onSubmitCity) {
         el.focus();
 }
 
-//     // const dispatch = useDispatch();
-
-    
-    // function SubmitRemoveInfo() {
-//         // написати
-//     // const action = addContact(contact);
-//     // dispatch(action);
-    // }
+    const handlPatchCity = async (info) => {
+        await patchCurrentUserCity({ value: info })
+        
+    }
     
     function ChangeBtn() {
         setDisabled(!disabled);
+        handlPatchCity(city)
     }
 
     const openHandler = () => {
@@ -245,14 +266,22 @@ export function EditCity(user, onSubmitCity) {
         <tr>
             <td>City:</td>
             <th>
-                <MyInformItem type="text" name="name"  disabled={ disabled} placeholder={user.city} id={inputID.current}  />
+                <MyInformItem
+                    type="text"
+                    name="name"
+                    disabled={disabled}
+                    id={inputID.current}
+                    onChange={(e) => { setCity(e.target.value) }}
+                    defaultValue={users.city}
+                    
+                />
             </th> 
             <th className='table-red'>
                  {disabled ? 
                 <button type='button' onClick={openHandler}>
                     <UserIcons id="icon-user_red" />
                 </button> :
-                <button type='submit' onSubmitCity onClick={ChangeBtn}>
+                <button type='submit' onClick={ChangeBtn}>
                     <UserIcons id="icon-user_done"  />
                 </button>
                 }

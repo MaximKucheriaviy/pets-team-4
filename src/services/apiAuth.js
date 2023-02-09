@@ -42,17 +42,6 @@ export const getCurrentUser = async (token) => {
   }
 };
 
-// export const postCurrentUser = async (token) => {
-//   try {
-//     setToken(token);
-//     const { data } = await instance.post("api/user/current");
-//     return data;
-//   } catch (error) {
-//     setToken();
-//     throw error;
-//   }
-// };
-
 export const patchCurrentUserName = async (data) => {
   try {
     return await axios({
@@ -62,7 +51,7 @@ export const patchCurrentUserName = async (data) => {
       data: data,
       headers: {
         Authorization: `${store.getState().auth.token}`,
-        "Content-Type": "multipart/form-data",
+        // "Content-Type": "multipart/form-data",
       },
     });
   } catch (error) {
@@ -79,7 +68,7 @@ export const patchCurrentUserEmail = async (data) => {
       data: data,
       headers: {
         Authorization: `${store.getState().auth.token}`,
-        "Content-Type": "multipart/form-data",
+        // "Content-Type": "multipart/form-data",
       },
     });
   } catch (error) {
@@ -96,7 +85,7 @@ export const patchCurrentUserPhone = async (data) => {
       data: data,
       headers: {
         Authorization: `${store.getState().auth.token}`,
-        "Content-Type": "multipart/form-data",
+        // "Content-Type": "multipart/form-data",
       },
     });
   } catch (error) {
@@ -113,7 +102,7 @@ export const patchCurrentUserCity = async (data) => {
       data: data,
       headers: {
         Authorization: `${store.getState().auth.token}`,
-        "Content-Type": "multipart/form-data",
+        // "Content-Type": "multipart/form-data",
       },
     });
   } catch (error) {
@@ -130,7 +119,7 @@ export const patchCurrentUserBirthday = async (data) => {
       data: data,
       headers: {
         Authorization: `${store.getState().auth.token}`,
-        "Content-Type": "multipart/form-data",
+        // "Content-Type": "multipart/form-data",
       },
     });
   } catch (error) {
@@ -140,7 +129,6 @@ export const patchCurrentUserBirthday = async (data) => {
 
 export const patchCurrentUserAvatar = async (data) => {
   try {
-    // setToken(token);
     return await axios({
       method: "patch",
       url: "api/user/avatar",
@@ -152,7 +140,6 @@ export const patchCurrentUserAvatar = async (data) => {
       },
     });
   } catch (error) {
-    // setToken();
     throw error;
   }
 };
