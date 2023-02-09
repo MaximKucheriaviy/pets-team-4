@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
 import { Formik, Form } from "formik";
+import { resetError } from "../../../redux/auth/authSlice";
 
 import { selectIsLogin } from "../../../redux/auth/autSelectors";
 import { logIn } from "../../../redux/auth/auth-operation";
@@ -27,6 +28,10 @@ export const LoginForm = () => {
   const registerError = useError();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    dispatch(resetError());
+  }, [dispatch]);
 
   const onLogin = (data) => {
     dispatch(logIn(data));
@@ -58,7 +63,9 @@ export const LoginForm = () => {
         <Form>
           <FormHead>
             <Title>Login</Title>
-            {registerError && <Error>{registerError.message}</Error>}
+            {registerError && registerError.status === 400 && (
+              <Error>Invalid data</Error>
+            )}
           </FormHead>
 
           <Item>
