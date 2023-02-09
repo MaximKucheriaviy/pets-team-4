@@ -41,7 +41,7 @@ export default function NoticeCategoryItem({
   fav = false
 }) {
   const user = useSelector(selectUser);
- 
+
   const yourNotice = Boolean(user.id === owner);
 
   const learnMoreHandler = () => {
@@ -77,7 +77,7 @@ export default function NoticeCategoryItem({
     const ageResult = age ? age + ' Year' : m + ' month'; 
     return ageResult;
   }
-  
+
   return (
     <Item key={id} >
         <Wrapper>

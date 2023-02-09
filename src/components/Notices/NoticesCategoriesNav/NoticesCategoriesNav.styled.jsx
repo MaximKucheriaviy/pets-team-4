@@ -25,14 +25,14 @@ export const StyledLink = styled(NavLink)`
     text-decoration: none;
     color: inherit;
             
-    border: 2px solid rgb(245, 146, 86);
+    border: 2px solid ${({ theme }) => theme.colors.accent};
     border-radius: 40px;
 `;
 
 export const LinkCategory = styled(StyledLink)`
     padding: 8px 28px;
-    color:#111111;
-    background-color: #FFFFFF;
+    color:${({ theme }) => theme.colors.black};
+    background-color: ${({ theme }) => theme.colors.white};
     font-size: 14px;
     line-height: 19px;
     letter-spacing: 0.04em;
@@ -45,11 +45,11 @@ export const LinkCategory = styled(StyledLink)`
 
 
     &.active {
-    color: #FFFFFF;
-    background: #F59256;
+    color: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.accent};
   }
     &:hover {
     color: #787575;
-    background: #F59256;
+    background: ${({ theme }) => theme.colors.accent};
   }
 `;
