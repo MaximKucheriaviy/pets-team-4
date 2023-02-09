@@ -37,12 +37,13 @@ export const IconsDone = styled.div`
 
 
 export const PetsAddIcon = styled.div`
-        // fill: #FFFFFF;
+        stroke: #FFFFFF;
+        stroke-linecap: round;
+        stroke-width: 3;
         width: 24px;
         height: 24px;
         margin-left: 10px;
-    margin-top: 2px;
-
+        margin-top: 4px;
 `
 
 

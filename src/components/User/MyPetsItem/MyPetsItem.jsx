@@ -3,7 +3,6 @@
 
 import { PetsItemStyled } from './MyPetsItemStyled'
 import {UserIcons} from '../UserIcons/UserIcons'
-    const DefaultAvatar = 'https://pixabay.com/get/ge35962f200ea0ea7441289ecb0e39f1196ce1a91c141dd8be8eb77b52ea3b2870376e9653de67b3fd2446c6fda9120036ca62a25ccf170de170638fba75258ce_640.jpg';
 
 
 export default function  MyPets ({_id, avatarURL, name="default", date, breed="default", comments="default", deletePet }) {

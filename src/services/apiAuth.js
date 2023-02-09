@@ -41,4 +41,33 @@ export const getCurrentUser = async (token) => {
   }
 };
 
+export const postCurrentUser = async (token) => {
+  try {
+    setToken(token);
+    const { data } = await instance.post("api/user/current");
+    return data;
+  } catch (error) {
+    setToken();
+    throw error;
+  }
+};
+
+// export const renemeCurrentUser = async (token) => {
+//   try {
+//     setToken(token);
+//     const { data } = await instance.patch("api/user/name");
+//     return data;
+//   } catch (error) {
+//     setToken();
+//     throw error;
+//   }
+// };
+
 export default instance;
+
+// /api/user/name
+// /api/user/email
+// /api/user/phone
+// /api/user/city
+// /api/user/birthday
+// /api/user/avatart

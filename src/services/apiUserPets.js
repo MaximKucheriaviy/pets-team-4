@@ -22,3 +22,14 @@ export const postUserPets = async (token) => {
   });
   return data;
 };
+
+// =======
+export const getDeleteUserPets = async (token, petID) => {
+  const { data } = await instance.delete(`api/pets/${petID}`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return data;
+};
