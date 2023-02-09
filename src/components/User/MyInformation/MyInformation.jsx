@@ -1,9 +1,8 @@
 // import PropTypes from 'prop-types';
 import {UserIcons} from '../UserIcons/UserIcons'
 
-import { MyInform } from "./MyInformationStyled";
+import { MyInform} from "./MyInformationStyled";
 
-import MyInformationTabl from './MyInformationTabl';
 import {EditName, EditEmail, EditBirthday, EditPhone, EditCity} from './MyInformationRenameInfo'
 
 import { useRef, useState } from 'react';
@@ -37,7 +36,8 @@ console.log(users)
                 <div className='cont-avatar'>
                     <img className='user-avatar' src={avatarURL||DefaultAvatar} alt={name} />
                 </div>
-                <input id="avatar" type="file" hidden ref={avatarRef} onChange={(e)=>{handlPatchAvatar(e.target.files[0])} } />
+                <input id="avatar" type="file" hidden ref={avatarRef} onChange={(e) => { handlPatchAvatar(e.target.files[0]) }} />
+                                
                 <button onClick={() => {avatarRef.current.click() }}>
                     <UserIcons id="camera"/>
                     <p>Edit photo</p>

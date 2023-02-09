@@ -52,12 +52,14 @@ export const UserStyled = styled.div`
 
     .user-info{
         display: flex;
-        align-items: center;
+        align-items: stretch;
         flex-direction: column;
         padding: 20px 16px 20px 16px;
         margin-top: 18px;
         // height: 537px;
-        background-color: ${({ theme }) => theme.colors.background};
+        // background-color: ${({ theme }) => theme.colors.background};
+        background-color: #FFFFFF;
+
         box-shadow: 7px 4px 14px ${({ theme }) => theme.colors.black};
         border-radius: 20px;
 

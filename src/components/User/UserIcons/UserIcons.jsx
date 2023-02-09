@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 
-import { LoqoutIcons, UserAvatarIcons, IconsRed, IconsDone, PetsAddIcon, CardIcons, UserRemovAvatar} from './UserIconsStyled'
+import { LoqoutIcons, UserAvatarIcons, IconsRed, UserRemovAvatar, IconsDone, PetsAddIcon, CardIcons} from './UserIconsStyled'
 
 
 

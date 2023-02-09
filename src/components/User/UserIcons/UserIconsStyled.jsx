@@ -23,6 +23,8 @@ export const IconsRed = styled.div`
         height: 20px;
         fill: #111;
         fill-opacity: .6;
+        background-color: #FDF7F2;
+        border-radius: 50%;
 
 `
 
@@ -32,6 +34,8 @@ export const IconsDone = styled.div`
         fill: #F59256;
         fill-rule: evenodd;
         clip-rule: evenodd
+        background-color: #FDF7F2;
+        border-radius: 50%;
 
 `
 
