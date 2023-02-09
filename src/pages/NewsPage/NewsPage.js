@@ -7,6 +7,7 @@ import SearchForm from "../../components/SearchForm";
 import NewsList from "../../components/NewsList";
 import ErrorMessage from "../../components/ErrorMessage";
 import NotificationMessage from "../../components/NotificationMessage";
+import Loader from "../../components/Loader/Loader";
 
 import { scrollTopPage } from "../../helpers/scrollUp";
 
@@ -68,7 +69,7 @@ export default function NewsPage() {
         clearFilter={clearFilter}
       />
 
-      {isLoading ? <p>Loading...</p> : <NewsList newsItems={visibleNews} />}
+      {isLoading ? <Loader /> : <NewsList newsItems={visibleNews} />}
 
       {isNotification && (
         <NotificationMessage text="No news was found matching your search 🤷‍♂️. Try changing the keyword" />
