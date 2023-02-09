@@ -5,7 +5,7 @@ import { Containers } from "./HomePage.styled";
 
 export default function HomePage() {
   return (
-    < Containers>
+    <>
       <Helmet>
         <title>HomePage</title>
       </Helmet>
@@ -17,6 +17,6 @@ export default function HomePage() {
           <ContentImg />
         </HeroContainer>
       </div>
-    </ Containers>
+    </>
   );
 }
