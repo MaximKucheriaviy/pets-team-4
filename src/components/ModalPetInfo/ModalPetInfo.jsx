@@ -15,11 +15,16 @@ import { useEffect, useState } from "react";
 import { getFavorites } from "../../services/apiNotices";
 import { useSelector } from "react-redux";
 import { addToFavorite, removeToFavorite } from "../../services/apiNotices";
+import { Navigate } from "react-router-dom";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
+
+
 
 
 export const ModalPetInfo = ({ close, modalInfo, update }) => {
   const portalRoot = document.querySelector("#portalRoot");
   const [isFavorite, setIsFavorite] = useState(false);
+  const [navigate, setNavigate] = useState(false);
   const token = useSelector((state) => state.auth.token);
   const {
     imageURL,
@@ -34,7 +39,7 @@ export const ModalPetInfo = ({ close, modalInfo, update }) => {
     phone = "+380971234567",
     price,
     comment,
-    // favorite,
+    owner,
     _id,
   } = modalInfo;
 
@@ -59,6 +64,9 @@ export const ModalPetInfo = ({ close, modalInfo, update }) => {
   }, [close]);
 
   useEffect(() => {
+    if(!token){
+      return
+    }
     (async () => {
       const favorites = await getFavorites(token);
       if (favorites.some((item) => item._id === _id)) {
@@ -72,6 +80,12 @@ export const ModalPetInfo = ({ close, modalInfo, update }) => {
   }, [_id, token]);
 
   const addfavoriteHandler = async () => {
+    if(!token){
+      // console.log("there");
+      setNavigate(true);
+      Notify.warning("You are not autorese")
+      return;
+    }
     try {
       await addToFavorite(token, _id);
       setIsFavorite(true);
@@ -128,11 +142,15 @@ export const ModalPetInfo = ({ close, modalInfo, update }) => {
                 </tr>
                 <tr>
                   <Key>Email:</Key>
-                  <Value>{email}</Value>
+                  <Value>
+                    <a href={`mailto:${owner.email}`}>{owner.email}</a>
+                  </Value>
                 </tr>
                 <tr>
                   <Key>Phone:</Key>
-                  <Value>{phone}</Value>
+                  <Value>
+                  <a href={`tel:${owner.phone}`}>{owner.phone}</a>
+                    </Value>
                 </tr>
                 {(price && !(category === "lost-found" || category === "for-free")) && (
                   <tr>
@@ -181,6 +199,7 @@ export const ModalPetInfo = ({ close, modalInfo, update }) => {
           )}
         </ButtonThumb>
       </Modal>
+      {navigate &&  <Navigate to="/login" replace={true} />}
     </Backdrop>,
     portalRoot
   );

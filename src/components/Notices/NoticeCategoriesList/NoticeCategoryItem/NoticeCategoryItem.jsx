@@ -23,6 +23,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../../../redux/auth/autSelectors";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 export default function NoticeCategoryItem({
   age = "01.01.2000",
@@ -41,6 +42,7 @@ export default function NoticeCategoryItem({
   fav = false
 }) {
   const user = useSelector(selectUser);
+  const token = useSelector(state => state.auth.token)
  
   const yourNotice = Boolean(user.id === owner);
 
@@ -49,6 +51,12 @@ export default function NoticeCategoryItem({
   }
 
   const chageHandlerFavorite = () =>{
+    console.log("there")
+    if(!token){
+      
+      Notify.warning("Yoy are not autorised");
+      return;
+    }
     if(fav){
       changeFavorite(id, false);
     }

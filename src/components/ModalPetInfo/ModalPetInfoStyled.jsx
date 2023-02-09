@@ -137,12 +137,18 @@ export const Modal = styled.div`
     @media screen and (min-width: 768px) {
       width: 160px;
     }
+    &:hover {
+      box-shadow: 0px 0px 10px black;
+    }
   }
 
   & a {
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.accent};
     text-decoration: none;
+    &:hover {
+      box-shadow: 0px 0px 10px black;
+    }
   }
 
   & .favoriteButton {
@@ -176,6 +182,14 @@ export const Value = styled.td`
   font-weight: 500;
   font-size: 14px;
   line-height: 19px;
+  & a {
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.black};
+    &:hover {
+      color: ${({ theme }) => theme.colors.accent};
+      box-shadow: none;
+    }
+  }
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
@@ -189,6 +203,10 @@ export const CloseButton = styled.button`
   height: 28px;
   background-color: transparent;
   border: none;
+  border-radius: 50%;
+  &:hover {
+    box-shadow: 0px 0px 10px black;
+  }
 `;
 
 export const Coment = styled.p`
