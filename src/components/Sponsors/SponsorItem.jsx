@@ -3,7 +3,6 @@ import {
   SponsorCard,
   SponsorInfo,
   SponsorHeader,
-  SponsorText,
   SponsorLogo,
   ScheduleStyle,
   SponsorsContactsLink,
@@ -67,11 +66,11 @@ export const SponsorItem = ({
         )}
         <div>
           {workDays ? (
-            <SponsorText>
+            <SponsorsContactsLink>
               Time:
               <br />
               <span onClick={() => setShowModal(true)}>{time}</span>
-            </SponsorText>
+            </SponsorsContactsLink>
           ) : (
             <PlugText>
               Time:
