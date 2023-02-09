@@ -63,4 +63,22 @@ export const CardIcons = styled.div`
 
 
 `
+export const UserRemovAvatar = styled.div`
+
+        width: 233px;
+        height: 233px;
+        color: #111;
+        stroke-linecap: round;
+        stroke-opacity: .6;
+        stroke-width: 2;
+
+    // @media screen and (min-width:768px) {
+    //     width: 24px;
+    //     height: 24px;
+    // }
+
+    }
+
+
+`
 

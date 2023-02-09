@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 
-import { LoqoutIcons, UserAvatarIcons, IconsRed, IconsDone, PetsAddIcon, CardIcons} from './UserIconsStyled'
+import { LoqoutIcons, UserAvatarIcons, IconsRed, IconsDone, PetsAddIcon, CardIcons, UserRemovAvatar} from './UserIconsStyled'
 
 
 
@@ -54,6 +54,14 @@ import { LoqoutIcons, UserAvatarIcons, IconsRed, IconsDone, PetsAddIcon, CardIco
                         <path d="M12 20v-8m0 0V4m0 8h8m-8 0H4"/>
                    </svg>
                 </PetsAddIcon>
+               );
+           case 'icon-remove_avatar':
+               return (
+                <UserRemovAvatar>
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" >
+                        <path d="M25.5 49.166V25.5m0 0V1.833m0 23.667h23.667m-23.667 0H1.833"/>
+                   </svg>
+                </UserRemovAvatar>
            );
    
          default:
