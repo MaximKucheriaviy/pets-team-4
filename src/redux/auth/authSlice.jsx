@@ -13,6 +13,11 @@ const initialState = {
 const authSlice = createSlice({
     name: "auth",
     initialState,
+    reducers: {
+      resetError(state){
+        state.error = null
+      }
+    },
     extraReducers: {
         [signup.pending]: state => {
           state.loading = true;
@@ -73,3 +78,4 @@ const authSlice = createSlice({
 })
 
 export default authSlice.reducer;
+export const {resetError} = authSlice.actions;
