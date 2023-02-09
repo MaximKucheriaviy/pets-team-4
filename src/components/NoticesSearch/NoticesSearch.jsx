@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Form, Input, Button } from "./NoticesSearch.styled";
 import SearchIcon from "@mui/icons-material/Search";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-
+import { useTranslation } from 'react-i18next';
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 const NoticesSearch = ({ onSubmit }) => {
   const [search, setSearch] = useState("");
-
+const { t} = useTranslation();
   const handlechange = (e) => setSearch(e.target.value);
 
   const clearSearch = () => setSearch("");
@@ -28,7 +28,7 @@ const NoticesSearch = ({ onSubmit }) => {
         value={search}
         type="text"
         name="search"
-        placeholder="Search"
+        placeholder={t("search")}
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
       />
       <Button search={search} onClick={clearSearch} type="button">

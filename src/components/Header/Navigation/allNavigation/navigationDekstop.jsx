@@ -5,6 +5,7 @@ import { AuthNav } from "../AuthNav/AuthNav"
 import {UserNav} from "../UserNav/UserNav"
 import { useAuth } from "../../../../shared/useAuth/useAuth"
 import { Thema } from "../../Thema/thema"
+import Lang from "../lang/lang"
 
 export function NavigationDekstop () {
   const isLogin = useAuth();
@@ -15,8 +16,9 @@ export function NavigationDekstop () {
 
   
         <Logo />
-    
-              <Nav />
+   
+      <Nav />
+       {/* <Lang/> */}
               <Thema/>
                 {isLogin ? <UserNav /> :    <AuthNav />}
                 

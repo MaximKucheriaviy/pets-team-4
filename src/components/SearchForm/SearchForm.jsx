@@ -1,7 +1,7 @@
 import { Form, Input, Button } from "./SearchForm.styled";
 import SearchIcon from "@mui/icons-material/Search";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-
+import { useTranslation } from 'react-i18next';
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 const SearchForm = ({ value, changeFilter, clearFilter }) => {
@@ -10,7 +10,7 @@ const SearchForm = ({ value, changeFilter, clearFilter }) => {
     if (!e.currentTarget.elements.search.value)
       Notify.info("Enter some value to search");
   };
-
+  	const { t} = useTranslation();
   return (
     <Form onSubmit={handleSubmit} autoComplete="off">
       <Input
@@ -18,7 +18,7 @@ const SearchForm = ({ value, changeFilter, clearFilter }) => {
         value={value}
         type="text"
         name="search"
-        placeholder="Search"
+        placeholder={t("search")}
       />
       <Button value={value} onClick={clearFilter} type="button">
         {value ? <HighlightOffIcon /> : <SearchIcon />}

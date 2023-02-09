@@ -11,10 +11,11 @@ import {
   SponsorsContactsLink,
   PlugText,
 } from "./SponsorsStyles";
-
+import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from "uuid";
 
 const Schedule = ({ workDays, closeModal }) => {
+  
   return (
     <div onClick={closeModal}>
       {workDays.map((day) => (
@@ -54,7 +55,7 @@ export const SponsorItem = ({
       time = "----------------------------------";
     }
   }
-
+const { t} = useTranslation();
   return (
     <SponsorCard key={title}>
       <SponsorHeader>{title}</SponsorHeader>
@@ -72,13 +73,13 @@ export const SponsorItem = ({
         <SponsorContacts>
           {workDays ? (
             <SponsorText>
-              Time:
+             {t("time")}:
               <br />
               <span onClick={() => setShowModal(true)}>{time}</span>
             </SponsorText>
           ) : (
             <PlugText>
-              Time:
+              {t("time")}:
               <br />
               <span onClick={() => setShowModal(false)}>{time}</span>
             </PlugText>
@@ -97,39 +98,39 @@ export const SponsorItem = ({
               target="_blank"
               rel="nofollow"
             >
-              Addres:
+            {t("addres")}:
               <br />
               <span>{address}</span>
             </SponsorsContactsLink>
           ) : (
             <PlugText>
-              Addres:
+             {t("addres")}:
               <br />
               <span>----------------------------------</span>
             </PlugText>
           )}
           {email ? (
             <SponsorsContactsLink href={`mailto:${email}`}>
-              Email:
+             {t("email")}:
               <br />
               <span>{email}</span>
             </SponsorsContactsLink>
           ) : (
             <PlugText>
-              Email:
+                 {t("email")}:
               <br />
               <span>----------------------------------</span>
             </PlugText>
           )}
           {phone ? (
             <SponsorsContactsLink href={`tel:${phone}`}>
-              Phone:
+                 {t("phone")}:
               <br />
               <span>{phone}</span>
             </SponsorsContactsLink>
           ) : (
             <PlugText>
-              Phone:
+              {t("phone")}:
               <br />
               <span>----------------------------------</span>
             </PlugText>

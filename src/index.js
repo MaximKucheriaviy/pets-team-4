@@ -7,7 +7,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter } from "react-router-dom";
 import { Theme } from "./theme/Theme";
 import { Provider } from "react-redux";
-
+import "./18i";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>

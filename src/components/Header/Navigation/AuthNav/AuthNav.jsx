@@ -1,20 +1,22 @@
 
 import { Li,Ul,Link } from './auth.style';
 
-
+import { useTranslation } from 'react-i18next';
 
 export const AuthNav = ({ CloseModal }) => {
+
+	const { t, i18n } = useTranslation();
 	return (
 		
 			<Ul>
 				<Link to="/login" >
 					<Li onClick={CloseModal}>
-					Login</Li>
+					{t("login") }</Li>
 				</Link>
 
 				<Link to="/register">
 						<Li onClick={CloseModal}>
-						Registration
+						{t("registration") }
 						</Li>
 				</Link>
 			</Ul>
