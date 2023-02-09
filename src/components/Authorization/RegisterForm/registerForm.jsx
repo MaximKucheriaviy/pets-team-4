@@ -39,32 +39,23 @@ export const RegisterForm = () => {
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
       error = "Invalid email address";
     }
-
-    if (error) {
-      setButtonDisabledTo(true);
-      return error;
-    } else {
-      setButtonDisabledTo(false);
-    }
+    return error;
   }
 
   function validatePassword(value) {
     let error;
     if (!value) {
       error = "Required";
-    } else if (value.length < 8) {
-      error = "Password must be 8 characters long.";
+    } else if (value.length < 7) {
+      error = "Password must be min 7 characters long.";
+    } else if (value.length > 32) {
+      error = "Password must be max 32 characters long.";
+    } else if (value.includes(" ")) {
+      error = "Password can't includes spase";
     } else if (!/(?=.*[0-9])/.test(value)) {
       error = "Must contain min one number.";
     }
-    if (error) {
-      setButtonDisabledTo(true);
-      setConfirmPassworFieldDisabledTo(true);
-      return error;
-    } else {
-      setButtonDisabledTo(false);
-      setConfirmPassworFieldDisabledTo(false);
-    }
+    return error;
   }
 
   const validateConfirmPassword = (pass, value) => {
@@ -74,25 +65,38 @@ export const RegisterForm = () => {
     } else if (pass !== value) {
       error = "Not the same!";
     }
-    if (error) {
-      setButtonDisabledTo(true);
-      return error;
-    } else {
-      setButtonDisabledTo(false);
-    }
+    return error;
   };
 
-  function setButtonDisabledTo(state) {
-    const currentForm = document.querySelector("Form");
-    const currentButtons = currentForm.querySelectorAll("button");
-    currentButtons.forEach((button) => (button.disabled = state));
+  function validateName(value) {
+    let error;
+    if (!value) {
+      error = "Required";
+    } else if (!/^[a-zA-Z]+$/i.test(value)) {
+      error = "Invalid name";
+    }
+    return error;
   }
 
-  function setConfirmPassworFieldDisabledTo(state) {
-    const confirmField = document.getElementById("confirmPassword");
-    confirmField.disabled = state;
+  function validateCity(value) {
+    let error;
+    if (!value) {
+      error = "Required";
+    } else if (!/(^[A-Z][a-z]+,[ ]{1}[A-Z][a-z]+$)/.test(value)) {
+      error = "Invalid City State";
+    }
+    return error;
   }
 
+  function validatePhone(value) {
+    let error;
+    if (!value) {
+      error = "Required";
+    } else if (!/(^\+380(\d{9})$)/.test(value)) {
+      error = "Invalid Phone Number";
+    }
+    return error;
+  }
   const handleSubmit = (values) => {
     const { name, email, password, city, phone } = values;
 
@@ -108,11 +112,6 @@ export const RegisterForm = () => {
   const onRegister = (data) => {
     dispatch(signup(data));
   };
-
-  useEffect(() => {
-    setButtonDisabledTo(true);
-    setConfirmPassworFieldDisabledTo(true);
-  }, []);
 
   if (isUserLogin) {
     return <Navigate to={"/news"} />;
@@ -146,7 +145,6 @@ export const RegisterForm = () => {
                   placeholder="Email (*required)"
                   validate={validateEmail}
                 />
-
                 {errors.email && touched.email && <Error>{errors.email}</Error>}
               </Item>
             )}
@@ -155,6 +153,7 @@ export const RegisterForm = () => {
                 <Input
                   name="password"
                   type="password"
+                  id="password"
                   placeholder="Password (*required)"
                   validate={validatePassword}
                 />
@@ -181,17 +180,28 @@ export const RegisterForm = () => {
             )}
             {!isFirstStep && (
               <Item>
-                <Input name="name" placeholder="Name" />
+                <Input name="name" placeholder="Name" validate={validateName} />
+                {errors.name && touched.name && <Error>{errors.name}</Error>}
               </Item>
             )}
             {!isFirstStep && (
               <Item>
-                <Input name="city" placeholder="City" />
+                <Input
+                  name="city"
+                  placeholder="City, State"
+                  validate={validateCity}
+                />
+                {errors.city && touched.city && <Error>{errors.city}</Error>}
               </Item>
             )}
             {!isFirstStep && (
               <Item>
-                <Input name="phone" placeholder="Phone Number" />
+                <Input
+                  name="phone"
+                  placeholder="+3801234567"
+                  validate={validatePhone}
+                />
+                {errors.phone && touched.phone && <Error>{errors.phone}</Error>}
               </Item>
             )}
             {isFirstStep && (
@@ -199,7 +209,13 @@ export const RegisterForm = () => {
                 type="button"
                 id="nextButton"
                 onClick={() => {
-                  setIsFirstStep(!isFirstStep);
+                  if (
+                    !errors.email &&
+                    !errors.password &&
+                    !errors.confirmPassword
+                  ) {
+                    setIsFirstStep(!isFirstStep);
+                  }
                 }}
               >
                 Next
