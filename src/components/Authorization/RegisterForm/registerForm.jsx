@@ -82,7 +82,11 @@ export const RegisterForm = () => {
     let error;
     if (!value) {
       error = "Required";
-    } else if (!/(^[A-Z][a-z]+,[ ]{1}[A-Z][a-z]+?|[A-Z][a-z]+,[ ]{1}[A-Z][a-z]+$)/.test(value)) {
+    } else if (
+      !/(^[A-Z][a-z]+[-]?([A-Z]{1}[a-z]+)?,[ ]{1}[A-Z]{1}[a-z]+[-]?([A-Z]{1}[a-z]+)?$)/.test(
+        value
+      )
+    ) {
       error = "Invalid City State";
     }
     return error;
@@ -136,8 +140,12 @@ export const RegisterForm = () => {
           <Form>
             <FormHead>
               <Title>Registration</Title>
-              {(registerError && registerError.status === 400) && <Error>{registerError.message}</Error>}
-              {(registerError && registerError.status === 500) && <Error>Server error</Error>}
+              {registerError && registerError.status === 400 && (
+                <Error>{registerError.message}</Error>
+              )}
+              {registerError && registerError.status === 500 && (
+                <Error>Server error</Error>
+              )}
             </FormHead>
             {isFirstStep && (
               <Item>
