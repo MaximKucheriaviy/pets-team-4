@@ -82,7 +82,7 @@ export const RegisterForm = () => {
     let error;
     if (!value) {
       error = "Required";
-    } else if (!/(^[A-Z][a-z]+,[ ]{1}[A-Z][a-z]+$)/.test(value)) {
+    } else if (!/(^[A-Z][a-z]+,[ ]{1}[A-Z][a-z]+?|[A-Z][a-z]+,[ ]{1}[A-Z][a-z]+$)/.test(value)) {
       error = "Invalid City State";
     }
     return error;
