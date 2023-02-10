@@ -120,7 +120,7 @@ export default function NoticeCategoryItem({
             <RelevantInfoWrapper>
               <Info> {breed}</Info>
               <Info> {place}</Info>
-              <Info> {getAge(age)}</Info>
+              <Info> {age}</Info>
               {category === "sell" ? <Info>{price}$</Info> : null}
             </RelevantInfoWrapper>
             </ContainerInfo>
