@@ -40,6 +40,7 @@ export default function NewsPage() {
         setIsLoading(false);
         setNews(data);
       } catch (error) {
+        setIsLoading(false);
         setError(error.message);
       }
     })();
@@ -58,7 +59,7 @@ export default function NewsPage() {
   };
 
   const visibleNews = filteredNews();
-  const isNotification = visibleNews.length === 0 && !isLoading;
+  const isNotification = visibleNews.length === 0 && !isLoading && !error;
   const isShowButtonTop = scrollTop > PAGE_SCROLL_DOWN;
 
   return (
