@@ -4,7 +4,6 @@ export const Item = styled.li`
     display: flex;
     background: ${({ theme }) => theme.colors.white};
     box-shadow: 7px 4px 14px ${({ theme }) => theme.colors.black};
-    opacity: 0.7;
     border-radius: 0px 0px 20px 20px;
     max-width: 280px;
     min-height: 606px;

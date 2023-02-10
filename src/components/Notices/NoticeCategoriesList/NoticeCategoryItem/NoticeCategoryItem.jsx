@@ -54,7 +54,7 @@ export default function NoticeCategoryItem({
     console.log("there")
     if(!token){
       
-      Notify.warning("Yoy are not autorised");
+      Notify.warning("Yoy are not authorized");
       return;
     }
     if(fav){
