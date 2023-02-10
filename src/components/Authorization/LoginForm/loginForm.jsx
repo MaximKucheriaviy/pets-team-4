@@ -84,7 +84,8 @@ export const LoginForm = () => {
           <Form>
             <FormHead>
               <Title>Login</Title>
-              {registerError && <Error>Login or Password is wrong</Error>}
+              {(registerError && registerError.status === 400) && <Error>{registerError.message}</Error>}
+              {(registerError && registerError.status === 500) && <Error>Server error</Error>}
             </FormHead>
 
             <Item>

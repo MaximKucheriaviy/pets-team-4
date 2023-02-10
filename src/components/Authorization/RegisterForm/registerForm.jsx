@@ -136,7 +136,8 @@ export const RegisterForm = () => {
           <Form>
             <FormHead>
               <Title>Registration</Title>
-              {registerError && <Error>{registerError.message}</Error>}
+              {(registerError && registerError.status === 400) && <Error>{registerError.message}</Error>}
+              {(registerError && registerError.status === 500) && <Error>Server error</Error>}
             </FormHead>
             {isFirstStep && (
               <Item>
