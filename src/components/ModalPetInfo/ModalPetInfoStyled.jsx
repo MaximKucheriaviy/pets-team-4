@@ -6,7 +6,7 @@ export const Backdrop = styled.div`
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: ${({ theme }) => theme.colors.gray};
+  background-color: #000000b3;
   backdrop-filter: blur(10px);
   overflow-y: scroll;
 
