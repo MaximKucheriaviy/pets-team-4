@@ -213,7 +213,7 @@ const location = useLocation();
         <NotificationMessage text="No ad found for your request 🤷‍♂️. Try changing the keyword" />
       )}
       {isLoading && <Loader />}
-      <NoticeCategoriesList items={visibleNews} removeNotice={removeNotice} changeFavorite={changeInFavoriteNotices} update={setUpdate} />
+      <NoticeCategoriesList setItems={setNotices} items={visibleNews} removeNotice={removeNotice} changeFavorite={changeInFavoriteNotices} update={setUpdate} />
             {isShowButtonTop && (
         <ButtonToTop onClick={scrollTopPage} aria-label="To top page">
           <SlArrowUp />

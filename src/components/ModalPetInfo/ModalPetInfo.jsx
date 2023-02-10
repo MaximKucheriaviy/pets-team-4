@@ -17,15 +17,18 @@ import { useSelector } from "react-redux";
 import { addToFavorite, removeToFavorite } from "../../services/apiNotices";
 import { Navigate } from "react-router-dom";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { useLocation } from "react-router-dom";
 
 
 
 
-export const ModalPetInfo = ({ close, modalInfo, update }) => {
+export const ModalPetInfo = ({ close, modalInfo, update, setItems }) => {
   const portalRoot = document.querySelector("#portalRoot");
   const [isFavorite, setIsFavorite] = useState(false);
   const [navigate, setNavigate] = useState(false);
   const token = useSelector((state) => state.auth.token);
+  const location = useLocation();
+  const isFavoritePath = location.pathname.includes("favorite");
   const {
     imageURL,
     category,
@@ -100,6 +103,11 @@ export const ModalPetInfo = ({ close, modalInfo, update }) => {
       await removeToFavorite(token, _id);
       setIsFavorite(false);
       update(true);
+      if(isFavoritePath){
+        setItems(state => {
+          return state.filter(item => item._id !== _id);
+        })
+      }
     } catch (err) {
       console.log(err);
     }

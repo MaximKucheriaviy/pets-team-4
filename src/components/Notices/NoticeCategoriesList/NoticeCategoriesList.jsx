@@ -6,12 +6,12 @@ import NoticeCategoryItem from './NoticeCategoryItem/NoticeCategoryItem';
 import { ModalPetInfo } from '../../ModalPetInfo/ModalPetInfo';
 import { useState } from 'react';
 
-export default function NoticeCategoriesList({items, removeNotice, changeFavorite, update}) {
+export default function NoticeCategoriesList({items, removeNotice, changeFavorite, update, setItems}) {
   const [modalData, setModalData] = useState(null);
 
   return (
     <Gallery>
-    {modalData && <ModalPetInfo close={() => {setModalData(null)}} modalInfo={modalData} update={update}/>}
+    {modalData && <ModalPetInfo close={() => {setModalData(null)}} modalInfo={modalData} update={update} setItems={setItems}/>}
     {
         items.map((item) => {
           const {birthdate, breed, category, favorite, imageURL,owner, place, title, price, _id, fav } = item
