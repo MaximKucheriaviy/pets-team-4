@@ -3,9 +3,6 @@ import {
   SponsorCard,
   SponsorInfo,
   SponsorHeader,
-  SponsorLogoBox,
-  SponsorContacts,
-  SponsorText,
   SponsorLogo,
   ScheduleStyle,
   SponsorsContactsLink,
@@ -45,13 +42,13 @@ export const SponsorItem = ({
   const [showModal, setShowModal] = useState(false);
   let time = "";
   if (!workDays || workDays === null || workDays === undefined) {
-    time = "----------------------------------";
+    time = "----------------------------";
   } else {
     const openDay = workDays.find((item) => item.isOpen);
     if (openDay) {
       time = `${openDay.from}-${openDay.to}`;
     } else {
-      time = "----------------------------------";
+      time = "----------------------------";
     }
   }
 
@@ -59,23 +56,21 @@ export const SponsorItem = ({
     <SponsorCard key={title}>
       <SponsorHeader>{title}</SponsorHeader>
       <SponsorInfo>
-        <SponsorLogoBox>
+        {imageUrl ? (
+          <SponsorLogo src={imageUrl} alt="logo" />
+        ) : (
           <SponsorLogo
-            src={
-              imageUrl
-                ? imageUrl
-                : "https://animals-city.org/wp-content/themes/animals-city/img/logo.svg"
-            }
+            src="https://logopond.com/logos/eacb3b71dda19719c0c9a42560d9aa21.png"
             alt="logo"
           />
-        </SponsorLogoBox>
-        <SponsorContacts>
+        )}
+        <div>
           {workDays ? (
-            <SponsorText>
+            <SponsorsContactsLink>
               Time:
               <br />
               <span onClick={() => setShowModal(true)}>{time}</span>
-            </SponsorText>
+            </SponsorsContactsLink>
           ) : (
             <PlugText>
               Time:
@@ -105,7 +100,7 @@ export const SponsorItem = ({
             <PlugText>
               Addres:
               <br />
-              <span>----------------------------------</span>
+              <span>----------------------------</span>
             </PlugText>
           )}
           {email ? (
@@ -118,7 +113,7 @@ export const SponsorItem = ({
             <PlugText>
               Email:
               <br />
-              <span>----------------------------------</span>
+              <span>----------------------------</span>
             </PlugText>
           )}
           {phone ? (
@@ -131,10 +126,10 @@ export const SponsorItem = ({
             <PlugText>
               Phone:
               <br />
-              <span>----------------------------------</span>
+              <span>----------------------------</span>
             </PlugText>
           )}
-        </SponsorContacts>
+        </div>
       </SponsorInfo>
     </SponsorCard>
   );
