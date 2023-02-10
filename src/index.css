@@ -39,5 +39,5 @@ li{
 
 #portalRoot{
   position: fixed;
-  z-index: 9000;
+  z-index: 3000;
 }

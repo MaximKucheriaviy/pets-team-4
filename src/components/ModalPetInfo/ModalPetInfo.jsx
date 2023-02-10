@@ -15,7 +15,6 @@ import { useEffect, useState } from "react";
 import { getFavorites } from "../../services/apiNotices";
 import { useSelector } from "react-redux";
 import { addToFavorite, removeToFavorite } from "../../services/apiNotices";
-import { Navigate } from "react-router-dom";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 import { useLocation } from "react-router-dom";
 
@@ -25,7 +24,6 @@ import { useLocation } from "react-router-dom";
 export const ModalPetInfo = ({ close, modalInfo, update, setItems }) => {
   const portalRoot = document.querySelector("#portalRoot");
   const [isFavorite, setIsFavorite] = useState(false);
-  const [navigate, setNavigate] = useState(false);
   const token = useSelector((state) => state.auth.token);
   const location = useLocation();
   const isFavoritePath = location.pathname.includes("favorite");
@@ -38,7 +36,6 @@ export const ModalPetInfo = ({ close, modalInfo, update, setItems }) => {
     breed,
     place,
     sex,
-    email = "user@mail.com",
     phone = "+380971234567",
     price,
     comment,
@@ -84,9 +81,7 @@ export const ModalPetInfo = ({ close, modalInfo, update, setItems }) => {
 
   const addfavoriteHandler = async () => {
     if(!token){
-      // console.log("there");
-      setNavigate(true);
-      Notify.warning("You are not autorese")
+      Notify.warning("You are not authorized")
       return;
     }
     try {
@@ -207,7 +202,6 @@ export const ModalPetInfo = ({ close, modalInfo, update, setItems }) => {
           )}
         </ButtonThumb>
       </Modal>
-      {navigate &&  <Navigate to="/login" replace={true} />}
     </Backdrop>,
     portalRoot
   );
