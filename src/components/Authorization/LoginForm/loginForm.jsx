@@ -32,6 +32,31 @@ export const LoginForm = () => {
     dispatch(logIn(data));
   };
 
+  function validateEmail(value) {
+    let error;
+    if (!value) {
+      error = "Required";
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+      error = "Invalid email address";
+    }
+    return error;
+  }
+
+  function validatePassword(value) {
+    let error;
+    if (!value) {
+      error = "Required";
+    } else if (value.length < 7) {
+      error = "Password must be min 7 characters long.";
+    } else if (value.length > 32) {
+      error = "Password must be max 32 characters long.";
+    } else if (value.includes(" ")) {
+      error = "Password can't includes spase";
+    } else if (!/(?=.*[0-9])/.test(value)) {
+      error = "Must contain min one number.";
+    }
+    return error;
+  }
   const handleSubmit = (event) => {
     const { email, password } = event;
     onLogin({ email, password });
@@ -55,24 +80,39 @@ export const LoginForm = () => {
           handleSubmit(values);
         }}
       >
-        <Form>
-          <FormHead>
-            <Title>Login</Title>
-            {registerError && <Error>{registerError.message}</Error>}
-          </FormHead>
+        {({ errors, touched, values, isValid }) => (
+          <Form>
+            <FormHead>
+              <Title>Login</Title>
+              {registerError && <Error>Login or Password is wrong</Error>}
+            </FormHead>
 
-          <Item>
-            <Input name="email" placeholder="Email" />
-          </Item>
-          <Item>
-            <Input name="password" type="password" placeholder="Password" />
-          </Item>
-          <Button type="submit">Login</Button>
-          <Hint>
-            Do not have an account?{" "}
-            <HintLink to={"/register"}>Registration</HintLink>
-          </Hint>
-        </Form>
+            <Item>
+              <Input
+                name="email"
+                placeholder="Email"
+                //                validate={validateEmail}
+              />
+              {errors.email && touched.email && <Error>{errors.email}</Error>}
+            </Item>
+            <Item>
+              <Input
+                name="password"
+                type="password"
+                placeholder="Password"
+                //                validate={validatePassword}
+              />
+              {errors.password && touched.password && (
+                <Error>{errors.password}</Error>
+              )}
+            </Item>
+            <Button type="submit">Login</Button>
+            <Hint>
+              Do not have an account?{" "}
+              <HintLink to={"/register"}>Registration</HintLink>
+            </Hint>
+          </Form>
+        )}
       </Formik>
     </FormBody>
   );
