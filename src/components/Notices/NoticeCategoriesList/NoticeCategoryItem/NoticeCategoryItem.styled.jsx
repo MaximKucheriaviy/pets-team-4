@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const Item = styled.li`
     display: flex;
-    background: #FFFFFF;
-    box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+    background: ${({ theme }) => theme.colors.white};
+    box-shadow: 7px 4px 14px ${({ theme }) => theme.colors.black};
+    opacity: 0.7;
     border-radius: 0px 0px 20px 20px;
     max-width: 280px;
     min-height: 606px;
@@ -34,7 +35,7 @@ export const ImgWrapper = styled.div`
     height: 288px;
     /* background-image: url(https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_960_720.jpg);
     background-size: contain; */
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: ${({ theme }) => theme.colors.gray};
 
             @media (min-width: 768px) {
           width: 336px;
@@ -67,6 +68,7 @@ export const NoticeCategory = styled.div`
     font-size: 12px;
     line-height: 15px;
     letter-spacing: 0.04em;
+    color: ${({ theme }) => theme.colors.black};
 
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 0 16px 16px 0;
@@ -86,7 +88,7 @@ position: absolute;
     background-color: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(2px);
     border-radius: 25px;
-    color: #F59256;
+    color: ${({ theme }) => theme.colors.accent};
 
     &:hover {
      opacity: 1;
@@ -105,6 +107,8 @@ export const Title = styled.p`
 font-weight: 700;
 font-size: 28px;
 line-height: 38px;
+color: ${({ theme }) => theme.colors.black};
+
 letter-spacing: -0.01em;
 padding-bottom: 20px;
 
@@ -130,6 +134,10 @@ export const RelevantInfoWrapper = styled.div`
 export const Info = styled.div`
   font-size: 16px;
   line-height: 22px;
+  color: ${({ theme }) => theme.colors.black};
+  
+  /* color: #000; */
+
 
   &:not(:last-child) {
     padding-bottom: 8px;
@@ -151,7 +159,7 @@ export const Button = styled.button`
     justify-content: center;
     align-items: center;
             
-    border: 2px solid rgb(245, 146, 86);
+    border: 2px solid ${({ theme }) => theme.colors.accent};
     border-radius: 40px;
 
     &:hover {
@@ -164,7 +172,7 @@ export const Button = styled.button`
 export const ButtonLearn = styled(Button)`
     width: 248px;
     height: 38px;
-    color:#F59256;
+    color: ${({ theme }) => theme.colors.accent};
     font-size: 16px;
     line-height: 22px;
     letter-spacing: 0.04em;

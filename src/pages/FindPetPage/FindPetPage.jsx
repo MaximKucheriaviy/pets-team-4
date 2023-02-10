@@ -5,12 +5,12 @@ import NoticeCategoriesList from "../../components/Notices/NoticeCategoriesList/
 import NoticesCategoriesNav from "../../components/Notices/NoticesCategoriesNav/NoticesCategoriesNav";
 import { Wrapper } from "./FindPetPage.styled";
 
-import { addToFavorite, getFavorites, getNoticesByCategory, getOwnerNotise, getSearchNotices, removeNoticeById, removeToFavorite } from "../../services/apiNotices";
+import { addToFavorite, getFavorites, getNoticesByCategory, getOwnerNotise, removeNoticeById, removeToFavorite } from "../../services/apiNotices";
 import { useEffect, useState } from "react";
-import { useLocation, useParams, useSearchParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectToken } from "../../redux/auth/autSelectors";
-import NoticesSearch from "../../components/NoticesSearch/NoticesSearch";
+// import NoticesSearch from "../../components/NoticesSearch/NoticesSearch";
 import Loader from "../../components/Loader/Loader";
 import { ButtonToTop } from "../../components/ButtonToTop";
 import { SlArrowUp } from "react-icons/sl";
@@ -25,8 +25,8 @@ const [notices, setNotices] = useState([]);
 const [, setError] = useState(null);
 const [isLoading, setIsLoading] = useState(false);
 const [update, setUpdate] = useState(true);
-const [page, setPage] = useState(1);
-const [, setNotFound] = useState(false);  
+// const [, setPage] = useState(1);
+// const [, setNotFound] = useState(false);  
 const [scrollTop, setScrollTop] = useState(0);
 const [filter, setFilter] = useState("");
   

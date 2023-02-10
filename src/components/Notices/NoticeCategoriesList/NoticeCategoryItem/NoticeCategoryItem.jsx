@@ -85,7 +85,7 @@ export default function NoticeCategoryItem({
     const ageResult = age ? age + ' Year' : m + ' month'; 
     return ageResult;
   }
-  
+
   return (
     <Item key={id} >
         <Wrapper>
