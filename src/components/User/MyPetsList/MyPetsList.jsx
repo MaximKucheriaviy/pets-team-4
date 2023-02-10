@@ -1,6 +1,4 @@
 // import PropTypes from 'prop-types';
-// import AddUserPetModal from "../../AddUserPetModal/AddUserPetModal";
-// import { useState } from "react";
 
 import { PetsHederStyled } from "./MyPetsListStyled";
 

@@ -2,7 +2,6 @@
 import { UserIcons } from '../UserIcons/UserIcons'
 import { useState, useRef } from 'react';
 import { v4 } from 'uuid';
-// import { useDispatch } from 'react-redux';
 import { MyInformItem } from './MyInformationStyled'
 
 import { patchCurrentUserName, patchCurrentUserEmail, patchCurrentUserPhone, patchCurrentUserCity, patchCurrentUserBirthday } from '../../../services/apiAuth';
@@ -98,7 +97,7 @@ export function EditEmail({users}) {
             <th>
                 <MyInformItem
                     type="text"
-                    name="name"
+                    name="email"
                     disabled={disabled}
                     id={inputID.current}
                     onChange={(e) => { setEmail(e.target.value) }}
@@ -157,7 +156,7 @@ export function EditBirthday({ users }) {
             <th>
                 <MyInformItem
                     type="date"
-                    name="name"
+                    name="birthday"
                     disabled={disabled}
                     id={inputID.current}
                     onChange={(e) => { setBirthday(e.target.value) }}
@@ -212,7 +211,7 @@ export function EditPhone({ users }) {
             <th>
                 <MyInformItem
                     type="text"
-                    name="name"
+                    name="phone"
                     disabled={disabled}
                     id={inputID.current}
                     onChange={(e) => { setPhone(e.target.value) }}
@@ -267,7 +266,7 @@ export function EditCity({ users }) {
             <th>
                 <MyInformItem
                     type="text"
-                    name="name"
+                    name="city"
                     disabled={disabled}
                     id={inputID.current}
                     onChange={(e) => { setCity(e.target.value) }}
