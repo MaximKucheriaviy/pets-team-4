@@ -1,16 +1,11 @@
 // import PropTypes from "prop-types";
-// import defaultimg from './'
 
 import { PetsItemStyled } from './MyPetsItemStyled'
 import {UserIcons} from '../UserIcons/UserIcons'
 
 
 export default function  MyPets ({_id, avatarURL, name="default", date, breed="default", comments="default", deletePet }) {
-    
-    // { id, img=DefaultAvatar, name="default", data='01.01.1900', breed="default", comments="default", owner, deletePet }
-    // const { id, avatarURL, name, data, breed, comments, owner}=items
     return (
-        // <PetsContainerStyled>
             <PetsItemStyled key={_id}>
             <img className='card-avatar' src={avatarURL} alt={name} />
             <div className='card-info' key={_id}>
@@ -37,7 +32,6 @@ export default function  MyPets ({_id, avatarURL, name="default", date, breed="d
                 </p>
                 </div>
             </PetsItemStyled>
-    // </PetsContainerStyled>
   );
 };
 

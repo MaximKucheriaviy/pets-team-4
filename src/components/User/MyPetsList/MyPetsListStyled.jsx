@@ -105,24 +105,3 @@ export const PetsHederStyled = styled.div`
 
 
 
-// export const PetsItemStyled = styled.li`
-//     margin-top: 20px;
-//         padding-left: 20px;
-//     padding-right: 20px;
-
-
-// @media screen and (min-width:768px) {
-//     margin: 24px 32px 20px 32px;  
-//     // max-width: 704px;
-//     padding-left: 0px;
-//     padding-right: 0px;
-    
-
-// }
-
-// @media screen and (min-width:1280px) {
-//     // max-width: 821px;
-//     margin: 24px 16px 20px 0;
-// }
-
-// `

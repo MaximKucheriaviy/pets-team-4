@@ -2,39 +2,22 @@
 
 import styled from "styled-components";
 
-// export const PetsItemStyled = styled.li`
-//     margin-top: 20px;
-//         padding-left: 20px;
-//     padding-right: 20px;
-
-
-// @media screen and (min-width:768px) {
-//     margin: 24px 32px 20px 32px;  
-//     // max-width: 704px;
-//     padding-left: 0px;
-//     padding-right: 0px;
-    
-
-// }
-
-// @media screen and (min-width:1280px) {
-//     // max-width: 821px;
-//     margin: 24px 16px 20px 0;
-// }
-
-// `
 
 export const PetsItemStyled = styled.li`
+
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     padding-left: 20px;
     padding-right: 20px;
-        padding-top: 16px;
+        // padding-top: 16px;
 
     // background-color: ${({ theme }) => theme.colors.background};
-    background-color: #FFFFFF;
+    // background-color: #FFFFFF;
+    background: ${({ theme }) => theme.colors.white};
+
+
     box-shadow: 7px 4px 14px ${({ theme }) => theme.colors.black};
     border-radius: 20px;
 
@@ -66,7 +49,8 @@ export const PetsItemStyled = styled.li`
     // width: 240px;
     // height: 240px;
     border-radius: 20px;
-    // margin: 16px 20px 20px 20px;        
+    // margin: 16px 20px 20px 20px; 
+    padding-top: 16px;       
 
     @media screen and (min-width:768px) {
         width: 161px;
@@ -105,6 +89,7 @@ export const PetsItemStyled = styled.li`
     justify-content: center;
     align-items: center;
     padding: 1px;
+    // margin-right: 20px;
 
     background-color: #FDF7F2;
     backdrop-filter: blur(2px);
@@ -113,6 +98,7 @@ export const PetsItemStyled = styled.li`
     @media screen and (min-width:768px) {
         width: 44px;
         height: 44px;
+        margin-right: 20px;
     }
     }
 

@@ -32,6 +32,7 @@ export default function User() {
 
   useEffect(() => {
     (async () => {
+      
       try {
         const { data } = await getUserPets(token);
         setPets(data.pets);
@@ -74,8 +75,6 @@ const handleDelete = async (petID) => {
           <MyInformation
             users={InfoUser}
             setInfoUser={setInfoUser}
-            // onSubmit
-            // onSubmitName={patchCurrentUserName}
           />
           <div>
             <button type="button" className="loqout" onClick={onLogout} variant="contained">
@@ -93,9 +92,6 @@ const handleDelete = async (petID) => {
           setModalOpen={() => setModalOpen(!modalOpen)}
         /> 
         {modalOpen && <AddUserPetModal onClose={closeModal} ></AddUserPetModal>}
-
-        {/* <MyPetsList items={Pets } addPet={onAddPet} deletePet={onDeletePet}  />  */}
-
       </div>
     </UserStyled>
 

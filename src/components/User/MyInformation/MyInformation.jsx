@@ -27,7 +27,6 @@ export default function MyInformation({users, setInfoUser, onSubmit, onSubmitNam
         setUpdate(!update);
 
     }
-    
 
     return (
         <MyInform >
@@ -39,10 +38,9 @@ export default function MyInformation({users, setInfoUser, onSubmit, onSubmitNam
                                 
                 <button onClick={() => {avatarRef.current.click() }}>
                     <UserIcons id="camera"/>
-                    <p>Edit photo</p>
+                    <p className='avatar-iconsBtn'>Edit photo</p>
                 </button>
             </div>
-            {/* <MyInformationTabl */}
                 <table className='user-tabl'>
                     <tbody>
                         <EditName users={users} />
@@ -52,11 +50,6 @@ export default function MyInformation({users, setInfoUser, onSubmit, onSubmitNam
                         <EditCity users={users}/>
                     </tbody>
             </table>
-{/*             
-                // tablItem={users}
-                // onSubmit
-                // onSubmitName
-            {/* /> */}
 
         </MyInform>
     )

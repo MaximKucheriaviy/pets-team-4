@@ -58,7 +58,8 @@ export const UserStyled = styled.div`
         margin-top: 18px;
         // height: 537px;
         // background-color: ${({ theme }) => theme.colors.background};
-        background-color: #FFFFFF;
+        // background-color: #FFFFFF;
+        background: ${({ theme }) => theme.colors.white};
 
         box-shadow: 7px 4px 14px ${({ theme }) => theme.colors.black};
         border-radius: 20px;
