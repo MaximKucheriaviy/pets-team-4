@@ -220,3 +220,7 @@ export const Containers = styled.div`
         /* padding: 0px 16px 0 16px; */
     }
 `;
+
+export const SomeDiv = styled.div`
+  background-color: ${({ theme }) => theme.colors.background};
+`

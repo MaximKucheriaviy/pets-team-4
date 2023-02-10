@@ -26,9 +26,6 @@ export default function User() {
   const token = useSelector(selectToken);
   const [InfoUser, setInfoUser] = useState({})
 
-  console.log(InfoUser)
-
-
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -36,7 +33,6 @@ export default function User() {
   useEffect(() => {
     (async () => {
       try {
-        console.log(token);
         const { data } = await getUserPets(token);
         setPets(data.pets);
         const user = await getCurrentUser(token);

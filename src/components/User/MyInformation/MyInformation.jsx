@@ -28,7 +28,6 @@ export default function MyInformation({users, setInfoUser, onSubmit, onSubmitNam
 
     }
     
-console.log(users)
 
     return (
         <MyInform >

@@ -105,7 +105,6 @@ const location = useLocation();
       const userFavorite = await getFavorites(token);
       setNotices(prev => {
         setUpdate(false)
-        console.log(userFavorite)
         const res = prev.map(itemNotice => {
           if(userFavorite.some(item => item._id === itemNotice._id)){
             itemNotice.fav = true;

@@ -35,7 +35,6 @@ export function EditName({users}) {
         setDisabled(!disabled);
         selectInput(inputID.current);
     }
-console.log(users)
     return (
         <tr>
             <td>Name:</td>
