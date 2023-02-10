@@ -33,7 +33,8 @@ export const PetsItemStyled = styled.li`
     padding-right: 20px;
         padding-top: 16px;
 
-    background-color: ${({ theme }) => theme.colors.background};
+    // background-color: ${({ theme }) => theme.colors.background};
+    background-color: #FFFFFF;
     box-shadow: 7px 4px 14px ${({ theme }) => theme.colors.black};
     border-radius: 20px;
 

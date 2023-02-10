@@ -1,8 +1,11 @@
 import styled from "styled-components";
+// import { TfiPlus } from "react-icons/tfi";
+
 
 export const MyInform = styled.div`
 display: flex;
     flex-direction: column;
+    // align-items: flex-end;
 
 @media screen and (min-width:768px) {
     display: flex;
@@ -20,15 +23,16 @@ display: flex;
 .user-cont{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .cont-avatar{
     width: 233px;
     height: 233px;
+    margin-bottom: 12px;
     border-radius: 50%;
     box-shadow: 0px 4px 14px rgb(0 0 0 / 11%);
-    background-color: beige;
+    // background-color: beige;
     // clip-path: circle(33%);
 }
 
@@ -47,7 +51,7 @@ display: flex;
 @media screen and (min-width:768px) {
 padding-left: 0;
     padding-right: 0;
-    clip-path: circle(33%);
+    // clip-path: circle(33%);
 }
 
 }
@@ -58,8 +62,11 @@ button{
     // left: 65%;
     border: none;
     background-color: transparent;
+    width: 100%;
     display: flex;
-    align-items: center;
+    justify-content: flex-end;
+    padding-right: 24px;
+    
 
     // width: 80px;
     height: 22px;
@@ -85,7 +92,7 @@ line-height: 1.83;
 
 .user-tabl{
     width: 100%;
-    margin-top: 36px;
+    margin-top: 32px;
     margin-bottom: 44px;
     font-family: 'Manrope';
     font-style: normal;
@@ -162,3 +169,14 @@ export const UserAvatar = styled.img`
 }
 
 `
+// export const PlusIcon = styled(TfiPlus)`
+// //   position: absolute;
+//   width: 48px;
+//   height: 48px;
+// //   top: 220px;
+// //   left: 115px;
+//   @media screen and (min-width: 768px) {
+//     // top: 220px;
+//     // left: 280px;
+//   }
+// `;
