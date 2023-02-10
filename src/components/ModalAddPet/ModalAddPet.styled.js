@@ -13,10 +13,6 @@ import { ReactComponent as Female } from "../../images/sex-female.svg";
 
 export const ModalForm = styled(Modal)`
   background: rgba(17, 17, 17, 0.6);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   backdrop-filter: blur(10px);
   overflow-y: scroll;
 `;

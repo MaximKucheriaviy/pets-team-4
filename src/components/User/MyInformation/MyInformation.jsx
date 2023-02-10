@@ -13,7 +13,6 @@ export default function MyInformation({users}) {
     // написати
   };
 
-
     return (
         <MyInform >
             <div className='user-cont'>

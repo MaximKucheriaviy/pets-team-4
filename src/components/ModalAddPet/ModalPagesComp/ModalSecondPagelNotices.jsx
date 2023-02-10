@@ -3,6 +3,7 @@ import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { PhotoPreview } from "../PreviewPhoto/PhotoPreview";
 import { useTheme } from "styled-components";
 import moment from "moment/moment";
+import { useNavigate } from "react-router-dom";
 
 import {
   LabelText,
@@ -20,6 +21,9 @@ import {
   IconAddPhoto,
   BtnModalClose,
   ModalBoxSecond,
+  IconDeletePhoto,
+  BtnDeletePhoto,
+  BoxDeletePhoto
 } from "../ModaAdd.styled";
 import {
   ModalFormSecond,  
@@ -39,6 +43,7 @@ export function SecondPagelAddPet({
   const fileRef = useRef(null);
   const refTextArea = useRef(null);
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const handleInput = (e) => {
     if (refTextArea.current) {
@@ -48,11 +53,12 @@ export function SecondPagelAddPet({
   };
 
   const handleSubmitForm = () => {
-      setFieldValue("birthdate",moment(birthdate).format("D.MM.YYYY"));
+      setFieldValue("birthdate", moment(birthdate).format("D.MM.YYYY"));
       handleSubmit();
       if (isValid) {
         setTimeout(() => {
           closeModal();
+          navigate('/notices/own');
         }, 300);
       }
     }
@@ -61,6 +67,7 @@ export function SecondPagelAddPet({
   const {
     handleChange,
     handleSubmit,
+    handleBlur,
     errors,
     touched,
     setFieldValue,
@@ -128,6 +135,7 @@ export function SecondPagelAddPet({
             id="place"
             name="place"
             placeholder="Type Location"
+            onBlur={handleBlur}
             onChange={handleChange}
             value={place}
           />
@@ -144,6 +152,8 @@ export function SecondPagelAddPet({
                 name="price"
                 type="number"
                 placeholder="Type price"
+                min="1"
+                onBlur={handleBlur}
                 onChange={handleChange}
                 value={price}
               />
@@ -151,22 +161,30 @@ export function SecondPagelAddPet({
           )}
           <LabelText htmlFor="petImage">Load the pet’s image:</LabelText>
           {touched.petImage && errors.petImage ? (
-            <ErrorTextFields>{errors.petImage}</ErrorTextFields>
+            <ErrorTextFields style={{marginBottom: "10px"}}>{errors.petImage}</ErrorTextFields>
           ) : null}
           <input
             hidden
             ref={fileRef}
             id="petImage"
             type="file"
+            onBlur={handleBlur}
             onChange={(e) => {
-              // new FormData().set('petImage', e.target.files[0])
-              // console.log(new FormData())
-              setFieldValue('petImage', e.target.files[0]);
+              setFieldValue('petImage', e.target.files[0])
             }}
           />
-          {petImage ? (
-            <PhotoPreview file={petImage} />
-          ) : (
+          {petImage ? ( 
+            <BoxDeletePhoto>
+            <BtnDeletePhoto type="button" 
+              onClick={()=> {
+              setFieldValue("petImage", "")
+             }}
+             >
+              <IconDeletePhoto/>
+            </BtnDeletePhoto>
+            <PhotoPreview file={petImage}/>
+            </BoxDeletePhoto>
+           ) : (
             <BoxUploadPhoto>
               <BtnUploadPhoto
                 onClick={() => {
@@ -176,11 +194,10 @@ export function SecondPagelAddPet({
                 <IconAddPhoto />
               </BtnUploadPhoto>
             </BoxUploadPhoto>
-          )}
-
+           )}
           <LabelText htmlFor="comment">Comments:</LabelText>
-          {touched.petImage && errors.petImage ? (
-            <ErrorTextFields>{errors.petImage}</ErrorTextFields>
+          {touched.comment && errors.comment ? (
+            <ErrorTextFields>{errors.comment}</ErrorTextFields>
           ) : null}
           <TextComment
             ref={refTextArea}
@@ -189,6 +206,7 @@ export function SecondPagelAddPet({
             id="comment"
             name="comment"
             placeholder="Type comment"
+            onBlur={handleBlur}
             onChange={handleChange}
             value={comment}
           />

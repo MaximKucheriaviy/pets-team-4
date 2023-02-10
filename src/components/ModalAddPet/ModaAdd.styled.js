@@ -234,6 +234,34 @@ export const BtnUploadPhoto = styled.button`
   }
 `;
 
+export const BoxDeletePhoto = styled.div`
+  position: relative;
+`;
+
+export const BtnDeletePhoto = styled.button`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -10px;
+  right: 296px;
+  border: 2px solid #ab0303;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0;
+  color: #ab0303;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 
+      0px 2px 2px 1px rgb(0 0 0 / 14%), 
+      0px 1px 5px 0px rgb(0 0 0 / 12%);
+`;
+
+export const IconDeletePhoto = styled(CloseIcon)`
+  fill: yellow;
+`;
+
 export const WrapInputFirst = styled.div`
   display: flex;
   flex-direction: column;
@@ -372,6 +400,7 @@ export const LabelTextSex = styled.p`
 export const SkeletPhotoBox = styled.div`
   width: 116px;
   height: 116px;
+  margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     width: 140px;

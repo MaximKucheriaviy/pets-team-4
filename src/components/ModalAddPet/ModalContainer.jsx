@@ -38,13 +38,6 @@ export const ModalContainer = () => {
     formik.resetForm();
   };
 
-  const handleCloseBackdrp = (e) => {
-    if(e.target.value !== e.target.current) {
-      console.log(e.target.value)
-      // closeModal();
-    }
-  }
-
   return (
     <Box>
       {isLogin ? (
@@ -55,8 +48,6 @@ export const ModalContainer = () => {
             open={open}
             onClose={handleClose}
             hideBackdrop
-            // slot={(styles) => { return styles.backdrop.background = "transparent"; }}
-            // sx={{backgroundColor: "rgba(17, 17, 17, 0.6)"}}
             aria-labelledby="parent-modal-title"
             aria-describedby="parent-modal-description"
           >

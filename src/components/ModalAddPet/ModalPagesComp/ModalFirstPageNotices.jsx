@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useTheme } from "styled-components";
-
+import moment from "moment/moment";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import {
   LabelText,
@@ -29,17 +29,24 @@ export function FirstPageAddPet({
   handleCloseBackdrp
 }) {
   const titleTextRef = useRef(null);
+  const birthdateTextRef = useRef(null);
   const theme = useTheme();
 
   const { category, title, name, birthdate, breed } = formik.values;
-  const { handleChange, setFieldValue, errors, touched } = formik;
+  const { handleChange, setFieldValue, handleBlur, errors, touched } = formik;
 
   const handleErrorTitle = () => {
-    if (title.length < 2) {
+    if (title.length < 2 || errors.title) {
       return (titleTextRef.current.textContent = "Write title*");
     } 
+     if(errors.birthdate) {
+      return (birthdateTextRef.current.textContent = "Enter birthdate*")
+    }
     handleOpenSecond();
   };
+
+  const maxDateBirth = moment(Date.now()).format("YYYY-MM-DD");
+  const minDateBirth = moment(maxDateBirth).subtract(20, 'years').format("YYYY-MM-DD");
 
   return (
     <ModalBox>
@@ -110,13 +117,14 @@ export function FirstPageAddPet({
           <LabelText htmlFor="title">Tittle of ad*:</LabelText>
           <ErrorTextFields
             ref={titleTextRef}
-            hidden={title.length > 1}
+            // hidden={title.length > 1}
           >{errors.title}</ErrorTextFields>
           <InputAddPet
             type="text"
             required
             name="title"
             id="title"
+            onBlur={handleBlur}
             placeholder="Type name pet"
             onChange={handleChange}
             value={title}
@@ -130,18 +138,23 @@ export function FirstPageAddPet({
             id="name"
             name="name"
             placeholder="Type name pet"
+            onBlur={handleBlur}
             onChange={handleChange}
             value={name}
           />
           <LabelText htmlFor="birthdate">Date of birth:</LabelText>
-          {touched.birthdate && errors.birthdate ? (
-            <ErrorTextFields>{errors.birthdate}</ErrorTextFields>
-          ) : null}
+            <ErrorTextFields ref={birthdateTextRef}>
+              {errors.birthdate}
+              </ErrorTextFields>
           <InputAddPet
+            textContent="disabled"
             id="birthdate"
             name="birthdate"
             type="date"
             placeholder="DD.MM.YYYY"
+            onBlur={handleBlur}
+            min={minDateBirth}
+            max={maxDateBirth}
             value={birthdate}
             onChange={handleChange}
           />
@@ -153,6 +166,7 @@ export function FirstPageAddPet({
             type="text"
             id="breed"
             name="breed"
+            onBlur={handleBlur}
             placeholder="Type breed"
             onChange={handleChange}
             value={breed}

@@ -45,7 +45,6 @@ export const form = {
     for (let value in values) {
       formData.append(value, values[value]);
     }
-    console.log(values)
     await postedNoticePet(formData);
     await setTimeout(() => {
       resetForm();
@@ -62,7 +61,8 @@ export const form = {
     name: yup.string(),
     birthdate: yup.date().when("category", {
       is: "sell",
-      then: yup.date(),
+      then: yup.date()
+      .required("Enter birthdate*"),
     }),
     breed: yup
       .string()
@@ -70,10 +70,10 @@ export const form = {
       .min(2, "min 2 characters long")
       .max(18, "max 18 characters long"),
     sex: yup.string().required("Choose sex*"),
-    price: yup.string().when("category", {
+    price: yup.number().positive("Сannot be negative").when("category", {
       is: "sell",
       then: yup
-        .string()
+        .number()
         .required("Enter price*")
         .test((value, context) => {
           if (value === 0) {
@@ -89,7 +89,7 @@ export const form = {
       .test(
         "FILE_SIZE",
         "Uploadet file is too big.",
-        (value) => !value || (value && value.size <= 1224 * 1224)
+        (value) => !value || (value && value.size <= 1024 * 1024)
       )
       .test(
         "FILE_FORMAT",
